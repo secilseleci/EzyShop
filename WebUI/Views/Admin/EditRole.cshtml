@@ -1,0 +1,35 @@
+﻿@model EditRoleViewModel
+
+<div class="container mt-4">
+    <div class="card shadow border-0">
+        <div class="card-header">
+            <h3 class="text-info">Edit Role</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="EditRole" method="post">
+                <input type="hidden" asp-for="UserId" />
+                <div class="form-group mb-3">
+                    <label for="Name">Name:</label>
+                    <input type="text" asp-for="Name" class="form-control" readonly />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="Email">Email:</label>
+                    <input type="email" asp-for="Email" class="form-control" readonly />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="CurrentRole">Current Role:</label>
+                    <input type="text" asp-for="CurrentRole" class="form-control" readonly />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="NewRole">New Role:</label>
+                    <select asp-for="NewRole" class="form-control">
+                        <option value="Customer">Customer</option>
+                        <option value="Seller">Seller</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="ListUsers" class="btn btn-secondary">Back</a>
+            </form>
+        </div>
+    </div>
+</div>

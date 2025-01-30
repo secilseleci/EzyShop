@@ -1,0 +1,14 @@
+# Visual Studio cache dosyalarını hariç tut
+.vs/
+.vscode/
+*.vsidx
+
+# Bin ve obj klasörlerini hariç tut
+bin/
+obj/
+
+# Kullanıcı ayarlarını ve build dosyalarını hariç tut
+*.user
+*.suo
+*.cache
+*.log

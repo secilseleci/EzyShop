@@ -1,0 +1,15 @@
+﻿using Microsoft.AspNetCore.Identity;
+using Models.Entities.Abstract;
+using Models.Entities.Concrete;
+using System.ComponentModel.DataAnnotations;
+
+namespace Models.Identity
+{
+    public class AppUser:IdentityUser<Guid>,IBaseEntity
+    {
+        [Required]
+        public string Name { get; set; }
+        public ICollection<Shop> Shops { get; set; }
+
+    }
+}
