@@ -59,8 +59,6 @@ namespace WebUI.Controllers
         }
         #endregion
 
-
-
         #region Delete Categories
         public async Task<IActionResult> Delete(Guid id)
         {
@@ -79,6 +77,37 @@ namespace WebUI.Controllers
             return Json(result);
          }
 
+        #endregion
+
+        #region Edit Cetagories
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var result = await _categoryService.GetCategoryByIdAsync(id);
+            if (!result.Success)
+            {
+                TempData["ErrorMessage"] = result.Message;
+                return View();
+            }
+
+            TempData["SuccessMessage"] = result.Message;
+            return View(Mapper.Map<CategoryViewModel>(result.Data));
+        }
+        [HttpPost]
+        public async Task<IActionResult>Edit(CategoryViewModel model, IFormFile? file)
+        {
+            HandleImageUpload(model, file);
+
+            var result = await _categoryService.UpdateCategoryAsync(model);
+            if (!result.Success)
+            {
+                TempData["ErrorMessage"] = result.Message;
+                return View(model);
+            }
+
+            TempData["SuccessMessage"] = result.Message;
+            return RedirectToAction(nameof(Index));
+        }
         #endregion
     }
 }
