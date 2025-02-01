@@ -20,6 +20,10 @@ namespace WebUI.Mappings.AutoMapper
 
             CreateMap<AppUser, UserViewModel>()
                 .ForMember(dest => dest.Roles, opt => opt.Ignore()).ReverseMap();
+
+            CreateMap<BecomeSellerViewModel, SellerApplication>()
+               .ForMember(dest => dest.Status, opt => opt.MapFrom(src => ApplicationStatus.Pending)) // **Başvuru her zaman Pending olacak**
+               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.NewGuid())); // **Yeni Id oluştur**
         }
     }
 }

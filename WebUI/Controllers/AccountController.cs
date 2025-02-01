@@ -106,7 +106,7 @@ namespace WebUI.Controllers
         }
         #endregion
       
-        #region ChangePsssword
+        #region Change Password
         [HttpGet]
         public IActionResult ChangePassword()
         {
@@ -154,6 +154,9 @@ namespace WebUI.Controllers
 
             }
         #endregion
+
+     
+
         private IActionResult AddModelErrorsAndSendToClient(LoginViewModel? loginModel = null, RegisterViewModel? registerModel = null)
         {
             var errorMessagesFinal = ModelState.Values

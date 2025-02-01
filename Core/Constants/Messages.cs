@@ -44,6 +44,18 @@ namespace Core.Constants
         #endregion
         public const string UserNotFound = "User not found";
 
+        #region SellerApplication Messages 
+        public const string ApplicationNotFound = "Application not found";
+        public const string EmptySellerApplicationList = "Application list is empty with the current filter";
+        
+        public const string CreateSellerApplicationSuccess = "Your application has been successfully received.";
+        public const string CreateSellerApplicationtError = "An error occurred while creating your application.";
+
+        public const string ExistingSellerApplicationtError = "You already have a pending application.";
+ 
+        public const string DeleteSellerApplicationSuccess = "Application successfully deleted";
+        public const string DeleteSellerApplicationError = "Error occured while deleting the Application from Database";
+        #endregion
 
     }
 }

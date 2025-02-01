@@ -9,10 +9,9 @@ namespace DataAccess.Seeders.IdentitySeeders
         public static async Task SeedAdminUserAsync(UserManager<AppUser> userManager)
         {
             var defaultAdminEmail = "admin@ezyshop.com";
-            var defaultAdminPassword = "Admin123!";
+            var defaultAdminPassword = "Admin.123";
 
-            // Admin kullanıcısını bul veya oluştur
-            var adminUser = await userManager.FindByEmailAsync(defaultAdminEmail);
+             var adminUser = await userManager.FindByEmailAsync(defaultAdminEmail);
             if (adminUser == null)
             {
                 adminUser = new AppUser
@@ -20,7 +19,12 @@ namespace DataAccess.Seeders.IdentitySeeders
                     UserName = defaultAdminEmail,
                     Email = defaultAdminEmail,
                     Name = "Admin User",
-                    EmailConfirmed = true
+                    EmailConfirmed = true,
+                    IsSeller = false,  
+                    StoreName = null, 
+                    TaxNumber = null, 
+                    ContactNumber = "000-000-0000",  
+                    Address = "EzyShop Yönetim Merkezi"  
                 };
 
                 var result = await userManager.CreateAsync(adminUser, defaultAdminPassword);

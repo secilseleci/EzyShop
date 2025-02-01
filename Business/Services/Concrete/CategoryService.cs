@@ -54,11 +54,10 @@ namespace Business.Services.Concrete
 
             int newDisplayOrder;
 
-            if (model.DisplayOrder.HasValue) // Admin bir değer girdi mi?
+            if (model.DisplayOrder.HasValue) 
             {
                 newDisplayOrder = model.DisplayOrder.Value;
 
-                // Eğer DisplayOrder belirtilmişse, sıralamayı kaydır
                 var affectedCategories = await _categoryRepository
                     .GetAllAsync(c => c.DisplayOrder >= newDisplayOrder);
 
@@ -73,13 +72,11 @@ namespace Business.Services.Concrete
             }
             else
             {
-                // Eğer DisplayOrder boş bırakıldıysa, en büyük DisplayOrder'ı bul ve +1 ekle
                 newDisplayOrder = await _categoryRepository.GetMaxDisplayOrderAsync() + 1;
             }
 
-            // Yeni kategoriyi ekleyelim
             var newCategory = _mapper.Map<Category>(model);
-            newCategory.DisplayOrder = newDisplayOrder; // Belirlenen sıralamayı kullan
+            newCategory.DisplayOrder = newDisplayOrder; 
 
             var addResult = await _categoryRepository.CreateAsync(newCategory);
 

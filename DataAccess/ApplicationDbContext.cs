@@ -32,6 +32,7 @@ namespace DataAccess
         public DbSet<Product> Products { get; set; }
         public DbSet<Shop> Shops { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<SellerApplication> SellerApplications { get; set; }
 
     }
 }
