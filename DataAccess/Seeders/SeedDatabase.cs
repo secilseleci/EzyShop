@@ -21,6 +21,7 @@ namespace DataAccess.SeedDatabase
 
             // Entity Seeders
             await CategorySeeder.SeedCategoriesAsync(dbContext);
+            await SellerApplicationSeeder.SeedSellerApplicationsAsync(dbContext);
         }
     }
 }
