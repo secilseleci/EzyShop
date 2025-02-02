@@ -10,9 +10,9 @@ namespace DataAccess.Seeders.EntitySeeders
             {
                 dbContext.Categories.AddRange(new List<Category>
                 {
-                    new Category { Name = "Electronics" ,DisplayOrder=2, ImageUrl= "images/category/electronics.webp"},
-                    new Category { Name = "Books", DisplayOrder=1 ,ImageUrl="images/category/books.webp" },
-                    new Category { Name = "Fashion",DisplayOrder=3,ImageUrl = "images/category/fashion.webp" },
+                    new Category { Name = "Electronics" ,DisplayOrder=2, ImageUrl= "images/category/electronics.jpg"},
+                    new Category { Name = "Books", DisplayOrder=1 ,ImageUrl="images/category/books.jpg" },
+                    new Category { Name = "Fashion",DisplayOrder=3,ImageUrl = "images/category/fashion.jpg" },
                 });
 
                 await dbContext.SaveChangesAsync();

@@ -45,7 +45,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" asp-controller="Admin" asp-action="ListUsers">User Management</a></li>
                                     <li><a class="dropdown-item" asp-controller="Shop" asp-action="Index">Shop Management</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Index">Seller Application</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Application" asp-action="Index">Seller Application</a></li>
                                     <li><a class="dropdown-item" asp-controller="Category" asp-action="Index">Category Management</a></li>
                                     <li><a class="dropdown-item" asp-controller="Reports" asp-action="Index">Reports</a></li>
                                 </ul>
@@ -64,7 +64,7 @@
                         }
                         @if (User.IsInRole("Customer"))
                         {
-                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Application" asp-action="BecomeSeller">"Sell on EzyShop</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Application" asp-action="BecomeSeller">Sell on EzyShop</a></li>
                             <li class="nav-item"><a class="nav-link" asp-controller="Order" asp-action="Index">My Orders</a></li>
                             <li class="nav-item"><a class="nav-link" asp-controller="User" asp-action="Details">My Account</a></li>
                         }

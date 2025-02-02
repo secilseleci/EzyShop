@@ -16,14 +16,17 @@ namespace Business.Services.Concrete
         private readonly ISellerApplicationRepository _sellerApplicationRepository;
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IEmailService _emailService;
         public SellerApplicationService(
             ISellerApplicationRepository sellerApplicationRepository, 
             UserManager<AppUser> userManager,
-            IMapper mapper)
+            IMapper mapper,
+             IEmailService emailService)
         {
             _sellerApplicationRepository = sellerApplicationRepository;
             _userManager = userManager;
             _mapper = mapper;
+            _emailService = emailService;
         }
 
         #region Read
@@ -50,9 +53,78 @@ namespace Business.Services.Concrete
 
         public async Task<IResult> ApproveSellerAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var application = await _sellerApplicationRepository.GetByIdAsync(id);
+             if(application == null)
+            {
+                return new ErrorResult(Messages.ApplicationNotFound);
+            }
+
+
+            if (application.Status == ApplicationStatus.Approved)
+            {
+                return new ErrorResult(Messages.ExistingApprovedSellerApplicationtError);
+            }
+            var user = await _userManager.FindByEmailAsync(application.Email);
+            if (user == null)
+            {
+                user = new AppUser
+                {
+                    UserName = application.Email,
+                    Email = application.Email,
+                    Name = application.Name,
+                    PhoneNumber = application.ContactNumber,
+                    IsSeller = true
+                };
+                var createUserResult = await _userManager.CreateAsync(user, "Seller123.");  
+                if (!createUserResult.Succeeded)
+                {
+                    return new ErrorResult(Messages.CreateUserError);
+                }
+                var roleResult = await _userManager.AddToRoleAsync(user, "Seller");
+                if (!roleResult.Succeeded)
+                {
+                    return new ErrorResult(Messages.UserRoleError);
+                } 
+            }
+            else
+            {
+                if (!await _userManager.IsInRoleAsync(user, "Seller"))
+                {
+                    var roleResult = await _userManager.AddToRoleAsync(user, "Seller");
+                    if (!roleResult.Succeeded)
+                    {
+                        return new ErrorResult(Messages.UserRoleError);
+                    }
+                }
+                user.IsSeller = true;
+                await _userManager.UpdateAsync(user);
+            }
+
+            application.Status = ApplicationStatus.Approved;
+                var updateResult = await _sellerApplicationRepository.UpdateAsync(application);
+                if (updateResult <= 0)
+                {
+                    return new ErrorResult(Messages.UpdateSellerApplicationError);
+                }
+
+            var emailSubject = "Your Seller Application has been Approved!";
+            var emailBody = $"Hello {application.Name},\n\nCongratulations! " +
+                $"Your vendor application has been approved. " +
+                $"Now you can create your store and start selling your products. " +
+                $"To log in to the site, use your e-mail address and the password below." +
+                $"For your security, do not forget to change your password in the 'Change Password' field." +
+                $"Password= Seller123.";
+
+            var emailResult = await _emailService.SendEmailAsync(application.Email, emailSubject, emailBody);
+
+            if (!emailResult)
+            {
+                return new ErrorResult(Messages.ErrorSentEmail);
+            }
+            return new SuccessResult(Messages.ApprovedApplicationSuccess);
         }
 
+      
         public async Task<IResult> RejectSellerAsync(Guid id)
         {
             throw new NotImplementedException();
@@ -78,7 +150,7 @@ namespace Business.Services.Concrete
 
             return result > 0
                ? new SuccessResult(Messages.CreateSellerApplicationSuccess)
-               : new ErrorResult(Messages.CreateSellerApplicationtError);
+               : new ErrorResult(Messages.CreateSellerApplicationError);
         }
         #endregion
 
