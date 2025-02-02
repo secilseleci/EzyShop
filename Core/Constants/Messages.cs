@@ -58,6 +58,9 @@ namespace Core.Constants
         public const string DeleteSellerApplicationError = "Error occured while deleting the Application from Database";
         public const string ApprovedApplicationSuccess = "Application is approved and seller is created successfully";
         public const string ApprovedApplicationError = "Error occured while approving application";
+        public const string RejectedApplicationSuccess = "Application is rejected successfully";
+        public const string RejectedApplicationError = "Error occured while rejecting application";
+        public const string ExistingRejectedSellerApplicationtError = "You already rejected this application.";
         #endregion
         #region User
         public const string UserNotFound = "User not found";

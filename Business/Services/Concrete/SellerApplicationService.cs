@@ -127,7 +127,34 @@ namespace Business.Services.Concrete
       
         public async Task<IResult> RejectSellerAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var application = await _sellerApplicationRepository.GetByIdAsync(id);
+            if (application == null)
+            {
+                return new ErrorResult(Messages.ApplicationNotFound);
+            }
+            if (application.Status == ApplicationStatus.Rejected)
+            {
+                return new ErrorResult(Messages.ExistingRejectedSellerApplicationtError);
+            }
+            application.Status = ApplicationStatus.Rejected;
+            var updateResult = await _sellerApplicationRepository.UpdateAsync(application);
+            if (updateResult <= 0)
+            {
+                return new ErrorResult(Messages.UpdateSellerApplicationError);
+            }
+            var emailSubject = "Your Seller Application has been Rejected!";
+            var emailBody = $"Hello {application.Name}, " +
+                $"Your seller application to EzyShop has been reviewed. " +
+                $"Unfortunately, we reject your request due to incompatibilities in your application." +
+                $"You can contact customer service to get more information.";
+
+            var emailResult = await _emailService.SendEmailAsync(application.Email, emailSubject, emailBody);
+
+            if (!emailResult)
+            {
+                return new ErrorResult(Messages.ErrorSentEmail);
+            }
+            return new SuccessResult(Messages.RejectedApplicationSuccess);
         }
 
         #endregion

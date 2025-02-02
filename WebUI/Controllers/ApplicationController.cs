@@ -108,7 +108,7 @@ namespace WebUI.Controllers
         {
             var result = await _sellerApplicationService.RejectSellerAsync(id);
             TempData[result.Success ? "SuccessMessage" : "ErrorMessage"] = result.Message;
-            return RedirectToAction("SellerApplications");
+            return RedirectToAction("Index");
         }
 
         #endregion
