@@ -3,6 +3,7 @@ using Business.Services.Abstract;
 using Core.Constants;
 using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
+using DataAccess.Repositories.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Models.Entities.Concrete;
 using Models.Identity;
@@ -17,16 +18,20 @@ namespace Business.Services.Concrete
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
         private readonly IEmailService _emailService;
+        private readonly IShopService _shopService;
+
         public SellerApplicationService(
             ISellerApplicationRepository sellerApplicationRepository, 
             UserManager<AppUser> userManager,
             IMapper mapper,
-             IEmailService emailService)
+             IEmailService emailService,
+             IShopService shopService)
         {
             _sellerApplicationRepository = sellerApplicationRepository;
             _userManager = userManager;
             _mapper = mapper;
             _emailService = emailService;
+            _shopService = shopService;
         }
 
         #region Read
@@ -62,7 +67,7 @@ namespace Business.Services.Concrete
 
             if (application.Status == ApplicationStatus.Approved)
             {
-                return new ErrorResult(Messages.ExistingApprovedSellerApplicationtError);
+                return new ErrorResult(Messages.ExistingApprovedSellerApplicationError);
             }
             var user = await _userManager.FindByEmailAsync(application.Email);
             if (user == null)
@@ -106,6 +111,18 @@ namespace Business.Services.Concrete
                 {
                     return new ErrorResult(Messages.UpdateSellerApplicationError);
                 }
+            var shop = new Shop
+            {
+                Name = application.StoreName,   
+                SellerId = user.Id,
+                ContactNumber = application.ContactNumber,
+                Address = application.Address,
+                TaxNumber = application.TaxNumber,
+                IsActive = true,  
+                Status = "Approved"
+            };
+
+            await _shopService.CreateShopAsync(shop);
 
             var emailSubject = "Your Seller Application has been Approved!";
             var emailBody = $"Hello {application.Name},\n\nCongratulations! " +
@@ -134,7 +151,7 @@ namespace Business.Services.Concrete
             }
             if (application.Status == ApplicationStatus.Rejected)
             {
-                return new ErrorResult(Messages.ExistingRejectedSellerApplicationtError);
+                return new ErrorResult(Messages.ExistingRejectedSellerApplicationError);
             }
             application.Status = ApplicationStatus.Rejected;
             var updateResult = await _sellerApplicationRepository.UpdateAsync(application);
@@ -168,7 +185,7 @@ namespace Business.Services.Concrete
             var existingApplication = await _sellerApplicationRepository.GetAllAsync(a => a.Email == model.Email && a.Status == ApplicationStatus.Pending);
             if (existingApplication != null && existingApplication.Any())
             {
-                return new ErrorResult(Messages.ExistingSellerApplicationtError);
+                return new ErrorResult(Messages.ExistingSellerApplicationError);
             }
             var sellerApplication = _mapper.Map<SellerApplication>(model);
             sellerApplication.Status = ApplicationStatus.Pending;

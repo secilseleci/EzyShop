@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Entities.Concrete;
+using Models.Identity;
 using Models.ViewModels;
 using System.Linq.Expressions;
 
@@ -11,15 +13,18 @@ namespace WebUI.Controllers
     public class ApplicationController:BaseController
     {            
         private readonly ISellerApplicationService _sellerApplicationService;
-
         public ApplicationController(
-        ISellerApplicationService sellerApplicationService,
-        IWebHostEnvironment webHostEnvironment,
-        IMapper mapper)
-         : base(webHostEnvironment: webHostEnvironment, mapper: mapper)
-        {
-            _sellerApplicationService = sellerApplicationService;
+           ISellerApplicationService sellerApplicationService, 
+           UserManager<AppUser> userManager,
+           RoleManager<AppRole> roleManager,
+           SignInManager<AppUser> signInManager,
+           IWebHostEnvironment webHostEnvironment,
+           IMapper mapper)
+           : base(userManager, roleManager, signInManager, webHostEnvironment, mapper)
+        {            _sellerApplicationService = sellerApplicationService;
+
         }
+     
 
         #region Become Seller/ Create Application
 
@@ -88,8 +93,6 @@ namespace WebUI.Controllers
 
 
         #endregion
-
-
 
         #region Act
 

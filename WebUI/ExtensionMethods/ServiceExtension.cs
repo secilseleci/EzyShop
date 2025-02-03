@@ -29,6 +29,7 @@ namespace WebUI.ExtensionMethods
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ISellerApplicationRepository, SellerApplicationRepository>();
+            services.AddScoped<IShopRepository, ShopRepository>();
 
         }
 
@@ -37,7 +38,8 @@ namespace WebUI.ExtensionMethods
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ISellerApplicationService, SellerApplicationService>();
-            services.AddScoped<IEmailService, EmailService>();  
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IShopService, ShopService>();
 
 
         }

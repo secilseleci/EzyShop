@@ -12,7 +12,12 @@ namespace WebUI.Controllers
     {
         private readonly List<string> ErrorList = new();
 
-        public AccountController(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, SignInManager<AppUser> signInManager, IWebHostEnvironment webHostEnvironment, IMapper mapper) : base(userManager, roleManager, signInManager, webHostEnvironment, mapper)
+        public AccountController(UserManager<AppUser> userManager, 
+            RoleManager<AppRole> roleManager, 
+            SignInManager<AppUser> signInManager, 
+            IWebHostEnvironment webHostEnvironment, 
+            IMapper mapper) 
+            : base(userManager, roleManager, signInManager, webHostEnvironment, mapper)
         {
         }
          
@@ -125,27 +130,28 @@ namespace WebUI.Controllers
             .ToList();
                 return View(model);
             }
-            if (CurrentUser is null)
+            var currentUser = await GetCurrentUserAsync();
+            if (currentUser is null)
             {
                 TempData["ErrorMessage"] = Messages.UserNotFound;
                 return View();
             }
-            bool oldPasswordCorrect=await UserManager.CheckPasswordAsync(CurrentUser,model.OldPassword);
+            bool oldPasswordCorrect=await UserManager.CheckPasswordAsync(currentUser,model.OldPassword);
             if(!oldPasswordCorrect)
             {
                 TempData["ErrorMessage"] = "Old password is wrong";
                 return View(model);
             }
-            IdentityResult result=await UserManager.ChangePasswordAsync(CurrentUser,model.OldPassword,model.NewPassword);
+            IdentityResult result=await UserManager.ChangePasswordAsync(currentUser,model.OldPassword,model.NewPassword);
             if (!result.Succeeded)
             {
                 TempData["ModelError"] = result.Errors.Select(e => e.Description).ToList();
                 return View(model);
             }
 
-                await UserManager.UpdateSecurityStampAsync(CurrentUser);
+                await UserManager.UpdateSecurityStampAsync(currentUser);
                 await SignInManager.SignOutAsync();
-                await SignInManager.PasswordSignInAsync(CurrentUser, model.NewPassword, true, false);
+                await SignInManager.PasswordSignInAsync(currentUser, model.NewPassword, true, false);
 
                 TempData["SuccessMessage"] = "Password successfully changed";
                 return RedirectToAction("ChangePassword");  

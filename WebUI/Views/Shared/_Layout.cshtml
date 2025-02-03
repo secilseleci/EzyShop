@@ -50,17 +50,19 @@
                                     <li><a class="dropdown-item" asp-controller="Reports" asp-action="Index">Reports</a></li>
                                 </ul>
                             </li>
+
                         }
                         @if (User.IsInRole("Seller"))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Seller Panel</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" asp-controller="Shop" asp-action="MyShops">My Shops</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Shop" asp-action="Index">My Shop</a></li>
                                     <li><a class="dropdown-item" asp-controller="Product" asp-action="Index">Product Management</a></li>
                                     <li><a class="dropdown-item" asp-controller="Order" asp-action="Index">Order Management</a></li>
                                 </ul>
                             </li>
+ 
                         }
                         @if (User.IsInRole("Customer"))
                         {

@@ -4888,3 +4888,144 @@ FROM [SellerApplications] AS [s]
 2025-02-02 20:44:50.118 +03:00 [INF] Executed action WebUI.Controllers.ApplicationController.GetSellerApplications (WebUI) in 6.593ms
 2025-02-02 20:44:50.118 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ApplicationController.GetSellerApplications (WebUI)'
 2025-02-02 20:44:50.118 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Application/GetSellerApplications?status=all - 200 null text/html; charset=utf-8 8.1034ms
+2025-02-02 20:46:38.608 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-02 20:46:38.954 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-02 20:46:38.985 +03:00 [WRN] No store type was specified for the decimal property 'ListPrice' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-02 20:46:38.985 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-02 20:46:39.507 +03:00 [INF] Executed DbCommand (35ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-02 20:46:39.556 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='SELLER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-02 20:46:39.558 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='CUSTOMER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-02 20:46:39.569 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='ADMIN@EZYSHOP.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-02 20:46:39.611 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-02 20:46:39.616 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SellerApplications] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-02 20:46:39.806 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/ - null null
+2025-02-02 20:46:39.822 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-02 20:46:39.823 +03:00 [INF] Hosting environment: Development
+2025-02-02 20:46:39.823 +03:00 [INF] Content root path: C:\EzyShop\EzyShop\WebUI
+2025-02-02 20:46:39.917 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-02 20:46:39.925 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-02-02 20:46:39.988 +03:00 [INF] Executing ViewResult, running view Index.
+2025-02-02 20:46:40.068 +03:00 [INF] Executed ViewResult - view Index executed in 80.7388ms.
+2025-02-02 20:46:40.070 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 144.3884ms
+2025-02-02 20:46:40.070 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-02 20:46:40.078 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/ - 200 null text/html; charset=utf-8 276.9213ms
+2025-02-02 20:46:40.148 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-02 20:46:40.148 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-02 20:46:40.153 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 2.3577ms
+2025-02-02 20:46:40.178 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 30.4699ms
+2025-02-02 20:46:41.269 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44352/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2025-02-02 20:46:41.282 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\EzyShop\EzyShop\WebUI\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2025-02-02 20:46:41.287 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:44352/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 18.3139ms
+2025-02-02 20:46:43.622 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Application/BecomeSeller - null null
+2025-02-02 20:46:43.633 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ApplicationController.BecomeSeller (WebUI)'
+2025-02-02 20:46:43.634 +03:00 [INF] Route matched with {action = "BecomeSeller", controller = "Application"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult BecomeSeller() on controller WebUI.Controllers.ApplicationController (WebUI).
+2025-02-02 20:46:43.675 +03:00 [INF] Executing ViewResult, running view BecomeSeller.
+2025-02-02 20:46:43.729 +03:00 [INF] Executed ViewResult - view BecomeSeller executed in 55.0987ms.
+2025-02-02 20:46:43.730 +03:00 [INF] Executed action WebUI.Controllers.ApplicationController.BecomeSeller (WebUI) in 95.0066ms
+2025-02-02 20:46:43.730 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ApplicationController.BecomeSeller (WebUI)'
+2025-02-02 20:46:43.731 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Application/BecomeSeller - 200 null text/html; charset=utf-8 108.6858ms
+2025-02-02 20:46:43.738 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-02 20:46:43.739 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.13ms
+2025-02-02 20:46:43.746 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-02 20:46:43.763 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.866ms
+2025-02-02 20:46:44.831 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Account/Login - null null
+2025-02-02 20:46:44.838 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-02-02 20:46:44.845 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String, System.String) on controller WebUI.Controllers.AccountController (WebUI).
+2025-02-02 20:46:44.862 +03:00 [INF] Executing ViewResult, running view Login.
+2025-02-02 20:46:44.882 +03:00 [INF] Executed ViewResult - view Login executed in 20.8042ms.
+2025-02-02 20:46:44.883 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 37.7769ms
+2025-02-02 20:46:44.883 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-02-02 20:46:44.883 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Account/Login - 200 null text/html; charset=utf-8 51.9939ms
+2025-02-02 20:46:44.890 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-02 20:46:44.890 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-02 20:46:44.891 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.0887ms
+2025-02-02 20:46:44.903 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 13.2936ms
+2025-02-02 20:46:46.510 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44352/Account/Login - application/x-www-form-urlencoded 244
+2025-02-02 20:46:46.515 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-02-02 20:46:46.522 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Models.ViewModels.LoginViewModel) on controller WebUI.Controllers.AccountController (WebUI).
+2025-02-02 20:46:46.560 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='ADMIN@EZYSHOP.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-02 20:46:46.575 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='ADMIN@EZYSHOP.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-02-02 20:46:46.692 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='d35e8b5b-78e6-4d99-9d5f-08dd43a26818'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-02-02 20:46:46.717 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='d35e8b5b-78e6-4d99-9d5f-08dd43a26818'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-02-02 20:46:46.721 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-02 20:46:46.727 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='3f776692-4ec5-41df-3631-08dd43a267fc'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-02-02 20:46:46.733 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-02-02 20:46:46.737 +03:00 [INF] Executing RedirectResult, redirecting to /.
+2025-02-02 20:46:46.740 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 217.7789ms
+2025-02-02 20:46:46.741 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-02-02 20:46:46.744 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44352/Account/Login - 302 null null 233.4764ms
+2025-02-02 20:46:46.747 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/ - null null
+2025-02-02 20:46:46.753 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-02 20:46:46.754 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-02-02 20:46:46.754 +03:00 [INF] Executing ViewResult, running view Index.
+2025-02-02 20:46:46.758 +03:00 [INF] Executed ViewResult - view Index executed in 4.4352ms.
+2025-02-02 20:46:46.759 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 4.7834ms
+2025-02-02 20:46:46.759 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-02 20:46:46.759 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/ - 200 null text/html; charset=utf-8 12.3806ms
+2025-02-02 20:46:46.769 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-02 20:46:46.769 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-02 20:46:46.771 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.3328ms
+2025-02-02 20:46:46.779 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 9.723ms
+2025-02-02 20:46:50.696 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Application - null null
+2025-02-02 20:46:50.709 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ApplicationController.Index (WebUI)'
+2025-02-02 20:46:50.711 +03:00 [INF] Route matched with {action = "Index", controller = "Application"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.ApplicationController (WebUI).
+2025-02-02 20:46:50.725 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Address], [s].[ApplicationDate], [s].[ContactNumber], [s].[Email], [s].[Name], [s].[Status], [s].[StoreName], [s].[TaxNumber]
+FROM [SellerApplications] AS [s]
+2025-02-02 20:46:50.730 +03:00 [INF] Executing ViewResult, running view Index.
+2025-02-02 20:46:50.741 +03:00 [INF] Executed ViewResult - view Index executed in 11.2667ms.
+2025-02-02 20:46:50.741 +03:00 [INF] Executed action WebUI.Controllers.ApplicationController.Index (WebUI) in 29.5132ms
+2025-02-02 20:46:50.741 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ApplicationController.Index (WebUI)'
+2025-02-02 20:46:50.741 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Application - 200 null text/html; charset=utf-8 45.1697ms
+2025-02-02 20:46:50.748 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-02 20:46:50.749 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 0.9973ms
+2025-02-02 20:46:50.753 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-02 20:46:50.760 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 6.7498ms
+2025-02-02 20:47:01.865 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Shop - null null
+2025-02-02 20:47:01.872 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Shop - 404 null null 7.3587ms
+2025-02-02 20:47:01.873 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44352/Shop, Response status code: 404
+2025-02-02 20:47:06.359 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-02 20:47:06.361 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.543ms

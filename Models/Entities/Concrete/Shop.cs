@@ -4,13 +4,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Models.Entities.Concrete
 {
-    public class Shop:IBaseEntity
+    public class Shop : IBaseEntity
     {
         public Shop()
         {
             Id = Guid.NewGuid();
             Products = new List<Product>();
+            Status = "Pending";  
         }
+
         [Key]
         [Required]
         public Guid Id { get; set; }
@@ -27,9 +29,21 @@ namespace Models.Entities.Concrete
 
         public AppUser Seller { get; set; }
 
-        public bool IsActive { get; set; } = true;
+        [Required]
+        [RegularExpression(@"^\d{10,15}$", ErrorMessage = "Invalid phone number format.")]
+        public string ContactNumber { get; set; }  
+        [Required]
+        [StringLength(500)]
+        public string Address { get; set; }  
+
+        public string? TaxNumber { get; set; }  
+
+        public bool IsActive { get; set; } = false;  
+
+        [Required]
+        [StringLength(10)]
+        public string Status { get; set; }  
 
         public ICollection<Product> Products { get; set; }
-
     }
 }

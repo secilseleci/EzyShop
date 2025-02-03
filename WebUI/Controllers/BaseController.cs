@@ -16,21 +16,25 @@ namespace WebUI.Controllers
         protected IMapper Mapper { get; }
 
         public BaseController(
-            UserManager<AppUser> userManager=null,
-            RoleManager<AppRole> roleManager = null,
-            SignInManager<AppUser> signInManager = null,
-            IWebHostEnvironment webHostEnvironment = null,
-            IMapper mapper = null)
+            UserManager<AppUser> userManager,
+            RoleManager<AppRole> roleManager,
+            SignInManager<AppUser> signInManager ,
+            IWebHostEnvironment webHostEnvironment,
+            IMapper mapper)
         {
-            UserManager = userManager;
-            RoleManager = roleManager;
-            SignInManager = signInManager;
-            WebHostEnvironment = webHostEnvironment;
-            Mapper = mapper;
+            UserManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+            RoleManager = roleManager ?? throw new ArgumentNullException(nameof(roleManager));
+            SignInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
+            WebHostEnvironment = webHostEnvironment ?? throw new ArgumentNullException(nameof(webHostEnvironment));
+            Mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        protected AppUser? CurrentUser => UserManager.GetUserAsync(HttpContext.User).Result;
-
+        protected async Task<AppUser?> GetCurrentUserAsync()
+        {
+            return User.Identity.IsAuthenticated
+                ? await UserManager.GetUserAsync(User)
+                : null;
+        }
         protected Guid GetUserId()
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
