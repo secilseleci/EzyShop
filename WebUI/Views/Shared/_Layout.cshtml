@@ -57,7 +57,6 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Seller Panel</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" asp-controller="Shop" asp-action="Index">My Shop</a></li>
                                     <li><a class="dropdown-item" asp-controller="Product" asp-action="Index">Product Management</a></li>
                                     <li><a class="dropdown-item" asp-controller="Order" asp-action="Index">Order Management</a></li>
                                 </ul>
@@ -81,6 +80,10 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" asp-controller="Account" asp-action="ChangePassword">Change Password</a></li>
                                     <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                                    @if (User.IsInRole("Seller"))
+                                    {
+                                        <li><a class="dropdown-item" asp-controller="Shop" asp-action="Index">My Profile</a></li>
+                                    }
                                 </ul>
                             </li>
                         }
