@@ -80,7 +80,21 @@ namespace DataAccess.Repositories.Concrete.Cache
             CachedKeys.Clear();
         }
 
-      
+        public async Task<int> AddRangeAsync(IEnumerable<Shop> entities)
+        {
+            var result = await _decorated.AddRangeAsync(entities);
+            RemoveAllCachedItems(result);
+            return result;
+        }
+
+        public async Task<int> DeleteRangeAsync(IEnumerable<Shop> entities)
+        {
+            var result = await _decorated.DeleteRangeAsync(entities);
+            RemoveAllCachedItems(result);
+            return result;
+        }
+
+
         #endregion
     }
 

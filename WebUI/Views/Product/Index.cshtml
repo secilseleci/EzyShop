@@ -1,5 +1,42 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Product List";
+}
+
+<div class="container renderCard">
+    <div class="card shadow border-0 rounded">
+        <div class="card-header">
+            <div class="row p-3">
+                <div class="col-6">
+                    <h2 class="text-info">Product List</h2>
+                </div>
+                <div class="col-6 text-end">
+                    <a asp-controller="Product" asp-action="Create" class="btn btn-outline-info shadow rounded">
+                        <i class="bi bi-plus-circle"></i> Create New Product
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="tblProduct" class="table table-bordered table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Color</th>
+                            <th>Price</th>
+                            <th>ListPrice</th>
+                            <th>Category</th>
+                            <th>Edit / Delete</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/product.js"></script>
 }

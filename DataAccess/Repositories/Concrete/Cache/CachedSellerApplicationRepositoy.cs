@@ -50,10 +50,22 @@ namespace DataAccess.Repositories.Concrete.Cache
                 return await _decorated.GetByIdAsync(id);
             });
         }
-   
 
-     
-       
+        public async Task<int> AddRangeAsync(IEnumerable<SellerApplication> entities)
+        {
+            var result = await _decorated.AddRangeAsync(entities);
+            RemoveAllCachedItems(result);
+            return result;
+        }
+
+        public async Task<int> DeleteRangeAsync(IEnumerable<SellerApplication> entities)
+        {
+            var result = await _decorated.DeleteRangeAsync(entities);
+            RemoveAllCachedItems(result);
+            return result;
+        }
+
+
         #region Helper Methods
         private void RemoveAllCachedItems(int result)
         {
@@ -67,6 +79,8 @@ namespace DataAccess.Repositories.Concrete.Cache
 
             CachedKeys.Clear();
         }
+
+      
         #endregion
     }
 }

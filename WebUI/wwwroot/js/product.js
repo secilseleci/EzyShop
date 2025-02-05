@@ -16,7 +16,7 @@ function loadDataTable() {
                     </div>`;
                 }
             },
-            { data: 'title', "width": "15%" },
+            { data: 'name', "width": "15%" },
             {
                 data: 'description',
                 "width": "20%",
@@ -30,8 +30,7 @@ function loadDataTable() {
             }, 
             { data: 'color', "width": "10%" },
             { data: 'price', "width": "5%" },
-            { data: 'price50', "width": "5%" },
-            { data: 'price100', "width": "5%" },
+            { data: 'listprice', "width": "5%" },
             { data: 'category.name', "width": "15%" },
             {
                 data: 'id',

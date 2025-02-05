@@ -11,5 +11,9 @@ namespace DataAccess.Repositories.Abstract
 
         Task<T?> GetByIdAsync(Guid id);
         Task<IEnumerable<T>?> GetAllAsync(Expression<Func<T, bool>> predicate);
+
+        Task<int> AddRangeAsync(IEnumerable<T> entities);
+        Task<int> DeleteRangeAsync(IEnumerable<T> entities);
+
     }
 }

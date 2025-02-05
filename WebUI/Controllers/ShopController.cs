@@ -3,7 +3,6 @@ using Business.Services.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Models.Entities.Concrete;
 using Models.Identity;
 using Models.ViewModels;
 
@@ -44,5 +43,31 @@ namespace WebUI.Controllers
             return View(result.Data); 
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid sellerId)
+        {
+            var result = await _shopService.GetShopBySellerIdAsync(sellerId);
+            if (!result.Success)
+            {
+                TempData["ErrorMessage"] = result.Message;
+                return View();
+            }
+
+            TempData["SuccessMessage"] = result.Message;
+            return View(Mapper.Map<ShopViewModel>(result.Data));
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(ShopViewModel model)
+        { 
+            var result = await _shopService.UpdateShopAsync(model);
+            if (!result.Success)
+            {
+                TempData["ErrorMessage"] = result.Message;
+                return View(model);
+            }
+
+            TempData["SuccessMessage"] = result.Message;
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

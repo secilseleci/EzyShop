@@ -80,6 +80,22 @@ namespace Business.Services.Concrete
                 ? new SuccessDataResult<IEnumerable<Product>>(productList)
                 : new ErrorDataResult<IEnumerable<Product>>(Messages.EmptyProductList);
         }
+
+        public async Task<IDataResult<Product>> GetProductByIdWithCategoryAsync(Guid productId)
+        {
+            var product = await _productRepository.GetProductWithCategoryAsync(productId);
+            return product is not null
+               ? new SuccessDataResult<Product>(product)
+               : new ErrorDataResult<Product>(Messages.ProductNotFound);
+        }
+
+        public async Task<IDataResult<IEnumerable<Product>>> GetAllProductsWithCategoryAsync(Expression<Func<Product, bool>> predicate)
+        {
+            var productList = await _productRepository.GetAllProductsWithCategoryAsync(predicate);
+            return productList is not null && productList.Any()
+                ? new SuccessDataResult<IEnumerable<Product>>(productList)
+                : new ErrorDataResult<IEnumerable<Product>>(Messages.EmptyProductList);
+        }
         #endregion
 
         #region Helper Methods

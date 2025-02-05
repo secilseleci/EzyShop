@@ -32,6 +32,11 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class,IBaseEntity,
         }
         return -1;
     }
+    public async Task<int> DeleteRangeAsync(IEnumerable<T> entities)
+    {
+        _dbSet.RemoveRange(entities);
+        return await _dataContext.SaveChangesAsync();
+    }
 
     public async Task<int> UpdateAsync(T entity)
     {
@@ -45,4 +50,9 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class,IBaseEntity,
     public async Task<T?> GetByIdAsync(Guid id)
    => await _dbSet.AsNoTracking().FirstOrDefaultAsync(entity => entity.Id == id);
 
+    public async Task<int> AddRangeAsync(IEnumerable<T> entities)
+    {
+        await _dbSet.AddRangeAsync(entities);
+        return await _dataContext.SaveChangesAsync();
+    }
 }

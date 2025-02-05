@@ -1,4 +1,5 @@
-﻿using DataAccess.Repositories.Abstract;
+﻿using Core.Utilities.Results;
+using DataAccess.Repositories.Abstract;
 using Microsoft.Extensions.Caching.Memory;
 using Models.Entities.Concrete;
 using System.Linq.Expressions;
@@ -70,6 +71,19 @@ namespace DataAccess.Repositories.Concrete.Cache
             RemoveAllCachedItems(result);
             return result;
         }
+        public async Task<int> AddRangeAsync(IEnumerable<Category> entities)
+        {
+            var result = await _decorated.AddRangeAsync(entities);
+            RemoveAllCachedItems(result);
+            return result;
+        }
+
+        public async Task<int> DeleteRangeAsync(IEnumerable<Category> entities)
+        {
+            var result = await _decorated.DeleteRangeAsync(entities);
+            RemoveAllCachedItems(result);
+            return result;
+        }
         #region Helper Methods
         private void RemoveAllCachedItems(int result)
         {
@@ -85,6 +99,8 @@ namespace DataAccess.Repositories.Concrete.Cache
         }
 
       
+
+
         #endregion
     }
 }

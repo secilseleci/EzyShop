@@ -9,9 +9,9 @@ namespace Models.ViewModels
         [Required(ErrorMessage = "Shop name is required.")]
         [StringLength(100, ErrorMessage = "Shop name cannot exceed 100 characters.")]
         public string Name { get; set; }
+        [Required]
+        public Guid SellerId { get; set; }
 
-        [StringLength(255, ErrorMessage = "Description cannot exceed 255 characters.")]
-        public string? Description { get; set; }
 
         [Required(ErrorMessage = "Contact number is required.")]
         [RegularExpression(@"^\d{10,15}$", ErrorMessage = "Invalid phone number format.")]
@@ -25,8 +25,7 @@ namespace Models.ViewModels
 
         public bool IsActive { get; set; } = false; 
 
-        public Guid SellerId { get; set; }
-
+ 
         public string Status { get; set; } = "Pending";  
 
         public string? SellerName { get; set; }  
