@@ -1809,3 +1809,286 @@ END
 2025-02-05 19:19:26.537 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
 2025-02-05 19:19:26.538 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.059ms
 2025-02-05 19:19:26.549 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 12.4644ms
+2025-02-05 19:19:40.757 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-05 19:19:41.114 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-05 19:19:41.149 +03:00 [WRN] No store type was specified for the decimal property 'ListPrice' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-05 19:19:41.149 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-05 19:19:41.700 +03:00 [INF] Executed DbCommand (40ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-05 19:19:41.749 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='SELLER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-05 19:19:41.751 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='CUSTOMER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-05 19:19:41.763 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='ADMIN@EZYSHOP.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-05 19:19:41.805 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-05 19:19:41.810 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SellerApplications] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-05 19:19:42.034 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/ - null null
+2025-02-05 19:19:42.054 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-05 19:19:42.054 +03:00 [INF] Hosting environment: Development
+2025-02-05 19:19:42.054 +03:00 [INF] Content root path: C:\Users\ASUS\source\repos\EzyShop\EzyShop\WebUI
+2025-02-05 19:19:42.131 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-05 19:19:42.137 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-02-05 19:19:42.202 +03:00 [INF] Executing ViewResult, running view Index.
+2025-02-05 19:19:42.287 +03:00 [INF] Executed ViewResult - view Index executed in 85.9407ms.
+2025-02-05 19:19:42.289 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 151.5753ms
+2025-02-05 19:19:42.289 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-05 19:19:42.299 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/ - 200 null text/html; charset=utf-8 270.6845ms
+2025-02-05 19:19:42.334 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-05 19:19:42.334 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-05 19:19:42.337 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 2.3582ms
+2025-02-05 19:19:42.366 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.6281ms
+2025-02-05 19:19:42.563 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44352/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2025-02-05 19:19:42.581 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\ASUS\source\repos\EzyShop\EzyShop\WebUI\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2025-02-05 19:19:42.585 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:44352/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 22.1621ms
+2025-02-05 19:19:44.200 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Account/Login - null null
+2025-02-05 19:19:44.209 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-02-05 19:19:44.216 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String, System.String) on controller WebUI.Controllers.AccountController (WebUI).
+2025-02-05 19:19:44.235 +03:00 [INF] Executing ViewResult, running view Login.
+2025-02-05 19:19:44.270 +03:00 [INF] Executed ViewResult - view Login executed in 35.7107ms.
+2025-02-05 19:19:44.270 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 54.6003ms
+2025-02-05 19:19:44.271 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-02-05 19:19:44.272 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Account/Login - 200 null text/html; charset=utf-8 70.8301ms
+2025-02-05 19:19:44.283 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-05 19:19:44.283 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-05 19:19:44.284 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.1192ms
+2025-02-05 19:19:44.295 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 12.346ms
+2025-02-05 19:19:45.235 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44352/Account/Login - application/x-www-form-urlencoded 250
+2025-02-05 19:19:45.242 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-02-05 19:19:45.247 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Models.ViewModels.LoginViewModel) on controller WebUI.Controllers.AccountController (WebUI).
+2025-02-05 19:19:45.298 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='SECIL.SELECI@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-05 19:19:45.310 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='SECIL.SELECI@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-02-05 19:19:45.431 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='4eeaabcc-21f8-44a1-1955-08dd443a7ecd'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-02-05 19:19:45.453 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='4eeaabcc-21f8-44a1-1955-08dd443a7ecd'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-02-05 19:19:45.455 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='SELLER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-05 19:19:45.462 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='fd7f8feb-951e-48aa-3632-08dd43a267fc'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-02-05 19:19:45.467 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-02-05 19:19:45.470 +03:00 [INF] Executing RedirectResult, redirecting to /.
+2025-02-05 19:19:45.473 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 225.3539ms
+2025-02-05 19:19:45.473 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-02-05 19:19:45.476 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44352/Account/Login - 302 null null 241.2663ms
+2025-02-05 19:19:45.477 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/ - null null
+2025-02-05 19:19:45.483 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-05 19:19:45.483 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-02-05 19:19:45.483 +03:00 [INF] Executing ViewResult, running view Index.
+2025-02-05 19:19:45.488 +03:00 [INF] Executed ViewResult - view Index executed in 5.0822ms.
+2025-02-05 19:19:45.488 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 5.4472ms
+2025-02-05 19:19:45.488 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-05 19:19:45.489 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/ - 200 null text/html; charset=utf-8 12.0528ms
+2025-02-05 19:19:45.495 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-05 19:19:45.495 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-05 19:19:45.496 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.123ms
+2025-02-05 19:19:45.505 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 10.2053ms
+2025-02-05 19:19:47.822 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Shop - null null
+2025-02-05 19:19:47.831 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ShopController.Index (WebUI)'
+2025-02-05 19:19:47.834 +03:00 [INF] Route matched with {action = "Index", controller = "Shop"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.ShopController (WebUI).
+2025-02-05 19:19:47.870 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__get_Item_0='4eeaabcc-21f8-44a1-1955-08dd443a7ecd' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-02-05 19:19:47.879 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__sellerId_0='4eeaabcc-21f8-44a1-1955-08dd443a7ecd'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__sellerId_0
+2025-02-05 19:19:47.910 +03:00 [INF] Executing ViewResult, running view Index.
+2025-02-05 19:19:47.916 +03:00 [INF] Executed ViewResult - view Index executed in 6.7137ms.
+2025-02-05 19:19:47.916 +03:00 [INF] Executed action WebUI.Controllers.ShopController.Index (WebUI) in 82.4057ms
+2025-02-05 19:19:47.917 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ShopController.Index (WebUI)'
+2025-02-05 19:19:47.917 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Shop - 200 null text/html; charset=utf-8 95.2292ms
+2025-02-05 19:19:47.924 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-05 19:19:47.924 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-05 19:19:47.925 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 0.9291ms
+2025-02-05 19:19:47.934 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 10.0321ms
+2025-02-05 19:19:50.140 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Product - null null
+2025-02-05 19:19:50.145 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-02-05 19:19:50.146 +03:00 [INF] Route matched with {action = "Index", controller = "Product"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.ProductController (WebUI).
+2025-02-05 19:19:50.148 +03:00 [INF] Executing ViewResult, running view Index.
+2025-02-05 19:19:50.153 +03:00 [INF] Executed ViewResult - view Index executed in 5.516ms.
+2025-02-05 19:19:50.153 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Index (WebUI) in 6.6603ms
+2025-02-05 19:19:50.153 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-02-05 19:19:50.153 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Product - 200 null text/html; charset=utf-8 13.6728ms
+2025-02-05 19:19:50.159 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-05 19:19:50.159 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/js/product.js - null null
+2025-02-05 19:19:50.160 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 0.9127ms
+2025-02-05 19:19:50.164 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-05 19:19:50.174 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 10.1713ms
+2025-02-05 19:19:50.209 +03:00 [INF] Sending file. Request path: '/js/product.js'. Physical path: 'C:\Users\ASUS\source\repos\EzyShop\EzyShop\WebUI\wwwroot\js\product.js'
+2025-02-05 19:19:50.210 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/js/product.js - 200 2458 text/javascript 50.888ms
+2025-02-05 19:19:50.272 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/product/getall?_=1738772390179 - null null
+2025-02-05 19:19:50.278 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.GetAll (WebUI)'
+2025-02-05 19:19:50.281 +03:00 [INF] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller WebUI.Controllers.ProductController (WebUI).
+2025-02-05 19:19:50.309 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[Description], [p].[ImageUrl], [p].[ListPrice], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [c].[Id], [c].[DisplayOrder], [c].[ImageUrl], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+2025-02-05 19:19:50.311 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`1[[System.Collections.Generic.IEnumerable`1[[Models.Entities.Concrete.Product, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-02-05 19:19:50.357 +03:00 [INF] Executed action WebUI.Controllers.ProductController.GetAll (WebUI) in 75.9726ms
+2025-02-05 19:19:50.357 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.GetAll (WebUI)'
+2025-02-05 19:19:50.357 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/product/getall?_=1738772390179 - 200 null application/json; charset=utf-8 85.3688ms
+2025-02-05 19:22:19.948 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Product/Create - null null
+2025-02-05 19:22:19.971 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Create (WebUI)'
+2025-02-05 19:22:19.972 +03:00 [INF] Route matched with {action = "Create", controller = "Product"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller WebUI.Controllers.ProductController (WebUI).
+2025-02-05 19:22:19.975 +03:00 [INF] Executing ViewResult, running view Create.
+2025-02-05 19:22:19.984 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[DisplayOrder], [c].[ImageUrl], [c].[Name]
+FROM [Categories] AS [c]
+2025-02-05 19:22:20.030 +03:00 [INF] Executed ViewResult - view Create executed in 56.4725ms.
+2025-02-05 19:22:20.031 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Create (WebUI) in 59.2789ms
+2025-02-05 19:22:20.031 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Create (WebUI)'
+2025-02-05 19:22:20.032 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Product/Create - 200 null text/html; charset=utf-8 85ms
+2025-02-05 19:22:20.040 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-05 19:22:20.040 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-05 19:22:20.041 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.0243ms
+2025-02-05 19:22:20.053 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 13.4665ms
+2025-02-05 19:22:51.073 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44352/Product/Create - multipart/form-data; boundary=----WebKitFormBoundaryBwF9Ao0RD1Ae4BBp 230223
+2025-02-05 19:22:51.082 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Create (WebUI)'
+2025-02-05 19:22:51.086 +03:00 [INF] Route matched with {action = "Create", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(Models.ViewModels.ProductViewModel, Microsoft.AspNetCore.Http.IFormFile) on controller WebUI.Controllers.ProductController (WebUI).
+2025-02-05 19:22:51.446 +03:00 [ERR] Failed executing DbCommand (159ms) [Parameters=[@p0='fc36e452-97a0-45f6-1a9a-08dd46015637', @p1='983c3ce5-2fae-4a8b-b9ae-9c858c6c360c', @p2='sarı' (Nullable = false) (Size = 4000), @p3='elbise' (Size = 4000), @p4='images\product\a89096f7-7871-466b-8713-08996b7a64f9.webp' (Size = 4000), @p5='345' (Precision = 18) (Scale = 2), @p6='deneme' (Nullable = false) (Size = 4000), @p7='567' (Precision = 18) (Scale = 2), @p8='00000000-0000-0000-0000-000000000000', @p9='1'], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Id], [CategoryId], [Color], [Description], [ImageUrl], [ListPrice], [Name], [Price], [ShopId], [Stock])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-02-05 19:22:51.694 +03:00 [ERR] An exception occurred in the database while saving changes for context type 'DataAccess.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Products_Shops_ShopId". The conflict occurred in database "Db_EzyShop", table "dbo.Shops", column 'Id'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:17d4a5f2-3e30-4eb7-8c9a-208dde423ff7
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Products_Shops_ShopId". The conflict occurred in database "Db_EzyShop", table "dbo.Shops", column 'Id'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:17d4a5f2-3e30-4eb7-8c9a-208dde423ff7
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-02-05 19:22:52.085 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Create (WebUI) in 999.7781ms
+2025-02-05 19:22:52.159 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Create (WebUI)'
+2025-02-05 19:22:52.312 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Products_Shops_ShopId". The conflict occurred in database "Db_EzyShop", table "dbo.Shops", column 'Id'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:17d4a5f2-3e30-4eb7-8c9a-208dde423ff7
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at DataAccess.Repositories.Concrete.BaseRepository`1.CreateAsync(T entity) in C:\Users\ASUS\source\repos\EzyShop\EzyShop\DataAccess\Repositories\Concrete\BaseRepository.cs:line 21
+   at Business.Services.Concrete.ProductService.CreateProductAsync(ProductViewModel model) in C:\Users\ASUS\source\repos\EzyShop\EzyShop\Business\Services\Concrete\ProductService.cs:line 26
+   at WebUI.Controllers.ProductController.Create(ProductViewModel model, IFormFile file) in C:\Users\ASUS\source\repos\EzyShop\EzyShop\WebUI\Controllers\ProductController.cs:line 46
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-05 19:22:52.460 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44352/Product/Create - 500 null text/html; charset=utf-8 1387.4232ms
+2025-02-05 19:22:52.468 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-05 19:22:52.468 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-05 19:22:52.469 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 0.7755ms
+2025-02-05 19:22:52.478 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 10.3179ms
