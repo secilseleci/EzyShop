@@ -11,6 +11,7 @@ namespace DataAccess.Repositories.Concrete
         {
             return await _dataContext.Products
                 .Include(p => p.Category)
+                .Include(p => p.Shop)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
@@ -19,6 +20,8 @@ namespace DataAccess.Repositories.Concrete
             return await _dataContext.Products
                 .Where(predicate)
                 .Include(p => p.Category)
+                .Include(p => p.Shop)
+                .Include(p => p.ProductImages)
                 .ToListAsync();
         }
     }

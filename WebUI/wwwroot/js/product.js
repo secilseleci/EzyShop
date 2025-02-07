@@ -1,11 +1,11 @@
 ﻿$(document).ready(function () {
     loadDataTable();
 });
+console.log('loadDataTable function called');
 
 function loadDataTable() {
-    console.log('loadDataTable function called');    
     dataTable = $('#tblProduct').DataTable({
-        "ajax": { url: '/product/getall' },
+        "ajax": { url: '/Product/GetAll' },
         "columns": [
             {
                 data: 'imageUrl',
@@ -27,10 +27,9 @@ function loadDataTable() {
                         return data;
                     }
                 }
-            }, 
+            },
             { data: 'color', "width": "10%" },
             { data: 'price', "width": "5%" },
-            { data: 'listprice', "width": "5%" },
             { data: 'category.name', "width": "15%" },
             {
                 data: 'id',
@@ -42,11 +41,10 @@ function loadDataTable() {
                     </div>`
                 }
             },
-             
+
         ]
     });
 }
-
 function Delete(url) {
     Swal.fire({
         title: 'Are you sure?',

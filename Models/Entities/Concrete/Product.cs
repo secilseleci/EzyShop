@@ -1,6 +1,7 @@
 ﻿using Models.Entities.Abstract;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Models.Entities.Concrete
 {
@@ -22,9 +23,7 @@ namespace Models.Entities.Concrete
         public string Color { get; set; }
         public string? Description { get; set; }
 
-        [Required]
-        public decimal ListPrice { get; set; }
-
+       
 
         [Required]
         public decimal Price { get; set; }
@@ -36,6 +35,7 @@ namespace Models.Entities.Concrete
         public Guid CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
+       
         public Category Category { get; set; }
 
         public string? ImageUrl { get; set; }
@@ -46,8 +46,9 @@ namespace Models.Entities.Concrete
         public List<ProductImage> ProductImages { get; set; }
        
         [Required]
-        public Guid ShopId { get; set; }  
-
+        public Guid ShopId { get; set; }
+        [ForeignKey("ShopId")]
+         
         public Shop Shop { get; set; }
     }
 }

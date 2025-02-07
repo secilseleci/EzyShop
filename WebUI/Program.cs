@@ -2,12 +2,14 @@ using DataAccess;
 using DataAccess.SeedDatabase;
 
 using Serilog;
+using System.Text.Json.Serialization;
 using WebUI.ExtensionMethods;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
-
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 // Serilog
 builder.Host.UseSerilog((context, config) =>
 {

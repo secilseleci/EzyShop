@@ -17,11 +17,6 @@ namespace Models.ViewModels
         public string Color { get; set; }
         public string? Description { get; set; }
 
-        [Required]
-        [DisplayName("List Price")]
-        [Range(1, 10000)]
-        public decimal ListPrice { get; set; }
-
 
         [Required]
         [Range(1, 10000)]
@@ -35,5 +30,9 @@ namespace Models.ViewModels
         public Guid CategoryId { get; set; }
         public string? ImageUrl { get; set; }
         public string FolderName { get; set; } = "product";
+        [Required(ErrorMessage = "Shop required")]
+        [DisplayName("Shop")]
+        public Guid ShopId { get; set; }
+
     }
 }

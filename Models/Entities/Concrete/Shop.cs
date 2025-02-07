@@ -1,6 +1,7 @@
 ﻿using Models.Entities.Abstract;
 using Models.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Models.Entities.Concrete
 {
@@ -41,8 +42,8 @@ namespace Models.Entities.Concrete
 
         [Required]
         [StringLength(10)]
-        public string Status { get; set; }  
-
+        public string Status { get; set; }
+     
         public ICollection<Product> Products { get; set; }
     }
 }

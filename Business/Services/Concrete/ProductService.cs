@@ -23,7 +23,14 @@ namespace Business.Services.Concrete
         #region Create
         public async Task<IResult> CreateProductAsync(ProductViewModel model)
         {
-            var addResult = await _productRepository.CreateAsync(_mapper.Map<Product>(model));
+            if (model.ShopId == Guid.Empty)
+            {
+                return new ErrorResult("Invalid shop information. Please try again.");
+            }
+            var product = _mapper.Map<Product>(model);
+ 
+
+            var addResult = await _productRepository.CreateAsync(product);
             return addResult > 0
                 ? new SuccessResult(Messages.CreateProductSuccess)
                 : new ErrorResult(Messages.CreateProductError);
@@ -104,7 +111,6 @@ namespace Business.Services.Concrete
             productResult.Data.Name = model.Name;
             productResult.Data.Description = model.Description;
             productResult.Data.Color = model.Color;
-            productResult.Data.ListPrice = model.ListPrice;
             productResult.Data.Price = model.Price;
             productResult.Data.Stock = model.Stock;
             productResult.Data.CategoryId = model.CategoryId;

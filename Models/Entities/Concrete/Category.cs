@@ -1,5 +1,6 @@
 ﻿using Models.Entities.Abstract;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Models.Entities.Concrete
 {
@@ -18,8 +19,8 @@ namespace Models.Entities.Concrete
         [Required]
         public int DisplayOrder { get; set; }
         public string? ImageUrl { get; set; }
-
+       
         public IEnumerable<Product> Products { get; set; }
-
+ 
     }
 }

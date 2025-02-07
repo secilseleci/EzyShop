@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
 using Models.ViewModels;
+using System;
 
 namespace WebUI.Controllers
 {
@@ -13,8 +14,12 @@ namespace WebUI.Controllers
     public class ProductController : BaseController
     {
         private readonly IProductService _productService;
+        private readonly IShopService _shopService;
+
         public ProductController(
               IProductService productService,
+              IShopService shopService,
+
               UserManager<AppUser> userManager,
               RoleManager<AppRole> roleManager,
               SignInManager<AppUser> signInManager,
@@ -23,6 +28,7 @@ namespace WebUI.Controllers
       : base(userManager, roleManager, signInManager, webHostEnvironment, mapper)
         {
             _productService = productService;
+            _shopService = shopService;
         }
         #region Read
 
@@ -33,14 +39,29 @@ namespace WebUI.Controllers
         #endregion
 
         #region Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var user = await GetCurrentUserAsync();
+            if (user == null) return RedirectToAction("Login", "Account");
+
+            var shopResult = await _shopService.GetShopBySellerIdAsync(user.Id);
+            if (!shopResult.Success || shopResult.Data == null)
+            {
+                TempData["ErrorMessage"] = "You don't have an active shop. Please contact admin.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            var model = new ProductViewModel
+            {
+                ShopId = shopResult.Data.Id  
+            };
+
+            return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(ProductViewModel model, IFormFile? file)
-        {
+        { 
             HandleImageUpload(model, file);
 
             var result = await _productService.CreateProductAsync(model);
@@ -54,13 +75,14 @@ namespace WebUI.Controllers
             return RedirectToAction(nameof(Index));
         }
         #endregion
-
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var products = await _productService.GetAllProductsWithCategoryAsync(c => true);
             return Json(new { data = products.Data });
+       
         }
+
         [HttpDelete]
         public async Task<IActionResult> Delete(Guid id)
         {

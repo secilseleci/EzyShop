@@ -17,6 +17,7 @@
         </div>
         <div class="card-body p-0">
             <form method="post" asp-controller="Product" asp-action="Create" enctype="multipart/form-data">
+                <input type="hidden" asp-for="ShopId" />
                 <div class="border p-3">
 
                     <div class="row">
@@ -45,9 +46,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
-                                <input asp-for="ListPrice" class="form-control border-0 shadow rounded" />
-                                <label asp-for="ListPrice" class="ms-0"></label>
-                                <span asp-validation-for="ListPrice" class="text-danger"></span>
+                                <input asp-for="Stock" class="form-control border-0 shadow rounded" />
+                                <label asp-for="Stock" class="ms-0"></label>
+                                <span asp-validation-for="Stock" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
