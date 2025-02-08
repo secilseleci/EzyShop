@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
-using Business.Services.Abstract;
-using Business.Services.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
-using Models.ViewModels;
 
 namespace WebUI.Controllers
 {
@@ -21,16 +18,20 @@ namespace WebUI.Controllers
             return View();
         }
         #endregion
+        #region Home Page
+        public IActionResult ProductList()
+        {
+            return View();
+        }
+        #endregion
 
 
-        
         #region About
         public IActionResult About()
         {
             return View();
         }
         #endregion
-
 
         #region Contact
         public IActionResult Contact()
