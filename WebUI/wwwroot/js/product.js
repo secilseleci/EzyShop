@@ -1,8 +1,7 @@
 ﻿$(document).ready(function () {
     loadDataTable();
 });
-console.log('loadDataTable function called');
-
+ 
 function loadDataTable() {
     dataTable = $('#tblProduct').DataTable({
         "ajax": { url: '/Product/GetAll' },
@@ -17,17 +16,7 @@ function loadDataTable() {
                 }
             },
             { data: 'name', "width": "15%" },
-            {
-                data: 'description',
-                "width": "20%",
-                "render": function (data) {
-                    if (data.length > 40) {
-                        return data.substr(0, 40) + '...';
-                    } else {
-                        return data;
-                    }
-                }
-            },
+            {data: 'description', "width": "20%"},
             { data: 'color', "width": "10%" },
             { data: 'price', "width": "5%" },
             { data: 'category.name', "width": "15%" },

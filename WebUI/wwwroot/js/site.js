@@ -1,4 +1,9 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿document.addEventListener("DOMContentLoaded", function () {
+    let priceInput = document.querySelector("input[name='Price']");
 
-// Write your JavaScript code.
+    if (priceInput) {
+        priceInput.addEventListener("input", function () {
+            this.value = this.value.replace(",", "."); // Virgülü noktaya çevir
+        });
+    }
+});

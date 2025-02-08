@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
+using Business.Services.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -75,12 +76,54 @@ namespace WebUI.Controllers
             return RedirectToAction(nameof(Index));
         }
         #endregion
+
+
+        #region Edit
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var result = await _productService.GetProductByIdAsync(id);
+            if (!result.Success)
+            {
+                TempData["ErrorMessage"] = result.Message;
+                return View();
+            }
+
+            TempData["SuccessMessage"] = result.Message;
+            return View(Mapper.Map<ProductViewModel>(result.Data));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(ProductViewModel model, IFormFile? file)
+        {
+            HandleImageUpload(model, file);
+
+            var result = await _productService.UpdateProductAsync(model);
+            if (!result.Success)
+            {
+                TempData["ErrorMessage"] = result.Message;
+                return View(model);
+            }
+
+            TempData["SuccessMessage"] = result.Message;
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+
+        #region ApiCall
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var products = await _productService.GetAllProductsWithCategoryAsync(c => true);
+            if (products.Data == null || !products.Data.Any())
+            {
+                return Json(new { data = new List<object>() });  
+            }
+
             return Json(new { data = products.Data });
-       
+
         }
 
         [HttpDelete]
@@ -103,5 +146,6 @@ namespace WebUI.Controllers
             TempData["SuccessMessage"] = deleteResult.Message;
             return Json(deleteResult);
         }
+        #endregion
     }
 }

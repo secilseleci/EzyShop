@@ -19,9 +19,9 @@ namespace WebUI.ExtensionMethods
         {
             app.UseRequestLocalization(options =>
             {
-                options.AddSupportedCultures("tr-TR")
-                    .AddSupportedUICultures("tr-TR")
-                    .SetDefaultCulture("tr-TR");
+                options.AddSupportedCultures("en-US")
+                    .AddSupportedUICultures("en-US")
+                    .SetDefaultCulture("en-US");
             });
         }
     }
