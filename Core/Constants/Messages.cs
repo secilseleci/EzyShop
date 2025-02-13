@@ -14,6 +14,8 @@
 
         public const string DeleteProductSuccess = "Product successfully deleted";
         public const string DeleteProductError = "Error occurred while deleting the Product from Database";
+
+        public const string NoProductFilters = "No products found matching the filters.";
         #endregion
 
         #region Category Messages

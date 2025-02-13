@@ -1,0 +1,51 @@
+﻿ @model ProductFilterViewModel
+
+<form id="filterForm" method="get" asp-controller="Shop" asp-action="Index">
+    <div class="filter-container">
+        <h5>Filter Products</h5>
+
+        <!-- Color Filter -->
+        <div class="form-group">
+            <label for="color">Color</label>
+          <select asp-for="Color" class="form-control">
+                <option value="">All Colors</option>
+                @foreach (var color in Model.Colors)
+                {
+                    <option value="@color">@color</option>
+                }
+            </select> 
+        </div>
+  <!-- Category Filter -->
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select asp-for="CategoryId" class="form-control">
+                <option value="">All Categories</option>
+                @foreach (var category in Model.Categories)
+                {
+                    <option value="@category.Id">@category.Name</option>
+                }
+            </select>
+        </div>
+
+        <!-- Min Price -->
+        <div class="form-group">
+            <label for="minPrice">Min Price</label>
+            <input asp-for="MinPrice" class="form-control" type="number" placeholder="Min Price" />
+        </div>
+
+        <!-- Max Price -->
+        <div class="form-group">
+            <label for="maxPrice">Max Price</label>
+            <input asp-for="MaxPrice" class="form-control" type="number" placeholder="Max Price" />
+        </div>
+
+        <!-- Product Name Search -->
+        <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input asp-for="ProductName" class="form-control" type="text" placeholder="Product Name" />
+        </div>
+
+        <button type="submit" class="btn btn-success mt-2">Search</button>
+    </div>
+</form>
+

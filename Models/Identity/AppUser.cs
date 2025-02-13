@@ -10,7 +10,7 @@ namespace Models.Identity
         [Required]
         public string Name { get; set; }
         public bool IsSeller { get; set; } = false;
-
+        public bool IsActive { get; set; }
         public string? StoreName { get; set; }  
         public string? TaxNumber { get; set; }  
         public string? ContactNumber { get; set; }  

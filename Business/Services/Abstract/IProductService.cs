@@ -17,5 +17,7 @@ namespace Business.Services.Abstract
         Task<IResult> CreateProductAsync(ProductViewModel model);
         Task<IResult> UpdateProductAsync(ProductViewModel model);
         Task<IResult> DeleteProductAsync(Guid productId );
+
+        Task<IDataResult<IEnumerable<ProductViewModel>>> GetFilteredProductsAsync(string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice);
     }
 }

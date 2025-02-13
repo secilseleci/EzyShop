@@ -24,5 +24,38 @@ namespace DataAccess.Repositories.Concrete
                 .Include(p => p.ProductImages)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<Product>> GetFilteredProductsAsync(string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice)
+        {
+            var query = _dataContext.Products
+                       .Include(p => p.Category)  
+                       .AsQueryable();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(p => p.Name.Contains(name));
+            }
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                query = query.Where(p => p.Category.Name == category);
+            }
+
+            if (!string.IsNullOrEmpty(color))
+            {
+                query = query.Where(p => p.Color == color);
+            }
+            if (minPrice.HasValue)
+            {
+                query = query.Where(p => p.Price >= minPrice.Value);
+            }
+
+            if (maxPrice.HasValue)
+            {
+                query = query.Where(p => p.Price <= maxPrice.Value);
+            }
+
+            return await query.ToListAsync();
+        }
     }
 }

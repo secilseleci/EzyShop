@@ -1,4 +1,5 @@
 ﻿using Models.Entities.Concrete;
+using Models.Identity;
 
 namespace DataAccess.Seeders.EntitySeeders
 {
@@ -8,45 +9,44 @@ namespace DataAccess.Seeders.EntitySeeders
         {
             if (!dbContext.SellerApplications.Any())
             {
-                dbContext.SellerApplications.AddRange(new List<SellerApplication>
+                var applications = new List<SellerApplication>
                 {
                     new SellerApplication
                     {
+                        Id = Guid.Parse("88888888-8888-8888-8888-888888888888"),
                         Email = "secil.seleci@gmail.com",
-                        Name = "John Doe",
-                        StoreName = "Doe's Electronics",
-                        ContactNumber = "555-1234",
-                        Address = "123 Main Street, New York, USA",
+                        Name = "Seçil Seleci",
+                        StoreName = "FirstShop",
+                        ContactNumber = "555-111-2222",
+                        Address = "Istanbul, Turkey",
                         TaxNumber = "1234567890",
                         ApplicationDate = DateTime.UtcNow,
-                        Status = ApplicationStatus.Pending
-                    },
-                    new SellerApplication
-                    {
-                        Email = "secilseleci822@gmail.com",
-                        Name = "Jane Smith",
-                        StoreName = "Smith's Books",
-                        ContactNumber = "555-5678",
-                        Address = "456 Oak Street, London, UK",
-                        TaxNumber = "0987654321",
-                        ApplicationDate = DateTime.UtcNow,
                         Status = ApplicationStatus.Approved
-                    },
-                    new SellerApplication
-                    {
-                        Email = "secilseleci996@gmail.com",
-                        Name = "Emily Johnson",
-                        StoreName = "Emily's Fashion",
-                        ContactNumber = "555-9012",
-                        Address = "789 Pine Avenue, Toronto, Canada",
-                        TaxNumber = null,  // Opsiyonel
-                        ApplicationDate = DateTime.UtcNow,
-                        Status = ApplicationStatus.Rejected
                     }
-                });
+                };
 
+                dbContext.SellerApplications.AddRange(applications);
                 await dbContext.SaveChangesAsync();
+                Console.WriteLine("✅ Seller Applications başarıyla eklendi!");
             }
+
+            // 🔥 Approved seller’ların IsActive durumunu güncelle
+            var approvedApplications = dbContext.SellerApplications
+                .Where(a => a.Status == ApplicationStatus.Approved)
+                .ToList();
+
+            foreach (var application in approvedApplications)
+            {
+                var seller = dbContext.Users.FirstOrDefault(u => u.Email == application.Email);
+                if (seller != null && !seller.IsActive)
+                {
+                    seller.IsActive = true; // 🔥 Onaylı başvuruya sahip seller’ları aktif yap
+                    dbContext.Users.Update(seller);
+                }
+            }
+
+            await dbContext.SaveChangesAsync();
+            Console.WriteLine("✅ Approved başvurulara sahip satıcılar artık aktif!");
         }
     }
 }

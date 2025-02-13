@@ -3,8 +3,10 @@ using Business.Services.Concrete;
 using DataAccess;
 using DataAccess.Repositories.Abstract;
 using DataAccess.Repositories.Concrete;
+using DataAccess.Repositories.Concrete.Cache;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Models.Identity;
 
 namespace WebUI.ExtensionMethods
@@ -26,10 +28,21 @@ namespace WebUI.ExtensionMethods
 
         public static void ConfigureRepositoryRegistration(this IServiceCollection services)
         {
+            services.AddMemoryCache();
+
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.Decorate<IProductRepository, CachedProductRepository>();
+
+
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.Decorate<ICategoryRepository, CachedCategoryRepository>();
+
+
             services.AddScoped<ISellerApplicationRepository, SellerApplicationRepository>();
+            services.Decorate<ISellerApplicationRepository, CachedSellerApplicationRepository>();
+
             services.AddScoped<IShopRepository, ShopRepository>();
+            services.Decorate<IShopRepository, CachedShopRepository>();
 
         }
 

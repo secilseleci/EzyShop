@@ -103,6 +103,20 @@ namespace Business.Services.Concrete
                 ? new SuccessDataResult<IEnumerable<Product>>(productList)
                 : new ErrorDataResult<IEnumerable<Product>>(Messages.EmptyProductList);
         }
+
+        public async Task<IDataResult<IEnumerable<ProductViewModel>>> GetFilteredProductsAsync(
+       string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice)
+        {
+            var products = await _productRepository.GetFilteredProductsAsync(name, category, color, minPrice, maxPrice);
+
+            if (!products.Any())
+            {
+                return new ErrorDataResult<IEnumerable<ProductViewModel>>(Messages.NoProductFilters);
+            }
+
+            var mappedProducts = _mapper.Map<IEnumerable<ProductViewModel>>(products);
+            return new SuccessDataResult<IEnumerable<ProductViewModel>>(mappedProducts);
+        }
         #endregion
 
         #region Helper Methods

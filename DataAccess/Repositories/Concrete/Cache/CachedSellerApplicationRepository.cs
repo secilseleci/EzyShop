@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace DataAccess.Repositories.Concrete.Cache
 {
-    internal class CachedSellerApplicationRepositoy(
+    public class CachedSellerApplicationRepository(
     SellerApplicationRepository _decorated,
     IMemoryCache _cache) : ISellerApplicationRepository
     {

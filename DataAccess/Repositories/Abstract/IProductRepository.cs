@@ -8,6 +8,7 @@ namespace DataAccess.Repositories.Abstract
         Task<Product?> GetProductWithCategoryAsync(Guid id);
 
         Task<IEnumerable<Product>?> GetAllProductsWithCategoryAsync(Expression<Func<Product, bool>> predicate);
+        Task<IEnumerable<Product>> GetFilteredProductsAsync(string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice);
 
     }
 }
