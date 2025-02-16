@@ -28,7 +28,8 @@ namespace DataAccess.Repositories.Concrete
         public async Task<IEnumerable<Product>> GetFilteredProductsAsync(string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice)
         {
             var query = _dataContext.Products
-                       .Include(p => p.Category)  
+                       .Include(p => p.Category)
+                       .AsNoTracking()
                        .AsQueryable();
 
             if (!string.IsNullOrEmpty(name))
@@ -55,7 +56,9 @@ namespace DataAccess.Repositories.Concrete
                 query = query.Where(p => p.Price <= maxPrice.Value);
             }
 
-            return await query.ToListAsync();
+            var products = await query.ToListAsync();
+            Console.WriteLine($"DEBUG: {products.Count} ürün bulundu.");
+            return products;
         }
     }
 }

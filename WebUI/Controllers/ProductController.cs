@@ -1,18 +1,15 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
-using Business.Services.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
 using Models.ViewModels;
-using System;
 
 namespace WebUI.Controllers
 {
     [Authorize(Roles = "Seller")]
-
-    public class ProductController : BaseController
+     public class ProductController : BaseController
     {
         private readonly IProductService _productService;
         private readonly IShopService _shopService;
@@ -31,8 +28,10 @@ namespace WebUI.Controllers
             _productService = productService;
             _shopService = shopService;
         }
+
         #region Read
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -40,6 +39,7 @@ namespace WebUI.Controllers
         #endregion
 
         #region Create
+        [HttpGet]
         public async Task<IActionResult> Create()
         {
             var user = await GetCurrentUserAsync();
@@ -62,7 +62,8 @@ namespace WebUI.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Create(ProductViewModel model, IFormFile? file)
-        { 
+        {
+            if (!ModelState.IsValid) return View(model);
             HandleImageUpload(model, file);
 
             var result = await _productService.CreateProductAsync(model);
@@ -73,10 +74,9 @@ namespace WebUI.Controllers
             }
 
             TempData["SuccessMessage"] = result.Message;
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
         #endregion
-
 
         #region Edit
         [HttpGet]
@@ -106,12 +106,11 @@ namespace WebUI.Controllers
             }
 
             TempData["SuccessMessage"] = result.Message;
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
         #endregion
 
-
-        #region ApiCall
+        #region API
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -119,7 +118,7 @@ namespace WebUI.Controllers
             var products = await _productService.GetAllProductsWithCategoryAsync(c => true);
             if (products.Data == null || !products.Data.Any())
             {
-                return Json(new { data = new List<object>() });  
+                return Json(new { data = new List<object>() });
             }
 
             return Json(new { data = products.Data });
@@ -146,6 +145,21 @@ namespace WebUI.Controllers
             TempData["SuccessMessage"] = deleteResult.Message;
             return Json(deleteResult);
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IActionResult> GetFilteredProducts(string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice)
+        {
+            var result = await _productService.GetFilteredProductsAsync(name, category, color, minPrice, maxPrice);
+
+            if (!result.Success || result.Data == null || !result.Data.Any())
+            {
+                return NotFound(new { success = false, message = "No products found matching the filters." });
+            }
+
+            return Json(new { success = true, data = result.Data });
+        }
         #endregion
+
     }
 }

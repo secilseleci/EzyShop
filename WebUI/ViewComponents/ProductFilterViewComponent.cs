@@ -19,13 +19,14 @@ namespace WebUI.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            //var model = new ProductFilterViewModel
-            //{
-            //    Categories = (await _categoryService.GetAllCategoriesAsync(p => true))
-
-            //};
-
-            return View();  
+            var categoriesResult = await _categoryService.GetAllCategoriesAsync(c=>true);
+            var model = new ProductFilterViewModel
+            {
+                Categories = categoriesResult.Data != null
+            ? categoriesResult.Data.Select(c => new CategoryViewModel { Id = c.Id, Name = c.Name }).ToList()
+            : new List<CategoryViewModel>()
+            };
+            return View(model);
         }
     }
 }

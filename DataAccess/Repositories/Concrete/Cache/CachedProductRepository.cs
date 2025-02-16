@@ -1,21 +1,23 @@
 ﻿using DataAccess.Repositories.Abstract;
+using DataAccess.Repositories.Concrete;
 using Microsoft.Extensions.Caching.Memory;
 using Models.Entities.Concrete;
 using System.Linq.Expressions;
 
 public class CachedProductRepository : IProductRepository
 {
-    private readonly IProductRepository _decorated;
+    private readonly ProductRepository _decorated;
     private readonly IMemoryCache _cache;
-    private readonly TimeSpan _cacheDuration = TimeSpan.FromMinutes(3);
     private readonly List<string> CachedKeys = new();
 
-    private const string ProductFilterCacheKey = "FilteredProductCache";
 
-    public CachedProductRepository(IProductRepository decorated, IMemoryCache cache)
+    public CachedProductRepository(
+         ProductRepository decorated,
+         IMemoryCache cache         )
     {
         _decorated = decorated;
         _cache = cache;
+      
     }
 
     public async Task<Product?> GetByIdAsync(Guid id)
@@ -24,29 +26,39 @@ public class CachedProductRepository : IProductRepository
         return await _cache.GetOrCreateAsync(key, async entry =>
         {
             CachedKeys.Add(key);
-            entry.SetAbsoluteExpiration(_cacheDuration);
+            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(3));
             return await _decorated.GetByIdAsync(id);
         });
     }
+    public async Task<IEnumerable<Product>?> GetFilteredProductsAsync(string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice)
+    {
+        string key = $"ProductFilterCacheKey-{name}-{category}-{color}-{minPrice}-{maxPrice}";
 
+        return await _cache.GetOrCreateAsync(key, async entry =>
+        {
+            CachedKeys.Add(key);
+            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(3));
+            return await _decorated.GetFilteredProductsAsync(name, category, color, minPrice, maxPrice);
+        });
+    }
     public async Task<Product?> GetProductWithCategoryAsync(Guid id)
     {
         string key = $"product-with-category-{id}";
         return await _cache.GetOrCreateAsync(key, async entry =>
         {
             CachedKeys.Add(key);
-            entry.SetAbsoluteExpiration(_cacheDuration);
+            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(3));
             return await _decorated.GetProductWithCategoryAsync(id);
         });
     }
 
     public async Task<IEnumerable<Product>?> GetAllAsync(Expression<Func<Product, bool>> predicate)
     {
-        string key = $"all-products-{predicate}";
+        string key = $"all-products";
         return await _cache.GetOrCreateAsync(key, async entry =>
         {
             CachedKeys.Add(key);
-            entry.SetAbsoluteExpiration(_cacheDuration);
+            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(3));
             return await _decorated.GetAllAsync(predicate);
         });
     }
@@ -57,7 +69,7 @@ public class CachedProductRepository : IProductRepository
         return await _cache.GetOrCreateAsync(key, async entry =>
         {
             CachedKeys.Add(key);
-            entry.SetAbsoluteExpiration(_cacheDuration);
+            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(3));
             return await _decorated.GetAllProductsWithCategoryAsync(predicate);
         });
     }
@@ -97,17 +109,7 @@ public class CachedProductRepository : IProductRepository
         return result;
     }
 
-    public async Task<IEnumerable<Product>> GetFilteredProductsAsync(string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice)
-    {
-        string cacheKey = $"{ProductFilterCacheKey}-{name}-{category}-{color}-{minPrice}-{maxPrice}";
-
-        if (!_cache.TryGetValue(cacheKey, out IEnumerable<Product> cachedProducts))
-        {
-            cachedProducts = await _decorated.GetFilteredProductsAsync(name, category, color, minPrice, maxPrice);
-            _cache.Set(cacheKey, cachedProducts, _cacheDuration);
-        }
-        return cachedProducts;
-    }
+   
 
     #region Helper Methods
     private void RemoveAllCachedItems(int result)
@@ -119,8 +121,11 @@ public class CachedProductRepository : IProductRepository
                 _cache.Remove(key);
             }
         }
-
+        _cache.Remove("all-products");
+        _cache.Remove("all-products-with-category");
+        _cache.Remove("ProductFilterCacheKey");
         CachedKeys.Clear();
     }
+   
     #endregion
 }

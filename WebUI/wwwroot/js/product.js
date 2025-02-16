@@ -1,10 +1,10 @@
 ﻿$(document).ready(function () {
     loadDataTable();
 });
- 
+
 function loadDataTable() {
     dataTable = $('#tblProduct').DataTable({
-        "ajax": { url: '/Product/GetAll' },
+        "ajax": { url: '/product/getall' },
         "columns": [
             {
                 data: 'imageUrl',
@@ -16,7 +16,7 @@ function loadDataTable() {
                 }
             },
             { data: 'name', "width": "15%" },
-            {data: 'description', "width": "20%"},
+            { data: 'description', "width": "20%" },
             { data: 'color', "width": "10%" },
             { data: 'price', "width": "5%" },
             { data: 'category.name', "width": "15%" },
@@ -24,16 +24,16 @@ function loadDataTable() {
                 data: 'id',
                 "width": "10%",
                 "render": function (data) {
-                    return `<div class="w-75 btn-group" role="group">
-                     <a href="/product/edit?id=${data}" class="btn btn-sm btn-warning mx-2 rounded"> <i class="bi bi-pencil-square"></i></a>               
-                     <a onClick=Delete('/product/delete/${data}') class="btn btn-sm btn-danger mx-2 rounded"> <i class="bi bi-trash-fill"></i></a>
-                    </div>`
+                    return `<div class="btn-group">
+                     <a href="/Product/Edit?id=${data}" class="btn btn-sm btn-warning mx-2"> <i class="bi bi-pencil-square"></i></a>               
+                     <button onClick="Delete('/Product/Delete/${data}')" class="btn btn-sm btn-danger mx-2"> <i class="bi bi-trash-fill"></i></button>
+                    </div>`;
                 }
-            },
-
+            }
         ]
     });
 }
+
 function Delete(url) {
     Swal.fire({
         title: 'Are you sure?',
@@ -49,10 +49,17 @@ function Delete(url) {
                 url: url,
                 type: 'DELETE',
                 success: function (data) {
-                    dataTable.ajax.reload();
-                    toastr.success(data.message);
+                    if (data.success) {
+                        toastr.success("Product deleted successfully!");
+                        dataTable.ajax.reload();  // Listeyi yenile
+                    } else {
+                        toastr.error(data.message);
+                    }
+                },
+                error: function () {
+                    toastr.error("Error while deleting product");
                 }
-            })
+            });
         }
-    })
+    });
 }

@@ -3,7 +3,6 @@ using Business.Services.Abstract;
 using Core.Constants;
 using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
-using DataAccess.Repositories.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Models.Entities.Concrete;
 using Models.Identity;
@@ -80,7 +79,7 @@ namespace Business.Services.Concrete
                     PhoneNumber = application.ContactNumber,
                     IsSeller = true
                 };
-                var createUserResult = await _userManager.CreateAsync(user, "Seller123.");  
+                var createUserResult = await _userManager.CreateAsync(user, "Seller.1");  
                 if (!createUserResult.Succeeded)
                 {
                     return new ErrorResult(Messages.CreateUserError);
@@ -130,7 +129,7 @@ namespace Business.Services.Concrete
                 $"Now you can create your store and start selling your products. " +
                 $"To log in to the site, use your e-mail address and the password below." +
                 $"For your security, do not forget to change your password in the 'Change Password' field." +
-                $"Password= Seller123.";
+                $"Password= Seller.1";
 
             var emailResult = await _emailService.SendEmailAsync(application.Email, emailSubject, emailBody);
 

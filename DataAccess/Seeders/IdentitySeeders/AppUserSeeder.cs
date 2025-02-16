@@ -11,8 +11,8 @@ namespace DataAccess.Seeders.IdentitySeeders
             await CreateUserAsync(userManager, Guid.Parse("11111111-1111-1111-1111-111111111111"), "admin@ezyshop.com", "Admin User", "Admin.123", "Admin", false);
 
             // ✅ 2. Seller'lar  
-            await CreateUserAsync(userManager, Guid.Parse("22222222-2222-2222-2222-222222222222"), "secil.seleci@gmail.com", "Seçil Seleci", null, "Seller", true, true, "FirstShop", "1234567890", "555-111-2222", "Istanbul");
-            await CreateUserAsync(userManager, Guid.Parse("33333333-3333-3333-3333-333333333333"), "bernahakmanezyshop@gmail.com", "Berna Hakman", null, "Seller", true, true, "BernaStore", "9876543210", "555-333-4444", "Ankara");
+            await CreateUserAsync(userManager, Guid.Parse("22222222-2222-2222-2222-222222222222"), "secil.seleci@gmail.com", "Seçil Seleci", "Customer.123", "Seller", true, true, "FirstShop", "1234567890", "555-111-2222", "Istanbul");
+            await CreateUserAsync(userManager, Guid.Parse("33333333-3333-3333-3333-333333333333"), "bernahakmanezyshop@gmail.com", "Berna Hakman", "Customer.123", "Seller", true, true, "BernaStore", "9876543210", "555-333-4444", "Ankara");
 
             // ✅ 3. Customer
             await CreateUserAsync(userManager, Guid.Parse("44444444-4444-4444-4444-444444444444"), "deryaafacanezyshop@gmail.com", "Derya Afacan", "Customer.123", "Customer");
