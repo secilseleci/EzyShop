@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250217111426_First")]
+    [Migration("20250217135728_First")]
     partial class First
     {
         /// <inheritdoc />
@@ -291,6 +291,49 @@ namespace DataAccess.Migrations
                     b.ToTable("Shops");
                 });
 
+            modelBuilder.Entity("Models.Entities.Concrete.ShoppingCart", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AppUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("Models.Entities.Concrete.ShoppingCartItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CartId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("PriceAtPurchase")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ShoppingCartItems");
+                });
+
             modelBuilder.Entity("Models.Identity.AppRole", b =>
                 {
                     b.Property<Guid>("Id")
@@ -499,6 +542,36 @@ namespace DataAccess.Migrations
                     b.Navigation("Seller");
                 });
 
+            modelBuilder.Entity("Models.Entities.Concrete.ShoppingCart", b =>
+                {
+                    b.HasOne("Models.Identity.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("Models.Entities.Concrete.ShoppingCartItem", b =>
+                {
+                    b.HasOne("Models.Entities.Concrete.ShoppingCart", "Cart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Models.Entities.Concrete.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Models.Entities.Concrete.Category", b =>
                 {
                     b.Navigation("Products");
@@ -512,6 +585,11 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Models.Entities.Concrete.Shop", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Models.Entities.Concrete.ShoppingCart", b =>
+                {
+                    b.Navigation("CartItems");
                 });
 
             modelBuilder.Entity("Models.Identity.AppUser", b =>

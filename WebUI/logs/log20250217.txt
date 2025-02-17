@@ -7053,3 +7053,710 @@ INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
 2025-02-17 14:42:14.502 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/images/product/galaxy_s23.jpg - 404 null null 13.8814ms
 2025-02-17 14:42:14.503 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44352/images/product/galaxy_s23.jpg, Response status code: 404
 2025-02-17 14:42:14.511 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 23.0817ms
+2025-02-17 14:42:26.510 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-17 14:42:26.902 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-17 14:42:26.941 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 14:42:27.559 +03:00 [INF] Executed DbCommand (42ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-17 14:42:27.630 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='SELLER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-17 14:42:27.631 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='CUSTOMER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-17 14:42:27.644 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='ADMIN@EZYSHOP.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:42:27.679 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='SECIL.SELECI@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:42:27.681 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='SECILSELLER@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:42:27.683 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='DERYA.KARAMAN.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:42:27.685 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='NUR.BIRAL.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:42:27.700 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-17 14:42:27.706 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SellerApplications] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-17 14:42:27.717 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Address], [s].[ApplicationDate], [s].[ContactNumber], [s].[Email], [s].[Name], [s].[Status], [s].[StoreName], [s].[TaxNumber]
+FROM [SellerApplications] AS [s]
+WHERE [s].[Status] = 1
+2025-02-17 14:42:27.736 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__application_Email_0='secil.seleci@gmail.com' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__application_Email_0
+2025-02-17 14:42:27.738 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__application_Email_0='secilseller@gmail.com' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__application_Email_0
+2025-02-17 14:42:27.790 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[IsSeller] = CAST(1 AS bit) AND [a].[IsActive] = CAST(1 AS bit)
+2025-02-17 14:42:27.805 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__seller_Id_0='22222222-2222-2222-2222-222222222222'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller_Id_0
+2025-02-17 14:42:27.807 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__seller_Id_0='33333333-3333-3333-3333-333333333333'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller_Id_0
+2025-02-17 14:42:27.815 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[Name] = N'FirstShop'
+2025-02-17 14:42:27.819 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[Name] = N'SecondShop'
+2025-02-17 14:42:27.829 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Name]
+FROM [Products] AS [p]
+2025-02-17 14:42:28.080 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/ - null null
+2025-02-17 14:42:28.099 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-17 14:42:28.100 +03:00 [INF] Hosting environment: Development
+2025-02-17 14:42:28.100 +03:00 [INF] Content root path: C:\Users\ASUS\source\repos\EzyShop\EzyShop\WebUI
+2025-02-17 14:42:28.184 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-17 14:42:28.191 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-02-17 14:42:28.274 +03:00 [INF] Executing ViewResult, running view Index.
+2025-02-17 14:42:28.380 +03:00 [INF] Executed ViewResult - view Index executed in 108.0689ms.
+2025-02-17 14:42:28.383 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 191.8101ms
+2025-02-17 14:42:28.384 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-17 14:42:28.393 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/ - 200 null text/html; charset=utf-8 317.2603ms
+2025-02-17 14:42:28.428 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-17 14:42:28.431 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-17 14:42:28.433 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 4.3052ms
+2025-02-17 14:42:28.471 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 39.4613ms
+2025-02-17 14:42:28.958 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44352/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2025-02-17 14:42:28.998 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\ASUS\source\repos\EzyShop\EzyShop\WebUI\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2025-02-17 14:42:29.004 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:44352/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 45.7921ms
+2025-02-17 14:42:30.723 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Home/Shop - null null
+2025-02-17 14:42:30.731 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Shop (WebUI)'
+2025-02-17 14:42:30.733 +03:00 [INF] Route matched with {action = "Shop", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Shop() on controller WebUI.Controllers.HomeController (WebUI).
+2025-02-17 14:42:30.741 +03:00 [INF] Executing ViewResult, running view Shop.
+2025-02-17 14:42:30.795 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[DisplayOrder], [c].[ImageUrl], [c].[Name]
+FROM [Categories] AS [c]
+2025-02-17 14:42:30.861 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [c].[Id], [c].[DisplayOrder], [c].[ImageUrl], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+2025-02-17 14:42:30.890 +03:00 [INF] Executed ViewResult - view Shop executed in 149.3611ms.
+2025-02-17 14:42:30.892 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Shop (WebUI) in 158.663ms
+2025-02-17 14:42:30.892 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Shop (WebUI)'
+2025-02-17 14:42:30.896 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Home/Shop - 200 null text/html; charset=utf-8 173.4816ms
+2025-02-17 14:42:30.905 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/images/product/galaxy_s23.jpg - null null
+2025-02-17 14:42:30.907 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-17 14:42:30.907 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-17 14:42:30.908 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.0506ms
+2025-02-17 14:42:30.918 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/images/product/galaxy_s23.jpg - 404 null null 14.5075ms
+2025-02-17 14:42:30.919 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44352/images/product/galaxy_s23.jpg, Response status code: 404
+2025-02-17 14:42:30.925 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.3082ms
+2025-02-17 14:44:39.154 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-17 14:44:39.515 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-17 14:44:39.548 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 14:44:40.064 +03:00 [INF] Executed DbCommand (33ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-17 14:44:40.118 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='SELLER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-17 14:44:40.119 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='CUSTOMER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-17 14:44:40.130 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='ADMIN@EZYSHOP.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:44:40.162 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='SECIL.SELECI@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:44:40.163 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='SECILSELLER@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:44:40.164 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='DERYA.KARAMAN.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:44:40.165 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='NUR.BIRAL.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:44:40.178 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-17 14:44:40.183 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SellerApplications] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-17 14:44:40.191 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Address], [s].[ApplicationDate], [s].[ContactNumber], [s].[Email], [s].[Name], [s].[Status], [s].[StoreName], [s].[TaxNumber]
+FROM [SellerApplications] AS [s]
+WHERE [s].[Status] = 1
+2025-02-17 14:44:40.209 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__application_Email_0='secil.seleci@gmail.com' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__application_Email_0
+2025-02-17 14:44:40.210 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__application_Email_0='secilseller@gmail.com' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__application_Email_0
+2025-02-17 14:44:40.248 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[IsSeller] = CAST(1 AS bit) AND [a].[IsActive] = CAST(1 AS bit)
+2025-02-17 14:44:40.256 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__seller_Id_0='22222222-2222-2222-2222-222222222222'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller_Id_0
+2025-02-17 14:44:40.258 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__seller_Id_0='33333333-3333-3333-3333-333333333333'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller_Id_0
+2025-02-17 14:44:40.264 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[Name] = N'FirstShop'
+2025-02-17 14:44:40.267 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[Name] = N'SecondShop'
+2025-02-17 14:44:40.275 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Name]
+FROM [Products] AS [p]
+2025-02-17 14:44:40.485 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/ - null null
+2025-02-17 14:44:40.504 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-17 14:44:40.504 +03:00 [INF] Hosting environment: Development
+2025-02-17 14:44:40.504 +03:00 [INF] Content root path: C:\Users\ASUS\source\repos\EzyShop\EzyShop\WebUI
+2025-02-17 14:44:40.598 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-17 14:44:40.609 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-02-17 14:44:40.677 +03:00 [INF] Executing ViewResult, running view Index.
+2025-02-17 14:44:40.760 +03:00 [INF] Executed ViewResult - view Index executed in 85.0993ms.
+2025-02-17 14:44:40.763 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 153.9666ms
+2025-02-17 14:44:40.763 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-17 14:44:40.772 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/ - 200 null text/html; charset=utf-8 293.8176ms
+2025-02-17 14:44:40.810 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-17 14:44:40.810 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-17 14:44:40.813 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 2.6068ms
+2025-02-17 14:44:40.847 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 37.3005ms
+2025-02-17 14:44:40.972 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44352/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2025-02-17 14:44:40.985 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\ASUS\source\repos\EzyShop\EzyShop\WebUI\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2025-02-17 14:44:40.992 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:44352/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 20.0502ms
+2025-02-17 14:44:43.674 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Home/Shop - null null
+2025-02-17 14:44:43.684 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Shop (WebUI)'
+2025-02-17 14:44:43.686 +03:00 [INF] Route matched with {action = "Shop", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Shop() on controller WebUI.Controllers.HomeController (WebUI).
+2025-02-17 14:44:43.695 +03:00 [INF] Executing ViewResult, running view Shop.
+2025-02-17 14:44:43.753 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[DisplayOrder], [c].[ImageUrl], [c].[Name]
+FROM [Categories] AS [c]
+2025-02-17 14:44:43.824 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [c].[Id], [c].[DisplayOrder], [c].[ImageUrl], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+2025-02-17 14:44:43.855 +03:00 [INF] Executed ViewResult - view Shop executed in 161.2818ms.
+2025-02-17 14:44:43.857 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Shop (WebUI) in 171.5602ms
+2025-02-17 14:44:43.858 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Shop (WebUI)'
+2025-02-17 14:44:43.862 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Home/Shop - 200 null text/html; charset=utf-8 188.4101ms
+2025-02-17 14:44:43.871 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-17 14:44:43.871 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/images/product/galaxy_s23.jpg - null null
+2025-02-17 14:44:43.871 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-17 14:44:43.872 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.2482ms
+2025-02-17 14:44:43.887 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 15.2957ms
+2025-02-17 14:44:43.905 +03:00 [INF] Sending file. Request path: '/images/product/galaxy_s23.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EzyShop\EzyShop\WebUI\wwwroot\images\product\galaxy_s23.jpg'
+2025-02-17 14:44:43.907 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/images/product/galaxy_s23.jpg - 200 119169 image/jpeg 36.4026ms
+2025-02-17 14:44:48.776 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Home/Details?productId=fcfcc7a2-4c79-4690-94d6-304800dc4354 - null null
+2025-02-17 14:44:48.790 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Home/Details?productId=fcfcc7a2-4c79-4690-94d6-304800dc4354 - 404 null null 13.8735ms
+2025-02-17 14:44:48.791 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44352/Home/Details, Response status code: 404
+2025-02-17 14:44:55.018 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-17 14:44:55.020 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.6453ms
+2025-02-17 14:45:45.621 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Application/BecomeSeller - null null
+2025-02-17 14:45:45.630 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ApplicationController.BecomeSeller (WebUI)'
+2025-02-17 14:45:45.632 +03:00 [INF] Route matched with {action = "BecomeSeller", controller = "Application"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult BecomeSeller() on controller WebUI.Controllers.ApplicationController (WebUI).
+2025-02-17 14:45:45.647 +03:00 [INF] Executing ViewResult, running view BecomeSeller.
+2025-02-17 14:45:45.723 +03:00 [INF] Executed ViewResult - view BecomeSeller executed in 78.7869ms.
+2025-02-17 14:45:45.723 +03:00 [INF] Executed action WebUI.Controllers.ApplicationController.BecomeSeller (WebUI) in 90.5181ms
+2025-02-17 14:45:45.723 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ApplicationController.BecomeSeller (WebUI)'
+2025-02-17 14:45:45.724 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Application/BecomeSeller - 200 null text/html; charset=utf-8 103.2829ms
+2025-02-17 14:45:45.736 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-17 14:45:45.736 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-17 14:45:45.738 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 0.9848ms
+2025-02-17 14:45:45.755 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 21.8766ms
+2025-02-17 14:45:48.644 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Account/Login - null null
+2025-02-17 14:45:48.649 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-02-17 14:45:48.655 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String, System.String) on controller WebUI.Controllers.AccountController (WebUI).
+2025-02-17 14:45:48.665 +03:00 [INF] Executing ViewResult, running view Login.
+2025-02-17 14:45:48.684 +03:00 [INF] Executed ViewResult - view Login executed in 18.8895ms.
+2025-02-17 14:45:48.684 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 28.2854ms
+2025-02-17 14:45:48.684 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-02-17 14:45:48.684 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Account/Login - 200 null text/html; charset=utf-8 39.8034ms
+2025-02-17 14:45:48.691 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-17 14:45:48.691 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-17 14:45:48.692 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 0.981ms
+2025-02-17 14:45:48.702 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 10.7293ms
+2025-02-17 14:45:52.772 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Home/Shop - null null
+2025-02-17 14:45:52.775 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Shop (WebUI)'
+2025-02-17 14:45:52.775 +03:00 [INF] Route matched with {action = "Shop", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Shop() on controller WebUI.Controllers.HomeController (WebUI).
+2025-02-17 14:45:52.776 +03:00 [INF] Executing ViewResult, running view Shop.
+2025-02-17 14:45:52.782 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[DisplayOrder], [c].[ImageUrl], [c].[Name]
+FROM [Categories] AS [c]
+2025-02-17 14:45:52.786 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [c].[Id], [c].[DisplayOrder], [c].[ImageUrl], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+2025-02-17 14:45:52.789 +03:00 [INF] Executed ViewResult - view Shop executed in 13.2526ms.
+2025-02-17 14:45:52.789 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Shop (WebUI) in 13.9328ms
+2025-02-17 14:45:52.790 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Shop (WebUI)'
+2025-02-17 14:45:52.790 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Home/Shop - 200 null text/html; charset=utf-8 18.4318ms
+2025-02-17 14:45:52.797 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-17 14:45:52.797 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-17 14:45:52.798 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 0.8223ms
+2025-02-17 14:45:52.808 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 11.061ms
+2025-02-17 14:48:10.069 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-17 14:48:10.403 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-17 14:48:10.433 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 14:48:10.944 +03:00 [INF] Executed DbCommand (35ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-17 14:48:11.006 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='SELLER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-17 14:48:11.009 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='CUSTOMER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-17 14:48:11.021 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='ADMIN@EZYSHOP.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:48:11.054 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='SECIL.SELECI@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:48:11.056 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='SECILSELLER@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:48:11.058 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='DERYA.KARAMAN.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:48:11.059 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='NUR.BIRAL.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-17 14:48:11.073 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-17 14:48:11.078 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SellerApplications] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-17 14:48:11.086 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Address], [s].[ApplicationDate], [s].[ContactNumber], [s].[Email], [s].[Name], [s].[Status], [s].[StoreName], [s].[TaxNumber]
+FROM [SellerApplications] AS [s]
+WHERE [s].[Status] = 1
+2025-02-17 14:48:11.105 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__application_Email_0='secil.seleci@gmail.com' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__application_Email_0
+2025-02-17 14:48:11.107 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__application_Email_0='secilseller@gmail.com' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__application_Email_0
+2025-02-17 14:48:11.148 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[IsSeller] = CAST(1 AS bit) AND [a].[IsActive] = CAST(1 AS bit)
+2025-02-17 14:48:11.157 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__seller_Id_0='22222222-2222-2222-2222-222222222222'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller_Id_0
+2025-02-17 14:48:11.159 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__seller_Id_0='33333333-3333-3333-3333-333333333333'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller_Id_0
+2025-02-17 14:48:11.165 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[Name] = N'FirstShop'
+2025-02-17 14:48:11.170 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[Name] = N'SecondShop'
+2025-02-17 14:48:11.178 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Name]
+FROM [Products] AS [p]
+2025-02-17 14:48:11.417 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/ - null null
+2025-02-17 14:48:11.438 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-17 14:48:11.438 +03:00 [INF] Hosting environment: Development
+2025-02-17 14:48:11.438 +03:00 [INF] Content root path: C:\Users\ASUS\source\repos\EzyShop\EzyShop\WebUI
+2025-02-17 14:48:11.522 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-17 14:48:11.529 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-02-17 14:48:11.606 +03:00 [INF] Executing ViewResult, running view Index.
+2025-02-17 14:48:11.688 +03:00 [INF] Executed ViewResult - view Index executed in 84.8382ms.
+2025-02-17 14:48:11.692 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 162.2111ms
+2025-02-17 14:48:11.692 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-17 14:48:11.701 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/ - 200 null text/html; charset=utf-8 292.2178ms
+2025-02-17 14:48:11.779 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-17 14:48:11.781 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-17 14:48:11.788 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 3.2017ms
+2025-02-17 14:48:11.826 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 47.2304ms
+2025-02-17 14:48:11.942 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44352/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2025-02-17 14:48:11.955 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\ASUS\source\repos\EzyShop\EzyShop\WebUI\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2025-02-17 14:48:11.959 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:44352/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 16.8065ms
+2025-02-17 14:48:15.179 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Home/Shop - null null
+2025-02-17 14:48:15.188 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Shop (WebUI)'
+2025-02-17 14:48:15.190 +03:00 [INF] Route matched with {action = "Shop", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Shop() on controller WebUI.Controllers.HomeController (WebUI).
+2025-02-17 14:48:15.199 +03:00 [INF] Executing ViewResult, running view Shop.
+2025-02-17 14:48:15.253 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[DisplayOrder], [c].[ImageUrl], [c].[Name]
+FROM [Categories] AS [c]
+2025-02-17 14:48:15.324 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [c].[Id], [c].[DisplayOrder], [c].[ImageUrl], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+2025-02-17 14:48:15.352 +03:00 [INF] Executed ViewResult - view Shop executed in 154.7069ms.
+2025-02-17 14:48:15.354 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Shop (WebUI) in 164.5199ms
+2025-02-17 14:48:15.355 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Shop (WebUI)'
+2025-02-17 14:48:15.362 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Home/Shop - 200 null text/html; charset=utf-8 183.1312ms
+2025-02-17 14:48:15.367 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/js/filter.js - null null
+2025-02-17 14:48:15.367 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-17 14:48:15.371 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-17 14:48:15.371 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 4.6267ms
+2025-02-17 14:48:15.372 +03:00 [INF] The file /js/filter.js was not modified
+2025-02-17 14:48:15.375 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/js/filter.js - 304 null text/javascript 8.7648ms
+2025-02-17 14:48:15.391 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 20.1527ms
+2025-02-17 14:48:16.494 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/Home/Details?productId=fcfcc7a2-4c79-4690-94d6-304800dc4354 - null null
+2025-02-17 14:48:16.504 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Details (WebUI)'
+2025-02-17 14:48:16.506 +03:00 [INF] Route matched with {action = "Details", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Details() on controller WebUI.Controllers.HomeController (WebUI).
+2025-02-17 14:48:16.509 +03:00 [INF] Executing ViewResult, running view Details.
+2025-02-17 14:48:16.512 +03:00 [INF] Executed ViewResult - view Details executed in 4.1427ms.
+2025-02-17 14:48:16.512 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Details (WebUI) in 6.4687ms
+2025-02-17 14:48:16.512 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Details (WebUI)'
+2025-02-17 14:48:16.513 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/Home/Details?productId=fcfcc7a2-4c79-4690-94d6-304800dc4354 - 200 null text/html; charset=utf-8 18.763ms
+2025-02-17 14:48:16.519 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_vs/browserLink - null null
+2025-02-17 14:48:16.519 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-17 14:48:16.520 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.1463ms
+2025-02-17 14:48:16.533 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44352/_vs/browserLink - 200 null text/javascript; charset=UTF-8 14.1831ms
+2025-02-17 16:49:31.573 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-17 16:49:31.645 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:49:31.646 +03:00 [WRN] No store type was specified for the decimal property 'PriceAtPurchase' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:49:45.330 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-17 16:49:45.379 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:49:45.381 +03:00 [WRN] No store type was specified for the decimal property 'PriceAtPurchase' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:49:45.474 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:49:45.474 +03:00 [WRN] No store type was specified for the decimal property 'PriceAtPurchase' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:49:54.677 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-17 16:49:54.728 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:49:54.729 +03:00 [WRN] No store type was specified for the decimal property 'PriceAtPurchase' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:49:54.963 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-17 16:49:54.978 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-17 16:49:54.980 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-17 16:49:54.982 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-17 16:49:55.001 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-17 16:49:55.011 +03:00 [INF] Applying migration '20250217134945_Second'.
+2025-02-17 16:49:55.086 +03:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ShoppingCarts] (
+    [Id] uniqueidentifier NOT NULL,
+    [AppUserId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_ShoppingCarts] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ShoppingCarts_AspNetUsers_AppUserId] FOREIGN KEY ([AppUserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-02-17 16:49:55.175 +03:00 [ERR] Failed executing DbCommand (87ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ShoppingCartItems] (
+    [Id] uniqueidentifier NOT NULL,
+    [CartId] uniqueidentifier NOT NULL,
+    [ProductId] uniqueidentifier NOT NULL,
+    [Count] int NOT NULL,
+    [PriceAtPurchase] decimal(18,2) NOT NULL,
+    CONSTRAINT [PK_ShoppingCartItems] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ShoppingCartItems_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_ShoppingCartItems_ShoppingCarts_CartId] FOREIGN KEY ([CartId]) REFERENCES [ShoppingCarts] ([Id]) ON DELETE CASCADE
+);
+2025-02-17 16:57:10.596 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-17 16:57:10.647 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:57:10.649 +03:00 [WRN] No store type was specified for the decimal property 'PriceAtPurchase' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:57:13.367 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-17 16:57:13.421 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:57:13.423 +03:00 [WRN] No store type was specified for the decimal property 'PriceAtPurchase' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:57:13.638 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-17 16:57:16.895 +03:00 [INF] Executed DbCommand (3,223ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Db_EzyShop] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;
+2025-02-17 16:57:17.084 +03:00 [INF] Executed DbCommand (189ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+DROP DATABASE [Db_EzyShop];
+2025-02-17 16:57:27.747 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-17 16:57:27.797 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:57:27.798 +03:00 [WRN] No store type was specified for the decimal property 'PriceAtPurchase' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:57:27.895 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:57:27.895 +03:00 [WRN] No store type was specified for the decimal property 'PriceAtPurchase' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:57:35.793 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-17 16:57:35.843 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:57:35.845 +03:00 [WRN] No store type was specified for the decimal property 'PriceAtPurchase' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:57:36.161 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:57:36.161 +03:00 [WRN] No store type was specified for the decimal property 'PriceAtPurchase' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-17 16:57:36.714 +03:00 [INF] Executed DbCommand (520ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [Db_EzyShop];
+2025-02-17 16:57:36.767 +03:00 [INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Db_EzyShop] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2025-02-17 16:57:36.780 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-17 16:57:36.821 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2025-02-17 16:57:36.822 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-17 16:57:36.832 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-17 16:57:36.836 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-17 16:57:36.845 +03:00 [INF] Applying migration '20250217135728_First'.
+2025-02-17 16:57:36.921 +03:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2025-02-17 16:57:36.941 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [IsSeller] bit NOT NULL,
+    [IsActive] bit NOT NULL,
+    [StoreName] nvarchar(max) NULL,
+    [TaxNumber] nvarchar(max) NULL,
+    [ContactNumber] nvarchar(max) NULL,
+    [Address] nvarchar(max) NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2025-02-17 16:57:36.942 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [DisplayOrder] int NOT NULL,
+    [ImageUrl] nvarchar(max) NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+2025-02-17 16:57:36.944 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [SellerApplications] (
+    [Id] uniqueidentifier NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [StoreName] nvarchar(max) NOT NULL,
+    [TaxNumber] nvarchar(max) NULL,
+    [ContactNumber] nvarchar(max) NOT NULL,
+    [Address] nvarchar(max) NOT NULL,
+    [ApplicationDate] datetime2 NOT NULL,
+    [Status] int NOT NULL,
+    CONSTRAINT [PK_SellerApplications] PRIMARY KEY ([Id])
+);
+2025-02-17 16:57:36.960 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] uniqueidentifier NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2025-02-17 16:57:36.962 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] uniqueidentifier NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-02-17 16:57:36.982 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-02-17 16:57:36.984 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] uniqueidentifier NOT NULL,
+    [RoleId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-02-17 16:57:36.986 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] uniqueidentifier NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-02-17 16:57:36.987 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ShoppingCarts] (
+    [Id] uniqueidentifier NOT NULL,
+    [AppUserId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_ShoppingCarts] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ShoppingCarts_AspNetUsers_AppUserId] FOREIGN KEY ([AppUserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-02-17 16:57:36.988 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Shops] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(100) NOT NULL,
+    [SellerId] uniqueidentifier NOT NULL,
+    [ContactNumber] nvarchar(max) NOT NULL,
+    [Address] nvarchar(500) NOT NULL,
+    [TaxNumber] nvarchar(max) NULL,
+    [IsActive] bit NOT NULL,
+    [Status] nvarchar(10) NOT NULL,
+    CONSTRAINT [PK_Shops] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Shops_AspNetUsers_SellerId] FOREIGN KEY ([SellerId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-02-17 16:57:36.990 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Products] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Color] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Price] decimal(18,2) NOT NULL,
+    [Stock] int NOT NULL,
+    [CategoryId] uniqueidentifier NOT NULL,
+    [ImageUrl] nvarchar(max) NULL,
+    [ShopId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Products] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Products_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Products_Shops_ShopId] FOREIGN KEY ([ShopId]) REFERENCES [Shops] ([Id]) ON DELETE CASCADE
+);
+2025-02-17 16:57:37.136 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ProductImages] (
+    [Id] uniqueidentifier NOT NULL,
+    [ImageUrl] nvarchar(max) NOT NULL,
+    [ProductId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_ProductImages] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ProductImages_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([Id]) ON DELETE CASCADE
+);
+2025-02-17 16:57:37.138 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ShoppingCartItems] (
+    [Id] uniqueidentifier NOT NULL,
+    [CartId] uniqueidentifier NOT NULL,
+    [ProductId] uniqueidentifier NOT NULL,
+    [Count] int NOT NULL,
+    [PriceAtPurchase] decimal(18,2) NOT NULL,
+    CONSTRAINT [PK_ShoppingCartItems] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ShoppingCartItems_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_ShoppingCartItems_ShoppingCarts_CartId] FOREIGN KEY ([CartId]) REFERENCES [ShoppingCarts] ([Id]) ON DELETE CASCADE
+);
+2025-02-17 16:57:37.153 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
+2025-02-17 16:57:37.192 +03:00 [INF] Executed DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
+2025-02-17 16:57:37.194 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);
+2025-02-17 16:57:37.194 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
+2025-02-17 16:57:37.195 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
+2025-02-17 16:57:37.197 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);
+2025-02-17 16:57:37.199 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
+2025-02-17 16:57:37.200 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ProductImages_ProductId] ON [ProductImages] ([ProductId]);
+2025-02-17 16:57:37.201 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Products_CategoryId] ON [Products] ([CategoryId]);
+2025-02-17 16:57:37.202 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Products_ShopId] ON [Products] ([ShopId]);
+2025-02-17 16:57:37.203 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ShoppingCartItems_CartId] ON [ShoppingCartItems] ([CartId]);
+2025-02-17 16:57:37.203 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ShoppingCartItems_ProductId] ON [ShoppingCartItems] ([ProductId]);
+2025-02-17 16:57:37.204 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ShoppingCarts_AppUserId] ON [ShoppingCarts] ([AppUserId]);
+2025-02-17 16:57:37.205 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Shops_SellerId] ON [Shops] ([SellerId]);
+2025-02-17 16:57:37.230 +03:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250217135728_First', N'8.0.1');

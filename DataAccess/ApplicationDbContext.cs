@@ -26,13 +26,28 @@ namespace DataAccess
                 .WithMany(s => s.Products)
                 .HasForeignKey(p => p.ShopId)
                 .OnDelete(DeleteBehavior.Cascade); // Mağaza silinirse, ürünler de silinsin
-        }
+       
+            // ShoppingCart silinirse içindeki ShoppingCartItem'lar da silinsin  
+            modelBuilder.Entity<ShoppingCartItem>()
+            .HasOne(i => i.Cart)
+            .WithMany(c => c.CartItems)
+            .HasForeignKey(i => i.CartId)
+            .OnDelete(DeleteBehavior.Cascade);  
 
+            //  ShoppingCartItem silinirse Product etkilenmemeli  
+            modelBuilder.Entity<ShoppingCartItem>()
+            .HasOne(i => i.Product)
+            .WithMany()
+            .HasForeignKey(i => i.ProductId)
+            .OnDelete(DeleteBehavior.Restrict); 
+        }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Shop> Shops { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<SellerApplication> SellerApplications { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
     }
 }
