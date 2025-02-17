@@ -16,20 +16,14 @@ namespace DataAccess.Seeders.EntitySeeders
                 return;
             }
 
-            dbContext.Products.AddRange(new List<Product>
-                {
-                    //new Product {
-                    //    Id = Guid.NewGuid(),
-                    //    Name = "Savaş ve Barış",
-                    //    ImageUrl= "images\\product\\war_and_peace.jpg",
-                    //    Description="Lev Tolstoy'un klasik romanı.",
-                    //    Price=500,
-                    //    Color="Beyaz",
-                    //    Stock=15,
-                    //    ShopId=firstShop.Id,
-                    //    CategoryId=Guid.Parse("279ac61d-0691-4d5a-aab0-caca11ed28c2")
-                    //},
-              
+            var existingProductNames = await dbContext.Products
+                 .AsNoTracking()
+                 .Select(p => p.Name)
+                 .ToListAsync();
+
+            var productsToAdd = new List<Product> { 
+
+
                      new Product {
                         Id = Guid.NewGuid(),
                         Name = "Tişört",
@@ -97,13 +91,23 @@ namespace DataAccess.Seeders.EntitySeeders
                         Stock=5,
                         ShopId=secondShop.Id,
                         CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19")
-                    }
-        });
-       
+                     }
+            };
+            var newProducts = productsToAdd
+                .Where(p => !existingProductNames.Contains(p.Name)) // Zaten eklenmiş olanları atla
+                .ToList();
 
+            if (newProducts.Any())
+            {
+                dbContext.Products.AddRange(newProducts);
                 await dbContext.SaveChangesAsync();
-                Console.WriteLine("✅ ProductSeeder başarıyla tamamlandı!");
+                Console.WriteLine("✅ Yeni ürünler eklendi!");
+            }
+            else
+            {
+                Console.WriteLine("⚠️ Tüm ürünler zaten kayıtlı, yeni ekleme yapılmadı.");
             }
         }
-    }
 
+    }
+}
