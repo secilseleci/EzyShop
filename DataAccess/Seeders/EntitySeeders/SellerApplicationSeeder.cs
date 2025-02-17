@@ -22,13 +22,23 @@ namespace DataAccess.Seeders.EntitySeeders
                         TaxNumber = "1234567890",
                         ApplicationDate = DateTime.UtcNow,
                         Status = ApplicationStatus.Approved
+                    }, new SellerApplication
+                    {
+                        Id = Guid.Parse("99999999-9999-9999-9999-999999999999"),
+                        Email = "secilseller@gmail.com",
+                        Name = "Seçil Seller",
+                        StoreName = "SecondShop",
+                        ContactNumber = "555-333-4444",
+                        Address = "Ankara, Turkey",
+                        TaxNumber = "9876543210",
+                        ApplicationDate = DateTime.UtcNow,
+                        Status = ApplicationStatus.Approved
                     }
                 };
 
                 dbContext.SellerApplications.AddRange(applications);
                 await dbContext.SaveChangesAsync();
-                Console.WriteLine("✅ Seller Applications başarıyla eklendi!");
-            }
+             }
 
             // 🔥 Approved seller’ların IsActive durumunu güncelle
             var approvedApplications = dbContext.SellerApplications
@@ -46,7 +56,6 @@ namespace DataAccess.Seeders.EntitySeeders
             }
 
             await dbContext.SaveChangesAsync();
-            Console.WriteLine("✅ Approved başvurulara sahip satıcılar artık aktif!");
-        }
+         }
     }
 }

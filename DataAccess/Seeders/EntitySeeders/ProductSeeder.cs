@@ -7,31 +7,74 @@ namespace DataAccess.Seeders.EntitySeeders
     {
         public static async Task SeedProductsAsync(ApplicationDbContext dbContext)
         {
-            if (!dbContext.Products.Any())
+            var firstShop = dbContext.Shops.AsNoTracking().FirstOrDefault(s => s.Name == "FirstShop");
+            var secondShop = dbContext.Shops.AsNoTracking().FirstOrDefault(s => s.Name == "SecondShop");
+
+            if (firstShop == null || secondShop == null)
             {
-                var shop = dbContext.Shops
-                    .AsNoTracking()
-                    .FirstOrDefault(s => s.Name == "FirstShop");
+                Console.WriteLine("❌ Hata: Mağazalar bulunamadı! Ürünler eklenemedi.");
+                return;
+            }
 
-                if (shop == null)
+            dbContext.Products.AddRange(new List<Product>
                 {
-                    Console.WriteLine("❌ Hata: Seçil Seleci'nin mağazası bulunamadı! Ürünler eklenemedi.");
-                    return;
-                }
-
-                dbContext.Products.AddRange(new List<Product>
-                {
-                    new Product {
+                    //new Product {
+                    //    Id = Guid.NewGuid(),
+                    //    Name = "Savaş ve Barış",
+                    //    ImageUrl= "images\\product\\war_and_peace.jpg",
+                    //    Description="Lev Tolstoy'un klasik romanı.",
+                    //    Price=500,
+                    //    Color="Beyaz",
+                    //    Stock=15,
+                    //    ShopId=firstShop.Id,
+                    //    CategoryId=Guid.Parse("279ac61d-0691-4d5a-aab0-caca11ed28c2")
+                    //},
+              
+                     new Product {
                         Id = Guid.NewGuid(),
-                        Name = "Savaş ve Barış",
-                        ImageUrl= "images\\product\\war_and_peace.jpg",
-                        Description="Lev Tolstoy'un klasik romanı.",
-                        Price=500,
-                        Color="Beyaz",
-                        Stock=15,
-                        ShopId=shop.Id,
-                        CategoryId=Guid.Parse("279ac61d-0691-4d5a-aab0-caca11ed28c2")
+                        Name = "Tişört",
+                        ImageUrl= "images\\product\\erkektisort.jpg",
+                        Description="Erkek Tişört",
+                        Price=5600,
+                        Color="Gri",
+                        Stock=1,
+                        ShopId=firstShop.Id,
+                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959")
                     },
+                      new Product {
+                        Id = Guid.NewGuid(),
+                        Name = "Kazak",
+                        ImageUrl= "images\\product\\beyazkazak.jpg",
+                        Description="Erkek Triko",
+                        Price=5600,
+                        Color="Beyaz",
+                        Stock=1,
+                        ShopId=firstShop.Id,
+                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959")
+                    },
+
+                       new Product {
+                        Id = Guid.NewGuid(),
+                        Name = "Samsung Galaxy S23",
+                        ImageUrl= "images\\product\\galaxy_s23.jpg",
+                        Description="Samsung'un en son amiral gemisi telefonu.",
+                        Price=40000,
+                        Color="Siyah",
+                        Stock=5,
+                        ShopId=secondShop.Id,  
+                        CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19")
+                    },
+                    //new Product {
+                    //    Id = Guid.NewGuid(),
+                    //    Name = "Macbook Air M2",
+                    //    ImageUrl= "images\\product\\macbook_air_m2.jpg",
+                    //    Description="Apple'ın yeni nesil dizüstü bilgisayarı.",
+                    //    Price=60000,
+                    //    Color="Gümüş",
+                    //    Stock=3,
+                    //    ShopId=secondShop.Id,
+                    //    CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19")
+                    //},
                     new Product {
                         Id = Guid.NewGuid(),
                         Name = "iPhone 15 Pro",
@@ -40,9 +83,10 @@ namespace DataAccess.Seeders.EntitySeeders
                         Price=50000,
                         Color="Gri",
                         Stock=8,
-                        ShopId=shop.Id,
+                        ShopId=secondShop.Id,
                         CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19")
                     },
+
                      new Product {
                         Id = Guid.NewGuid(),
                         Name = "JBL Kulaklık",
@@ -51,37 +95,15 @@ namespace DataAccess.Seeders.EntitySeeders
                         Price=50000,
                         Color="Siyah",
                         Stock=5,
-                        ShopId=shop.Id,
+                        ShopId=secondShop.Id,
                         CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19")
-                    },
-                     new Product {
-                        Id = Guid.NewGuid(),
-                        Name = "erkektisort",
-                        ImageUrl= "images\\product\\erkektisort.jpg",
-                        Description="Erkek Tişört",
-                        Price=5600,
-                        Color="Gri",
-                        Stock=1,
-                        ShopId=shop.Id,
-                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959")
-                    },
-                      new Product {
-                        Id = Guid.NewGuid(),
-                        Name = "Kazak",
-                        ImageUrl= "images\\product\\yesilkazak.jpg",
-                        Description="Erkek Triko",
-                        Price=5600,
-                        Color="Yeşil",
-                        Stock=1,
-                        ShopId=shop.Id,
-                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959")
                     }
-
-                });
+        });
+       
 
                 await dbContext.SaveChangesAsync();
                 Console.WriteLine("✅ ProductSeeder başarıyla tamamlandı!");
             }
         }
     }
-}
+

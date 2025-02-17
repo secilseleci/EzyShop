@@ -113,17 +113,26 @@ namespace WebUI.Controllers
         #region API
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetSellerProducts()
         {
-            var products = await _productService.GetAllProductsWithCategoryAsync(c => true);
+            var user = await GetCurrentUserAsync();
+            if (user == null) return Unauthorized();
+
+            var shopResult = await _shopService.GetShopBySellerIdAsync(user.Id);
+            if (!shopResult.Success || shopResult.Data == null)
+            {
+                return Json(new { data = new List<object>() }); // Eğer shop yoksa boş liste döndür
+            }
+
+            var products = await _productService.GetAllProductsWithCategoryAsync(p => p.ShopId == shopResult.Data.Id);
             if (products.Data == null || !products.Data.Any())
             {
                 return Json(new { data = new List<object>() });
             }
 
             return Json(new { data = products.Data });
-
         }
+
 
         [HttpDelete]
         public async Task<IActionResult> Delete(Guid id)
