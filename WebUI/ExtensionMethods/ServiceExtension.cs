@@ -49,6 +49,8 @@ namespace WebUI.ExtensionMethods
             services.AddScoped<ISellerApplicationService, SellerApplicationService>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IShopService, ShopService>();
+            services.AddScoped<IShoppingCartService, ShoppingCartService>();
+            services.AddScoped<IShoppingCartItemService, ShoppingCartItemService>();
 
 
         }

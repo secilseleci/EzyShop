@@ -8,7 +8,6 @@ using Models.ViewModels;
 
 namespace WebUI.Controllers
 {
-    [Authorize(Roles = "Seller")]
      public class ProductController : BaseController
     {
         private readonly IProductService _productService;
@@ -30,7 +29,7 @@ namespace WebUI.Controllers
         }
 
         #region Read
-
+        [Authorize(Roles = "Seller")]
         [HttpGet]
         public IActionResult Index()
         {
@@ -39,6 +38,7 @@ namespace WebUI.Controllers
         #endregion
 
         #region Create
+        [Authorize(Roles = "Seller")]
         [HttpGet]
         public async Task<IActionResult> Create()
         {
@@ -59,7 +59,7 @@ namespace WebUI.Controllers
 
             return View(model);
         }
-
+        [Authorize(Roles = "Seller")]
         [HttpPost]
         public async Task<IActionResult> Create(ProductViewModel model, IFormFile? file)
         {
@@ -79,6 +79,7 @@ namespace WebUI.Controllers
         #endregion
 
         #region Edit
+        [Authorize(Roles = "Seller")]
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
@@ -94,6 +95,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Seller")]
         public async Task<IActionResult> Edit(ProductViewModel model, IFormFile? file)
         {
             HandleImageUpload(model, file);
@@ -111,7 +113,7 @@ namespace WebUI.Controllers
         #endregion
 
         #region API
-
+        [Authorize(Roles = "Seller")]
         [HttpGet]
         public async Task<IActionResult> GetSellerProducts()
         {
@@ -134,6 +136,7 @@ namespace WebUI.Controllers
         }
 
 
+        [Authorize(Roles = "Seller")]
         [HttpDelete]
         public async Task<IActionResult> Delete(Guid id)
         {
@@ -170,5 +173,20 @@ namespace WebUI.Controllers
         }
         #endregion
 
+        #region Product Details
+        [Authorize(Roles = "Customer")]
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid productId)
+        {
+            var result = await _productService.GetProductByIdAsync(productId);
+            if (!result.Success || result.Data == null)
+            {
+                TempData["ErrorMessage"] = "Product not found.";
+                return RedirectToAction("Shop", "Home");  
+            }
+
+            return View(result.Data); 
+        }
+        #endregion
     }
 }
