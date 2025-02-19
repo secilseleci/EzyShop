@@ -89,5 +89,20 @@
         public const string ShopStatusApproved = "Your shop is active and visible to customers.";
         public const string ShopStatusRejected = "Your shop request has been rejected. Please check the details and reapply.";
         #endregion
+
+        #region ShoppingCart Messages 
+        public const string ShoppingCartNotFound = "ShoppingCart not found";
+        public const string EmptyShoppingCartList = "ShoppingCart list is empty with the current filter";
+
+        public const string CreateShoppingCartSuccess = "ShoppingCart created successfully";
+        public const string CreateShoppingCartError = "Error occurred while registering the ShoppingCart to Database";
+
+        public const string UpdateShoppingCartSuccess = "ShoppingCart successfully updated";
+        public const string UpdateShoppingCartError = "Error occurred while updating the ShoppingCart in Database";
+
+        public const string DeleteShoppingCartSuccess = "ShoppingCart successfully deleted";
+        public const string DeleteShoppingCartError = "Error occurred while deleting the ShoppingCart from Database";
+
+         #endregion
     }
 }

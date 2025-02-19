@@ -32,7 +32,9 @@ namespace WebUI.ExtensionMethods
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ISellerApplicationRepository, SellerApplicationRepository>();
             services.AddScoped<IShopRepository, ShopRepository>();
-            
+            services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
+            services.AddScoped<IShoppingCartItemRepository, ShoppingCartItemRepository>();
+
             //services.AddScoped<CategoryRepository>();
             //services.AddScoped<ICategoryRepository, CachedCategoryRepository>();
 
