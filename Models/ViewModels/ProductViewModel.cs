@@ -16,6 +16,7 @@ namespace Models.ViewModels
         [Required]
         public string Color { get; set; }
         public string? Description { get; set; }
+        public string CategoryName { get; set; }
 
 
         [Required]

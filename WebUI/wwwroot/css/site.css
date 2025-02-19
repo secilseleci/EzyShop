@@ -100,3 +100,15 @@ footer ul li {
     justify-content: space-between !important;
 }
 
+.text-price {
+    color: #28a745; /* Yeþil tonu */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.badge {
+    background-color: #dc3545; /* Daha soft bir kýrmýzý */
+    padding: 5px 12px;
+    font-size: 14px;
+    border-radius: 12px;
+}

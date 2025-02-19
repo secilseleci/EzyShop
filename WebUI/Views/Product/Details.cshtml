@@ -1,4 +1,4 @@
-﻿@model Product
+﻿@model Product 
 
 @{
     ViewData["Title"] = "Product Details";
@@ -20,21 +20,19 @@
                 </div>
                 <div class="col-12 col-lg-7 offset-1">
                     <div class="col-12 col-md-6 pb-4">
-                        <span class="badge text-bg-danger">Category: @Model.CategoryId</span>
+                        <span class="badge text-bg-success">Category: @Model.Category.Name</span>
                     </div>
                     <div class="row ps-2">
-                        <h6 class="text-dark text-opacity-50">Color : @Model.Color</h6>
+                        <h6 class="text-dark lh-sm">Color : @Model.Color</h6>
                     </div>
                     <div class="row ps-2">
-                        <h6 class="text-dark text-opacity-50 pb-2">
-                            Price:
-                            <span class="text-decoration">
-                                @Model.Price.ToString("c")
-                            </span>
-                        </h6>
+                        <h6 class="text-dark lh-sm">Description: @Model.Description</h6>
+                       
                     </div>
                     <div class="row pl-2 my-3">
-                        <p class="text-secondary lh-sm">@Html.Raw(Model.Description)</p>
+                        <h6 class="text-price lh-sm ">
+                                @Model.Price.ToString("c")
+                        </h6>
                     </div>
                     <div class="row pl-2 mb-3">
                         <div class="col-md-4">

@@ -178,7 +178,7 @@ namespace WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(Guid productId)
         {
-            var result = await _productService.GetProductByIdAsync(productId);
+            var result = await _productService.GetProductByIdWithCategoryAsync(productId);
             if (!result.Success || result.Data == null)
             {
                 TempData["ErrorMessage"] = "Product not found.";
