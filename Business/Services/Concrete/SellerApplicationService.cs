@@ -166,10 +166,7 @@ namespace Business.Services.Concrete
 
             var emailResult = await _emailService.SendEmailAsync(application.Email, emailSubject, emailBody);
 
-            if (!emailResult)
-            {
-                return new ErrorResult(Messages.ErrorSentEmail);
-            }
+            
             return new SuccessResult(Messages.RejectedApplicationSuccess);
         }
 

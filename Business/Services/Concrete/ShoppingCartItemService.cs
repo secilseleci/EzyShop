@@ -22,30 +22,31 @@ namespace Business.Services.Concrete
             _shoppingCartService = shoppingCartService;
         }
         #region AddItemToCart
-        public async Task<IResult> AddItemToCartAsync(Guid userId, Guid productId, int count)
+        public async Task<IResult> AddToCartAsync(Guid userId, Guid productId, int quantity)
         {
-            var cart = await _shoppingCartService.GetOrCreateCartAsync(userId);  
+            var cart = await _shoppingCartService.GetOrCreateCartAsync(userId);
 
-            var existingItem = cart.CartItems.FirstOrDefault(i => i.ProductId == productId);
+            var existingItem = await _shoppingCartItemRepository.GetCartItemAsync(cart.Id, productId);
+
             if (existingItem != null)
             {
-                existingItem.Count += count;  
+                existingItem.Count += quantity;
                 await _shoppingCartItemRepository.UpdateAsync(existingItem);
             }
             else
             {
                 var newItem = new ShoppingCartItem
                 {
-                    ProductId = productId,
                     CartId = cart.Id,
-                    Count = count
+                    ProductId = productId,
+                    Count = quantity
                 };
                 await _shoppingCartItemRepository.CreateAsync(newItem);
             }
 
-            return new SuccessResult("Product added to cart.");
+            return new SuccessResult("Ürün sepete başarıyla eklendi.");
         }
         #endregion
     }
 }
-}
+ 

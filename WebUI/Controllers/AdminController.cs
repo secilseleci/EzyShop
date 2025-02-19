@@ -1,28 +1,40 @@
 ﻿using AutoMapper;
-
+using Business.Services.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Models.Entities.Concrete;
 using Models.Identity;
 using Models.ViewModels;
+using System.Linq.Expressions;
 
 namespace WebUI.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class AdminController : BaseController
-    {
- 
+    { private readonly ISellerApplicationService _sellerApplicationService;
+        private readonly IEmailService _emailService;
+
+
         public AdminController(
+
+            ISellerApplicationService  sellerApplicationService,
             UserManager<AppUser> userManager,
             RoleManager<AppRole> roleManager,
             SignInManager<AppUser> signInManager,
             IWebHostEnvironment webHostEnvironment,
+            IEmailService emailService,
             IMapper mapper)
-            : base(userManager, roleManager, signInManager, webHostEnvironment, mapper)
+            : base(userManager, roleManager, signInManager, webHostEnvironment, mapper  )
         {
+            _sellerApplicationService = sellerApplicationService; 
+            _emailService = emailService;
+
         }
 
+
+        #region USER
         [HttpGet]
         public  IActionResult  ListUsers()
         {
@@ -30,35 +42,108 @@ namespace WebUI.Controllers
             return View();
         }
 
-        //[HttpGet]
-        //public IActionResult EditRole()
-        //{
-        //    return View();
 
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> EditRoles(EditRoleViewModel model)
-        //{
-        //    var user=await UserManager.FindByIdAsync(model.UserId);
-        //    if (user == null)
-        //    {
-        //        return NotFound("User NotFound");
-        //    }
+        [HttpGet]
+        public IActionResult CreateUser()
+        {
+            return View(new UserViewModel());
+        }
 
-        //    var currentRoles = await UserManager.GetRolesAsync(user);
-        //    await UserManager.RemoveFromRolesAsync(user, currentRoles);
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(UserViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-        //    var result = await UserManager.AddToRoleAsync(user, model.NewRole);
-        //    if (!result.Succeeded)
-        //    {
-        //        ModelState.AddModelError("", "Rol değiştirilemedi.");
-        //        return View(model);
-        //    }
-        //    TempData["SuccessMessage"] = "Role başarıyla güncellendi.";
-        //    return RedirectToAction("ManageUsers");
-        //}
+            var user = new AppUser
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                Name = model.Name
+            };
 
-        #region Api Calls Get All Users
+            var result = await UserManager.CreateAsync(user, "DefaultPassword123!");
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "Failed to create user.");
+                return View(model);
+            }
+
+            if (model.Roles != null && model.Roles.Any())
+            {
+                var roleResult = await UserManager.AddToRoleAsync(user, model.Roles.First());
+                if (!roleResult.Succeeded)
+                {
+                    ModelState.AddModelError("", "Failed to assign role.");
+                    return View(model);
+                }
+            }
+
+            TempData["SuccessMessage"] = "User successfully added.";
+            return RedirectToAction("ListUsers");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(string userId)
+        {
+            var user = await UserManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return Json(new { success = false, message = "Kullanıcı bulunamadı." });
+            }
+
+            var result = await UserManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return Json(new { success = true, message = "Kullanıcı başarıyla silindi." });
+            }
+            return Json(new { success = false, message = "Kullanıcı silinemedi." });
+        }
+        
+
+        [HttpPost]
+        public async Task<IActionResult> ResetUserPassword(string userId)
+        {
+
+            var user = await UserManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return Json(new { success = false, message = "User not found" });
+            }
+
+            string newPassword = GenerateRandomPassword();
+
+            var resetToken = await UserManager.GeneratePasswordResetTokenAsync(user);
+            var result = await UserManager.ResetPasswordAsync(user, resetToken, newPassword);
+
+            if (!result.Succeeded)
+            {
+                return Json(new { success = false, message = "Password reset failed" });
+            }
+
+            string subject = "Şifre Sıfırlama Bilgilendirmesi";
+            string body = $"Merhaba {user.Name},\n\nŞifreniz başarıyla sıfırlandı. Yeni şifreniz: {newPassword}\n\nLütfen giriş yaptıktan sonra şifrenizi değiştirin.";
+
+            bool emailSent = await _emailService.SendEmailAsync(user.Email, subject, body);
+            if (!emailSent)
+            {
+                return Json(new { success = false, message = "Password reset successful, but email could not be sent." });
+            }
+
+            return Json(new { success = true, message = "Password reset successful. Email has been sent." });
+        }
+
+        private string GenerateRandomPassword()
+        {
+            return Guid.NewGuid().ToString("N").Substring(0, 10) + "Aa*";
+        }
+
+    
+
+        //Api Calls Get All Users
         [HttpGet]
         public async Task<IActionResult> GetAllUsers()
         {
@@ -83,72 +168,61 @@ namespace WebUI.Controllers
             return Json(new { data = userDataWithRoles });
         }
         #endregion
-        
-        #region Delete Users
-        [HttpPost]
-        public async Task<IActionResult> DeleteUser(string userId)
-        {
-            var user = await UserManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                return Json(new { success = false, message = "Kullanıcı bulunamadı." });
-            }
+ 
 
-            var result = await UserManager.DeleteAsync(user);
-            if (result.Succeeded)
-            {
-                return Json(new { success = true, message = "Kullanıcı başarıyla silindi." });
-            }
-            return Json(new { success = false, message = "Kullanıcı silinemedi." });
-        }
-        #endregion
-        
-        #region Create Users
+        #region SellerApplication
+
         [HttpGet]
-        public IActionResult CreateUser()
+        public async Task<IActionResult> ListSellerApplications()
         {
-            return View(new UserViewModel());
-        }
+             var result = await _sellerApplicationService.GetAllSellerApplicationsAsync(a => true);
 
-        [HttpPost]
-        public async Task<IActionResult> CreateUser(UserViewModel model)
-        {
-            if (!ModelState.IsValid)
+            if (!result.Success)
             {
-                return View(model);
+                TempData["ErrorMessage"] = result.Message;
+                return RedirectToAction("Index", "Home");
             }
 
-            // Yeni kullanıcı oluştur
-            var user = new AppUser
+            return View(result.Data);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetSellerApplications(string status = "all")
+        {
+            Expression<Func<SellerApplication, bool>> filter = status.ToLower() switch
             {
-                UserName = model.Email,
-                Email = model.Email,
-                Name = model.Name
+                "approved" => a => a.Status == ApplicationStatus.Approved,
+                "rejected" => a => a.Status == ApplicationStatus.Rejected,
+                "pending" => a => a.Status == ApplicationStatus.Pending,
+                _ => a => true
             };
 
-            var result = await UserManager.CreateAsync(user, "DefaultPassword123!"); // Varsayılan şifre
-            if (!result.Succeeded)
+            var result = await _sellerApplicationService.GetAllSellerApplicationsAsync(filter);
+
+            if (!result.Success || result.Data == null || !result.Data.Any())
             {
-                ModelState.AddModelError("", "Failed to create user.");
-                return View(model);
+                return PartialView("_SellerApplicationsTable", new List<SellerApplication>()); // Boş liste döndür
             }
 
-            // Kullanıcıya rol ekle
-            if (model.Roles != null && model.Roles.Any())
-            {
-                var roleResult = await UserManager.AddToRoleAsync(user, model.Roles.First());
-                if (!roleResult.Succeeded)
-                {
-                    ModelState.AddModelError("", "Failed to assign role.");
-                    return View(model);
-                }
-            }
+            return PartialView("_SellerApplicationsTable", result.Data);
+        }
 
-            TempData["SuccessMessage"] = "User successfully added.";
-            return RedirectToAction("ListUsers");
+        [HttpPost]
+        public async Task<IActionResult> ApproveSeller(Guid id)
+        {
+            var result = await _sellerApplicationService.ApproveSellerAsync(id);
+            TempData[result.Success ? "SuccessMessage" : "ErrorMessage"] = result.Message;
+            return RedirectToAction("ListSellerApplications");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RejectSeller(Guid id)
+        {
+            var result = await _sellerApplicationService.RejectSellerAsync(id);
+            TempData[result.Success ? "SuccessMessage" : "ErrorMessage"] = result.Message;
+            return RedirectToAction("ListSellerApplications");
         }
         #endregion
 
-       
     }
 }

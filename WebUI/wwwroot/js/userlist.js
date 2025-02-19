@@ -35,7 +35,7 @@ $(document).ready(function () {
                 render: function (data) {
                     return `
                         <div class="btn-group">
-                            <a href="/Admin/EditRole/${data}" class="btn btn-warning btn-sm">Edit</a>
+                            <button onclick="resetPassword('${data}')" class="btn btn-warning btn-sm">Reset Password</button>
                             <button onclick="deleteUser('${data}')" class="btn btn-danger btn-sm">Delete</button>
                         </div>
                     `;
@@ -44,6 +44,26 @@ $(document).ready(function () {
         ]
     });
 });
+
+function resetPassword(userId) {
+    $.ajax({
+        url: `/Admin/ResetUserPassword`,
+        type: 'POST',
+        data: { userId },   
+        success: function (response) {
+            if (response.success) {
+                toastr.success("Password successfully reset. An email has been sent.");
+            } else {
+                toastr.error(response.message || "Failed to reset password. Please try again.");
+            }
+        },
+        error: function (error) {
+            toastr.error("An error occurred while resetting the password.");
+            console.error("Error:", error);
+        }
+    });
+}
+
 function deleteUser(userId) {
     $.ajax({
         url: `/Admin/DeleteUser`,

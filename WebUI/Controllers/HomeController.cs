@@ -38,7 +38,6 @@ namespace WebUI.Controllers
         #endregion
 
         #region Details
-
         public IActionResult Details()
         {
             return View();

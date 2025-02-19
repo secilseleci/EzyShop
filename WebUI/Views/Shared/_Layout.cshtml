@@ -27,11 +27,11 @@
                         <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Shop">Shop</a></li>
                         <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Contact">Contact</a></li>
                         <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="About">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Application" asp-action="BecomeSeller">Sell on EzyShop</a></li>
 
                         <!-- Login/Register -->
                         @if (!User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Application" asp-action="BecomeSeller">Sell on EzyShop</a></li>
                             <li class="nav-item ms-auto"><a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a></li>
                             <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a></li>
                         }
@@ -43,38 +43,22 @@
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Admin Panel</a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" asp-controller="Admin" asp-action="ListUsers">User Management</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Shop" asp-action="Index">Shop Management</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Application" asp-action="Index">Seller Application</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="ListSellerApplications">Seller Application</a></li>
                                     <li><a class="dropdown-item" asp-controller="Category" asp-action="Index">Category Management</a></li>
                                     <li><a class="dropdown-item" asp-controller="Reports" asp-action="Index">Reports</a></li>
                                 </ul>
                             </li>
 
                         }
-                        @if (User.IsInRole("Seller"))
-                        {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Seller Panel</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" asp-controller="Product" asp-action="Index">Product Management</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Order" asp-action="Index">Order Management</a></li>
-                                </ul>
-                            </li>
- 
-                        }
-                        @if (User.IsInRole("Customer"))
-                        {
-                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Application" asp-action="BecomeSeller">Sell on EzyShop</a></li>
-                            <li class="nav-item"><a class="nav-link" asp-controller="Order" asp-action="Index">My Orders</a></li>
-                            <li class="nav-item"><a class="nav-link" asp-controller="User" asp-action="Details">My Account</a></li>
-                        }
+                      
+                       
 
                         <!-- Genel Kullanıcı Menü -->
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item dropdown ms-auto">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                    <i class="bi bi-person-circle"></i> Welcome @User.Identity.Name
+                                    <i class="bi bi-person-circle"></i> Welcome @User.Identity.Name.Replace("-", " ")
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" asp-controller="Account" asp-action="ChangePassword">Change Password</a></li>
@@ -82,6 +66,13 @@
                                     @if (User.IsInRole("Seller"))
                                     {
                                         <li><a class="dropdown-item" asp-controller="Shop" asp-action="Index">My Profile</a></li>
+                                        <li><a class="dropdown-item" asp-controller="Product" asp-action="Index">Product Management</a></li>
+                                        <li><a class="dropdown-item" asp-controller="Order" asp-action="Index">Order Management</a></li>
+                                    }
+                                    @if (User.IsInRole("Customer"))
+                                    {
+                                        <li class="dropdown-item"><a  asp-controller="Order" asp-action="Index">My Orders</a></li>
+                                        <li class="dropdown-item"><a  asp-controller="User" asp-action="Details">My Account</a></li>
                                     }
                                 </ul>
                             </li>

@@ -5,6 +5,7 @@ namespace Models.ViewModels
 {
     public class UserViewModel
     {
+ 
         [Required]
         public string Name { get; set; }
 

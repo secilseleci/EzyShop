@@ -7,7 +7,7 @@
 
 function loadApplications(status) {
     $.ajax({
-        url: "/Application/GetSellerApplications?status=" + status,
+        url: "/Admin/GetSellerApplications?status=" + status,
         type: "GET",
         success: function (data) {
             $("#sellerApplicationsTable").html(data);

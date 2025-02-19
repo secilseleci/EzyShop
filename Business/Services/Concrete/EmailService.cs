@@ -12,19 +12,20 @@ namespace Business.Services.Concrete
         {
             _configuration = configuration;
         }
+
         public async Task<bool> SendEmailAsync(string to, string subject, string body)
         {
             try
             {
+                
                 var smtpClient = new SmtpClient(_configuration["EmailSettings:SmtpServer"])
                 {
                     Port = int.Parse(_configuration["EmailSettings:Port"]),
                     Credentials = new NetworkCredential(
-                    _configuration["EmailSettings:SenderEmail"],
-                    _configuration["EmailSettings:SenderPassword"]),
+                        _configuration["EmailSettings:SenderEmail"],
+                        _configuration["EmailSettings:SenderPassword"]),
                     EnableSsl = bool.Parse(_configuration["EmailSettings:EnableSsl"]),
                 };
-
 
                 var mailMessage = new MailMessage
                 {
@@ -37,15 +38,19 @@ namespace Business.Services.Concrete
                 mailMessage.To.Add(to);
 
                 await smtpClient.SendMailAsync(mailMessage);
+                Console.WriteLine("[EMAIL] Successfully sent email.");
                 return true;
             }
-
-            catch (Exception ex)
+            catch (SmtpException smtpEx)
             {
-                Console.WriteLine($"E-Posta gönderme hatası: {ex.Message}");
-
+                Console.WriteLine($"[EMAIL ERROR] SMTP Exception: {smtpEx.StatusCode} - {smtpEx.Message}");
                 return false;
             }
-    }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[EMAIL ERROR] General Exception: {ex.Message}");
+                return false;
+            }
+        }
     }
 }
