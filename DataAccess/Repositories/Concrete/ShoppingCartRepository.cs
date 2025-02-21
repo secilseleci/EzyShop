@@ -13,5 +13,7 @@ namespace DataAccess.Repositories.Concrete
                 .Include(c => c.CartItems)
                 .FirstOrDefaultAsync(c => c.AppUserId == userId);
         }
+       
+
     }
 }

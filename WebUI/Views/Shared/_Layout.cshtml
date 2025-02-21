@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using Models.Identity
+@inject UserManager<AppUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,6 +16,10 @@
     <link rel="stylesheet" href="~/WebUI.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
  </head>
+@{
+    var currentUser = await UserManager.GetUserAsync(User);
+    var userName = currentUser?.Name ?? "User"; // Eğer null ise "User" yazsın
+}
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -58,7 +65,7 @@
                         {
                             <li class="nav-item dropdown ms-auto">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                    <i class="bi bi-person-circle"></i> Welcome @User.Identity.Name.Replace("-", " ")
+                                    <i class="bi bi-person-circle"></i> Welcome @userName
                                 </a>
                                 <ul class="dropdown-menu">
                                     
@@ -81,6 +88,14 @@
                                     <li><a class="dropdown-item" asp-controller="Account" asp-action="ChangePassword">Change Password</a></li>
                                     <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a></li>
                                 </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark position-relative" href="/Cart/Index">
+                                    <i class="bi bi-cart-fill"></i> Cart
+                                    <span id="cartItemCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        0
+                                    </span>
+                                </a>
                             </li>
                         }
                     </ul>

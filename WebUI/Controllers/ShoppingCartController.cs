@@ -24,6 +24,13 @@ namespace WebUI.Controllers
             _shoppingCartService = shoppingCartService;
             _shoppingCartItemService = shoppingCartItemService;
         }
+        #region list cartitems
+
+        [Authorize(Roles = "Customer")]
+        [HttpGet]
+
+        #endregion
+        #region add cartitems
 
         [Authorize(Roles = "Customer")]
         [HttpPost]
@@ -42,5 +49,7 @@ namespace WebUI.Controllers
             var cartItemCount = await _shoppingCartItemService.GetTotalCartItemsAsync(user.Id);
             return Json(new { success = true, message = "Product added to cart successfully!", cartItemCount });
         }
+        #endregion
+       
     }
 }
