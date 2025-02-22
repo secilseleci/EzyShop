@@ -4,6 +4,7 @@ namespace DataAccess.Repositories.Abstract
 {
     public interface IShoppingCartItemRepository : IBaseRepository<ShoppingCartItem>
     {
+        Task<IEnumerable<ShoppingCartItem>> GetCartItemsAsync(Guid cartId);
         Task<ShoppingCartItem?> GetCartItemAsync(Guid cartId, Guid productId);
         Task<int> RemoveCartItemAsync(Guid cartId, Guid productId);
         Task<int> ClearCartAndCheckDeleteAsync(Guid cartId);

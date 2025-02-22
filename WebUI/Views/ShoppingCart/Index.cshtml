@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ShoppingCartItemViewModel>
+
+@{
+    ViewData["Title"] = "My Cart";
+}
+
+<h2 class="text-center">🛒 My Shopping Cart</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning text-center">Your cart is empty. Start shopping now!</div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Color</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="~/@item.ImageUrl" width="50"></td>
+                    <td>@item.ProductName</td>  @* ✅ Artık `Product.Name` yerine direkt `ProductName` var! *@
+                    <td>@item.Price.ToString("c")</td>
+                    <td>@item.Color</td>
+                    <td>@item.Count</td>
+                    <td>@item.TotalPrice.ToString("c")</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" onclick="removeItem('@item.Id')">Remove</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -7,11 +7,21 @@ namespace DataAccess.Repositories.Concrete
 {
     public class ShoppingCartItemRepository(ApplicationDbContext context) : BaseRepository<ShoppingCartItem>(context), IShoppingCartItemRepository
     {
+        public async Task<IEnumerable<ShoppingCartItem>> GetCartItemsAsync(Guid cartId)
+        {
+            return await _dataContext.ShoppingCartItems
+                .Include(i => i.Product)  
+                .Where(i => i.CartId == cartId)
+                .ToListAsync();
+        }
+
         public async Task<ShoppingCartItem?> GetCartItemAsync(Guid cartId, Guid productId)
         {
             return await _dataContext.ShoppingCartItems
                 .FirstOrDefaultAsync(i => i.CartId == cartId && i.ProductId == productId);
         }
+
+        #region Remove
         public async Task<int> RemoveCartItemAsync(Guid cartId, Guid productId)
         {
             var cartItem = await _dataContext.ShoppingCartItems
@@ -71,6 +81,7 @@ namespace DataAccess.Repositories.Concrete
             _dataContext.ShoppingCartItems.RemoveRange(cartItems);
             return await _dataContext.SaveChangesAsync();
         }
+        #endregion
         public async Task<int> IncreaseItemCountAsync(Guid cartId, Guid productId)
         {
             var cartItem = await _dataContext.ShoppingCartItems

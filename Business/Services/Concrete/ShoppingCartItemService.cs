@@ -1,7 +1,9 @@
-﻿using Business.Services.Abstract;
+﻿using AutoMapper;
+using Business.Services.Abstract;
 using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
 using Models.Entities.Concrete;
+using Models.ViewModels;
 
 
 namespace Business.Services.Concrete
@@ -11,15 +13,18 @@ namespace Business.Services.Concrete
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IShoppingCartItemRepository _shoppingCartItemRepository;
         private readonly IShoppingCartService _shoppingCartService;
+        private readonly IMapper _mapper;
 
         public ShoppingCartItemService(
             IShoppingCartRepository shoppingCartRepository,
             IShoppingCartItemRepository shoppingCartItemRepository,
-            IShoppingCartService shoppingCartService)
+            IShoppingCartService shoppingCartService,
+            IMapper mapper)
         {
             _shoppingCartRepository = shoppingCartRepository;
             _shoppingCartItemRepository = shoppingCartItemRepository;
             _shoppingCartService = shoppingCartService;
+            _mapper = mapper;
         }
 
         #region 📌 Add Item 
@@ -106,20 +111,17 @@ namespace Business.Services.Concrete
         #endregion
 
         #region 🛒 List Items
-        public async Task<IDataResult<IEnumerable<ShoppingCartItem>>> GetAllCartItemsAsync(Guid userId)
+        public async Task<IDataResult<IEnumerable<ShoppingCartItemViewModel>>> GetAllCartItemsAsync(Guid userId)
         {
             var cart = await _shoppingCartRepository.GetCartByUserIdAsync(userId);
-
             if (cart == null)
-            {
-                return new ErrorDataResult<IEnumerable<ShoppingCartItem>>("Sepetinizde ürün bulunmamaktadır.");
-            }
+                return new ErrorDataResult<IEnumerable<ShoppingCartItemViewModel>>("Sepet bulunamadı.");
 
-            var cartItems = await _shoppingCartItemRepository.GetAllAsync(i => i.CartId == cart.Id);
+            var cartItems = await _shoppingCartItemRepository.GetCartItemsAsync(cart.Id);
 
-            return cartItems is not null && cartItems.Any()
-                ? new SuccessDataResult<IEnumerable<ShoppingCartItem>>(cartItems)
-                : new ErrorDataResult<IEnumerable<ShoppingCartItem>>("Sepetinizde ürün bulunmamaktadır.");
+            var cartItemViewModels = _mapper.Map<IEnumerable<ShoppingCartItemViewModel>>(cartItems);
+
+            return new SuccessDataResult<IEnumerable<ShoppingCartItemViewModel>>(cartItemViewModels);
         }
         #endregion
 
@@ -155,14 +157,18 @@ namespace Business.Services.Concrete
         #endregion
 
         #region 🔢 Total CartItems
-        public async Task<IDataResult<int>> GetTotalCartItemsAsync(Guid userId)
+        public async Task<int> GetTotalCartItemsAsync(Guid userId)
         {
             var cart = await _shoppingCartRepository.GetCartByUserIdAsync(userId);
-            if (cart == null) return new ErrorDataResult<int>(0, "Sepetiniz bulunmamaktadır.");
 
-            var totalItems = await _shoppingCartItemRepository.GetTotalCartItemsAsync(cart.Id);
-            return new SuccessDataResult<int>(totalItems);
+            if (cart == null)
+            {
+                return 0;  
+            }
+
+            return await _shoppingCartItemRepository.GetTotalCartItemsAsync(cart.Id);
         }
+
 
         #endregion
     }

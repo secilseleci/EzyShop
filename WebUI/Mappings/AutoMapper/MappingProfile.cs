@@ -40,6 +40,11 @@ namespace WebUI.Mappings.AutoMapper
             CreateMap<ShopViewModel, Shop>().ReverseMap();
 
             #endregion
+
+            #region ShoppingCartItem
+            CreateMap<ShoppingCartItemViewModel, ShoppingCartItem>().ReverseMap();
+
+            #endregion
         }
     }
 }
