@@ -10,7 +10,8 @@ namespace Models.ViewModels
         public string Color { get; set; }
 
         public decimal Price { get; set; }
-        public int Count { get; set; }
+         
+        public int Count { get; set; } = 1; 
         public decimal TotalPrice => Price * Count;   
     }
 }

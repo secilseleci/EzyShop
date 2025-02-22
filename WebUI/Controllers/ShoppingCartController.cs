@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
+using Core.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -50,12 +51,19 @@ namespace WebUI.Controllers
 
         #region add cartitems
         [HttpPost]
-        public async Task<IActionResult> AddToCart(Guid productId, int quantity)
+        public async Task<IActionResult> AddToCart(Guid productId, int count)
         {
+            if (count < 1 || count > 100)
+            {
+                return Json(new { success = false, message = "Adet en az 1, en fazla 100 olabilir." });
+            }
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var user = await GetCurrentUserAsync();
             if (user == null) return Unauthorized();
-
-            var result = await _shoppingCartItemService.AddToCartAsync(user.Id, productId, quantity);
+          
+            var result = await _shoppingCartItemService.AddToCartAsync(user.Id, productId, count);
 
             if (!result.Success)
             {
@@ -65,6 +73,8 @@ namespace WebUI.Controllers
             return Json(new { success = true, message = "Product added to cart successfully!" });
         }
         #endregion
-
+        #region update quantity
+        
+        #endregion
     }
 }

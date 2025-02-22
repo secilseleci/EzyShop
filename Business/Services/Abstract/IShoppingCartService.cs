@@ -7,6 +7,7 @@ namespace Business.Services.Abstract
     public interface IShoppingCartService
     {
         Task<ShoppingCart> GetOrCreateCartAsync(Guid userId);
+        Task<IDataResult<ShoppingCart>> GetCartByUserIdAsync(Guid userId);
 
     }
 }

@@ -1,6 +1,13 @@
 function addToCart(productId) {
-    let count = $("#productCount").val();  
-
+    let count = parseInt($("#productCount").val());
+    if (count < 1) {
+        toastr.error("Adet en az 1 olmalýdýr.");
+        return;
+    }
+    if (count > 100) {
+        toastr.error("Adet 100'den fazla olamaz.");
+        return;
+    }
     $.ajax({
         url: "/ShoppingCart/AddToCart",
         type: "POST",

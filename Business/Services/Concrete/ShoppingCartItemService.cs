@@ -2,6 +2,7 @@
 using Business.Services.Abstract;
 using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
+using DataAccess.Repositories.Concrete;
 using Models.Entities.Concrete;
 using Models.ViewModels;
 
@@ -10,17 +11,20 @@ namespace Business.Services.Concrete
 {
     public class ShoppingCartItemService : IShoppingCartItemService
     {
+        private readonly IProductRepository _productRepository;
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IShoppingCartItemRepository _shoppingCartItemRepository;
         private readonly IShoppingCartService _shoppingCartService;
         private readonly IMapper _mapper;
 
         public ShoppingCartItemService(
+            IProductRepository productRepository,
             IShoppingCartRepository shoppingCartRepository,
             IShoppingCartItemRepository shoppingCartItemRepository,
             IShoppingCartService shoppingCartService,
             IMapper mapper)
         {
+            _productRepository = productRepository;
             _shoppingCartRepository = shoppingCartRepository;
             _shoppingCartItemRepository = shoppingCartItemRepository;
             _shoppingCartService = shoppingCartService;
@@ -30,21 +34,40 @@ namespace Business.Services.Concrete
         #region 📌 Add Item 
         public async Task<IResult> AddToCartAsync(Guid userId, Guid productId, int count)
         {
+            if (count < 1 || count > 100)
+            {
+                return new ErrorResult("Adet en az 1, en fazla 100 olabilir.");
+            }
             var cart = await _shoppingCartService.GetOrCreateCartAsync(userId);
-            var cartItemResult = await GetCartItemAsync(cart.Id, productId);  
+            var cartItemResult = await GetCartItemAsync(cart.Id, productId);
+           
 
             if (cartItemResult.Success)
             {
-                cartItemResult.Data.Count += count;
-                await _shoppingCartItemRepository.UpdateAsync(cartItemResult.Data);
+                var existingItem = cartItemResult.Data;
+                if (existingItem.Count + count > 100)
+                {
+                    return new ErrorResult("Sepette bir üründen en fazla 100 adet olabilir.");
+                }
+
+                existingItem.Count += count;
+                await _shoppingCartItemRepository.UpdateAsync(existingItem);
             }
             else
             {
+                if (count > 100)
+                {
+                    return new ErrorResult("Sepette bir üründen en fazla 100 adet olabilir.");
+                }
+                var product = await _productRepository.GetByIdAsync(productId);
+                if (product == null)
+                    return new ErrorResult("Ürün bulunamadı.");
                 var newItem = new ShoppingCartItem
                 {
                     CartId = cart.Id,
                     ProductId = productId,
-                    Count = count
+                    Count = count,
+                    Price = product.Price
                 };
                 await _shoppingCartItemRepository.CreateAsync(newItem);
             }

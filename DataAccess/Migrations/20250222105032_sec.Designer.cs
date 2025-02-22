@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250217135728_First")]
-    partial class First
+    [Migration("20250222105032_sec")]
+    partial class sec
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -319,7 +319,7 @@ namespace DataAccess.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("PriceAtPurchase")
+                    b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("ProductId")

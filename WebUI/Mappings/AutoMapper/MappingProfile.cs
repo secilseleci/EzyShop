@@ -42,8 +42,11 @@ namespace WebUI.Mappings.AutoMapper
             #endregion
 
             #region ShoppingCartItem
-            CreateMap<ShoppingCartItemViewModel, ShoppingCartItem>().ReverseMap();
-
+            CreateMap<ShoppingCartItem, ShoppingCartItemViewModel>()
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
+                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Product.ImageUrl))
+                .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Product.Color))
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Product.Price)) ;
             #endregion
         }
     }

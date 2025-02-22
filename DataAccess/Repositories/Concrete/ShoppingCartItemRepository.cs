@@ -7,6 +7,7 @@ namespace DataAccess.Repositories.Concrete
 {
     public class ShoppingCartItemRepository(ApplicationDbContext context) : BaseRepository<ShoppingCartItem>(context), IShoppingCartItemRepository
     {
+        #region Read
         public async Task<IEnumerable<ShoppingCartItem>> GetCartItemsAsync(Guid cartId)
         {
             return await _dataContext.ShoppingCartItems
@@ -14,12 +15,13 @@ namespace DataAccess.Repositories.Concrete
                 .Where(i => i.CartId == cartId)
                 .ToListAsync();
         }
-
         public async Task<ShoppingCartItem?> GetCartItemAsync(Guid cartId, Guid productId)
         {
             return await _dataContext.ShoppingCartItems
+                .Include(i => i.Product)  
                 .FirstOrDefaultAsync(i => i.CartId == cartId && i.ProductId == productId);
         }
+        #endregion
 
         #region Remove
         public async Task<int> RemoveCartItemAsync(Guid cartId, Guid productId)
@@ -54,19 +56,6 @@ namespace DataAccess.Repositories.Concrete
 
             return await _dataContext.SaveChangesAsync();
         }
-        public async Task<int> RemoveItemFromCartAsync(Guid cartId, Guid productId)
-        {
-            var cartItem = await _dataContext.ShoppingCartItems
-                                .FirstOrDefaultAsync(i => i.CartId == cartId && i.ProductId == productId);
-
-            if (cartItem == null)
-            {
-                return 0; 
-            }
-
-            _dataContext.ShoppingCartItems.Remove(cartItem);
-            return await _dataContext.SaveChangesAsync();
-        }
         public async Task<int> RemoveMultipleItemsFromCartAsync(Guid cartId, IEnumerable<Guid> productIds)
         {
             var cartItems = await _dataContext.ShoppingCartItems
@@ -82,38 +71,52 @@ namespace DataAccess.Repositories.Concrete
             return await _dataContext.SaveChangesAsync();
         }
         #endregion
+
+        #region Update Count
         public async Task<int> IncreaseItemCountAsync(Guid cartId, Guid productId)
         {
             var cartItem = await _dataContext.ShoppingCartItems
-                                .FirstOrDefaultAsync(i => i.CartId == cartId && i.ProductId == productId);
+                          .FirstOrDefaultAsync(i => i.CartId == cartId && i.ProductId == productId);
 
-            if (cartItem == null || cartItem.Count >= 100)
+            if (cartItem == null)
             {
-                return 0; 
+                return 0;  
             }
 
-            cartItem.Count += 1;
+            if (cartItem.Count >= 100)
+            {
+                return 0;   
+            }
+
+            cartItem.Count++;
             return await _dataContext.SaveChangesAsync();
         }
-
         public async Task<int> DecreaseItemCountAsync(Guid cartId, Guid productId)
         {
             var cartItem = await _dataContext.ShoppingCartItems
-                                .FirstOrDefaultAsync(i => i.CartId == cartId && i.ProductId == productId);
+                         .FirstOrDefaultAsync(i => i.CartId == cartId && i.ProductId == productId);
 
-            if (cartItem == null || cartItem.Count <= 1)
+            if (cartItem == null)
             {
-                return 0; 
+                return 0;  
             }
 
-            cartItem.Count -= 1;
+            if (cartItem.Count <= 1)
+            {
+                return 0;  
+            }
+
+            cartItem.Count--;
             return await _dataContext.SaveChangesAsync();
         }
+        #endregion
+
         public async Task<int> GetTotalCartItemsAsync(Guid cartId)
         {
             return await _dataContext.ShoppingCartItems
-                .Where(i => i.CartId == cartId)
-                .SumAsync(i => i.Count);
+         .Where(i => i.CartId == cartId)
+         .Select(i => (int?)i.Count)  
+         .SumAsync() ?? 0;  
         }
 
 
