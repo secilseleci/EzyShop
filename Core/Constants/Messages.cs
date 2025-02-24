@@ -92,17 +92,36 @@
 
         #region ShoppingCart Messages 
         public const string ShoppingCartNotFound = "ShoppingCart not found";
-        public const string EmptyShoppingCartList = "ShoppingCart list is empty with the current filter";
-
+        public const string ShoppingCartEmpty = "ShoppingCart is empty";
+        public const string ShoppingCartIsAlreadyEmpty= "ShoppingCart is already empty";
         public const string CreateShoppingCartSuccess = "ShoppingCart created successfully";
         public const string CreateShoppingCartError = "Error occurred while registering the ShoppingCart to Database";
-
-        public const string UpdateShoppingCartSuccess = "ShoppingCart successfully updated";
-        public const string UpdateShoppingCartError = "Error occurred while updating the ShoppingCart in Database";
-
+ 
         public const string DeleteShoppingCartSuccess = "ShoppingCart successfully deleted";
         public const string DeleteShoppingCartError = "Error occurred while deleting the ShoppingCart from Database";
+        public const string ClearCartSuccess = "Your cart has been cleared successfully";
+        public const string ClearCartError = "An error occurred while emptying the cart";
 
-         #endregion
+
+        #endregion
+
+        #region ShoppingCartItem Messages 
+        public const string ShoppingCartItemNotFound = "ShoppingCartItem not found";
+
+        public const string AddShoppingCartItemSuccess = "ShoppingCartItem has been successfully added to the cart";
+        public const string CreateShoppingCartItemError = "Error occurred while registering the ShoppingCartItem to Database";
+
+        public const string DeleteShoppingCartItemSuccess = "ShoppingCart has been successfully deleted";
+        public const string DeleteShoppingCartItemError = "Error occurred while deleting the ShoppingCartItem from Database";
+
+        public const string RemoveMultipleItemsFromCartSuccess = "The selected items have been successfully removed from your cart.";
+        public const string RemoveMultipleItemsFromCartError = "Removing products failed";
+        public const string CartİtemCountError = "The number can be minimum 1 and maximum 100.";
+        public const string ProductIsNotInYourCart = "This product is not in your cart";
+
+        public const string ChangeCountSuccess = "Quantity has been changed";
+        public const string ChangeCountError = "An error occurred while changing the product quantity";
+
+        #endregion
     }
 }

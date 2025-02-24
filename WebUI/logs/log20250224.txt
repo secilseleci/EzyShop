@@ -1,0 +1,91 @@
+2025-02-24 09:29:33.065 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 09:29:33.593 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 09:29:33.638 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-24 09:29:33.638 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-24 09:29:34.995 +03:00 [INF] Executed DbCommand (101ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 09:29:35.050 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='SELLER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 09:29:35.052 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='CUSTOMER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 09:29:35.065 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='ADMIN@EZYSHOP.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 09:29:35.112 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='SECIL.SELECI@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 09:29:35.114 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='SECILSELLER@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 09:29:35.115 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='DERYA.KARAMAN.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 09:29:35.117 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='NUR.BIRAL.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 09:29:35.131 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 09:29:35.137 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SellerApplications] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 09:29:35.146 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Address], [s].[ApplicationDate], [s].[ContactNumber], [s].[Email], [s].[Name], [s].[Status], [s].[StoreName], [s].[TaxNumber]
+FROM [SellerApplications] AS [s]
+WHERE [s].[Status] = 1
+2025-02-24 09:29:35.164 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__application_Email_0='secil.seleci@gmail.com' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__application_Email_0
+2025-02-24 09:29:35.166 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__application_Email_0='secilseller@gmail.com' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__application_Email_0
+2025-02-24 09:29:35.203 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[ContactNumber], [a].[Email], [a].[EmailConfirmed], [a].[IsActive], [a].[IsSeller], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[StoreName], [a].[TaxNumber], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[IsSeller] = CAST(1 AS bit) AND [a].[IsActive] = CAST(1 AS bit)
+2025-02-24 09:29:35.214 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__seller_Id_0='22222222-2222-2222-2222-222222222222'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller_Id_0
+2025-02-24 09:29:35.223 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__seller_Id_0='33333333-3333-3333-3333-333333333333'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller_Id_0
+2025-02-24 09:29:35.228 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[Name] = N'FirstShop'
+2025-02-24 09:29:35.231 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[ContactNumber], [s].[IsActive], [s].[Name], [s].[SellerId], [s].[Status], [s].[TaxNumber]
+FROM [Shops] AS [s]
+WHERE [s].[Name] = N'SecondShop'
+2025-02-24 09:29:35.240 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Name]
+FROM [Products] AS [p]
+2025-02-24 09:29:36.461 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 09:29:36.521 +03:00 [INF] Hosting environment: Development
+2025-02-24 09:29:36.521 +03:00 [INF] Content root path: C:\Users\ASUS\source\repos\EzyShop\EzyShop\WebUI
+2025-02-24 09:29:36.571 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44352/ - null null
+2025-02-24 09:29:36.898 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-02-24 09:29:36.907 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.HomeController (WebUI).
