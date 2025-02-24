@@ -58,7 +58,7 @@ namespace Business.Services.Concrete
             {
                 if (count > 100)
                 {
-                    return new ErrorResult(Messages.CartİtemCountError);
+                    return new ErrorResult(Messages.CartItemCountError);
                 }
                 var product = await _productRepository.GetByIdAsync(productId);
                 if (product == null)

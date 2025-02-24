@@ -38,7 +38,7 @@ namespace WebUI.Controllers
 
             var result = await _shoppingCartItemService.GetAllCartItemsAsync(user.Id);
 
-            if (!result.Success || result.Data == null || !result.Data.Any())
+            if (!result.Success || !result.Data.Any())
             {
                 TempData["WarningMessage"] = Messages.ShoppingCartEmpty;
                 return View(new List<ShoppingCartItemViewModel>());  
@@ -57,8 +57,7 @@ namespace WebUI.Controllers
             {
                 return Json(new { success = false, message = Messages.CartItemCountError });
             }
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+           
 
             var user = await GetCurrentUserAsync();
             if (user == null) return Unauthorized();
@@ -73,8 +72,19 @@ namespace WebUI.Controllers
             return Json(new { success = true, message = Messages.AddShoppingCartItemSuccess });
         }
         #endregion
-        #region update quantity
-        
+
+        #region show total count
+        [HttpGet]
+        public async Task<IActionResult> GetCartItemCount()
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return Json(new { success = false, count = 0 });
+            }
+            int totalItems = await _shoppingCartItemService.GetTotalCartItemsAsync(user.Id);
+            return Json(new { success = true, count = totalItems });
+        }
         #endregion
     }
 }

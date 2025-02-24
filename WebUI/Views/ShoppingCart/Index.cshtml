@@ -60,27 +60,5 @@
 </div>
 
 @section Scripts {
-    <script>
-        function updateQuantity(itemId, action) {
-            $.ajax({
-                url: `/ShoppingCart/UpdateQuantity`,
-                type: "POST",
-                data: { itemId: itemId, action: action },
-                success: function () {
-                    location.reload();
-                }
-            });
-        }
-
-        function removeItem(itemId) {
-            $.ajax({
-                url: `/ShoppingCart/RemoveItem`,
-                type: "POST",
-                data: { itemId: itemId },
-                success: function () {
-                    location.reload();
-                }
-            });
-        }
-    </script>
+    <script src="~/js/cart.js" asp-append-version="true"></script>
 }
