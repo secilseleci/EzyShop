@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
 using Core.Constants;
+using Core.Utilities.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -48,7 +49,6 @@ namespace WebUI.Controllers
         }
         #endregion
 
-
         #region add cartitems
         [HttpPost]
         public async Task<IActionResult> AddToCart(Guid productId, int count)
@@ -77,6 +77,84 @@ namespace WebUI.Controllers
         }
         #endregion
 
+        #region remove cartitem
+        public async Task<IActionResult> RemoveItem(Guid itemId)
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return Json(new { success = false, redirect = "/Account/Login" });
+            }
+
+            var cartItemResult = await _shoppingCartItemService.GetCartItemByIdAsync(itemId);
+            if (!cartItemResult.Success || cartItemResult.Data == null)
+            {
+                return Json(new { success = false, message = Messages.ProductIsNotInYourCart });
+            }
+
+            var cartItem = cartItemResult.Data;
+            var result = await _shoppingCartItemService.RemoveItemFromCartAsync(user.Id,cartItem.ProductId);
+            return Json(new { success = result.Success, message = result.Message });
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ClearCart()
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return Json(new { success = false, redirect = "/Account/Login" });
+            }
+
+            var clearResult = await _shoppingCartItemService.ClearCartAsync(user.Id);
+            return Json(new { success = clearResult.Success, message = clearResult.Message });
+        }
+
+
+        #endregion
+
+        #region update quantity
+        [HttpPost]
+        public async Task<IActionResult> UpdateQuantity(Guid itemId, string action)
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return Json(new { success = false, redirect = "/Account/Login" });
+            }
+
+            if (string.IsNullOrEmpty(action))
+            {
+                return Json(new { success = false, message = "Invalid transaction" });
+            }
+
+            var cartItemResult = await _shoppingCartItemService.GetCartItemByIdAsync(itemId);
+            if (!cartItemResult.Success || cartItemResult.Data == null)
+            {
+                return Json(new { success = false, message = Messages.ProductIsNotInYourCart });
+            }
+
+            var cartItem = cartItemResult.Data;
+
+            Core.Utilities.Results.IResult result;
+            if (action.ToLower() == "increase")
+            {
+                result = await _shoppingCartItemService.IncreaseItemCountAsync(user.Id, cartItem.ProductId);
+            }
+            else if (action.ToLower() == "decrease")
+            {
+                result = await _shoppingCartItemService.DecreaseItemCountAsync(user.Id, cartItem.ProductId);
+            }
+            else
+            {
+                return Json(new { success = false, message = "Invalid transaction" });
+            }
+
+            return Json(new { success = result.Success, message = result.Message });
+        }
+        #endregion
+        
         #region show total count
         [HttpGet]
         public async Task<IActionResult> GetCartItemCount()
@@ -91,45 +169,6 @@ namespace WebUI.Controllers
         }
         #endregion
 
-        [HttpPost]
-        public async Task<IActionResult> UpdateQuantity(Guid itemId, string action)
-        {
-            var user = await GetCurrentUserAsync();
-            if (user == null)
-            {
-                return Json(new { success = false, redirect = "/Account/Login" });
-            }
-             
-            if (string.IsNullOrEmpty(action))
-            {
-                return Json(new { success = false, message = "Geçersiz işlem." });
-            }
-
-            var cartItemResult = await _shoppingCartItemService.GetCartItemByIdAsync(itemId);
-            if (!cartItemResult.Success || cartItemResult.Data == null)
-            {
-                return Json(new { success = false, message = Messages.ProductIsNotInYourCart });
-            }
-
-            var cartItem = cartItemResult.Data; 
-
-            Core.Utilities.Results.IResult result;
-            if (action.ToLower() == "increase")
-            {
-                result = await _shoppingCartItemService.IncreaseItemCountAsync(user.Id, cartItem.ProductId);
-            }
-            else if (action.ToLower() == "decrease")
-            {
-                result = await _shoppingCartItemService.DecreaseItemCountAsync(user.Id, cartItem.ProductId);
-            }
-            else
-            {
-                return Json(new { success = false, message = "Geçersiz işlem türü." });
-            }
-
-            return Json(new { success = result.Success, message = result.Message });
-        }
-
-
+       
     }
 }

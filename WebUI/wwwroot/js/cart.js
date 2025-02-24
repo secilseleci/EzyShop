@@ -60,15 +60,22 @@ function updateQuantity(itemId, action) {
     });
 }
 
-
 function removeItem(itemId) {
     $.ajax({
         url: "/ShoppingCart/RemoveItem",
         type: "POST",
         data: { itemId: itemId },
-        success: function () {
-            location.reload();
-            updateCartCount(); // 🟢 Sepet sayısını güncelle
+        success: function (response) {
+            if (response.redirect) {
+                window.location.href = response.redirect;  
+                return;
+            }
+            if (response.success) {
+                location.reload();
+                updateCartCount();   
+            } else {
+                toastr.error(response.message);
+            }
         },
         error: function () {
             toastr.error("Error removing item.");
@@ -76,7 +83,31 @@ function removeItem(itemId) {
     });
 }
 
-// Sayfa yüklendiğinde sepet sayısını güncelle
+function clearCart() {
+    $.ajax({
+        url: "/ShoppingCart/ClearCart",
+        type: "POST",
+        success: function (response) {
+            if (response.redirect) {
+                window.location.href = response.redirect; 
+                return;
+            }
+            if (response.success) {
+                toastr.success(response.message);
+                setTimeout(function () {
+                    location.reload();  
+                }, 500);
+                updateCartCount();  
+            } else {
+                toastr.error(response.message);
+            }
+        },
+        error: function () {
+            toastr.error("Error clearing cart.");
+        }
+    });
+}
+
 $(document).ready(function () {
     updateCartCount();
 });

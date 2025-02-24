@@ -101,8 +101,7 @@
         public const string DeleteShoppingCartError = "Error occurred while deleting the ShoppingCart from Database";
         public const string ClearCartSuccess = "Your cart has been cleared successfully";
         public const string ClearCartError = "An error occurred while emptying the cart";
-
-
+ 
         #endregion
 
         #region ShoppingCartItem Messages 

@@ -132,16 +132,27 @@ namespace Business.Services.Concrete
             {
                 return new ErrorResult(Messages.ShoppingCartNotFound);
             }
+            
             var cartItem = await _shoppingCartItemRepository.GetCartItemAsync(cart.Id, productId);
             if (cartItem == null)
             {
                 return new ErrorResult(Messages.ProductIsNotInYourCart);
             }
+            
             var deleteResult = await _shoppingCartItemRepository.RemoveCartItemAsync(cart.Id, productId);
+            if (deleteResult == 0)
+            {
+                return new ErrorResult(Messages.DeleteShoppingCartItemError);
+            }
+            
+            var remainingItems = await _shoppingCartItemRepository.GetTotalCartItemsAsync(cart.Id);
+            if (remainingItems == 0)
+            {
+                await _shoppingCartRepository.DeleteAsync(cart.Id);
+                return new SuccessResult(Messages.DeleteShoppingCartSuccess);
+            }
 
-            return deleteResult > 0
-                ? new SuccessResult(Messages.DeleteShoppingCartItemSuccess)
-                : new ErrorResult(Messages.DeleteShoppingCartItemError);
+            return new SuccessResult(Messages.DeleteShoppingCartItemSuccess);
         }
         public async Task<IResult> RemoveMultipleItemsFromCartAsync(Guid userId, IEnumerable<Guid> productIds)
         {
@@ -152,10 +163,18 @@ namespace Business.Services.Concrete
             }
 
             var deleteResult = await _shoppingCartItemRepository.RemoveMultipleItemsFromCartAsync(cart.Id, productIds);
+            if (deleteResult == 0)
+            {
+                return new ErrorResult(Messages.RemoveMultipleItemsFromCartError);
+            }
+            var remainingItems = await _shoppingCartItemRepository.GetTotalCartItemsAsync(cart.Id);
+            if (remainingItems == 0)
+            {
+                await _shoppingCartRepository.DeleteAsync(cart.Id);
+                return new SuccessResult(Messages.DeleteShoppingCartSuccess);
+            }
 
-            return deleteResult > 0
-                ? new SuccessResult(Messages.RemoveMultipleItemsFromCartSuccess)
-                : new ErrorResult(Messages.RemoveMultipleItemsFromCartError);
+            return new SuccessResult(Messages.RemoveMultipleItemsFromCartSuccess);
         }
 
         #endregion
