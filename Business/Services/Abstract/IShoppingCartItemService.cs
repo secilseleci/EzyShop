@@ -7,7 +7,8 @@ namespace Business.Services.Abstract
     public interface IShoppingCartItemService
     {
         Task<IResult> AddToCartAsync(Guid userId, Guid productId, int count);
-        Task<IDataResult<ShoppingCartItem?>> GetCartItemAsync(Guid cartId, Guid productId);
+        Task<IDataResult<ShoppingCartItem?>> GetCartItemByProductIdAsync(Guid cartId, Guid productId);
+        Task<IDataResult<ShoppingCartItem?>> GetCartItemByIdAsync(Guid itemId);
         Task<IDataResult<IEnumerable<ShoppingCartItemViewModel>>> GetAllCartItemsAsync(Guid userId);
         
        

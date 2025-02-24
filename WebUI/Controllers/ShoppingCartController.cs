@@ -60,8 +60,12 @@ namespace WebUI.Controllers
            
 
             var user = await GetCurrentUserAsync();
-            if (user == null) return Unauthorized();
-          
+            if (user == null)
+            {
+                return Json(new { success = false, redirect = "/Account/Login" });
+            }
+
+
             var result = await _shoppingCartItemService.AddToCartAsync(user.Id, productId, count);
 
             if (!result.Success)
@@ -86,5 +90,46 @@ namespace WebUI.Controllers
             return Json(new { success = true, count = totalItems });
         }
         #endregion
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateQuantity(Guid itemId, string action)
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return Json(new { success = false, redirect = "/Account/Login" });
+            }
+             
+            if (string.IsNullOrEmpty(action))
+            {
+                return Json(new { success = false, message = "Geçersiz işlem." });
+            }
+
+            var cartItemResult = await _shoppingCartItemService.GetCartItemByIdAsync(itemId);
+            if (!cartItemResult.Success || cartItemResult.Data == null)
+            {
+                return Json(new { success = false, message = Messages.ProductIsNotInYourCart });
+            }
+
+            var cartItem = cartItemResult.Data; 
+
+            Core.Utilities.Results.IResult result;
+            if (action.ToLower() == "increase")
+            {
+                result = await _shoppingCartItemService.IncreaseItemCountAsync(user.Id, cartItem.ProductId);
+            }
+            else if (action.ToLower() == "decrease")
+            {
+                result = await _shoppingCartItemService.DecreaseItemCountAsync(user.Id, cartItem.ProductId);
+            }
+            else
+            {
+                return Json(new { success = false, message = "Geçersiz işlem türü." });
+            }
+
+            return Json(new { success = result.Success, message = result.Message });
+        }
+
+
     }
 }

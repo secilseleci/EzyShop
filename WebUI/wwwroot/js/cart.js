@@ -42,15 +42,24 @@ function updateQuantity(itemId, action) {
         url: "/ShoppingCart/UpdateQuantity",
         type: "POST",
         data: { itemId: itemId, action: action },
-        success: function () {
-            location.reload();
-            updateCartCount(); // 🟢 Sepet sayısını güncelle
+        success: function (response) {
+            if (response.redirect) {
+                window.location.href = response.redirect;  
+                return;
+            }
+            if (response.success) {
+                location.reload();
+                updateCartCount();
+            } else {
+                toastr.error(response.message);
+            }
         },
         error: function () {
             toastr.error("Error updating quantity.");
         }
     });
 }
+
 
 function removeItem(itemId) {
     $.ajax({

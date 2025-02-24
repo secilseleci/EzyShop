@@ -40,7 +40,7 @@ namespace Business.Services.Concrete
                 return new ErrorResult(Messages.CartItemCountError);
             }
             var cart = await _shoppingCartService.GetOrCreateCartAsync(userId);
-            var cartItemResult = await GetCartItemAsync(cart.Id, productId);
+            var cartItemResult = await GetCartItemByProductIdAsync(cart.Id, productId);
            
 
             if (cartItemResult.Success)
@@ -78,14 +78,20 @@ namespace Business.Services.Concrete
         #endregion 
 
         #region Get/List Item
-        public async Task<IDataResult<ShoppingCartItem?>> GetCartItemAsync(Guid cartId, Guid productId)
+        public async Task<IDataResult<ShoppingCartItem?>> GetCartItemByProductIdAsync(Guid cartId, Guid productId)
         {
             var cartItem = await _shoppingCartItemRepository.GetCartItemAsync(cartId, productId);
             return cartItem is not null
                 ? new SuccessDataResult<ShoppingCartItem?>(cartItem)
                 : new ErrorDataResult<ShoppingCartItem?>(Messages.ShoppingCartItemNotFound);
         }
-
+        public async Task<IDataResult<ShoppingCartItem?>> GetCartItemByIdAsync(Guid itemId)
+        {
+            var cartItem = await _shoppingCartItemRepository.GetByIdAsync(itemId);
+            return cartItem is not null
+                ? new SuccessDataResult<ShoppingCartItem?>(cartItem)
+                : new ErrorDataResult<ShoppingCartItem?>(Messages.ShoppingCartItemNotFound);
+        }
         public async Task<IDataResult<IEnumerable<ShoppingCartItemViewModel>>> GetAllCartItemsAsync(Guid userId)
         {
             var cart = await _shoppingCartRepository.GetCartByUserIdAsync(userId);
