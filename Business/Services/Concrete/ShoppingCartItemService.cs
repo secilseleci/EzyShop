@@ -37,7 +37,7 @@ namespace Business.Services.Concrete
         {
             if (count < 1 || count > 100)
             {
-                return new ErrorResult(Messages.CartİtemCountError);
+                return new ErrorResult(Messages.CartItemCountError);
             }
             var cart = await _shoppingCartService.GetOrCreateCartAsync(userId);
             var cartItemResult = await GetCartItemAsync(cart.Id, productId);
@@ -48,7 +48,7 @@ namespace Business.Services.Concrete
                 var existingItem = cartItemResult.Data;
                 if (existingItem.Count + count > 100)
                 {
-                    return new ErrorResult(Messages.CartİtemCountError);
+                    return new ErrorResult(Messages.CartItemCountError);
                 }
 
                 existingItem.Count += count;
@@ -131,7 +131,7 @@ namespace Business.Services.Concrete
             {
                 return new ErrorResult(Messages.ProductIsNotInYourCart);
             }
-            var deleteResult = await _shoppingCartItemRepository.RemoveItemFromCartAsync(cart.Id, productId);
+            var deleteResult = await _shoppingCartItemRepository.RemoveCartItemAsync(cart.Id, productId);
 
             return deleteResult > 0
                 ? new SuccessResult(Messages.DeleteShoppingCartItemSuccess)
@@ -164,7 +164,7 @@ namespace Business.Services.Concrete
             if (cartItem == null) return new ErrorResult(Messages.ProductIsNotInYourCart);
             if (cartItem.Count >= 100)
             {
-                return new ErrorResult(Messages.CartİtemCountError);
+                return new ErrorResult(Messages.CartItemCountError);
             }
             var updateResult = await _shoppingCartItemRepository.IncreaseItemCountAsync(cart.Id, productId);
             return updateResult > 0
@@ -181,7 +181,7 @@ namespace Business.Services.Concrete
             if (cartItem == null) return new ErrorResult(Messages.ProductIsNotInYourCart);
             if (cartItem.Count <= 1)
             {
-                return new ErrorResult(Messages.CartİtemCountError);
+                return new ErrorResult(Messages.CartItemCountError);
             }
             var updateResult = await _shoppingCartItemRepository.DecreaseItemCountAsync(cart.Id, productId);
             return updateResult > 0

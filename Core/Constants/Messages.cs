@@ -109,6 +109,7 @@
         public const string ShoppingCartItemNotFound = "ShoppingCartItem not found";
 
         public const string AddShoppingCartItemSuccess = "ShoppingCartItem has been successfully added to the cart";
+        public const string AddShoppingCartItemError = "Error occurred while while registering the ShoppingCartItem to  Database";
         public const string CreateShoppingCartItemError = "Error occurred while registering the ShoppingCartItem to Database";
 
         public const string DeleteShoppingCartItemSuccess = "ShoppingCart has been successfully deleted";
@@ -116,7 +117,7 @@
 
         public const string RemoveMultipleItemsFromCartSuccess = "The selected items have been successfully removed from your cart.";
         public const string RemoveMultipleItemsFromCartError = "Removing products failed";
-        public const string CartİtemCountError = "The number can be minimum 1 and maximum 100.";
+        public const string CartItemCountError = "The number can be minimum 1 and maximum 100.";
         public const string ProductIsNotInYourCart = "This product is not in your cart";
 
         public const string ChangeCountSuccess = "Quantity has been changed";

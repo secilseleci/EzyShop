@@ -40,8 +40,8 @@ namespace WebUI.Controllers
 
             if (!result.Success || result.Data == null || !result.Data.Any())
             {
-                TempData["WarningMessage"] = "Sepetinizde ürün bulunmamaktadır.";
-                return View(new List<ShoppingCartItemViewModel>()); // Boş liste döndürüyoruz
+                TempData["WarningMessage"] = Messages.ShoppingCartEmpty;
+                return View(new List<ShoppingCartItemViewModel>());  
             }
 
             return View(result.Data);
@@ -55,7 +55,7 @@ namespace WebUI.Controllers
         {
             if (count < 1 || count > 100)
             {
-                return Json(new { success = false, message = "Adet en az 1, en fazla 100 olabilir." });
+                return Json(new { success = false, message = Messages.CartItemCountError });
             }
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -70,7 +70,7 @@ namespace WebUI.Controllers
                 return Json(new { success = false, message = result.Message });
             }
 
-            return Json(new { success = true, message = "Product added to cart successfully!" });
+            return Json(new { success = true, message = Messages.AddShoppingCartItemSuccess });
         }
         #endregion
         #region update quantity

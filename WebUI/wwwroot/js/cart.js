@@ -1,11 +1,11 @@
 function addToCart(productId) {
     let count = parseInt($("#productCount").val());
     if (count < 1) {
-        toastr.error("Adet en az 1 olmalýdýr.");
+        toastr.error(Messages.CartItemCountError);
         return;
     }
     if (count > 100) {
-        toastr.error("Adet 100'den fazla olamaz.");
+        toastr.error(Messages.CartItemCountError);
         return;
     }
     $.ajax({
@@ -21,7 +21,7 @@ function addToCart(productId) {
             }
         },
         error: function () {
-            toastr.error("An error occurred while adding the product to the cart.");
+            toastr.error(Messages.AddShoppingCartItemError);
         }
     });
 }
