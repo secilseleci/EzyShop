@@ -38,8 +38,13 @@ namespace WebUI.Controllers
                 {
                     return View(model);
                 }
-
-                var result = await _sellerApplicationService.CreateSellerApplicationAsync(model);
+            var existingUser = await UserManager.FindByEmailAsync(model.Email);
+            if (existingUser != null)
+            {
+                ModelState.AddModelError("Email", "This email is already registered in the system. Please use another email address for your seller application.");
+                return View(model);
+            }
+            var result = await _sellerApplicationService.CreateSellerApplicationAsync(model);
                 TempData[result.Success ? "SuccessMessage" : "ErrorMessage"] = result.Message;
           
 
@@ -47,8 +52,19 @@ namespace WebUI.Controllers
         }
 
         #endregion
+        [HttpGet]
+        public async Task<IActionResult> CheckEmailAvailability(string email)
+        {
+            var existingUser = await UserManager.FindByEmailAsync(email);
+            if (existingUser != null)
+            {
+                return Json(new { available = false, message = "This email is already registered. Please use another email for your seller application." });
+            }
 
-      
- 
+            return Json(new { available = true });
+        }
+
+
+
     }
 }

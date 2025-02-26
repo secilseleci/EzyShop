@@ -177,12 +177,18 @@ namespace Business.Services.Concrete
 
         public async Task<IResult> CreateSellerApplicationAsync(BecomeSellerViewModel model)
         {
-          
-            var existingApplication = await _sellerApplicationRepository.GetAllAsync(a => a.Email == model.Email && a.Status == ApplicationStatus.Pending);
+             var existingUser = await _userManager.FindByEmailAsync(model.Email);
+            if (existingUser != null)
+            {
+                return new ErrorResult("This email is already registered in the system. Please use another email address for your seller application.");
+            }
+
+             var existingApplication = await _sellerApplicationRepository.GetAllAsync(a => a.Email == model.Email && a.Status == ApplicationStatus.Pending);
             if (existingApplication != null && existingApplication.Any())
             {
                 return new ErrorResult(Messages.ExistingSellerApplicationError);
             }
+
             var sellerApplication = _mapper.Map<SellerApplication>(model);
             sellerApplication.Status = ApplicationStatus.Pending;
 
@@ -192,6 +198,7 @@ namespace Business.Services.Concrete
                ? new SuccessResult(Messages.CreateSellerApplicationSuccess)
                : new ErrorResult(Messages.CreateSellerApplicationError);
         }
+
         #endregion
 
 

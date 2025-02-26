@@ -34,8 +34,10 @@
                         <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Shop">Shop</a></li>
                         <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Contact">Contact</a></li>
                         <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="About">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Application" asp-action="BecomeSeller">Sell on EzyShop</a></li>
-
+                        @if (User.Identity.IsAuthenticated && !User.IsInRole("Customer"))
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Application" asp-action="BecomeSeller">Sell on EzyShop</a></li>
+                        }
                         <!-- Login/Register -->
                         @if (!User.Identity.IsAuthenticated)
                         {
@@ -89,14 +91,18 @@
                                     <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
+
+                            @if (User.IsInRole("Customer"))
+                            {
+                                <li class="nav-item">
                                 <a class="nav-link text-dark position-relative" href="/ShoppingCart/Index">
                                     <i class="bi bi-cart-fill"></i> Cart
                                     <span id="cartItemCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         0
                                     </span>
                                 </a>
-                            </li>
+                                </li>
+ }
                         }
                     </ul>
                 </div>
