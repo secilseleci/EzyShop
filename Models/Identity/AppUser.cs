@@ -13,8 +13,8 @@ namespace Models.Identity
         public bool IsActive { get; set; }
         public string? StoreName { get; set; }  
         public string? TaxNumber { get; set; }  
-        public string? ContactNumber { get; set; }  
-        public string? Address { get; set; }  
+        public string ContactNumber { get; set; }  
+        public string Address { get; set; }  
         public ICollection<Shop>? Shops { get; set; }
 
     }

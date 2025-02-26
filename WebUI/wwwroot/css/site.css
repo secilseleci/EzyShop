@@ -94,8 +94,8 @@ footer ul li {
 }
 
 .card {
-    min-height: 450px !important;
-    display: flex !important;
+/*    min-height: 450px !important;
+*/    display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
 }
