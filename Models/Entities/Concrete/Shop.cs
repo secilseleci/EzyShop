@@ -45,5 +45,8 @@ namespace Models.Entities.Concrete
         public string Status { get; set; }
      
         public ICollection<Product> Products { get; set; }
+        public SellerApplication? SellerApplication { get; set; }
+
+
     }
 }

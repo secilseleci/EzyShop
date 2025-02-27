@@ -98,8 +98,8 @@ namespace DataAccess.Seeders.IdentitySeeders
                     IsActive = isActive,
                     StoreName = storeName,
                     TaxNumber = taxNumber,
-                    ContactNumber = contactNumber,  // 🟢 Null değil artık!
-                    Address = address  // 🟢 Null değil artık!
+                    ContactNumber = contactNumber,   
+                    Address = address   
                 };
 
                 if (!string.IsNullOrEmpty(password))

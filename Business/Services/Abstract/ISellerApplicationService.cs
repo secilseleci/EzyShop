@@ -13,8 +13,7 @@ namespace Business.Services.Abstract
 
 
         #region Crud
-        Task<IResult> CreateSellerApplicationAsync(BecomeSellerViewModel model);
-        Task<IResult> DeleteSellerApplicationAsync(Guid id);
+        Task<IResult> CreateSellerApplicationAsync(SellerRegistrationViewModel model);
         Task<IDataResult<SellerApplication>> GetSellerApplicationByIdAsync(Guid id);
         Task<IDataResult<IEnumerable<SellerApplication>>> GetAllSellerApplicationsAsync(Expression<Func<SellerApplication, bool>> predicate);
 

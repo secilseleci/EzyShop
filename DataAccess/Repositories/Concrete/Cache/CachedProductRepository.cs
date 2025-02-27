@@ -1,5 +1,6 @@
 ﻿using DataAccess.Repositories.Abstract;
 using DataAccess.Repositories.Concrete;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Caching.Memory;
 using Models.Entities.Concrete;
 using System.Linq.Expressions;
@@ -19,7 +20,10 @@ public class CachedProductRepository : IProductRepository
         _cache = cache;
       
     }
-
+    public async Task<IDbContextTransaction> BeginTransactionAsync()
+    {
+        return await _decorated.BeginTransactionAsync();
+    }
     public async Task<Product?> GetByIdAsync(Guid id)
     {
         string key = $"product-{id}";

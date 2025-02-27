@@ -1,4 +1,4 @@
-﻿@model BecomeSellerViewModel
+﻿@model SellerRegistrationViewModel
 
 @{
     ViewData["Title"] = "Become a Seller";
@@ -15,6 +15,9 @@
             <form method="post" asp-controller="Application" asp-action="BecomeSeller">
                 <input type="hidden" asp-for="Status" value="@ApplicationStatus.Pending" />
                 <div class="border p-3">
+
+                    <!-- ✅ Kişisel Bilgiler -->
+                    <h4 class="text-primary mb-3">Personal Information</h4>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
@@ -32,6 +35,29 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <!-- ✅ Kişisel Telefon -->
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input asp-for="ContactNumber" id="personalPhone" class="form-control border-0 shadow rounded" />
+                                <label asp-for="ContactNumber"></label>
+                                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- ✅ Kişisel Adres -->
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <textarea asp-for="Address" class="form-control border-0 shadow rounded"
+                                          minlength="10"></textarea>
+                                <label asp-for="Address"></label>
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ✅ Mağaza Bilgileri -->
+                    <h4 class="text-primary mt-4 mb-3">Business Information</h4>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
@@ -51,24 +77,22 @@
                     </div>
 
                     <div class="row">
-                        <!-- Telefon Numarası Inputu -->
+                        <!-- ✅ İş Telefonu -->
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
-                                <input asp-for="ContactNumber" id="phone" class="form-control border-0 shadow rounded" />
-                                <label asp-for="ContactNumber"></label>
-                                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                                <input asp-for="ContactBusinessNumber" id="businessPhone" class="form-control border-0 shadow rounded" />
+                                <label asp-for="ContactBusinessNumber"></label>
+                                <span asp-validation-for="ContactBusinessNumber" class="text-danger"></span>
                             </div>
                         </div>
 
-
-
-                        <!-- Adres Inputu -->
+                        <!-- ✅ Mağaza Adresi -->
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
-                                <textarea asp-for="Address" class="form-control border-0 shadow rounded"
+                                <textarea asp-for="BusinessAddress" class="form-control border-0 shadow rounded"
                                           minlength="10"></textarea>
-                                <label asp-for="Address"></label>
-                                <span asp-validation-for="Address" class="text-danger"></span>
+                                <label asp-for="BusinessAddress"></label>
+                                <span asp-validation-for="BusinessAddress" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
@@ -87,6 +111,7 @@
     </div>
 </div>
 
+ 
  
 @section Scripts {
     @{

@@ -1,4 +1,5 @@
 ﻿using DataAccess.Repositories.Abstract;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Caching.Memory;
 using Models.Entities.Concrete;
 using System.Linq.Expressions;
@@ -10,7 +11,10 @@ namespace DataAccess.Repositories.Concrete.Cache
     IMemoryCache _cache) : ISellerApplicationRepository
     {
         private static readonly List<string> CachedKeys = [];
-
+        public async Task<IDbContextTransaction> BeginTransactionAsync()
+        {
+            return await _decorated.BeginTransactionAsync();
+        }
         public async Task<int> CreateAsync(SellerApplication entity)
         {
             int result = await _decorated.CreateAsync(entity);
@@ -80,7 +84,9 @@ namespace DataAccess.Repositories.Concrete.Cache
             CachedKeys.Clear();
         }
 
-      
+   
+
+
         #endregion
     }
 }

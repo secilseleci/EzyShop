@@ -72,25 +72,6 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SellerApplications",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StoreName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TaxNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ApplicationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SellerApplications", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -270,6 +251,40 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SellerApplications",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StoreName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TaxNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContactBusinessNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ShopId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ApplicationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SellerApplications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SellerApplications_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_SellerApplications_Shops_ShopId",
+                        column: x => x.ShopId,
+                        principalTable: "Shops",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ProductImages",
                 columns: table => new
                 {
@@ -370,6 +385,20 @@ namespace DataAccess.Migrations
                 column: "ShopId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SellerApplications_ShopId",
+                table: "SellerApplications",
+                column: "ShopId",
+                unique: true,
+                filter: "[ShopId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SellerApplications_UserId",
+                table: "SellerApplications",
+                column: "UserId",
+                unique: true,
+                filter: "[UserId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ShoppingCartItems_CartId",
                 table: "ShoppingCartItems",
                 column: "CartId");
@@ -387,7 +416,8 @@ namespace DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Shops_SellerId",
                 table: "Shops",
-                column: "SellerId");
+                column: "SellerId",
+                unique: true);
         }
 
         /// <inheritdoc />

@@ -1,4 +1,5 @@
-﻿using Models.Entities.Abstract;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using Models.Entities.Abstract;
 using System.Linq.Expressions;
 
 namespace DataAccess.Repositories.Abstract
@@ -14,6 +15,7 @@ namespace DataAccess.Repositories.Abstract
 
         Task<int> AddRangeAsync(IEnumerable<T> entities);
         Task<int> DeleteRangeAsync(IEnumerable<T> entities);
+        Task<IDbContextTransaction> BeginTransactionAsync();
 
     }
 }

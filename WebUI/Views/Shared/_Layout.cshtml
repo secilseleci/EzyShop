@@ -18,7 +18,7 @@
  </head>
 @{
     var currentUser = await UserManager.GetUserAsync(User);
-    var userName = currentUser?.Name ?? "User"; // Eğer null ise "User" yazsın
+    var userName = currentUser?.Name ?? "User";  
 }
 <body>
     <header>
@@ -34,13 +34,9 @@
                         <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Shop">Shop</a></li>
                         <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Contact">Contact</a></li>
                         <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="About">About Us</a></li>
-                        @if (User.Identity.IsAuthenticated && !User.IsInRole("Customer"))
-                        {
-                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Application" asp-action="BecomeSeller">Sell on EzyShop</a></li>
-                        }
-                        <!-- Login/Register -->
                         @if (!User.Identity.IsAuthenticated)
                         {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Application" asp-action="BecomeSeller">Sell on EzyShop</a></li>
                             <li class="nav-item ms-auto"><a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a></li>
                             <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a></li>
                         }
@@ -73,7 +69,9 @@
                                     
                                     @if (User.IsInRole("Seller"))
                                     {
-                                        <li><a class="dropdown-item" asp-controller="Shop" asp-action="Index">My Profile</a></li>
+                                        <li><a class="dropdown-item" asp-controller="Shop" asp-action="Index">My Shop</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" asp-controller="User" asp-action="Details">My Account</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" asp-controller="Product" asp-action="Index">Product Management</a></li>
                                         <li><hr class="dropdown-divider"></li>

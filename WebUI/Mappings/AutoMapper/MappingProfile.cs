@@ -29,12 +29,10 @@ namespace WebUI.Mappings.AutoMapper
                 .ForMember(dest => dest.Roles, opt => opt.Ignore()).ReverseMap();
             #endregion
 
-            #region SellerApplication
-
-            CreateMap<BecomeSellerViewModel, SellerApplication>()
-               .ForMember(dest => dest.Status, opt => opt.MapFrom(src => ApplicationStatus.Pending)) // **Başvuru her zaman Pending olacak**
-               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.NewGuid())); // **Yeni Id oluştur**
-            #endregion
+            CreateMap<SellerRegistrationViewModel, SellerApplication>()
+       .ForMember(dest => dest.Status, opt => opt.MapFrom(src => ApplicationStatus.Pending)) // **Başvuru her zaman Pending olacak**
+       .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.NewGuid())) // **Yeni Id oluştur**
+       .ForMember(dest => dest.UserId, opt => opt.Ignore()); // 🟢 **UserId null olarak kalsın, sistem dışından başvuranlar için!**
 
             #region Shop
             CreateMap<ShopViewModel, Shop>().ReverseMap();

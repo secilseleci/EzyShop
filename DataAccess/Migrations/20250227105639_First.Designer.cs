@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250225235137_First")]
+    [Migration("20250227105639_First")]
     partial class First
     {
         /// <inheritdoc />
@@ -223,6 +223,10 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("ApplicationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ContactBusinessNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ContactNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -235,6 +239,9 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("ShopId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -245,7 +252,18 @@ namespace DataAccess.Migrations
                     b.Property<string>("TaxNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ShopId")
+                        .IsUnique()
+                        .HasFilter("[ShopId] IS NOT NULL");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("SellerApplications");
                 });
@@ -286,7 +304,8 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SellerId");
+                    b.HasIndex("SellerId")
+                        .IsUnique();
 
                     b.ToTable("Shops");
                 });
@@ -533,11 +552,28 @@ namespace DataAccess.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Models.Entities.Concrete.SellerApplication", b =>
+                {
+                    b.HasOne("Models.Entities.Concrete.Shop", "Shop")
+                        .WithOne("SellerApplication")
+                        .HasForeignKey("Models.Entities.Concrete.SellerApplication", "ShopId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Models.Identity.AppUser", "User")
+                        .WithOne("SellerApplication")
+                        .HasForeignKey("Models.Entities.Concrete.SellerApplication", "UserId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Shop");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Models.Entities.Concrete.Shop", b =>
                 {
                     b.HasOne("Models.Identity.AppUser", "Seller")
-                        .WithMany("Shops")
-                        .HasForeignKey("SellerId")
+                        .WithOne("Shop")
+                        .HasForeignKey("Models.Entities.Concrete.Shop", "SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -587,6 +623,8 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Models.Entities.Concrete.Shop", b =>
                 {
                     b.Navigation("Products");
+
+                    b.Navigation("SellerApplication");
                 });
 
             modelBuilder.Entity("Models.Entities.Concrete.ShoppingCart", b =>
@@ -596,7 +634,9 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Models.Identity.AppUser", b =>
                 {
-                    b.Navigation("Shops");
+                    b.Navigation("SellerApplication");
+
+                    b.Navigation("Shop");
                 });
 #pragma warning restore 612, 618
         }

@@ -14,19 +14,34 @@ namespace DataAccess
         {
             base.OnModelCreating(modelBuilder);
             // Seller (AppUser) ile Shop ilişkisi
-            modelBuilder.Entity<Shop>()
-                .HasOne(s => s.Seller)
-                .WithMany(u => u.Shops)
-                .HasForeignKey(s => s.SellerId)
-                .OnDelete(DeleteBehavior.Cascade); // Seller silinirse, mağazalar da silinsin
+            modelBuilder.Entity<AppUser>()     
+                .HasOne(u => u.Shop)
+                .WithOne(s => s.Seller)
+                .HasForeignKey<Shop>(s => s.SellerId)
+                .OnDelete(DeleteBehavior.Cascade);  
 
-            // Shop ile Product ilişkisi
-            modelBuilder.Entity<Product>()
-                .HasOne(p => p.Shop)
-                .WithMany(s => s.Products)
+            // 3️⃣ SellerApplication - Shop (Opsiyonel Bire Bir İlişki)
+            modelBuilder.Entity<SellerApplication>()
+                .HasOne(sa => sa.Shop)
+                .WithOne(s => s.SellerApplication)
+                .HasForeignKey<SellerApplication>(sa => sa.ShopId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // 3️⃣ SellerApplication - AppUser (Opsiyonel Bire Bir İlişki)
+            modelBuilder.Entity<SellerApplication>()
+                .HasOne(sa => sa.User)
+                .WithOne(u => u.SellerApplication)
+                .HasForeignKey<SellerApplication>(sa => sa.UserId)
+                .IsRequired(false)   
+                .OnDelete(DeleteBehavior.SetNull);   
+
+            // 4️⃣ Shop - Product (Bire Çok İlişki)  
+            modelBuilder.Entity<Shop>()
+                .HasMany(s => s.Products)
+                .WithOne(p => p.Shop)
                 .HasForeignKey(p => p.ShopId)
-                .OnDelete(DeleteBehavior.Cascade); // Mağaza silinirse, ürünler de silinsin
-       
+                .OnDelete(DeleteBehavior.Cascade);  
+
             // ShoppingCart silinirse içindeki ShoppingCartItem'lar da silinsin  
             modelBuilder.Entity<ShoppingCartItem>()
             .HasOne(i => i.Cart)

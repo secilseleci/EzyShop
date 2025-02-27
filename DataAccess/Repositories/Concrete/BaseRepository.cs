@@ -1,5 +1,6 @@
 ﻿using DataAccess.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Models.Entities.Abstract;
 using System.Linq.Expressions;
 
@@ -54,5 +55,9 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class,IBaseEntity,
     {
         await _dbSet.AddRangeAsync(entities);
         return await _dataContext.SaveChangesAsync();
+    }
+    public async Task<IDbContextTransaction> BeginTransactionAsync()
+    {
+        return await _dataContext.Database.BeginTransactionAsync();
     }
 }

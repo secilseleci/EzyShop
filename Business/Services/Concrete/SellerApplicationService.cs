@@ -58,89 +58,92 @@ namespace Business.Services.Concrete
         public async Task<IResult> ApproveSellerAsync(Guid id)
         {
             var application = await _sellerApplicationRepository.GetByIdAsync(id);
-             if(application == null)
+            if(application == null)
             {
                 return new ErrorResult(Messages.ApplicationNotFound);
             }
-
-
             if (application.Status == ApplicationStatus.Approved)
             {
                 return new ErrorResult(Messages.ExistingApprovedSellerApplicationError);
             }
-            var user = await _userManager.FindByEmailAsync(application.Email);
-            if (user == null)
+            if (application.Status == ApplicationStatus.Rejected)
             {
-                user = new AppUser
-                {
-                    UserName = application.Email,
-                    Email = application.Email,
-                    Name = application.Name,
-                    PhoneNumber = application.ContactNumber,
-                    IsSeller = true
-                };
-                var createUserResult = await _userManager.CreateAsync(user, "Seller.1");  
-                if (!createUserResult.Succeeded)
-                {
-                    return new ErrorResult(Messages.CreateUserError);
-                }
-                var roleResult = await _userManager.AddToRoleAsync(user, "Seller");
-                if (!roleResult.Succeeded)
-                {
-                    return new ErrorResult(Messages.UserRoleError);
-                } 
+                return new ErrorResult("This application was previously rejected and cannot be approved.");
             }
-            else
+            using var transaction = await _sellerApplicationRepository.BeginTransactionAsync();
+            try
             {
-                if (!await _userManager.IsInRoleAsync(user, "Seller"))
-                {
+                var user = await _userManager.FindByEmailAsync(application.Email);
+            
+                    user = new AppUser
+                    {
+                        UserName = application.Email,
+                        Email = application.Email,
+                        Name = application.Name,
+                        Address = application.Address,
+                        PhoneNumber = application.ContactNumber,
+                        IsSeller = true
+                    };
+
+                    var createUserResult = await _userManager.CreateAsync(user, "Seller.1");
+                    if (!createUserResult.Succeeded)
+                    {
+                        return new ErrorResult(Messages.CreateUserError);
+                    }
                     var roleResult = await _userManager.AddToRoleAsync(user, "Seller");
                     if (!roleResult.Succeeded)
                     {
                         return new ErrorResult(Messages.UserRoleError);
                     }
+                    application.UserId = user.Id;
+                    application.Status = ApplicationStatus.Approved;
+                    var shop = new Shop
+                    {
+                        Name = application.StoreName,
+                        SellerId = user.Id,
+                        ContactNumber = application.ContactNumber,
+                        Address = application.Address,
+                        TaxNumber = application.TaxNumber,
+                        IsActive = true,
+                        Status = "Approved"
+                    };
+                    await _shopService.CreateShopAsync(shop);
+                    
+
+                    application.ShopId = shop.Id;
+
+                     var updateResult = await _sellerApplicationRepository.UpdateAsync(application);
+                    if (updateResult <= 0)
+                    {
+                        return new ErrorResult(Messages.UpdateSellerApplicationError);
+                    }
+
+
+                    var emailSubject = "Your Seller Application has been Approved!";
+                    var emailBody = $"Hello {application.Name},\n\nCongratulations! " +
+                        $"Your vendor application has been approved. " +
+                        $"Now you can create your store and start selling your products. " +
+                        $"To log in to the site, use your e-mail address and the password below." +
+                        $"For your security, do not forget to change your password in the 'Change Password' field." +
+                        $"Password= Seller.1";
+
+                    var emailResult = await _emailService.SendEmailAsync(application.Email, emailSubject, emailBody);
+
+                    if (!emailResult)
+                    {
+                        return new ErrorResult(Messages.ErrorSentEmail);
                 }
-                user.IsSeller = true;
-                await _userManager.UpdateAsync(user);
-            }
+                await transaction.CommitAsync();
 
-            application.Status = ApplicationStatus.Approved;
-                var updateResult = await _sellerApplicationRepository.UpdateAsync(application);
-                if (updateResult <= 0)
-                {
-                    return new ErrorResult(Messages.UpdateSellerApplicationError);
-                }
-            var shop = new Shop
-            {
-                Name = application.StoreName,   
-                SellerId = user.Id,
-                ContactNumber = application.ContactNumber,
-                Address = application.Address,
-                TaxNumber = application.TaxNumber,
-                IsActive = true,  
-                Status = "Approved"
-            };
-
-            await _shopService.CreateShopAsync(shop);
-
-            var emailSubject = "Your Seller Application has been Approved!";
-            var emailBody = $"Hello {application.Name},\n\nCongratulations! " +
-                $"Your vendor application has been approved. " +
-                $"Now you can create your store and start selling your products. " +
-                $"To log in to the site, use your e-mail address and the password below." +
-                $"For your security, do not forget to change your password in the 'Change Password' field." +
-                $"Password= Seller.1";
-
-            var emailResult = await _emailService.SendEmailAsync(application.Email, emailSubject, emailBody);
-
-            if (!emailResult)
-            {
-                return new ErrorResult(Messages.ErrorSentEmail);
-            }
-            return new SuccessResult(Messages.ApprovedApplicationSuccess);
+                return new SuccessResult(Messages.ApprovedApplicationSuccess);
+        }
+        catch
+        {
+            await transaction.RollbackAsync();
+            return new ErrorResult("An error occurred while processing the approval.");
+        }
         }
 
-      
         public async Task<IResult> RejectSellerAsync(Guid id)
         {
             var application = await _sellerApplicationRepository.GetByIdAsync(id);
@@ -148,10 +151,15 @@ namespace Business.Services.Concrete
             {
                 return new ErrorResult(Messages.ApplicationNotFound);
             }
+            if (application.Status == ApplicationStatus.Approved)
+            {
+                return new ErrorResult(Messages.ExistingApprovedSellerApplicationError);
+            }
             if (application.Status == ApplicationStatus.Rejected)
             {
                 return new ErrorResult(Messages.ExistingRejectedSellerApplicationError);
             }
+
             application.Status = ApplicationStatus.Rejected;
             var updateResult = await _sellerApplicationRepository.UpdateAsync(application);
             if (updateResult <= 0)
@@ -171,19 +179,21 @@ namespace Business.Services.Concrete
         }
 
         #endregion
-
-
         #region Create
 
-        public async Task<IResult> CreateSellerApplicationAsync(BecomeSellerViewModel model)
+        public async Task<IResult> CreateSellerApplicationAsync(SellerRegistrationViewModel model)
         {
-             var existingUser = await _userManager.FindByEmailAsync(model.Email);
+            var existingUser = await _userManager.FindByEmailAsync(model.Email);
             if (existingUser != null)
             {
+                if (existingUser.IsSeller)
+                {
+                    return new ErrorResult("You are already a seller. You cannot apply again.");
+                }
                 return new ErrorResult("This email is already registered in the system. Please use another email address for your seller application.");
             }
 
-             var existingApplication = await _sellerApplicationRepository.GetAllAsync(a => a.Email == model.Email && a.Status == ApplicationStatus.Pending);
+            var existingApplication = await _sellerApplicationRepository.GetAllAsync(a => a.Email == model.Email && a.Status == ApplicationStatus.Pending);
             if (existingApplication != null && existingApplication.Any())
             {
                 return new ErrorResult(Messages.ExistingSellerApplicationError);
@@ -202,16 +212,7 @@ namespace Business.Services.Concrete
         #endregion
 
 
-        #region Delete
-        public async Task<IResult> DeleteSellerApplicationAsync(Guid Id)
-        {
-            var deleteAppResult = await _sellerApplicationRepository.DeleteAsync(Id);
-            return deleteAppResult > 0
-                ? new SuccessResult(Messages.DeleteSellerApplicationSuccess)
-                : new ErrorResult(Messages.DeleteSellerApplicationError);
-        }
-
-        #endregion
+       
 
 
     }

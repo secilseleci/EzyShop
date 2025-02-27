@@ -28,26 +28,20 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult BecomeSeller()
         {
-            return View(new BecomeSellerViewModel());
+            return View(new SellerRegistrationViewModel());
         }
 
         [HttpPost]
-        public async Task<IActionResult> BecomeSeller(BecomeSellerViewModel model)
+        public async Task<IActionResult> BecomeSeller(SellerRegistrationViewModel model)
         {
-                if (!ModelState.IsValid)
-                {
-                    return View(model);
-                }
-            var existingUser = await UserManager.FindByEmailAsync(model.Email);
-            if (existingUser != null)
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("Email", "This email is already registered in the system. Please use another email address for your seller application.");
                 return View(model);
             }
-            var result = await _sellerApplicationService.CreateSellerApplicationAsync(model);
-                TempData[result.Success ? "SuccessMessage" : "ErrorMessage"] = result.Message;
           
-
+            var result = await _sellerApplicationService.CreateSellerApplicationAsync(model);
+            TempData[result.Success ? "SuccessMessage" : "ErrorMessage"] = result.Message;
+          
             return RedirectToAction("Index", "Home");
         }
 

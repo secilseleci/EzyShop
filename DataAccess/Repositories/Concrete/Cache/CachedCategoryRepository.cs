@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Caching.Memory;
 using Models.Entities.Concrete;
 using System.Linq.Expressions;
@@ -12,7 +13,10 @@ namespace DataAccess.Repositories.Concrete.Cache
     {
         private static readonly List<string> CachedKeys = [];
 
-        
+        public async Task<IDbContextTransaction> BeginTransactionAsync()
+        {
+            return await _decorated.BeginTransactionAsync();
+        }
         public async Task<int> CreateAsync(Category entity)
         {
             int result = await _decorated.CreateAsync(entity);

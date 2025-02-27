@@ -8,44 +8,46 @@ namespace DataAccess.Seeders.EntitySeeders
     {
         public static async Task SeedShopsAsync(ApplicationDbContext dbContext)
         {
-            var approvedSellers = dbContext.Users
-                .Where(u => u.IsSeller && u.IsActive)
+            var approvedApplications = dbContext.SellerApplications
+                .Where(a => a.Status == ApplicationStatus.Approved && a.ShopId == null)
                 .ToList();
 
-            if (!approvedSellers.Any())
+            if (!approvedApplications.Any())
             {
-                Console.WriteLine("❌ Hata: Onaylı Seller bulunamadı! Önce Admin tarafından onay verilmesi gerekiyor.");
+                Console.WriteLine("⚠️ Onaylı ama mağazası olmayan seller başvurusu bulunamadı.");
                 return;
             }
 
-            foreach (var seller in approvedSellers)
+            foreach (var application in approvedApplications)
             {
-                var existingShop = dbContext.Shops
-                    .AsNoTracking()
-                    .FirstOrDefault(s => s.SellerId == seller.Id);
-
-                if (existingShop == null)
+                var seller = dbContext.Users.FirstOrDefault(u => u.Id == application.UserId);
+                if (seller == null)
                 {
-                    var newShop = new Shop
-                    {
-                        Id = Guid.NewGuid(), // 🔥 Her mağaza için benzersiz ID
-                        Name = seller.StoreName ?? $"{seller.Name}'s Shop",
-                        SellerId = seller.Id,
-                        ContactNumber = seller.ContactNumber ?? "000-000-0000",
-                        Address = seller.Address ?? "Belirtilmemiş",
-                        TaxNumber = seller.TaxNumber,
-                        IsActive = true,
-                        Status = "Approved"
-                    };
+                    Console.WriteLine($"❌ Hata: {application.Email} için Seller bulunamadı!");
+                    continue;
+                }
 
-                    dbContext.Shops.Add(newShop);
-                    await dbContext.SaveChangesAsync();
-                    Console.WriteLine($"✅ {seller.Name} için mağaza eklendi: {newShop.Name}");
-                }
-                else
+                var newShop = new Shop
                 {
-                    Console.WriteLine($"⚠️ Uyarı: {seller.Name} zaten bir mağazaya sahip, tekrar eklenmedi.");
-                }
+                    Id = Guid.NewGuid(), // 🔥 Her mağaza için benzersiz ID
+                    Name = application.StoreName,
+                    SellerId = seller.Id,
+                    ContactNumber = application.ContactNumber,
+                    Address = application.Address,
+                    TaxNumber = application.TaxNumber,
+                    IsActive = true,
+                    Status = "Approved"
+                };
+
+                dbContext.Shops.Add(newShop);
+                await dbContext.SaveChangesAsync();
+
+                // 🔥 SellerApplication'a ShopId ekle
+                application.ShopId = newShop.Id;
+                dbContext.SellerApplications.Update(application);
+                await dbContext.SaveChangesAsync();
+
+                Console.WriteLine($"✅ {seller.Name} için mağaza eklendi: {newShop.Name}");
             }
         }
     }

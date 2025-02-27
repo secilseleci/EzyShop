@@ -51,8 +51,8 @@ public class ShopService : IShopService
     #region Create
     public async Task<IResult> CreateShopAsync(Shop entity)
     {
-        var existingShop = await _shopRepository.GetAllAsync(s => s.Name.ToLower() == entity.Name.ToLower());
-        if (existingShop != null && existingShop.Any())
+        var existingShop = await GetShopBySellerIdAsync(entity.SellerId);
+        if (existingShop != null)
         {
             return new ErrorResult(Messages.ShopAlreadyExists);
         }

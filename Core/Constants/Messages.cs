@@ -78,7 +78,7 @@
         public const string DeleteShopSuccess = "Shop successfully deleted.";
         public const string DeleteShopError = "Error occurred while deleting the shop.";
 
-        public const string ShopAlreadyExists = "A shop with this name already exists.";
+        public const string ShopAlreadyExists = "You can only have one shop. Please update your existing shop instead.";
         public const string ShopApprovedSuccess = "Shop approved successfully.";
         public const string ShopApprovedError = "Error occurred while approving the shop.";
         public const string ShopRejectedSuccess = "Shop rejected successfully.";
