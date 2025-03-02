@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Models.ViewModels
 {
-    public class UserViewModel
+    public class UserProfileViewModel
     {
         public Guid Id { get; set; }
 
@@ -12,7 +12,7 @@ namespace Models.ViewModels
         [RegularExpression(@"^[A-Za-zÇçĞğİıÖöŞşÜü\s]+$", ErrorMessage = "Name can only contain letters and spaces.")]
         public string Name { get; set; }
 
-        [Required]
+        [Required, ReadOnly(true)]  
         [DisplayName("Email Address")]
         [EmailAddress]
         [RegularExpression(@".*\.com$", ErrorMessage = "Email must end with .com")]
@@ -24,10 +24,9 @@ namespace Models.ViewModels
 
 
         [Required]
-        public string ContactNumber { get; set; }
+        [RegularExpression(@"^\d{10,11}$", ErrorMessage = "Phone number must be 10 or 11 digits.")] // ☎️ Numara 10-11 hane olmalı
 
-        public string Role { get; set; }
-        public string? StoreName { get; set; }
-        public string? TaxNumber { get; set; }
+        public string ContactNumber { get; set; }
+ 
     }
 }

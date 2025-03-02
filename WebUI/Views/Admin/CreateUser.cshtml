@@ -22,12 +22,12 @@
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Roles" class="form-label">Role</label>
-                    <select asp-for="Roles" class="form-select">
+                    <label asp-for="Role" class="form-label">Role</label>
+                    <select asp-for="Role" class="form-select">
                         <option value="Customer">Customer</option>
                         <option value="Seller">Seller</option>
                     </select>
-                    <span asp-validation-for="Roles" class="text-danger"></span>
+                    <span asp-validation-for="Role" class="text-danger"></span>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a asp-action="ListUsers" class="btn btn-secondary">Cancel</a>

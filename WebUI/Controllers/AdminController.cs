@@ -71,9 +71,9 @@ namespace WebUI.Controllers
                 return View(model);
             }
 
-            if (model.Roles != null && model.Roles.Any())
+            if (model.Role != null )
             {
-                var roleResult = await UserManager.AddToRoleAsync(user, model.Roles.First());
+                var roleResult = await UserManager.AddToRoleAsync(user, model.Role);
                 if (!roleResult.Succeeded)
                 {
                     ModelState.AddModelError("", "Failed to assign role.");

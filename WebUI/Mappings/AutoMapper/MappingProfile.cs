@@ -22,17 +22,19 @@ namespace WebUI.Mappings.AutoMapper
 
             #region AppUser
             CreateMap<RegisterViewModel, AppUser>()
-         .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.FullName))
-         .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.FullName.Trim().Replace(" ", "-")));
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.FullName))
+            .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.FullName.Trim().Replace(" ", "-")));
+            
+            CreateMap<AppUser, UserProfileViewModel>().ReverseMap().ForMember(dest => dest.Id, opt => opt.Ignore());
 
             CreateMap<AppUser, UserViewModel>()
-                .ForMember(dest => dest.Roles, opt => opt.Ignore()).ReverseMap();
+            .ForMember(dest => dest.Role, opt => opt.Ignore()).ReverseMap();
             #endregion
 
             CreateMap<SellerRegistrationViewModel, SellerApplication>()
-       .ForMember(dest => dest.Status, opt => opt.MapFrom(src => ApplicationStatus.Pending)) // **Başvuru her zaman Pending olacak**
-       .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.NewGuid())) // **Yeni Id oluştur**
-       .ForMember(dest => dest.UserId, opt => opt.Ignore()); // 🟢 **UserId null olarak kalsın, sistem dışından başvuranlar için!**
+           .ForMember(dest => dest.Status, opt => opt.MapFrom(src => ApplicationStatus.Pending)) 
+           .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.NewGuid())) 
+           .ForMember(dest => dest.UserId, opt => opt.Ignore()); 
 
             #region Shop
             CreateMap<ShopViewModel, Shop>().ReverseMap();

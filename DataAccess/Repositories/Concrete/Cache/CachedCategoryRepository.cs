@@ -1,5 +1,4 @@
-﻿using Core.Utilities.Results;
-using DataAccess.Repositories.Abstract;
+﻿using DataAccess.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Caching.Memory;
 using Models.Entities.Concrete;
