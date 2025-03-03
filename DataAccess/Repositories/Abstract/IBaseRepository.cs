@@ -15,6 +15,8 @@ namespace DataAccess.Repositories.Abstract
 
         Task<int> AddRangeAsync(IEnumerable<T> entities);
         Task<int> DeleteRangeAsync(IEnumerable<T> entities);
+        Task<int> UpdateRangeAsync(IEnumerable<T> entities);   
+
         Task<IDbContextTransaction> BeginTransactionAsync();
 
     }

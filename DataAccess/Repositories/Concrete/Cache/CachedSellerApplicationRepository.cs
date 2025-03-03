@@ -33,7 +33,13 @@ namespace DataAccess.Repositories.Concrete.Cache
             RemoveAllCachedItems(result);
             return result;
         }
-
+        public async Task<int> UpdateRangeAsync(IEnumerable<SellerApplication> entities)
+        {
+            var result = await _decorated.UpdateRangeAsync(entities);
+            RemoveAllCachedItems(result);
+            return result;
+        }
+      
         public async Task<IEnumerable<SellerApplication>?> GetAllAsync(Expression<Func<SellerApplication, bool>> predicate)
         {
             string key = $"all-applications-{predicate}";

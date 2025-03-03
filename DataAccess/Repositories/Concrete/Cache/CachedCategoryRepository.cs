@@ -87,6 +87,17 @@ namespace DataAccess.Repositories.Concrete.Cache
             RemoveAllCachedItems(result);
             return result;
         }
+
+        public async Task<int> UpdateRangeAsync(IEnumerable<Category> entities)
+        {
+            var result = await _decorated.UpdateRangeAsync(entities);
+            RemoveAllCachedItems(result);
+            return result;
+        }
+
+
+
+
         #region Helper Methods
         private void RemoveAllCachedItems(int result)
         {
@@ -102,6 +113,8 @@ namespace DataAccess.Repositories.Concrete.Cache
         }
 
       
+
+
 
 
         #endregion

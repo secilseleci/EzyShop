@@ -54,7 +54,44 @@ namespace DataAccess
             .HasOne(i => i.Product)
             .WithMany()
             .HasForeignKey(i => i.ProductId)
-            .OnDelete(DeleteBehavior.Restrict); 
+            .OnDelete(DeleteBehavior.Restrict);
+
+
+
+            // 🛒 Order - Customer (AppUser)
+            modelBuilder.Entity<Order>()
+                .HasOne<AppUser>()
+                .WithMany()
+                .HasForeignKey(o => o.CustomerId)
+                .OnDelete(DeleteBehavior.SetNull); // Customer silinirse, Order kalır, CustomerId null olur
+
+            // 🏪 Order - Shop
+            modelBuilder.Entity<Order>()
+                .HasOne<Shop>()
+                .WithMany()
+                .HasForeignKey(o => o.ShopId)
+                .OnDelete(DeleteBehavior.SetNull); // Shop silinirse, Order kalır, ShopId null olur
+
+            // 👨‍💼 Order - Seller (AppUser)
+            modelBuilder.Entity<Order>()
+                .HasOne<AppUser>()
+                .WithMany()
+                .HasForeignKey(o => o.SellerId)
+                .OnDelete(DeleteBehavior.SetNull); // Seller silinirse, Order kalır, SellerId null olur
+
+            // 🛍 Order - OrderItem (Bire Çok)
+            modelBuilder.Entity<OrderItem>()
+                .HasOne(oi => oi.Order)
+                .WithMany()
+                .HasForeignKey(oi => oi.OrderId)
+                .OnDelete(DeleteBehavior.Cascade); // Order silinirse, OrderItems da silinir
+
+            // 🏷 OrderItem - Product
+            modelBuilder.Entity<OrderItem>()
+                .HasOne(oi => oi.Product)
+                .WithMany()
+                .HasForeignKey(oi => oi.ProductId)
+                .OnDelete(DeleteBehavior.Restrict); // Ürün silinse bile eski siparişlerden kaybolmaz
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -63,6 +100,8 @@ namespace DataAccess
         public DbSet<SellerApplication> SellerApplications { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
     }
 }

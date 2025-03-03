@@ -33,31 +33,38 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class,IBaseEntity,
         }
         return -1;
     }
-    public async Task<int> DeleteRangeAsync(IEnumerable<T> entities)
-    {
-        _dbSet.RemoveRange(entities);
-        return await _dataContext.SaveChangesAsync();
-    }
-
     public async Task<int> UpdateAsync(T entity)
     {
         _dataContext.Update(entity);
         return await _dataContext.SaveChangesAsync();
     }
 
+    public async Task<int> AddRangeAsync(IEnumerable<T> entities)
+    {
+        await _dbSet.AddRangeAsync(entities);
+        return await _dataContext.SaveChangesAsync();
+    }
+    public async Task<int> DeleteRangeAsync(IEnumerable<T> entities)
+    {
+        _dbSet.RemoveRange(entities);
+        return await _dataContext.SaveChangesAsync();
+    }
+    public async Task<int> UpdateRangeAsync(IEnumerable<T> entities)
+    {
+        _dbSet.UpdateRange(entities);
+        return await _dataContext.SaveChangesAsync();
+    }
+   
     public async Task<IEnumerable<T>?> GetAllAsync(Expression<Func<T, bool>> predicate)
      => await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
 
     public async Task<T?> GetByIdAsync(Guid id)
    => await _dbSet.AsNoTracking().FirstOrDefaultAsync(entity => entity.Id == id);
 
-    public async Task<int> AddRangeAsync(IEnumerable<T> entities)
-    {
-        await _dbSet.AddRangeAsync(entities);
-        return await _dataContext.SaveChangesAsync();
-    }
+   
     public async Task<IDbContextTransaction> BeginTransactionAsync()
     {
         return await _dataContext.Database.BeginTransactionAsync();
     }
+
 }

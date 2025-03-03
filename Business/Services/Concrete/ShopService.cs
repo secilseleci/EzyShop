@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
+using Business.Services.Concrete;
 using Core.Constants;
 using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
@@ -10,11 +11,14 @@ using System.Linq.Expressions;
 public class ShopService : IShopService
 {
     private readonly IShopRepository _shopRepository;
+    private readonly IOrderRepository _orderRepository;
+
     private readonly IMapper _mapper;
 
-    public ShopService(IShopRepository shopRepository, IMapper mapper)
+    public ShopService(IShopRepository shopRepository,IOrderRepository orderRepository IMapper mapper)
     {
         _shopRepository = shopRepository;
+        _orderRepository = orderRepository;
         _mapper = mapper;
     }
     #region Read
@@ -67,7 +71,7 @@ public class ShopService : IShopService
     #region Delete
     public async Task<IResult> DeleteShopAsync(Guid shopId)
     {
-
+ 
         var deleteShopResult = await _shopRepository.DeleteAsync(shopId);
         return deleteShopResult > 0
             ? new SuccessResult(Messages.DeleteShopSuccess)

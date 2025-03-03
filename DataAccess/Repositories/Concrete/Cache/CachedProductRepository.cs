@@ -91,7 +91,12 @@ public class CachedProductRepository : IProductRepository
         RemoveAllCachedItems(result);
         return result;
     }
-
+    public async Task<int> UpdateRangeAsync(IEnumerable<Product> entities)
+    {
+        var result = await _decorated.UpdateRangeAsync(entities);
+        RemoveAllCachedItems(result);
+        return result;
+    }
     public async Task<int> UpdateAsync(Product entity)
     {
         var result = await _decorated.UpdateAsync(entity);
