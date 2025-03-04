@@ -22,22 +22,19 @@ namespace Models.Entities.Concrete
         [ForeignKey("CustomerId")]
         public AppUser Customer { get; set; }
 
-        [Required]
-        public Guid SellerId { get; set; }
-        [ForeignKey("SellerId")]
-        public AppUser Seller { get; set; }
+       
 
         [Required]
-        public Guid ShopId { get; set; }
+        public Guid? ShopId { get; set; }
         [ForeignKey("ShopId")]
-        public Shop Shop { get; set; }
+        public Shop? Shop { get; set; }
 
 
         [Required]
         public decimal TotalAmount { get; set; }
 
         [Required]
-        public string PaymentMethod { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
 
         public ICollection<OrderItem> OrderItems { get; set; }
 
@@ -52,11 +49,17 @@ namespace Models.Entities.Concrete
 
     }
 }
+        public enum PaymentMethod
+        {
+            CreditCard = 1,   
+            BankTransfer = 2,  
+            CashOnDelivery = 3   
+        }
         public enum Status
         {
             Pending,
             Shipped,
             Delivered,
             Cancelled   
-}
+        }
  

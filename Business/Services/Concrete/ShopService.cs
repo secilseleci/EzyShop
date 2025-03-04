@@ -15,7 +15,7 @@ public class ShopService : IShopService
 
     private readonly IMapper _mapper;
 
-    public ShopService(IShopRepository shopRepository,IOrderRepository orderRepository IMapper mapper)
+    public ShopService(IShopRepository shopRepository,IOrderRepository orderRepository, IMapper mapper)
     {
         _shopRepository = shopRepository;
         _orderRepository = orderRepository;

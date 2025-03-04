@@ -11,8 +11,9 @@ namespace DataAccess.Repositories.Concrete
         public async Task<IEnumerable<ShoppingCartItem>> GetCartItemsAsync(Guid cartId)
         {
             return await _dataContext.ShoppingCartItems
-                .Include(i => i.Product)  
-                .Where(i => i.CartId == cartId)
+                .Include(i => i.Product)
+                 .ThenInclude(p => p.Shop)
+                 .Where(i => i.CartId == cartId)
                 .ToListAsync();
         }
         public async Task<ShoppingCartItem?> GetCartItemAsync(Guid cartId, Guid productId)

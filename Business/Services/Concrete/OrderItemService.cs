@@ -1,10 +1,9 @@
 ﻿using Business.Services.Abstract;
- 
+
+
 namespace Business.Services.Concrete
 {
-    public class OrderService : IOrderService
+    public class OrderItemService:IOrderItemService
     {
-
-
     }
 }

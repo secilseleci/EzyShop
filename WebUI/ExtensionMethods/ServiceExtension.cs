@@ -3,7 +3,6 @@ using Business.Services.Concrete;
 using DataAccess;
 using DataAccess.Repositories.Abstract;
 using DataAccess.Repositories.Concrete;
-using DataAccess.Repositories.Concrete.Cache;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Models.Identity;
@@ -34,6 +33,8 @@ namespace WebUI.ExtensionMethods
             services.AddScoped<IShopRepository, ShopRepository>();
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<IShoppingCartItemRepository, ShoppingCartItemRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderItemRepository, OrderItemRepository>();
 
             //services.AddScoped<CategoryRepository>();
             //services.AddScoped<ICategoryRepository, CachedCategoryRepository>();
@@ -51,7 +52,8 @@ namespace WebUI.ExtensionMethods
             services.AddScoped<IShopService, ShopService>();
             services.AddScoped<IShoppingCartService, ShoppingCartService>();
             services.AddScoped<IShoppingCartItemService, ShoppingCartItemService>();
-
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderItemService, OrderItemService>();
 
         }
 

@@ -63,35 +63,24 @@ namespace DataAccess
                 .HasOne<AppUser>()
                 .WithMany()
                 .HasForeignKey(o => o.CustomerId)
-                .OnDelete(DeleteBehavior.SetNull); // Customer silinirse, Order kalır, CustomerId null olur
+                .OnDelete(DeleteBehavior.NoAction);  
 
             // 🏪 Order - Shop
+            
             modelBuilder.Entity<Order>()
-                .HasOne<Shop>()
+                .HasOne(o => o.Shop)
                 .WithMany()
                 .HasForeignKey(o => o.ShopId)
-                .OnDelete(DeleteBehavior.SetNull); // Shop silinirse, Order kalır, ShopId null olur
+                .OnDelete(DeleteBehavior.Restrict);  
 
-            // 👨‍💼 Order - Seller (AppUser)
-            modelBuilder.Entity<Order>()
-                .HasOne<AppUser>()
-                .WithMany()
-                .HasForeignKey(o => o.SellerId)
-                .OnDelete(DeleteBehavior.SetNull); // Seller silinirse, Order kalır, SellerId null olur
 
             // 🛍 Order - OrderItem (Bire Çok)
             modelBuilder.Entity<OrderItem>()
                 .HasOne(oi => oi.Order)
                 .WithMany()
                 .HasForeignKey(oi => oi.OrderId)
-                .OnDelete(DeleteBehavior.Cascade); // Order silinirse, OrderItems da silinir
-
-            // 🏷 OrderItem - Product
-            modelBuilder.Entity<OrderItem>()
-                .HasOne(oi => oi.Product)
-                .WithMany()
-                .HasForeignKey(oi => oi.ProductId)
-                .OnDelete(DeleteBehavior.Restrict); // Ürün silinse bile eski siparişlerden kaybolmaz
+                .OnDelete(DeleteBehavior.Cascade);   
+ 
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }

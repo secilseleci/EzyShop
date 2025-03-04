@@ -3,8 +3,7 @@ using Models.Entities.Concrete;
 
 namespace DataAccess.Repositories.Concrete
 {
-    public class OrderRepository(ApplicationDbContext context) : BaseRepository<Order>(context), IOrderRepository
+    public class OrderItemRepository(ApplicationDbContext context) :BaseRepository<OrderItem>(context), IOrderItemRepository
     {
-        
     }
 }

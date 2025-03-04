@@ -28,6 +28,8 @@
                             <div class="col-md-4">
                                 <h5 class="card-title text-dark fw-bold">@item.ProductName</h5>
                                 <p class="text-muted">Color: @item.Color</p>
+                                <p class="text-muted"><small>Shop: <strong>@item.ShopName</strong></small></p> <!-- 🏪 Mağaza Bilgisi -->
+
                             </div>
 
                             <!-- Adet Güncelleme ve Fiyat -->
@@ -54,7 +56,7 @@
                 <div class="card p-3 shadow-sm">
                     <h5 class="text-center text-uppercase">Total (USD)</h5>
                     <h3 class="text-center fw-bold text-primary" id="totalPrice">$@Model.Sum(i => i.Price * i.Count)</h3>
-                    <button class="btn btn-success w-100 mt-3">Summary</button>
+                    <a asp-controller="Order" asp-action="Summary" class="btn btn-success w-100 mt-2">Summary</a>
                     <button class="btn btn-danger w-100 mt-3" onclick="clearCart()">Clear Cart</button>
                     <a asp-controller="Home" asp-action="Shop" class="btn btn-outline-primary w-100 mt-2">Continue Shopping</a>
                 </div>

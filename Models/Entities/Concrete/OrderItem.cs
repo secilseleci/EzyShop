@@ -18,17 +18,13 @@ namespace Models.Entities.Concrete
         public Guid OrderId { get; set; }
         [ForeignKey("OrderId")]
         public Order Order { get; set; }  // 🟢 Order ile ilişki
-
-        [Required]
-        public Guid ProductId { get; set; }
-        [ForeignKey("ProductId")]
-        public Product Product { get; set; }  // 🟢 Ürün ile ilişki
+ 
 
         [Required]
         public string ProductName { get; set; }  // 🟢 Ürün adı sabitlenmeli
 
         [Required]
-        public decimal Price { get; set; }  // 🟢 Ürünün sipariş anındaki fiyatı 
+        public decimal ProductPrice { get; set; }  // 🟢 Ürünün sipariş anındaki fiyatı 
 
         [Range(1, 100, ErrorMessage = "Please enter a value between 1 and 100")]
         public int Count { get; set; } = 1;  // 🟢 Ürün adedi
