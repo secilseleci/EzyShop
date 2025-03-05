@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Models.ViewModels
 {
-    public class OrderSummaryViewModel
+    public class SummaryViewModel
     { 
         public Guid CustomerId { get; set; }
         
@@ -13,7 +13,7 @@ namespace Models.ViewModels
         [Required]
         public string Address { get; set; }
 
-        public List<ShopOrderSummaryViewModel> ShopOrders { get; set; }
+        public List<ShopOrderViewModel> ShopOrders { get; set; }
         
         [Required]
         public PaymentMethod PaymentMethod { get; set; }

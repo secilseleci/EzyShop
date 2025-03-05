@@ -55,24 +55,44 @@ namespace WebUI.Mappings.AutoMapper
                 .ForMember(dest => dest.ShopId, opt => opt.MapFrom(src => src.Product.ShopId))  // 🏪 Shop ID maplendi
                 .ForMember(dest => dest.ShopName, opt => opt.MapFrom(src => src.Product.Shop.Name));
             #endregion
-            #region ShoppingCartItemViewModel → OrderItemSummaryViewModel
-            CreateMap<ShoppingCartItemViewModel, OrderItemSummaryViewModel>()
-           .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.ProductName))
-           .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.Price))
-           .ForMember(dest => dest.Count, opt => opt.MapFrom(src => src.Count))
-           .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.TotalPrice));
-            #endregion
-            #region ShoppingCartItem → ShopOrderSummaryViewModel
-            CreateMap<ShoppingCartItem, ShopOrderSummaryViewModel>()
-                .ForMember(dest => dest.ShopId, opt => opt.MapFrom(src => src.Product.ShopId))
+
+            #region ShoppingCartItem → OrderItemViewModel
+            CreateMap<ShoppingCartItem, OrderItemViewModel>()
+                .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Product.Id))
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
+                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Product.ImageUrl))
+                .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Product.Color))
+                .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.Product.Price))
+                .ForMember(dest => dest.Count, opt => opt.MapFrom(src => src.Count))
+                .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.Price * src.Count))
+                .ForMember(dest => dest.ShopId, opt => opt.MapFrom(src => src.Product.Shop.Id))
                 .ForMember(dest => dest.ShopName, opt => opt.MapFrom(src => src.Product.Shop.Name));
-            #endregion}
-            #region AppUser → OrderSummaryViewModel
-            CreateMap<AppUser, OrderSummaryViewModel>()
+            #endregion
+
+
+            #region ShoppingCartItem → ShopOrderViewModel
+            CreateMap<ShoppingCartItem, ShopOrderViewModel>()
+                .ForMember(dest => dest.ShopId, opt => opt.MapFrom(src => src.Product.ShopId))
+                .ForMember(dest => dest.ShopName, opt => opt.MapFrom(src => src.Product.Shop.Name))
+                .ForMember(dest => dest.OrderItems, opt => opt.Ignore());
+            #endregion
+
+            #region AppUser → SummaryViewModel
+            CreateMap<AppUser, SummaryViewModel>()
                 .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address));
-            #endregion 
+            #endregion
+
+            #region SummaryViewModel → Order
+            CreateMap<SummaryViewModel, Order>()
+                .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.CustomerId))
+                .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.TotalAmount))
+                .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Status.Pending))  
+                .ForMember(dest => dest.OrderItems, opt => opt.Ignore());
+            #endregion
+
         }
     }
-}
+}  
