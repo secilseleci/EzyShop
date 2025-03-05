@@ -4,6 +4,7 @@ using Core.Constants;
 using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
 using Microsoft.AspNetCore.Identity;
+using Models.Entities.Concrete;
 using Models.Identity;
 using Models.ViewModels;
 
@@ -11,16 +12,19 @@ namespace Business.Services.Concrete
 {
     public class OrderService : IOrderService
     {
+        private readonly IOrderRepository _orderRepository;
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IShoppingCartItemRepository _shoppingCartItemRepository;
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
-        public OrderService(
-          IShoppingCartRepository shoppingCartRepository,
-          IShoppingCartItemRepository shoppingCartItemRepository,
-          UserManager<AppUser> userManager,
-          IMapper mapper)
+        public OrderService( 
+              IOrderRepository orderRepository,
+              IShoppingCartRepository shoppingCartRepository,
+              IShoppingCartItemRepository shoppingCartItemRepository,
+              UserManager<AppUser> userManager,
+              IMapper mapper)
         {
+            _orderRepository = orderRepository;
             _shoppingCartRepository = shoppingCartRepository;
             _shoppingCartItemRepository = shoppingCartItemRepository;
             _userManager = userManager;
@@ -55,6 +59,48 @@ namespace Business.Services.Concrete
             summary.ShopOrders = shopOrders;
 
             return new SuccessDataResult<SummaryViewModel>(summary, "Order summary retrieved successfully.");
+        }
+        public async Task<IDataResult<List<string>>> CreateOrderAsync(SummaryViewModel model)
+        {
+            var user = await _userManager.FindByIdAsync(model.CustomerId.ToString());
+            if (user == null)
+                return new ErrorDataResult<List<string>>(Messages.UserNotFound);
+
+            var cart = await _shoppingCartRepository.GetCartByUserIdAsync(user.Id);
+            if (cart == null)
+                return new ErrorDataResult<List<string>>(Messages.ShoppingCartNotFound);
+
+            var cartItems = await _shoppingCartItemRepository.GetCartItemsAsync(cart.Id);
+            if (!cartItems.Any())
+                return new ErrorDataResult<List<string>>(Messages.ShoppingCartEmpty);
+
+            List<Order> orders = model.ShopOrders.Select(shopOrder => new Order
+            {
+                CustomerId = user.Id,
+                ShopId = shopOrder.ShopId,
+                OrderCode = GenerateOrderCode(),
+                TotalAmount = shopOrder.TotalAmount,
+                PaymentMethod = model.PaymentMethod,
+                Status = Status.Pending,
+                CreatedDate = DateTime.UtcNow,
+                UpdatedDate = DateTime.UtcNow,
+                OrderItems = shopOrder.OrderItems.Select(item => new OrderItem
+                {
+                    ProductName = item.ProductName,
+                    ProductPrice = item.ProductPrice,
+                    Count = item.Count
+                }).ToList()
+            }).ToList();
+
+            await _orderRepository.AddRangeAsync(orders);
+
+            await _shoppingCartItemRepository.DeleteRangeAsync(cartItems);
+
+            return new SuccessDataResult<List<string>>(orders.Select(o => o.OrderCode).ToList(), Messages.CreateOrderSuccess);
+        }
+        private string GenerateOrderCode()
+        {
+            return $"ORD-{DateTime.UtcNow:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}";
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
-using Business.Services.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +39,25 @@ namespace WebUI.Controllers
             }
 
             return View(result.Data);
+        }
+        [HttpPost]
+        public async Task<IActionResult> PlaceOrder(SummaryViewModel model)
+        {
+            var result = await _orderService.CreateOrderAsync(model);
+
+            if (!result.Success)
+            {
+                TempData["ErrorMessage"] = result.Message;
+                return RedirectToAction("Summary", "ShoppingCart");
+            }
+
+            TempData["SuccessMessage"] = "Order placed successfully!";
+            return RedirectToAction("OrderSuccess", "Order", new { orderCodes = result.Data });
+        }
+        public IActionResult OrderSuccess(List<string> orderCodes)
+        {
+            ViewBag.OrderCodes = orderCodes;  
+            return View();
         }
 
     }

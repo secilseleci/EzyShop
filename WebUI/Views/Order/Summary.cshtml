@@ -41,6 +41,7 @@
                         <div class="text-end fw-bold">
                             <span>Total for this shop: $@(shopOrder.TotalAmount)</span>
                         </div>
+
                     </div>
                 </div>
             }
@@ -52,43 +53,49 @@
                 <h5 class="text-center text-uppercase">Payment & Address</h5>
                 <p class="text-dark"><strong>Shipping To:</strong> @Model.Address</p>
 
-                <!-- Ödeme Yöntemi Seçimi -->
-                <label class="fw-bold">Payment Method:</label>
-                <select class="form-select mb-3">
-                    <option value="CreditCard">Credit Card</option>
-                    <option value="BankTransfer">Bank Transfer</option>
-                    <option value="CashOnDelivery">Cash on Delivery</option>
-                </select>
+                <!-- FORM ile Siparişi Gönderme -->
+                <form id="orderForm" method="post" asp-controller="Order" asp-action="PlaceOrder">
+                    <input type="hidden" name="CustomerId" value="@Model.CustomerId" />
+                    <input type="hidden" name="CustomerName" value="@Model.CustomerName" />
+                    <input type="hidden" name="Address" value="@Model.Address" />
 
-                <!-- Toplam Ödenecek Tutar -->
-                <h4 class="text-center fw-bold text-primary mt-2">Total: $@Model.TotalAmount</h4>
+                    <!-- Ödeme Yöntemi Seçimi -->
+                    <label class="fw-bold">Payment Method:</label>
+                    <select id="paymentMethod" name="PaymentMethod" class="form-select mb-3">
+                        <option value="CreditCard" selected="@(Model.PaymentMethod == PaymentMethod.CreditCard ? "selected" : null)">Credit Card</option>
+                        <option value="BankTransfer" selected="@(Model.PaymentMethod == PaymentMethod.BankTransfer ? "selected" : null)">Bank Transfer</option>
+                        <option value="CashOnDelivery" selected="@(Model.PaymentMethod == PaymentMethod.CashOnDelivery ? "selected" : null)">Cash on Delivery</option>
+                    </select>
 
-                <!-- Butonlar -->
-                <button id="placeOrderButton" class="btn btn-success px-5">Place Order</button>
+                    <!-- Sepetteki Mağaza Siparişlerini ve Ürünleri Gönder -->
+                    @for (var i = 0; i < Model.ShopOrders.Count; i++)
+                    {
+                        <input type="hidden" name="ShopOrders[@i].ShopId" value="@Model.ShopOrders[i].ShopId" />
+                        <input type="hidden" name="ShopOrders[@i].ShopName" value="@Model.ShopOrders[i].ShopName" />
+
+                        @for (var j = 0; j < Model.ShopOrders[i].OrderItems.Count; j++)
+                        {
+                            <input type="hidden" name="ShopOrders[@i].OrderItems[@j].ProductId" value="@Model.ShopOrders[i].OrderItems[j].ProductId" />
+                            <input type="hidden" name="ShopOrders[@i].OrderItems[@j].ProductName" value="@Model.ShopOrders[i].OrderItems[j].ProductName" />
+                            <input type="hidden" name="ShopOrders[@i].OrderItems[@j].Count" value="@Model.ShopOrders[i].OrderItems[j].Count" />
+                            <input type="hidden" name="ShopOrders[@i].OrderItems[@j].ProductPrice" value="@Model.ShopOrders[i].OrderItems[j].ProductPrice" />
+                            <input type="hidden" name="ShopOrders[@i].OrderItems[@j].Color" value="@Model.ShopOrders[i].OrderItems[j].Color" />
+                            <input type="hidden" name="ShopOrders[@i].OrderItems[@j].ShopId" value="@Model.ShopOrders[i].OrderItems[j].ShopId" />
+                            <input type="hidden" name="ShopOrders[@i].OrderItems[@j].ShopName" value="@Model.ShopOrders[i].OrderItems[j].ShopName" />
+
+                        }
+                    }
+
+                    <!-- Toplam Ödenecek Tutar -->
+                    <h4 class="text-center fw-bold text-primary mt-2">Total: $@Model.TotalAmount</h4>
+
+                    <!-- Siparişi Onayla Butonu -->
+                    <button type="submit" class="btn btn-success px-5 w-100">Place Order</button>
+                </form>
+
+                <!-- Sepete Geri Dön Butonu -->
                 <a asp-controller="ShoppingCart" asp-action="Index" class="btn btn-outline-secondary w-100 mt-2">Back to Cart</a>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-@section Scripts {
-    <script>
-        document.getElementById("placeOrderButton").addEventListener("click", function () {
-            var selectedPaymentMethod = document.getElementById("paymentMethod").value;
-            fetch('@Url.Action("PlaceOrder", "Order")', {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ paymentMethod: selectedPaymentMethod })
-            }).then(response => {
-                if (response.ok) {
-                    window.location.href = '@Url.Action("Success", "Order")';
-                } else {
-                    alert("Failed to place the order.");
-                }
-            });
-        });
-    </script>
-}

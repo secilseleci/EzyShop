@@ -11,15 +11,20 @@ namespace Models.Entities.Concrete
         {
             Id = Guid.NewGuid();
             OrderItems = new List<OrderItem>();
+            OrderCode = GenerateOrderCode();
 
         }
 
         [Required]
         public Guid Id { get; set; }
 
+
+        [Required]
+        public string OrderCode { get; set; }
+
+
         [Required]
         public Guid CustomerId { get; set; }
-        [ForeignKey("CustomerId")]
         public AppUser Customer { get; set; }
 
        
@@ -47,6 +52,12 @@ namespace Models.Entities.Concrete
 
         public DateTime UpdatedDate { get; set; }
 
+
+
+        private string GenerateOrderCode()
+        {
+            return $"ORD-{DateTime.UtcNow:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}";
+        }
     }
 }
         public enum PaymentMethod

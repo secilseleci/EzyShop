@@ -1,7 +1,6 @@
 ﻿using Models.Entities.Abstract;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
+ 
 namespace Models.Entities.Concrete
 {
     public class OrderItem : IBaseEntity
@@ -16,17 +15,16 @@ namespace Models.Entities.Concrete
 
         [Required]
         public Guid OrderId { get; set; }
-        [ForeignKey("OrderId")]
-        public Order Order { get; set; }  // 🟢 Order ile ilişki
+        public Order Order { get; set; }   
  
 
         [Required]
-        public string ProductName { get; set; }  // 🟢 Ürün adı sabitlenmeli
+        public string ProductName { get; set; }  
 
         [Required]
-        public decimal ProductPrice { get; set; }  // 🟢 Ürünün sipariş anındaki fiyatı 
+        public decimal ProductPrice { get; set; }   
 
         [Range(1, 100, ErrorMessage = "Please enter a value between 1 and 100")]
-        public int Count { get; set; } = 1;  // 🟢 Ürün adedi
-    }
+        public int Count { get; set; } = 1;   
+}
 }

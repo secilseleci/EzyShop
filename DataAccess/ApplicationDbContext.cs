@@ -60,26 +60,21 @@ namespace DataAccess
 
             // 🛒 Order - Customer (AppUser)
             modelBuilder.Entity<Order>()
-                .HasOne<AppUser>()
-                .WithMany()
-                .HasForeignKey(o => o.CustomerId)
-                .OnDelete(DeleteBehavior.NoAction);  
+            .HasOne(o => o.Customer)
+            .WithMany()
+            .HasForeignKey(o => o.CustomerId)
+            .OnDelete(DeleteBehavior.NoAction);
+
 
             // 🏪 Order - Shop
-            
+
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.Shop)
                 .WithMany()
                 .HasForeignKey(o => o.ShopId)
                 .OnDelete(DeleteBehavior.Restrict);  
 
-
-            // 🛍 Order - OrderItem (Bire Çok)
-            modelBuilder.Entity<OrderItem>()
-                .HasOne(oi => oi.Order)
-                .WithMany()
-                .HasForeignKey(oi => oi.OrderId)
-                .OnDelete(DeleteBehavior.Cascade);   
+  
  
         }
         public DbSet<Category> Categories { get; set; }

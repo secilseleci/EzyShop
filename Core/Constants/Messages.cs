@@ -123,5 +123,13 @@
         public const string ChangeCountError = "An error occurred while changing the product quantity";
 
         #endregion
+
+
+        #region Order
+        public const string OrderNotFound = "Order not found";
+
+        public const string CreateOrderSuccess = "Order created successfully";
+        public const string CreateOrderError = "Error occurred while registering the Order to Database";
+        #endregion
     }
-}
+    }
