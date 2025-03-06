@@ -2,11 +2,11 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Models.ViewModels
+namespace Models.ViewModels.Product
 {
-    public class ProductViewModel: IImageViewModel
+    public class ProductViewModel : IImageViewModel
     {
-       
+
         [Required]
         public Guid Id { get; set; }
 

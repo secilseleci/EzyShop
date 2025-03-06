@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Models.Identity;
 using Models.ViewModels.Abstract;
 using System.Security.Claims;
@@ -32,7 +33,9 @@ namespace WebUI.Controllers
         protected async Task<AppUser?> GetCurrentUserAsync()
         {
             return User.Identity.IsAuthenticated
-                ? await UserManager.GetUserAsync(User)
+                ? await UserManager.Users
+                .Include(u=>u.Shop)
+                .FirstOrDefaultAsync(u=>u.Id==GetUserId())
                 : null;
         }
         protected Guid GetUserId()

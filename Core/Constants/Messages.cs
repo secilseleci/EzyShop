@@ -127,7 +127,7 @@
 
         #region Order
         public const string OrderNotFound = "Order not found";
-
+        public const string EmptyOrderList = "Order list is empty";
         public const string CreateOrderSuccess = "Order created successfully";
         public const string CreateOrderError = "Error occurred while registering the Order to Database";
         #endregion

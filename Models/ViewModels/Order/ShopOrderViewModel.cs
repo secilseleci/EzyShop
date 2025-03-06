@@ -1,4 +1,4 @@
-﻿namespace Models.ViewModels
+﻿namespace Models.ViewModels.Order
 {
     public class ShopOrderViewModel
     {

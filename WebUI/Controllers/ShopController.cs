@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
-using Models.ViewModels;
+using Models.ViewModels.Shop;
 
 namespace WebUI.Controllers
 {

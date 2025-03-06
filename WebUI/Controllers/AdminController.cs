@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models.Entities.Concrete;
 using Models.Identity;
-using Models.ViewModels;
+using Models.ViewModels.User;
 using System.Linq.Expressions;
 
 namespace WebUI.Controllers

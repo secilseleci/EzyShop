@@ -5,5 +5,6 @@ namespace DataAccess.Repositories.Concrete
 {
     public class OrderItemRepository(ApplicationDbContext context) :BaseRepository<OrderItem>(context), IOrderItemRepository
     {
+       
     }
 }

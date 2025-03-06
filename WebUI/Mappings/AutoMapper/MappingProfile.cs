@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
 using Models.Entities.Concrete;
 using Models.Identity;
-using Models.ViewModels;
+using Models.ViewModels.Category;
+using Models.ViewModels.Order;
+using Models.ViewModels.Product;
+using Models.ViewModels.Shop;
+using Models.ViewModels.User;
 
 namespace WebUI.Mappings.AutoMapper
 {
@@ -92,7 +96,23 @@ namespace WebUI.Mappings.AutoMapper
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Status.Pending))  
                 .ForMember(dest => dest.OrderItems, opt => opt.Ignore());
             #endregion
+            #region Order → OrderViewModel
+            CreateMap<Order, OrderViewModel>()
+            .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Customer.Name))
+            .ForMember(dest => dest.CustomerEmail, opt => opt.MapFrom(src => src.Customer.Email))
+            .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItems));
+            #endregion
 
+
+            #region OrderItem → OrderItemViewModel
+            CreateMap<OrderItem, OrderItemViewModel>()
+            .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.ProductName))
+            .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.ProductPrice))
+            .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Color))   
+            .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.ImageUrl))  
+            .ForMember(dest => dest.Count, opt => opt.MapFrom(src => src.Count));
+
+            #endregion  
         }
     }
-}  
+}

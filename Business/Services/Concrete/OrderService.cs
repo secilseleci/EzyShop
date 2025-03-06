@@ -6,7 +6,7 @@ using DataAccess.Repositories.Abstract;
 using Microsoft.AspNetCore.Identity;
 using Models.Entities.Concrete;
 using Models.Identity;
-using Models.ViewModels;
+using Models.ViewModels.Order;
 
 namespace Business.Services.Concrete
 {
@@ -88,7 +88,9 @@ namespace Business.Services.Concrete
                 {
                     ProductName = item.ProductName,
                     ProductPrice = item.ProductPrice,
-                    Count = item.Count
+                    Count = item.Count,
+                    Color=item.Color,
+                    ImageUrl=item.ImageUrl
                 }).ToList()
             }).ToList();
 
@@ -102,5 +104,18 @@ namespace Business.Services.Concrete
         {
             return $"ORD-{DateTime.UtcNow:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}";
         }
+
+        public async Task<IDataResult<IEnumerable<OrderViewModel>>> GetAllOrdersAsync(Guid shopId)
+        {
+            var orders = await _orderRepository.GetOrdersWithDetailsAsync(shopId);
+
+            if (!orders.Any())
+                return new ErrorDataResult<IEnumerable<OrderViewModel>>(Messages.EmptyOrderList);
+
+            var orderViewModels = _mapper.Map<IEnumerable<OrderViewModel>>(orders);
+
+            return new SuccessDataResult<IEnumerable<OrderViewModel>>(orderViewModels);
+        }
+
     }
 }

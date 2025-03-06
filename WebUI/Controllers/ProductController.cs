@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
-using Models.ViewModels;
+using Models.ViewModels.Product;
 
 namespace WebUI.Controllers
 {
-     public class ProductController : BaseController
+    public class ProductController : BaseController
     {
         private readonly IProductService _productService;
         private readonly IShopService _shopService;

@@ -5,7 +5,7 @@ using Core.Constants;
 using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
 using Models.Entities.Concrete;
-using Models.ViewModels;
+using Models.ViewModels.Shop;
 using System.Linq.Expressions;
 
 public class ShopService : IShopService

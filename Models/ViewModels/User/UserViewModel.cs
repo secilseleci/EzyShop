@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Models.ViewModels
+namespace Models.ViewModels.User
 {
     public class UserViewModel
     {
@@ -20,7 +20,7 @@ namespace Models.ViewModels
 
 
         [Required]
-        public string Address { get; set; } 
+        public string Address { get; set; }
 
 
         [Required]

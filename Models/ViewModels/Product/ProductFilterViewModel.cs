@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Models.ViewModels.Category;
+using System.Collections.Generic;
 
-namespace Models.ViewModels
+namespace Models.ViewModels.Product
 {
     public class ProductFilterViewModel
     {

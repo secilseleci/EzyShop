@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
-using Models.ViewModels;
+using Models.ViewModels.Order;
 
 namespace WebUI.Controllers
 {
@@ -26,6 +26,7 @@ namespace WebUI.Controllers
             _orderService = orderService;
         }
 
+        #region Summary and Place Order 
         [HttpGet]
         public async Task<IActionResult> Summary()
         {
@@ -59,6 +60,40 @@ namespace WebUI.Controllers
             ViewBag.OrderCodes = orderCodes;  
             return View();
         }
+        #endregion
+
+
+
+        #region List Order
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null || user.Shop == null)
+            {
+                TempData["ErrorMessage"] = "You don't have a shop!";
+                return RedirectToAction("Index", "Home");
+            }
+
+            var result = await _orderService.GetAllOrdersAsync(user.Shop.Id);
+
+            if (!result.Success)
+            {
+                TempData["ErrorMessage"] = result.Message;
+                return View(new List<OrderViewModel>());
+            }
+
+            return View(result.Data);
+        }
+
+
+
+        #endregion
+
+
+
+
+
 
     }
 }

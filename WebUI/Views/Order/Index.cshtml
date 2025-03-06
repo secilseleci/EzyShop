@@ -1,0 +1,54 @@
+﻿@model List<OrderViewModel>
+
+@{
+    ViewData["Title"] = "Seller Order Management";
+}
+
+<h2>My Orders</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">No orders found for your shop.</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Order Code</th>
+                <th>Customer</th>
+                <th>Total</th>
+                <th>Payment</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderCode</td>
+                    <td>@order.CustomerName</td>
+                    <td>$@order.TotalAmount</td>
+                    <td>@order.PaymentMethod</td>
+                    <td>@order.Status</td>
+                    <td>@order.CreatedDate.ToShortDateString()</td>
+                    <td>
+                        <button class="btn btn-info" data-bs-toggle="collapse" data-bs-target="#order-@order.Id">View</button>
+                    </td>
+                </tr>
+                <tr id="order-@order.Id" class="collapse">
+                    <td colspan="7">
+                        <ul>
+                            @foreach (var item in order.OrderItems)
+                            {
+                                <li>@item.ProductName - @item.Count x $@item.ProductPrice - @item.Color -@item.ImageUrl</li>
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

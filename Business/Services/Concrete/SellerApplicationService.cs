@@ -6,7 +6,7 @@ using DataAccess.Repositories.Abstract;
 using Microsoft.AspNetCore.Identity;
 using Models.Entities.Concrete;
 using Models.Identity;
-using Models.ViewModels;
+using Models.ViewModels.User;
 using System.Linq.Expressions;
 
 namespace Business.Services.Concrete

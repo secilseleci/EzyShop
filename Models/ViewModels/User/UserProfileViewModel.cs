@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Models.ViewModels
+namespace Models.ViewModels.User
 {
     public class UserProfileViewModel
     {
@@ -12,7 +12,7 @@ namespace Models.ViewModels
         [RegularExpression(@"^[A-Za-zÇçĞğİıÖöŞşÜü\s]+$", ErrorMessage = "Name can only contain letters and spaces.")]
         public string Name { get; set; }
 
-        [Required, ReadOnly(true)]  
+        [Required, ReadOnly(true)]
         [DisplayName("Email Address")]
         [EmailAddress]
         [RegularExpression(@".*\.com$", ErrorMessage = "Email must end with .com")]
@@ -20,13 +20,13 @@ namespace Models.ViewModels
 
 
         [Required]
-        public string Address { get; set; } 
+        public string Address { get; set; }
 
 
         [Required]
         [RegularExpression(@"^\d{10,11}$", ErrorMessage = "Phone number must be 10 or 11 digits.")] // ☎️ Numara 10-11 hane olmalı
 
         public string ContactNumber { get; set; }
- 
+
     }
 }

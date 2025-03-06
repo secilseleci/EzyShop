@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
-using Models.ViewModels;
+using Models.ViewModels.Product;
 
 namespace WebUI.ViewComponents
 {

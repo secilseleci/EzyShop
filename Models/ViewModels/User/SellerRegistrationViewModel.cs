@@ -1,9 +1,9 @@
 ﻿using Models.Entities.Concrete;
 using System.ComponentModel.DataAnnotations;
 
-    namespace Models.ViewModels
-    {
-        public class SellerRegistrationViewModel
+namespace Models.ViewModels.User
+{
+    public class SellerRegistrationViewModel
     {
 
         // ✅ AppUser bilgileri
@@ -16,7 +16,7 @@ using System.ComponentModel.DataAnnotations;
         [EmailAddress(ErrorMessage = "Invalid email format.")]
         [Display(Name = "Email Address")]
         public string Email { get; set; }
-        
+
         [Required(ErrorMessage = "Contact Number is required.")]
         [MaxLength(11, ErrorMessage = "Phone number must be 11 digits.")]
         [Display(Name = "Phone Number")]
@@ -31,7 +31,7 @@ using System.ComponentModel.DataAnnotations;
         [Display(Name = "Store Name")]
         public string StoreName { get; set; }
 
-       
+
         [Required]
         [Display(Name = "Tax Number")]
         public string? TaxNumber { get; set; }
@@ -41,8 +41,7 @@ using System.ComponentModel.DataAnnotations;
         public string BusinessAddress { get; set; }
         public string ContactBusinessNumber { get; set; }
         public ApplicationStatus Status { get; set; } = ApplicationStatus.Pending;
-    
-    
+
+
     }
 }
- 

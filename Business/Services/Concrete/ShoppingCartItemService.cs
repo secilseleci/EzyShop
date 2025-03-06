@@ -5,7 +5,7 @@ using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
 using DataAccess.Repositories.Concrete;
 using Models.Entities.Concrete;
-using Models.ViewModels;
+using Models.ViewModels.Shop;
 
 
 namespace Business.Services.Concrete

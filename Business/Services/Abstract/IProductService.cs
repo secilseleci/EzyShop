@@ -1,6 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Models.Entities.Concrete;
-using Models.ViewModels;
+using Models.ViewModels.Product;
 using System.Linq.Expressions;
 
 namespace Business.Services.Abstract

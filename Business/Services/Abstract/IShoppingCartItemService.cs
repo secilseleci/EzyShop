@@ -1,6 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Models.Entities.Concrete;
-using Models.ViewModels;
+using Models.ViewModels.Shop;
 
 namespace Business.Services.Abstract
 {

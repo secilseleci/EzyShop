@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Models.ViewModels
+namespace Models.ViewModels.Shop
 {
     public class ShopViewModel
     {
@@ -21,13 +21,13 @@ namespace Models.ViewModels
         [StringLength(500, ErrorMessage = "Address cannot exceed 500 characters.")]
         public string Address { get; set; }
 
-        public string? TaxNumber { get; set; } 
+        public string? TaxNumber { get; set; }
 
-        public bool IsActive { get; set; } = false; 
+        public bool IsActive { get; set; } = false;
 
- 
-        public string Status { get; set; } = "Pending";  
 
-        public string? SellerName { get; set; }  
+        public string Status { get; set; } = "Pending";
+
+        public string? SellerName { get; set; }
     }
 }
