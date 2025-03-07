@@ -28,7 +28,7 @@ namespace DataAccess.Seeders.EntitySeeders
                         Id = Guid.NewGuid(),
                         Name = "Tişört",
                         ImageUrl= "images\\product\\erkektisort.jpg",
-                        Description="Erkek Tişört",
+                        Description="Tişört",
                         Price=50,
                         Color="Gri",
                         Stock=1,
@@ -37,9 +37,42 @@ namespace DataAccess.Seeders.EntitySeeders
                     },
                       new Product {
                         Id = Guid.NewGuid(),
+                        Name = "Gömlek",
+                        ImageUrl= "images\\product\\hakigomlek.jpg",
+                        Description="Erkek Gömlek",
+                        Price=500,
+                        Color="Haki",
+                        Stock=1,
+                        ShopId=firstShop.Id,
+                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959")
+                    },
+                          new Product {
+                        Id = Guid.NewGuid(),
+                        Name = "Gömlek",
+                        ImageUrl= "images\\product\\bejgomlek.jpg",
+                        Description="Gömlek",
+                        Price=330,
+                        Color="Bej",
+                        Stock=1,
+                        ShopId=firstShop.Id,
+                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959")
+                    },
+                      new Product {
+                        Id = Guid.NewGuid(),
+                        Name = "sweatshirt",
+                        ImageUrl= "images\\product\\sweatshirt.jpg",
+                        Description="sweatshirt",
+                        Price=330,
+                        Color="Siyah",
+                        Stock=1,
+                        ShopId=firstShop.Id,
+                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959")
+                    },
+                      new Product {
+                        Id = Guid.NewGuid(),
                         Name = "Kazak",
                         ImageUrl= "images\\product\\beyazkazak.jpg",
-                        Description="Erkek Triko",
+                        Description="Triko",
                         Price=100,
                         Color="Beyaz",
                         Stock=1,
@@ -58,17 +91,7 @@ namespace DataAccess.Seeders.EntitySeeders
                         ShopId=secondShop.Id,  
                         CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19")
                     },
-                    //new Product {
-                    //    Id = Guid.NewGuid(),
-                    //    Name = "Macbook Air M2",
-                    //    ImageUrl= "images\\product\\macbook_air_m2.jpg",
-                    //    Description="Apple'ın yeni nesil dizüstü bilgisayarı.",
-                    //    Price=60000,
-                    //    Color="Gümüş",
-                    //    Stock=3,
-                    //    ShopId=secondShop.Id,
-                    //    CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19")
-                    //},
+                   
                     new Product {
                         Id = Guid.NewGuid(),
                         Name = "iPhone 15 Pro",

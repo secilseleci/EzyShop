@@ -5,7 +5,9 @@
         public Guid Id { get; set; }
         public string OrderCode { get; set; }
         public string CustomerName { get; set; }
-        public string CustomerEmail { get; set; }  
+        public string CustomerEmail { get; set; }
+        public string CustomerAddress { get; set; }
+
         public decimal TotalAmount { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
         public Status Status { get; set; }

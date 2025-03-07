@@ -3,6 +3,7 @@ using Business.Services.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Models.Entities.Concrete;
 using Models.Identity;
 using Models.ViewModels.Order;
 
@@ -12,10 +13,12 @@ namespace WebUI.Controllers
     public class OrderController : BaseController
     {
         private readonly IOrderService _orderService;
+        private readonly IShopService _shopService;
 
         private readonly IShoppingCartItemService _shoppingCartItemService;
         public OrderController(IShoppingCartItemService shoppingCartItemService,
             IOrderService orderService,
+            IShopService shopService,
             UserManager<AppUser> userManager,
             RoleManager<AppRole> roleManager,
             SignInManager<AppUser> signInManager,
@@ -24,6 +27,7 @@ namespace WebUI.Controllers
         {
             _shoppingCartItemService = shoppingCartItemService;
             _orderService = orderService;
+            _shopService = shopService;
         }
 
         #region Summary and Place Order 
@@ -66,26 +70,27 @@ namespace WebUI.Controllers
 
         #region List Order
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public  IActionResult  Index()
+        {
+            return View();
+        }
+
+        #region API
+        [HttpGet]
+        public async Task<IActionResult> GetSellerOrders()
         {
             var user = await GetCurrentUserAsync();
             if (user == null || user.Shop == null)
             {
-                TempData["ErrorMessage"] = "You don't have a shop!";
-                return RedirectToAction("Index", "Home");
+                return Json(new { data = new List<object>() });
             }
 
-            var result = await _orderService.GetAllOrdersAsync(user.Shop.Id);
+            var orders = await _orderService.GetAllOrdersAsync(user.Shop.Id);
 
-            if (!result.Success)
-            {
-                TempData["ErrorMessage"] = result.Message;
-                return View(new List<OrderViewModel>());
-            }
-
-            return View(result.Data);
+            return Json(new { data = orders.Data ?? new List<OrderViewModel>() });
         }
 
+        #endregion
 
 
         #endregion

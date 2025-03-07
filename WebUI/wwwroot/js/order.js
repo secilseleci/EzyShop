@@ -1,58 +1,51 @@
-﻿let dataTable;
-
-$(document).ready(function () {
-    loadDataTable(); 
+﻿$(document).ready(function () {
+    loadOrderTable();
 });
 
-function loadDataTable() {
-    dataTable = $('#tblOrder').DataTable({
-        "ajax": { url: '/order/getall' },
+function loadOrderTable() {
+    $("#orderTable").DataTable({
+        "ajax": {
+            url: "/Order/GetSellerOrders",  // ✅ API çağrısı
+            type: "GET",
+            datatype: "json"
+        },
         "columns": [
-            { data: 'id', "width": "20%" },
-            { data: 'name', "width": "20%" },
-            { data: 'phoneNumber', "width": "15%" },
-            { data: 'appUser.email', "width": "15%" },
-            { data: 'orderStatus', "width": "10%" }, 
-            { data: 'paymentStatus', "width": "10%" }, 
-            { data: 'orderTotal', "width": "5%" },
+            { data: "orderCode", "width": "15%" },
+            { data: "customerName", "width": "15%" },
+            { data: "totalAmount", "width": "10%", "render": $.fn.dataTable.render.number(',', '.', 2, '$') },
+            { data: "paymentMethod", "width": "10%" },
             {
-                data: 'id',
-                "width": "5%",
+                data: "status",
+                "width": "10%",
                 "render": function (data) {
-                    return `<div class="w-75 btn-group" role="group">
-                     <a href="/order/details?orderHeaderId=${data}" class="btn btn-sm btn-warning mx-2 rounded"> <i class="bi bi-pencil-square"></i></a>          
-                    </div>`
+                    let badgeClass = data === "Pending" ? "bg-warning"
+                        : data === "Shipped" ? "bg-info"
+                            : data === "Delivered" ? "bg-success"
+                                : "bg-danger";
+                    return `<span class="badge ${badgeClass}">${data}</span>`;
                 }
             },
-        ]
-    });
-} 
-
-function loadData(buttonId, textToSearch) {
-    $("#pending, #completed, #approved, #all").removeClass("btn-info text-white");
-    $("#" + buttonId).addClass("btn-info text-white");
-    dataTable.search(textToSearch).draw();
-} 
-
-function Delete(url) { 
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-    }).then((result) => { 
-        if (result.isConfirmed) {
-            $.ajax({
-                url: url,
-                type: 'DELETE',
-                success: function (result) { 
-                    dataTable.ajax.reload();
-                    window.location.href = result.redirectTo;                    
+            {
+                data: "createdDate",
+                "width": "10%",
+                "render": function (data) {
+                    return new Date(data).toLocaleDateString();
                 }
-            })
-        }
-    })
+            },
+            {
+                data: "id",
+                "width": "10%",
+                "render": function (data) {
+                    return `<button class="btn btn-info btn-sm" onclick="viewOrderDetails('${data}')">View</button>`;
+                }
+            }
+        ],
+        "order": [[5, "desc"]], // 📅 Tarihe göre sıralama (en yeni siparişler en üstte)
+        "pageLength": 10
+    });
+}
+
+function viewOrderDetails(orderId) {
+    // Burada sipariş detaylarını açan bir modal veya sayfa yönlendirme olabilir
+    alert("Order ID: " + orderId);
 }
