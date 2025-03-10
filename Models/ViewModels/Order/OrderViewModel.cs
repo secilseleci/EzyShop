@@ -7,6 +7,7 @@
         public string CustomerName { get; set; }
         public string CustomerEmail { get; set; }
         public string CustomerAddress { get; set; }
+        public string CustomerPhone { get; set; }
 
         public decimal TotalAmount { get; set; }
         public PaymentMethod PaymentMethod { get; set; }

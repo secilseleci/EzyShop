@@ -14,5 +14,16 @@ namespace DataAccess.Repositories.Concrete
                 .Where(o => o.ShopId == shopId)
                 .ToListAsync();
         }
+
+        public async Task<Order?> GetOrderWithDetailsAsync(Guid orderId)
+        {
+            var order = await _dataContext.Orders
+                .Include(c => c.OrderItems)
+                .Include(o => o.Customer)
+                .Include(o => o.Shop)
+                .FirstOrDefaultAsync(o => o.Id == orderId);
+
+            return order;
+        }
     }
 }

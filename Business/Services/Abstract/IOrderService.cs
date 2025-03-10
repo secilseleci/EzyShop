@@ -8,5 +8,6 @@ namespace Business.Services.Abstract
         Task<IDataResult<SummaryViewModel>> GetOrderSummaryAsync(Guid userId);
         Task<IDataResult<List<string>>> CreateOrderAsync(SummaryViewModel model);
         Task<IDataResult<IEnumerable<OrderViewModel>>> GetAllOrdersAsync(Guid shopId);
+        Task<IDataResult<OrderViewModel>> GetOrderByIdAsync(Guid orderId);
     }
 }

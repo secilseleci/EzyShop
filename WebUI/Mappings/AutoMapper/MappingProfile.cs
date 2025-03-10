@@ -93,14 +93,15 @@ namespace WebUI.Mappings.AutoMapper
                 .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.CustomerId))
                 .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.TotalAmount))
                 .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod))
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Status.Pending))  
-                .ForMember(dest => dest.OrderItems, opt => opt.Ignore());
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Status.Pending))
+    .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.ShopOrders.SelectMany(s => s.OrderItems)));  // ✅ **OrderItems artık map edilecek!**
             #endregion
             #region Order → OrderViewModel
             CreateMap<Order, OrderViewModel>()
             .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Customer.Name))
             .ForMember(dest => dest.CustomerEmail, opt => opt.MapFrom(src => src.Customer.Email))
             .ForMember(dest => dest.CustomerAddress, opt => opt.MapFrom(src => src.Customer.Address))
+            .ForMember(dest => dest.CustomerPhone, opt => opt.MapFrom(src => src.Customer.ContactNumber))
             .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItems))
             .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.ToString()))   
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()));   

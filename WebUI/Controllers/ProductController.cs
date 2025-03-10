@@ -113,7 +113,6 @@ namespace WebUI.Controllers
         #endregion
 
         #region API
-        [Authorize(Roles = "Seller")]
         [HttpGet]
         public async Task<IActionResult> GetSellerProducts()
         {
@@ -123,7 +122,7 @@ namespace WebUI.Controllers
             var shopResult = await _shopService.GetShopBySellerIdAsync(user.Id);
             if (!shopResult.Success || shopResult.Data == null)
             {
-                return Json(new { data = new List<object>() }); // Eğer shop yoksa boş liste döndür
+                return Json(new { data = new List<object>() });  
             }
 
             var products = await _productService.GetAllProductsWithCategoryAsync(p => p.ShopId == shopResult.Data.Id);

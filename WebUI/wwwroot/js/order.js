@@ -4,11 +4,10 @@
 
 function loadOrderTable() {
     $("#orderTable").DataTable({
-        "ajax": {
-            url: "/Order/GetSellerOrders",  // ✅ API çağrısı
-            type: "GET",
-            datatype: "json"
-        },
+        "ajax": {url: '/order/getsellerorders' }, 
+            
+           
+        
         "columns": [
             { data: "orderCode", "width": "15%" },
             { data: "customerName", "width": "15%" },
@@ -36,16 +35,15 @@ function loadOrderTable() {
                 data: "id",
                 "width": "10%",
                 "render": function (data) {
-                    return `<button class="btn btn-info btn-sm" onclick="viewOrderDetails('${data}')">View</button>`;
+                    return `<a href="/Order/OrderDetail/${data}" class="btn btn-info btn-sm">
+                                <i class="bi bi-eye"></i> View
+                            </a>`;
                 }
             }
         ],
-        "order": [[5, "desc"]], // 📅 Tarihe göre sıralama (en yeni siparişler en üstte)
+        "order": [[5, "desc"]],  
         "pageLength": 10
     });
 }
 
-function viewOrderDetails(orderId) {
-    // Burada sipariş detaylarını açan bir modal veya sayfa yönlendirme olabilir
-    alert("Order ID: " + orderId);
-}
+ 

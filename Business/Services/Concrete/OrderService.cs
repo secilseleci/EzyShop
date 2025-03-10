@@ -62,6 +62,8 @@ namespace Business.Services.Concrete
         }
         public async Task<IDataResult<List<string>>> CreateOrderAsync(SummaryViewModel model)
         {
+             
+
             var user = await _userManager.FindByIdAsync(model.CustomerId.ToString());
             if (user == null)
                 return new ErrorDataResult<List<string>>(Messages.UserNotFound);
@@ -93,6 +95,7 @@ namespace Business.Services.Concrete
                     ImageUrl=item.ImageUrl
                 }).ToList()
             }).ToList();
+ 
 
             await _orderRepository.AddRangeAsync(orders);
 
@@ -115,6 +118,15 @@ namespace Business.Services.Concrete
             var orderViewModels = _mapper.Map<IEnumerable<OrderViewModel>>(orders);
 
             return new SuccessDataResult<IEnumerable<OrderViewModel>>(orderViewModels);
+        }
+        public async Task<IDataResult<OrderViewModel>> GetOrderByIdAsync(Guid orderId)
+        {
+            var order = await _orderRepository.GetOrderWithDetailsAsync(orderId);
+            if (order == null)
+                return new ErrorDataResult<OrderViewModel>(Messages.OrderNotFound);
+
+            var orderViewModel = _mapper.Map<OrderViewModel>(order);
+            return new SuccessDataResult<OrderViewModel>(orderViewModel);
         }
 
     }

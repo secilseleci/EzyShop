@@ -4,7 +4,7 @@
 
 function loadDataTable() {
     dataTable = $('#tblProduct').DataTable({
-        "ajax": { url: '/product/getsellerproducts' },
+        "ajax": { url: '/Product/GetSellerProducts' },
         "columns": [
             {
                 data: 'imageUrl',

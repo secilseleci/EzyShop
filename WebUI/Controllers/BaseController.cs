@@ -32,11 +32,21 @@ namespace WebUI.Controllers
 
         protected async Task<AppUser?> GetCurrentUserAsync()
         {
-            return User.Identity.IsAuthenticated
-                ? await UserManager.Users
-                .Include(u=>u.Shop)
-                .FirstOrDefaultAsync(u=>u.Id==GetUserId())
-                : null;
+            var user = await UserManager.Users
+                .Include(u => u.Shop)
+                .AsNoTracking() // Tracking olmadan getir
+                .FirstOrDefaultAsync(u => u.Id == GetUserId());
+
+            if (user == null)
+            {
+                Console.WriteLine("❌ Kullanıcı bulunamadı!");
+            }
+            else
+            {
+                Console.WriteLine($"✅ Kullanıcı: {user.Email}, Shop ID: {user.Shop?.Id}");
+            }
+
+            return user;
         }
         protected Guid GetUserId()
         {
