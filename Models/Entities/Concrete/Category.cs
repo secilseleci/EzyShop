@@ -19,7 +19,7 @@ namespace Models.Entities.Concrete
         [Required]
         public int DisplayOrder { get; set; }
         public string? ImageUrl { get; set; }
-       
+        [JsonIgnore]
         public IEnumerable<Product> Products { get; set; }
  
     }

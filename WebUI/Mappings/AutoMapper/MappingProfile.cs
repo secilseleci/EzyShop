@@ -94,8 +94,9 @@ namespace WebUI.Mappings.AutoMapper
                 .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.TotalAmount))
                 .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Status.Pending))
-    .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.ShopOrders.SelectMany(s => s.OrderItems)));  // ✅ **OrderItems artık map edilecek!**
+                .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.ShopOrders.SelectMany(s => s.OrderItems)));  // ✅ **OrderItems artık map edilecek!**
             #endregion
+
             #region Order → OrderViewModel
             CreateMap<Order, OrderViewModel>()
             .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Customer.Name))
@@ -104,17 +105,26 @@ namespace WebUI.Mappings.AutoMapper
             .ForMember(dest => dest.CustomerPhone, opt => opt.MapFrom(src => src.Customer.ContactNumber))
             .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItems))
             .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.ToString()))   
-            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()));   
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()));
             #endregion
+            
+            #region ShopOrderViewModel → Order
 
+            CreateMap<ShopOrderViewModel, Order>()
+            .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItems))
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Status.Pending))   
+            .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => PaymentMethod.CreditCard));
+            #endregion
 
             #region OrderItem → OrderItemViewModel
             CreateMap<OrderItem, OrderItemViewModel>()
+            .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))
             .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.ProductName))
             .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.ProductPrice))
             .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Color))   
             .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.ImageUrl))  
             .ForMember(dest => dest.Count, opt => opt.MapFrom(src => src.Count));
+            CreateMap<OrderItemViewModel, OrderItem>();
 
             #endregion  
         }

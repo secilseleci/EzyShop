@@ -3,6 +3,7 @@ using Business.Services.Abstract;
 using Core.Constants;
 using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
+using DataAccess.Repositories.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Models.Entities.Concrete;
 using Models.Identity;
@@ -13,21 +14,29 @@ namespace Business.Services.Concrete
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository _orderRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IShoppingCartItemRepository _shoppingCartItemRepository;
         private readonly UserManager<AppUser> _userManager;
-        private readonly IMapper _mapper;
+        private readonly IMapper _mapper; 
+        private readonly IEmailService _emailService;
+
         public OrderService( 
               IOrderRepository orderRepository,
+              IProductRepository productRepository,
               IShoppingCartRepository shoppingCartRepository,
               IShoppingCartItemRepository shoppingCartItemRepository,
-              UserManager<AppUser> userManager,
-              IMapper mapper)
+              UserManager<AppUser> userManager, 
+              IEmailService emailService,
+              IMapper mapper
+             )
         {
             _orderRepository = orderRepository;
+            _productRepository = productRepository;
             _shoppingCartRepository = shoppingCartRepository;
             _shoppingCartItemRepository = shoppingCartItemRepository;
             _userManager = userManager;
+            _emailService = emailService;
             _mapper = mapper;
         }
 
@@ -63,7 +72,6 @@ namespace Business.Services.Concrete
         public async Task<IDataResult<List<string>>> CreateOrderAsync(SummaryViewModel model)
         {
              
-
             var user = await _userManager.FindByIdAsync(model.CustomerId.ToString());
             if (user == null)
                 return new ErrorDataResult<List<string>>(Messages.UserNotFound);
@@ -76,26 +84,32 @@ namespace Business.Services.Concrete
             if (!cartItems.Any())
                 return new ErrorDataResult<List<string>>(Messages.ShoppingCartEmpty);
 
-            List<Order> orders = model.ShopOrders.Select(shopOrder => new Order
+            var orders = _mapper.Map<List<Order>>(model.ShopOrders);
+
+            foreach (var order in orders)
             {
-                CustomerId = user.Id,
-                ShopId = shopOrder.ShopId,
-                OrderCode = GenerateOrderCode(),
-                TotalAmount = shopOrder.TotalAmount,
-                PaymentMethod = model.PaymentMethod,
-                Status = Status.Pending,
-                CreatedDate = DateTime.UtcNow,
-                UpdatedDate = DateTime.UtcNow,
-                OrderItems = shopOrder.OrderItems.Select(item => new OrderItem
+                order.CustomerId = user.Id;
+                order.OrderCode = GenerateOrderCode();
+                order.PaymentMethod = order.PaymentMethod;
+                order.Status = Status.Pending;
+                order.CreatedDate = DateTime.UtcNow;
+                order.UpdatedDate = DateTime.UtcNow;
+                foreach (var item in order.OrderItems)
                 {
-                    ProductName = item.ProductName,
-                    ProductPrice = item.ProductPrice,
-                    Count = item.Count,
-                    Color=item.Color,
-                    ImageUrl=item.ImageUrl
-                }).ToList()
-            }).ToList();
- 
+                    var cartItem = cartItems.FirstOrDefault(c => c.ProductId == item.ProductId);
+                    if (cartItem == null || cartItem.Product == null)
+                        return new ErrorDataResult<List<string>>($"Product {item.ProductName} not found.");
+
+                    var product = cartItem.Product;  
+
+                    if (product.Stock < item.Count)
+                        return new ErrorDataResult<List<string>>($"Not enough stock for {item.ProductName}.");
+
+                    product.Stock -= item.Count;
+                    await _productRepository.UpdateAsync(product);
+                }
+
+            }
 
             await _orderRepository.AddRangeAsync(orders);
 
@@ -127,6 +141,36 @@ namespace Business.Services.Concrete
 
             var orderViewModel = _mapper.Map<OrderViewModel>(order);
             return new SuccessDataResult<OrderViewModel>(orderViewModel);
+        }
+
+    
+        public async Task<IDataResult<OrderViewModel>>MarkAsShipped(Guid orderId)
+        {
+            var order = await _orderRepository.GetByIdAsync(orderId);
+            if (order == null)
+                return new ErrorDataResult<OrderViewModel>(Messages.OrderNotFound);
+
+            if (order.Status != Status.Pending)
+                return new ErrorDataResult<OrderViewModel>(Messages.OrderStatusIsNotPending);
+            
+            order.Status = Status.Shipped;
+            order.ShippingTrackingNumber= GenerateTrackingNumber();
+            await _orderRepository.UpdateAsync(order);
+            
+            var customerEmail=order.Customer?.Email;
+            if (string.IsNullOrEmpty(customerEmail))
+                return new ErrorDataResult<OrderViewModel>(Messages.CustomerEmailError);
+
+            await _emailService.SendEmailAsync(customerEmail,
+                "Your order has been shipped!", 
+                $"Your tracking number is {order.ShippingTrackingNumber}");
+
+            
+            return new SuccessDataResult<OrderViewModel>(_mapper.Map<OrderViewModel>(order), "Order marked as shipped.");
+        }
+        private string GenerateTrackingNumber()
+        {
+            return $"TRK-{DateTime.UtcNow:yyyyMMdd}-{new Random().Next(100000, 999999)}";
         }
 
     }

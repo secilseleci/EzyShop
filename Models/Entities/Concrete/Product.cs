@@ -16,39 +16,50 @@ namespace Models.Entities.Concrete
         [Required]
         public Guid Id { get; set; }
 
+        
+
+      
+        [Required]
+        public Guid CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")]
+        [JsonIgnore]
+        public Category Category { get; set; }
+        
+        
+        [Required]
+        public Guid ShopId { get; set; }
+        [ForeignKey("ShopId")]
+        [JsonIgnore]
+        public Shop Shop { get; set; }
+
+        [JsonIgnore]
+        public List<ProductImage> ProductImages { get; set; }
+
         [Required]
         public string Name { get; set; }
 
         [Required]
         public string Color { get; set; }
-        public string? Description { get; set; }
-
-       
-
+     
         [Required]
         public decimal Price { get; set; }
-
+        
         [Required]
         public int Stock { get; set; } = 1;
-
-        [Required]
-        public Guid CategoryId { get; set; }
-
-        [ForeignKey("CategoryId")]
-       
-        public Category Category { get; set; }
-
         public string? ImageUrl { get; set; }
+        public string? Description { get; set; }
 
- 
+        public bool IsSoldOut => Stock <= 0;   
+        public bool IsActive { get; set; } = true;   
+        public bool IsDeleted { get; set; } = false;  
+        public bool IsVisible => IsActive && !IsDeleted;
+
+       
+       
      
 
-        public List<ProductImage> ProductImages { get; set; }
-       
-        [Required]
-        public Guid ShopId { get; set; }
-        [ForeignKey("ShopId")]
-         
-        public Shop Shop { get; set; }
+      
+
     }
 }

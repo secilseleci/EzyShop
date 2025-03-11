@@ -43,8 +43,8 @@ namespace Models.Entities.Concrete
         [Required]
         [StringLength(10)]
         public string Status { get; set; }
-     
-        public ICollection<Product> Products { get; set; }
+        [JsonIgnore]
+         public ICollection<Product> Products { get; set; }
         public SellerApplication? SellerApplication { get; set; }
 
 

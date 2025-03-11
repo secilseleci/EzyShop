@@ -130,6 +130,10 @@
         public const string EmptyOrderList = "Order list is empty";
         public const string CreateOrderSuccess = "Order created successfully";
         public const string CreateOrderError = "Error occurred while registering the Order to Database";
+        public const string OrderStatusIsNotPending = "Order is not in Pending status";
+        public const string OrderMarkAsShippedSuccess = "Order marked as shipped successfully";
+        public const string OrderMarkAsShippedError = "Error occurred while marking the order as shipped";
+        public const string CustomerEmailError = "customer e-mail not found";
         #endregion
     }
-    }
+}

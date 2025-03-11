@@ -72,10 +72,14 @@ namespace DataAccess
                 .HasOne(o => o.Shop)
                 .WithMany()
                 .HasForeignKey(o => o.ShopId)
-                .OnDelete(DeleteBehavior.Restrict);  
+                .OnDelete(DeleteBehavior.Restrict);
 
-  
- 
+
+            modelBuilder.Entity<OrderItem>()
+                  .HasOne(oi => oi.Product)
+                  .WithMany() 
+                  .HasForeignKey(oi => oi.ProductId)
+                  .OnDelete(DeleteBehavior.Restrict); 
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }

@@ -3,9 +3,9 @@ using Business.Services.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Models.Entities.Concrete;
 using Models.Identity;
 using Models.ViewModels.Order;
+using System.Drawing.Drawing2D;
 
 namespace WebUI.Controllers
 {
@@ -66,8 +66,6 @@ namespace WebUI.Controllers
         }
         #endregion
 
-
-
         #region List Order
  
         [HttpGet]
@@ -124,6 +122,10 @@ namespace WebUI.Controllers
         }
         #endregion
 
-
+        #region Mark As Shipped
+        
+       
+        
+        #endregion
     }
 }
