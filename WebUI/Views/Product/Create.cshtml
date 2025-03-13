@@ -1,4 +1,4 @@
-﻿@model ProductViewModel
+﻿@model ProductCreateViewModel
 @inject ICategoryRepository _categoryRepo
 
 @{
@@ -36,6 +36,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
@@ -52,7 +53,8 @@
                             </div>
                         </div>
                     </div>
-                     <div class="row">
+
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
                                 <textarea asp-for="Description" class="form-control border-0 shadow rounded"></textarea>
@@ -73,6 +75,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
@@ -81,6 +84,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input type="checkbox" asp-for="IsActive" class="form-check-input" />
+                                <label asp-for="IsActive" class="ms-2"> Active </label>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row mt-4">
                         <div class="col-6">
                             <button type="submit" class="form-control btn btn-info shadow">Create</button>
@@ -89,6 +102,7 @@
                             <a asp-controller="Product" asp-action="Index" class="form-control btn btn-outline-secondary shadow">Back To List</a>
                         </div>
                     </div>
+
                 </div>
             </form>
         </div>
@@ -96,7 +110,5 @@
 </div>
 
 @section Scripts {
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }

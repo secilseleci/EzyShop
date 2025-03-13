@@ -1,4 +1,4 @@
-﻿@model ProductViewModel
+﻿@model ProductUpdateViewModel
 @inject ICategoryRepository _categoryRepo
 
 @{
@@ -12,7 +12,7 @@
     <div class="card shadow border-0 rounded offset-2 col-8">
         <div class="card-header">
             <div class="row p-3">
-                <h2 class="text-info">Create Product</h2>
+                <h2 class="text-info">Edit Product</h2>
             </div>
         </div>
         <div class="card-body p-0">
@@ -22,7 +22,6 @@
                 <input asp-for="ImageUrl" hidden />
 
                 <div class="border p-3">
-
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
@@ -84,6 +83,16 @@
                             </div>
                         </div>
                     </div>
+
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input type="checkbox" asp-for="IsActive" class="form-check-input" />
+                                <label asp-for="IsActive" class="ms-2"> Active </label>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row mt-4">
                         <div class="col-6">
                             <button type="submit" class="form-control btn btn-info shadow">Update</button>
@@ -92,6 +101,7 @@
                             <a asp-controller="Product" asp-action="Index" class="form-control btn btn-outline-secondary shadow">Back To List</a>
                         </div>
                     </div>
+
                 </div>
             </form>
         </div>
@@ -99,7 +109,5 @@
 </div>
 
 @section Scripts {
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }

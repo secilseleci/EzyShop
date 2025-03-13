@@ -11,6 +11,7 @@ namespace Models.Entities.Concrete
         {
             Id = Guid.NewGuid();
             ProductImages = new List<ProductImage>();
+            CreatedDate = DateTime.UtcNow;
 
         }
         [Required]
@@ -49,11 +50,12 @@ namespace Models.Entities.Concrete
         public int Stock { get; set; } = 1;
         public string? ImageUrl { get; set; }
         public string? Description { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public bool IsSoldOut => Stock <= 0;   
         public bool IsActive { get; set; } = true;   
         public bool IsDeleted { get; set; } = false;  
-        public bool IsVisible => IsActive && !IsDeleted;
+        public bool IsVisible => IsActive && !IsDeleted ;
 
        
        

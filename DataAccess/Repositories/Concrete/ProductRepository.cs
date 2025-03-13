@@ -18,6 +18,7 @@ namespace DataAccess.Repositories.Concrete
         public async Task<IEnumerable<Product>?> GetAllProductsWithCategoryAsync(Expression<Func<Product, bool>> predicate)
         {
             return await _dataContext.Products
+                .Where(p => !p.IsDeleted)
                 .Where(predicate)
                 .Include(p => p.Category)
                 .Include(p => p.Shop)
@@ -28,7 +29,9 @@ namespace DataAccess.Repositories.Concrete
         public async Task<IEnumerable<Product>> GetFilteredProductsAsync(string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice)
         {
             var query = _dataContext.Products
+                       
                        .Include(p => p.Category)
+                       .Where(p => !p.IsDeleted)
                        .AsNoTracking()
                        .AsQueryable();
 
@@ -54,10 +57,9 @@ namespace DataAccess.Repositories.Concrete
             if (maxPrice.HasValue)
             {
                 query = query.Where(p => p.Price <= maxPrice.Value);
-            }
-
+            }   
             var products = await query.ToListAsync();
-            Console.WriteLine($"DEBUG: {products.Count} ürün bulundu.");
+           
             return products;
         }
     }

@@ -31,9 +31,12 @@ namespace DataAccess.Seeders.EntitySeeders
                         Description="Tişört",
                         Price=50,
                         Color="Gri",
-                        Stock=1,
+                        Stock=10,
                         ShopId=firstShop.Id,
-                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959")
+                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959"),
+                        CreatedDate = DateTime.UtcNow,
+                        IsActive = true,
+                        IsDeleted = false,
                     },
                       new Product {
                         Id = Guid.NewGuid(),
@@ -42,9 +45,12 @@ namespace DataAccess.Seeders.EntitySeeders
                         Description="Erkek Gömlek",
                         Price=500,
                         Color="Haki",
-                        Stock=1,
+                        Stock=10,
                         ShopId=firstShop.Id,
-                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959")
+                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959"),
+                        CreatedDate = DateTime.UtcNow,
+                        IsActive = true,
+                        IsDeleted = false,
                     },
                           new Product {
                         Id = Guid.NewGuid(),
@@ -53,9 +59,12 @@ namespace DataAccess.Seeders.EntitySeeders
                         Description="Gömlek",
                         Price=330,
                         Color="Bej",
-                        Stock=1,
+                        Stock=10,
                         ShopId=firstShop.Id,
-                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959")
+                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959"),
+                        CreatedDate = DateTime.UtcNow,
+                        IsActive = true,
+                        IsDeleted = false,
                     },
                       new Product {
                         Id = Guid.NewGuid(),
@@ -66,8 +75,11 @@ namespace DataAccess.Seeders.EntitySeeders
                         Color="Siyah",
                         Stock=1,
                         ShopId=firstShop.Id,
-                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959")
-                    },
+                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959"),
+                        CreatedDate = DateTime.UtcNow,
+                        IsActive = true,
+                        IsDeleted = false,
+                      },
                       new Product {
                         Id = Guid.NewGuid(),
                         Name = "Kazak",
@@ -77,7 +89,10 @@ namespace DataAccess.Seeders.EntitySeeders
                         Color="Beyaz",
                         Stock=1,
                         ShopId=firstShop.Id,
-                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959")
+                        CategoryId=Guid.Parse("636cf7e1-9bef-48f1-8ba7-9f6203b6f959"),
+                        CreatedDate = DateTime.UtcNow,
+                        IsActive = true,
+                        IsDeleted = false,
                     },
 
                        new Product {
@@ -89,7 +104,10 @@ namespace DataAccess.Seeders.EntitySeeders
                         Color="Siyah",
                         Stock=5,
                         ShopId=secondShop.Id,  
-                        CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19")
+                        CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19"),
+                        CreatedDate = DateTime.UtcNow,
+                        IsActive = true,
+                        IsDeleted = false,
                     },
                    
                     new Product {
@@ -101,7 +119,10 @@ namespace DataAccess.Seeders.EntitySeeders
                         Color="Gri",
                         Stock=8,
                         ShopId=secondShop.Id,
-                        CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19")
+                        CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19"),
+                        CreatedDate = DateTime.UtcNow,
+                        IsActive = true,
+                        IsDeleted = false,
                     },
 
                      new Product {
@@ -113,11 +134,14 @@ namespace DataAccess.Seeders.EntitySeeders
                         Color="Siyah",
                         Stock=5,
                         ShopId=secondShop.Id,
-                        CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19")
+                        CategoryId=Guid.Parse("dc8f3700-5fce-4c5e-a9d0-2bea740e7b19"),
+                        CreatedDate = DateTime.UtcNow,
+                        IsActive = true, 
+                        IsDeleted = false,
                      }
             };
             var newProducts = productsToAdd
-                .Where(p => !existingProductNames.Contains(p.Name)) // Zaten eklenmiş olanları atla
+                .Where(p => !existingProductNames.Contains(p.Name)) 
                 .ToList();
 
             if (newProducts.Any())

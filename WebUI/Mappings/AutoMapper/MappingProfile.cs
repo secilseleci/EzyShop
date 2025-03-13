@@ -21,7 +21,12 @@ namespace WebUI.Mappings.AutoMapper
             #endregion
 
             #region Product → ProductViewModel
-            CreateMap<ProductViewModel, Product>().ReverseMap();
+            CreateMap<Product, ProductCreateViewModel>().ReverseMap();
+            CreateMap<Product, ProductUpdateViewModel>().ReverseMap();
+
+            CreateMap<Product, ProductViewModel>()
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name)); // ✅ Listeleme için ayrı
+
             #endregion
 
             #region AppUser → RegisterViewModel

@@ -12,11 +12,12 @@ namespace Business.Services.Abstract
 
         Task<IDataResult<IEnumerable<Product>>> GetAllProductsAsync(Expression<Func<Product, bool>> predicate);
 
-        Task<IDataResult<IEnumerable<Product>>> GetAllProductsWithCategoryAsync(Expression<Func<Product, bool>> predicate);
+        Task<IDataResult<IEnumerable<ProductViewModel>>> GetAllProductsWithCategoryAsync(Expression<Func<Product, bool>> predicate);
 
-        Task<IResult> CreateProductAsync(ProductViewModel model);
-        Task<IResult> UpdateProductAsync(ProductViewModel model);
+        Task<IResult> CreateProductAsync(ProductCreateViewModel model);
+        Task<IResult> UpdateProductAsync(ProductUpdateViewModel model);
         Task<IResult> DeleteProductAsync(Guid productId );
+        Task<IResult> ToggleProductStatusAsync(Guid productId);
 
         Task<IDataResult<IEnumerable<ProductViewModel>>> GetFilteredProductsAsync(string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice);
     }

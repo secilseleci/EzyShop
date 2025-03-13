@@ -52,7 +52,7 @@ namespace WebUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            var model = new ProductViewModel
+            var model = new ProductCreateViewModel
             {
                 ShopId = shopResult.Data.Id  
             };
@@ -61,10 +61,13 @@ namespace WebUI.Controllers
         }
         [Authorize(Roles = "Seller")]
         [HttpPost]
-        public async Task<IActionResult> Create(ProductViewModel model, IFormFile? file)
+        public async Task<IActionResult> Create(ProductCreateViewModel model, IFormFile? file)
         {
-            if (!ModelState.IsValid) return View(model);
-            HandleImageUpload(model, file);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+             HandleImageUpload(model, file);
 
             var result = await _productService.CreateProductAsync(model);
             if (!result.Success)
@@ -91,12 +94,12 @@ namespace WebUI.Controllers
             }
 
             TempData["SuccessMessage"] = result.Message;
-            return View(Mapper.Map<ProductViewModel>(result.Data));
+            return View(Mapper.Map<ProductUpdateViewModel>(result.Data));
         }
 
         [HttpPost]
         [Authorize(Roles = "Seller")]
-        public async Task<IActionResult> Edit(ProductViewModel model, IFormFile? file)
+        public async Task<IActionResult> Edit(ProductUpdateViewModel model, IFormFile? file)
         {
             HandleImageUpload(model, file);
 
@@ -110,6 +113,18 @@ namespace WebUI.Controllers
             TempData["SuccessMessage"] = result.Message;
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ToggleStatus(Guid id)
+        {
+            var result = await _productService.ToggleProductStatusAsync(id);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            return Ok();
+        }
+
         #endregion
 
         #region API
@@ -130,8 +145,9 @@ namespace WebUI.Controllers
             {
                 return Json(new { data = new List<object>() });
             }
+            var sortedProducts = products.Data.OrderByDescending(p => p.CreatedDate).ToList(); // ✅ En yeni ürünler başta
 
-            return Json(new { data = products.Data });
+            return Json(new { data = sortedProducts });
         }
 
 

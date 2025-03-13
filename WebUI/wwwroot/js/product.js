@@ -2,24 +2,40 @@
     loadDataTable();
 });
 
+
 function loadDataTable() {
     dataTable = $('#tblProduct').DataTable({
         "ajax": { url: '/Product/GetSellerProducts' },
+       
         "columns": [
             {
                 data: 'imageUrl',
                 "width": "10%",
                 "render": function (data) {
-                    return `<div>
-                     <img src="${data}" style="width:100%; border-radius:5px; border:1px solid #ffffff" />
+                    if (!data) {
+                    return
+                    `<div >
+                    <img src="${data}" style="width:100%; border-radius:5px; border:1px solid #ffffff; "/>
                     </div>`;
                 }
             },
+            { data: 'categoryName', "width": "10%" },
             { data: 'name', "width": "15%" },
-            { data: 'description', "width": "20%" },
+            { data: 'description', "width": "10%" },
             { data: 'color', "width": "10%" },
             { data: 'price', "width": "5%" },
-            { data: 'category.name', "width": "15%" },
+            { data: 'stock', "width": "5%" },
+            {
+                data: 'isActive',
+                "width": "10%",
+                "render": function (data, type, row) {
+                    let btnClass = data ? "btn-success" : "btn-danger";
+                    let btnText = data ? "Active" : "Inactive";
+                    return `<button onClick="toggleProductStatus('${row.id}', ${data})" class="btn btn-sm ${btnClass}">
+                                ${btnText}
+                            </button>`;
+                }
+            },
             {
                 data: 'id',
                 "width": "10%",
@@ -60,6 +76,21 @@ function Delete(url) {
                     toastr.error("Error while deleting product");
                 }
             });
+        }
+    });
+}
+function toggleProductStatus(productId, currentStatus) {
+    let newStatus = !currentStatus;  
+    $.ajax({
+        url: `/Product/ToggleStatus/${productId}`,
+        type: "POST",
+        data: JSON.stringify({ isActive: newStatus }),
+        contentType: "application/json",
+        success: function () {
+            dataTable.ajax.reload();  
+        },
+        error: function () {
+            alert("Ürün durumu değiştirilemedi!");
         }
     });
 }

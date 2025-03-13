@@ -82,7 +82,15 @@ function removeItem(itemId) {
         }
     });
 }
-
+$(document).ready(function () {
+    // Tüm DOM yüklendiğinde modal açma eventini bağla
+    $(document).on("click", ".product-image", function () {
+        var imageUrl = $(this).attr("src");
+        console.log("Tıklanan resmin URL'si:", imageUrl); // Debug için ekledim
+        $("#modalImage").attr("src", imageUrl);
+        $("#imageModal").modal("show");
+    });
+});
 function clearCart() {
     $.ajax({
         url: "/ShoppingCart/ClearCart",

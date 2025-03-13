@@ -21,7 +21,7 @@ namespace Business.Services.Concrete
         }
 
         #region Create
-        public async Task<IResult> CreateProductAsync(ProductViewModel model)
+        public async Task<IResult> CreateProductAsync(ProductCreateViewModel model)
         {
             if (model.ShopId == Guid.Empty)
             {
@@ -38,7 +38,7 @@ namespace Business.Services.Concrete
         #endregion
 
         #region Update
-        public async Task<IResult> UpdateProductAsync(ProductViewModel model  )
+        public async Task<IResult> UpdateProductAsync(ProductUpdateViewModel model  )
         {
             var productResult = await GetProductByIdAsync(model.Id);
             if (!productResult.Success)
@@ -57,14 +57,37 @@ namespace Business.Services.Concrete
                 ? new SuccessResult(Messages.UpdateProductSuccess)
                 : new ErrorResult(Messages.UpdateProductError);
         }
+
+        public async Task<IResult> ToggleProductStatusAsync(Guid productId)
+        {
+            var product = await _productRepository.GetByIdAsync(productId);
+            if (product == null)
+            {
+                return new ErrorResult(Messages.ProductNotFound);
+            }
+
+            product.IsActive = !product.IsActive; 
+            await _productRepository.UpdateAsync(product);
+
+            return new SuccessResult(Messages.UpdateProductSuccess);
+        }
+
         #endregion
 
-        #region Delete
+        #region Soft Delete
         public async Task<IResult> DeleteProductAsync(Guid productId )
         {
+            var product = await _productRepository.GetByIdAsync(productId);
+            if (product == null)
+            {
+                return new ErrorResult(Messages.ProductNotFound);
+            }
+            product.IsDeleted = true;
+            product.IsActive = false;
 
-            var deleteProductResult = await _productRepository.DeleteAsync(productId);
-            return deleteProductResult > 0
+
+            var updateResult = await _productRepository.UpdateAsync(product);
+            return updateResult > 0
                 ? new SuccessResult(Messages.DeleteProductSuccess)
                 : new ErrorResult(Messages.DeleteProductError);
         }
@@ -96,12 +119,14 @@ namespace Business.Services.Concrete
                : new ErrorDataResult<Product>(Messages.ProductNotFound);
         }
 
-        public async Task<IDataResult<IEnumerable<Product>>> GetAllProductsWithCategoryAsync(Expression<Func<Product, bool>> predicate)
+        public async Task<IDataResult<IEnumerable<ProductViewModel>>> GetAllProductsWithCategoryAsync(Expression<Func<Product, bool>> predicate)
         {
             var productList = await _productRepository.GetAllProductsWithCategoryAsync(predicate);
+            var productViewModels = _mapper.Map<IEnumerable<ProductViewModel>>(productList); 
+            
             return productList is not null && productList.Any()
-                ? new SuccessDataResult<IEnumerable<Product>>(productList)
-                : new ErrorDataResult<IEnumerable<Product>>(Messages.EmptyProductList);
+                ? new SuccessDataResult<IEnumerable<ProductViewModel>>(productViewModels)
+                : new ErrorDataResult<IEnumerable<ProductViewModel>>(Messages.EmptyProductList);
         }
 
         public async Task<IDataResult<IEnumerable<ProductViewModel>>> GetFilteredProductsAsync(
@@ -120,7 +145,7 @@ namespace Business.Services.Concrete
         #endregion
 
         #region Helper Methods
-        private static void CompleteUpdate(ProductViewModel model, IDataResult<Product> productResult)
+        private static void CompleteUpdate(ProductUpdateViewModel model, IDataResult<Product> productResult)
         {
             productResult.Data.Name = model.Name;
             productResult.Data.Description = model.Description;
