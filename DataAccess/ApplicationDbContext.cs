@@ -13,73 +13,64 @@ namespace DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // Seller (AppUser) ile Shop ilişkisi
+            // Seller (AppUser) - Shop 
             modelBuilder.Entity<AppUser>()     
                 .HasOne(u => u.Shop)
                 .WithOne(s => s.Seller)
                 .HasForeignKey<Shop>(s => s.SellerId)
-                .OnDelete(DeleteBehavior.Cascade);  
+                .OnDelete(DeleteBehavior.Cascade);
 
-            // 3️⃣ SellerApplication - Shop (Opsiyonel Bire Bir İlişki)
-            modelBuilder.Entity<SellerApplication>()
-                .HasOne(sa => sa.Shop)
-                .WithOne(s => s.SellerApplication)
-                .HasForeignKey<SellerApplication>(sa => sa.ShopId)
-                .OnDelete(DeleteBehavior.Restrict);
 
-            // 3️⃣ SellerApplication - AppUser (Opsiyonel Bire Bir İlişki)
+            // SellerApplication - AppUser 
             modelBuilder.Entity<SellerApplication>()
                 .HasOne(sa => sa.User)
                 .WithOne(u => u.SellerApplication)
                 .HasForeignKey<SellerApplication>(sa => sa.UserId)
-                .IsRequired(false)   
-                .OnDelete(DeleteBehavior.SetNull);   
+                .OnDelete(DeleteBehavior.Cascade );
 
-            // 4️⃣ Shop - Product (Bire Çok İlişki)  
-            modelBuilder.Entity<Shop>()
-                .HasMany(s => s.Products)
-                .WithOne(p => p.Shop)
+            // Product - Shop 
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.Shop)
+                .WithMany(s => s.Products)
                 .HasForeignKey(p => p.ShopId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // ShoppingCart - ShoppingCartItem
+            modelBuilder.Entity<ShoppingCartItem>()
+                .HasOne(i => i.Cart)
+                .WithMany(c => c.CartItems)
+                .HasForeignKey(i => i.CartId)
                 .OnDelete(DeleteBehavior.Cascade);  
 
-            // ShoppingCart silinirse içindeki ShoppingCartItem'lar da silinsin  
+            //  ShoppingCartItem - Product   
             modelBuilder.Entity<ShoppingCartItem>()
-            .HasOne(i => i.Cart)
-            .WithMany(c => c.CartItems)
-            .HasForeignKey(i => i.CartId)
-            .OnDelete(DeleteBehavior.Cascade);  
-
-            //  ShoppingCartItem silinirse Product etkilenmemeli  
-            modelBuilder.Entity<ShoppingCartItem>()
-            .HasOne(i => i.Product)
-            .WithMany()
-            .HasForeignKey(i => i.ProductId)
-            .OnDelete(DeleteBehavior.Restrict);
+                .HasOne(i => i.Product)
+                .WithMany()
+                .HasForeignKey(i => i.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
 
 
-
-            // 🛒 Order - Customer (AppUser)
+            // Order - Customer (AppUser)
             modelBuilder.Entity<Order>()
-            .HasOne(o => o.Customer)
-            .WithMany()
-            .HasForeignKey(o => o.CustomerId)
-            .OnDelete(DeleteBehavior.NoAction);
+                .HasOne(o => o.Customer)
+                .WithMany()
+                .HasForeignKey(o => o.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
 
 
-            // 🏪 Order - Shop
-
+            // Order - Shop
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.Shop)
                 .WithMany()
                 .HasForeignKey(o => o.ShopId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-
+            //  OrderItem - Product**
             modelBuilder.Entity<OrderItem>()
-                  .HasOne(oi => oi.Product)
-                  .WithMany() 
-                  .HasForeignKey(oi => oi.ProductId)
-                  .OnDelete(DeleteBehavior.Restrict); 
+                .HasOne(oi => oi.Product)
+                .WithMany() 
+                .HasForeignKey(oi => oi.ProductId)
+                .OnDelete(DeleteBehavior.Restrict); 
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }

@@ -107,7 +107,7 @@ namespace WebUI.Mappings.AutoMapper
             .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Customer.Name))
             .ForMember(dest => dest.CustomerEmail, opt => opt.MapFrom(src => src.Customer.Email))
             .ForMember(dest => dest.CustomerAddress, opt => opt.MapFrom(src => src.Customer.Address))
-            .ForMember(dest => dest.CustomerPhone, opt => opt.MapFrom(src => src.Customer.ContactNumber))
+            .ForMember(dest => dest.CustomerPhone, opt => opt.MapFrom(src => src.Customer.PhoneNumber))
             .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItems))
             .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.ToString()))   
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()));
@@ -117,8 +117,8 @@ namespace WebUI.Mappings.AutoMapper
 
             CreateMap<ShopOrderViewModel, Order>()
             .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItems))
-            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Status.Pending))   
-            .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => PaymentMethod.CreditCard));
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Status.Pending))
+            .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => (PaymentMethod)Enum.Parse(typeof(PaymentMethod), src.PaymentMethod.ToString()))); // ✅ PaymentMethod Enum mapping
             #endregion
 
             #region OrderItem → OrderItemViewModel

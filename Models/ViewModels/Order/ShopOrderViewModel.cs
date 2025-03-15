@@ -2,9 +2,10 @@
 {
     public class ShopOrderViewModel
     {
-        public Guid ShopId { get; set; } // 🏪 Mağaza ID
-        public string ShopName { get; set; }  // 🏪 Mağaza İsmi
-        public decimal TotalAmount => OrderItems.Sum(i => i.TotalPrice);  // 💰 Mağazaya özel toplam tutar
-        public List<OrderItemViewModel> OrderItems { get; set; }  // 🛍 Ürünler
+        public Guid ShopId { get; set; } 
+        public string ShopName { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
+        public decimal TotalAmount => OrderItems.Sum(i => i.TotalPrice);   
+        public List<OrderItemViewModel> OrderItems { get; set; }   
     }
 }

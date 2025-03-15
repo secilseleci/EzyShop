@@ -35,7 +35,6 @@ namespace DataAccess.Migrations
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     StoreName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TaxNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -178,6 +177,34 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SellerApplications",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StoreName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ContactBusinessNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TaxNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    ApplicationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SellerApplications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SellerApplications_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ShoppingCarts",
                 columns: table => new
                 {
@@ -202,11 +229,11 @@ namespace DataAccess.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     SellerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BusinessPhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     TaxNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -241,7 +268,8 @@ namespace DataAccess.Migrations
                         name: "FK_Orders_AspNetUsers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Orders_Shops_ShopId",
                         column: x => x.ShopId,
@@ -258,9 +286,9 @@ namespace DataAccess.Migrations
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ShopId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Color = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Stock = table.Column<int>(type: "int", nullable: false),
+                    Color = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -282,40 +310,6 @@ namespace DataAccess.Migrations
                         principalTable: "Shops",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SellerApplications",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StoreName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TaxNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactBusinessNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ShopId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    ApplicationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SellerApplications", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SellerApplications_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
-                    table.ForeignKey(
-                        name: "FK_SellerApplications_Shops_ShopId",
-                        column: x => x.ShopId,
-                        principalTable: "Shops",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -467,13 +461,6 @@ namespace DataAccess.Migrations
                 name: "IX_Products_ShopId",
                 table: "Products",
                 column: "ShopId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SellerApplications_ShopId",
-                table: "SellerApplications",
-                column: "ShopId",
-                unique: true,
-                filter: "[ShopId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SellerApplications_UserId",

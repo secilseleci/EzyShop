@@ -11,6 +11,7 @@ namespace Models.Entities.Concrete
         {
             Id = Guid.NewGuid();
             Status = ApplicationStatus.Pending;
+            IsDeleted = false;
         }
         [Key]
         public Guid Id { get; set; }
@@ -20,7 +21,7 @@ namespace Models.Entities.Concrete
         public Guid? UserId { get; set; }
 
 
-        [ForeignKey("UserId")]
+        [ForeignKey("UserId")] 
         public AppUser? User { get; set; }
 
         
@@ -40,28 +41,30 @@ namespace Models.Entities.Concrete
         public string Address { get; set; }
 
 
-        //işyeri ile ilgili veri
+        //iş yeri ile ilgili veri
 
         [Required]
         public string StoreName { get; set; }
 
-        public string? TaxNumber { get; set; }
         [Required]
         public string ContactBusinessNumber { get; set; }
-        public Guid? ShopId { get; set; }
 
-        public Shop? Shop { get; set; }
+
+        public string? TaxNumber { get; set; }
+        
+        public bool IsDeleted { get; set; }
+
 
         [Required]
         public DateTime ApplicationDate { get; set; } = DateTime.UtcNow;
 
         [Required]
-        public ApplicationStatus Status { get; set; } = ApplicationStatus.Pending;  
+        public ApplicationStatus Status { get; set; } = ApplicationStatus.Pending;
     }
         public enum ApplicationStatus
-        {
-            Pending,  
-            Approved,  
-            Rejected  
-        }
+            {
+                Pending=1,  
+                Approved=2,  
+                Rejected =3
+            }
 }

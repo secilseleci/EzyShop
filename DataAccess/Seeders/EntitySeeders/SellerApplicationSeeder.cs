@@ -7,6 +7,7 @@ namespace DataAccess.Seeders.EntitySeeders
     {
         public static async Task SeedSellerApplicationsAsync(ApplicationDbContext dbContext)
         {
+            // 🛠 Eğer hiç başvuru yoksa seed et
             if (!dbContext.SellerApplications.Any())
             {
                 var applications = new List<SellerApplication>
@@ -19,12 +20,11 @@ namespace DataAccess.Seeders.EntitySeeders
                         UserId = Guid.Parse("22222222-2222-2222-2222-222222222222"),
                         StoreName = "FirstShop",
                         ContactNumber = "555-111-2222",
-                        ContactBusinessNumber="555-999-2222",
+                        ContactBusinessNumber = "555-999-2222",
                         Address = "Istanbul, Turkey",
                         TaxNumber = "1234567890",
                         ApplicationDate = DateTime.UtcNow,
-                        Status = ApplicationStatus.Approved,
-                        ShopId = null // 🔥 Mağaza onaylanana kadar null
+                        Status = ApplicationStatus.Approved
                     },
                     new SellerApplication
                     {
@@ -34,12 +34,11 @@ namespace DataAccess.Seeders.EntitySeeders
                         UserId = Guid.Parse("33333333-3333-3333-3333-333333333333"),
                         StoreName = "SecondShop",
                         ContactNumber = "555-333-4444",
-                        ContactBusinessNumber="555-999-4444",
+                        ContactBusinessNumber = "555-999-4444",
                         Address = "Ankara, Turkey",
                         TaxNumber = "9876543210",
                         ApplicationDate = DateTime.UtcNow,
-                        Status = ApplicationStatus.Approved,
-                        ShopId = null // 🔥 Mağaza onaylanana kadar null
+                        Status = ApplicationStatus.Approved
                     }
                 };
 
@@ -47,14 +46,14 @@ namespace DataAccess.Seeders.EntitySeeders
                 await dbContext.SaveChangesAsync();
             }
 
-            // 🔥 Sadece onaylı olan seller'lar için AppUser oluşturulmuş mu kontrol et
+            // 🛠 **Seller Application onaylı olanları AppUser ile eşleştir**
             var approvedApplications = dbContext.SellerApplications
-                .Where(a => a.Status == ApplicationStatus.Approved)
+                .Where(a => a.Status == ApplicationStatus.Approved && !a.IsDeleted)
                 .ToList();
 
             foreach (var application in approvedApplications)
             {
-                var seller = dbContext.Users.FirstOrDefault(u => u.Email == application.Email);
+                var seller = dbContext.Users.FirstOrDefault(u => u.Id == application.UserId);
                 if (seller != null && !seller.IsActive)
                 {
                     seller.IsActive = true;

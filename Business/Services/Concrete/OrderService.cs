@@ -90,7 +90,7 @@ namespace Business.Services.Concrete
             {
                 order.CustomerId = user.Id;
                 order.OrderCode = GenerateOrderCode();
-                order.PaymentMethod = order.PaymentMethod;
+                order.PaymentMethod = model.PaymentMethod;
                 order.Status = Status.Pending;
                 order.CreatedDate = DateTime.UtcNow;
                 order.UpdatedDate = DateTime.UtcNow;
@@ -146,7 +146,7 @@ namespace Business.Services.Concrete
     
         public async Task<IDataResult<OrderViewModel>>MarkAsShipped(Guid orderId)
         {
-            var order = await _orderRepository.GetByIdAsync(orderId);
+            var order = await _orderRepository.GetOrderWithCustomerAsync(orderId);
             if (order == null)
                 return new ErrorDataResult<OrderViewModel>(Messages.OrderNotFound);
 

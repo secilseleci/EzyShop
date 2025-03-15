@@ -6,6 +6,12 @@ namespace DataAccess.Repositories.Concrete
 {
     public class OrderRepository(ApplicationDbContext context) : BaseRepository<Order>(context), IOrderRepository
     {
+        public async Task<Order?> GetOrderWithCustomerAsync(Guid orderId)
+        {
+            return await _dataContext.Orders
+                .Include(o => o.Customer)  
+                .FirstOrDefaultAsync(o => o.Id == orderId);
+        }
         public async Task<List<Order>> GetOrdersWithDetailsAsync(Guid shopId)
         {
             return await _dataContext.Orders

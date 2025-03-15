@@ -25,6 +25,7 @@ namespace Models.Entities.Concrete
 
         [Required]
         public Guid CustomerId { get; set; }
+        [ForeignKey("CustomerId")]
         public AppUser Customer { get; set; }
 
        
@@ -68,9 +69,9 @@ namespace Models.Entities.Concrete
         }
         public enum Status
         {
-            Pending,
-            Shipped,
-            Delivered,
-            Cancelled   
+            Pending=1,
+            Shipped=2,
+            Delivered=3,
+            Cancelled=4
         }
  

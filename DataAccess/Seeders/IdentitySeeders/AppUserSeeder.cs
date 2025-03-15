@@ -71,18 +71,18 @@ namespace DataAccess.Seeders.IdentitySeeders
         }
 
         private static async Task CreateUserAsync(
-    UserManager<AppUser> userManager,
-    Guid userId,
-    string email,
-    string name,
-    string? password,
-    string role,
-    bool isSeller = false,
-    bool isActive = true,
-    string? storeName = null,
-    string? taxNumber = null,
-    string contactNumber = "0000000000",  // 🟢 Varsayılan değer verildi
-    string address = "Not Provided")  // 🟢 Varsayılan değer verildi
+            UserManager<AppUser> userManager,
+            Guid userId,
+            string email,
+            string name,
+            string? password,
+            string role,
+            bool isSeller = false,
+            bool isActive = true,
+            string? storeName = null,
+            string? taxNumber = null,
+            string contactNumber = "0000000000",   
+            string address = "Not Provided")   
         {
             var user = await userManager.FindByEmailAsync(email);
             if (user == null)
@@ -96,10 +96,12 @@ namespace DataAccess.Seeders.IdentitySeeders
                     EmailConfirmed = true,
                     IsSeller = isSeller,
                     IsActive = isActive,
-                    StoreName = storeName,
-                    TaxNumber = taxNumber,
-                    ContactNumber = contactNumber,   
-                    Address = address   
+                    StoreName = isSeller ? storeName : null,  
+                    TaxNumber = isSeller ? taxNumber : null,  
+                    PhoneNumber = contactNumber,
+                    Address = address,
+                    Shop = null,  
+                    SellerApplication = null   
                 };
 
                 if (!string.IsNullOrEmpty(password))

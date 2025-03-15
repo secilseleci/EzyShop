@@ -106,11 +106,11 @@ public class ShopService : IShopService
     }
     private static bool IsShopDataSame(Shop shop, ShopViewModel model)
     {
-        return shop.ContactNumber == model.ContactNumber && shop.Address == model.Address;
+        return shop.BusinessPhoneNumber == model.ContactNumber && shop.Address == model.Address;
     }
     private static void CompleteUpdate(ShopViewModel model, IDataResult<Shop> shopResult)
     {
-        shopResult.Data.ContactNumber = model.ContactNumber;
+        shopResult.Data.BusinessPhoneNumber = model.ContactNumber;
         shopResult.Data.Address = model.Address;
     }
     #endregion

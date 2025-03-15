@@ -2,6 +2,7 @@
 {
     public class Messages
     {
+
         #region Product Messages 
         public const string ProductNotFound = "Product not found";
         public const string EmptyProductList = "Product list is empty with the current filter";
@@ -44,7 +45,7 @@
         public const string UpdateSellerApplicationError = "Error occurred while updating the Seller Application in Database";
 
         public const string ExistingSellerApplicationError = "You already have a pending application.";
-        public const string ExistingApprovedSellerApplicationError = "You already approved this application.";
+        public const string ApplicationAlreadyApproved = "You already approved this application.";
 
         public const string DeleteSellerApplicationSuccess = "Application successfully deleted";
         public const string DeleteSellerApplicationError = "Error occurred while deleting the Application from Database";
@@ -135,5 +136,13 @@
         public const string OrderMarkAsShippedError = "Error occurred while marking the order as shipped";
         public const string CustomerEmailError = "customer e-mail not found";
         #endregion
+
+        public class OrderMessages
+        {
+            public const string OrderNotFound = "Order not found";
+
+        }
     }
+
+
 }

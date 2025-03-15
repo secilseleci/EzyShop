@@ -123,9 +123,21 @@ namespace WebUI.Controllers
         #endregion
 
         #region Mark As Shipped
-        
-       
-        
+
+        [HttpPost]
+        public async Task<IActionResult> MarkAsShipped(Guid orderId)
+        {
+            var result = await _orderService.MarkAsShipped(orderId);
+            if (!result.Success)
+            {
+                return Json(new { success = false, message = result.Message });
+
+            }
+            return Json(new { success = true, message = "Order marked as shipped successfully!", redirectUrl = Url.Action("Index", "Order") });
+
+        }
+
+
         #endregion
     }
 }

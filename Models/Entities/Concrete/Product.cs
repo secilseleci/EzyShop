@@ -12,7 +12,7 @@ namespace Models.Entities.Concrete
             Id = Guid.NewGuid();
             ProductImages = new List<ProductImage>();
             CreatedDate = DateTime.UtcNow;
-
+            IsActive = true;
         }
         [Required]
         public Guid Id { get; set; }
@@ -40,17 +40,17 @@ namespace Models.Entities.Concrete
         [Required]
         public string Name { get; set; }
 
-        [Required]
-        public string Color { get; set; }
-     
+        
         [Required]
         public decimal Price { get; set; }
         
         [Required]
         public int Stock { get; set; } = 1;
+
+        public string? Color { get; set; }
         public string? ImageUrl { get; set; }
         public string? Description { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 
         public bool IsSoldOut => Stock <= 0;   
         public bool IsActive { get; set; } = true;   

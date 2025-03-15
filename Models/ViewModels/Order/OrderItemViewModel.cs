@@ -2,14 +2,14 @@
 {
     public class OrderItemViewModel
     {
-        public Guid ProductId { get; set; }  // 🛒 Ürün ID
-        public string ProductName { get; set; }  // 🏷 Ürün İsmi
-        public string Color { get; set; }  // 🎨 Renk
-        public string ImageUrl { get; set; }  // 🖼 Ürün Resmi
-        public decimal ProductPrice { get; set; }  // 💲 Fiyat
-        public int Count { get; set; }  // 🔢 Adet
-        public decimal TotalPrice => ProductPrice * Count;  // 🛍 Toplam Fiyat
-        public Guid ShopId { get; set; }  // 🏪 Mağaza ID
-        public string ShopName { get; set; }  // 🏪 Mağaza İsmi
+        public Guid ProductId { get; set; }   
+        public string ProductName { get; set; }   
+        public string Color { get; set; }   
+        public string ImageUrl { get; set; }   
+        public decimal ProductPrice { get; set; }   
+        public int Count { get; set; }   
+        public decimal TotalPrice => ProductPrice * Count;   
+        public Guid ShopId { get; set; }   
+        public string ShopName { get; set; }   
     }
 }

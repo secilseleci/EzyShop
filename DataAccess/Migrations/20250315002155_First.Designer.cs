@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250313154120_First")]
+    [Migration("20250315002155_First")]
     partial class First
     {
         /// <inheritdoc />
@@ -241,7 +241,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Color")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
@@ -326,12 +325,12 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("ShopId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -347,10 +346,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ShopId")
-                        .IsUnique()
-                        .HasFilter("[ShopId] IS NOT NULL");
 
                     b.HasIndex("UserId")
                         .IsUnique()
@@ -370,7 +365,7 @@ namespace DataAccess.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<string>("ContactNumber")
+                    b.Property<string>("BusinessPhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -385,10 +380,8 @@ namespace DataAccess.Migrations
                     b.Property<Guid>("SellerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("TaxNumber")
                         .HasColumnType("nvarchar(max)");
@@ -487,10 +480,6 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContactNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -618,7 +607,7 @@ namespace DataAccess.Migrations
                     b.HasOne("Models.Identity.AppUser", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Models.Entities.Concrete.Shop", "Shop")
@@ -683,17 +672,10 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Models.Entities.Concrete.SellerApplication", b =>
                 {
-                    b.HasOne("Models.Entities.Concrete.Shop", "Shop")
-                        .WithOne("SellerApplication")
-                        .HasForeignKey("Models.Entities.Concrete.SellerApplication", "ShopId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("Models.Identity.AppUser", "User")
                         .WithOne("SellerApplication")
                         .HasForeignKey("Models.Entities.Concrete.SellerApplication", "UserId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.Navigation("Shop");
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");
                 });
@@ -757,8 +739,6 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Models.Entities.Concrete.Shop", b =>
                 {
                     b.Navigation("Products");
-
-                    b.Navigation("SellerApplication");
                 });
 
             modelBuilder.Entity("Models.Entities.Concrete.ShoppingCart", b =>
