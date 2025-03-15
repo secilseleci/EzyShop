@@ -15,19 +15,22 @@ namespace DataAccess.SeedDatabase
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
             var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-            // ✅ 1. Roller eklensin
+            // ✅ 1. Roller 
             await RoleSeeder.SeedRolesAsync(roleManager);
 
-            // ✅ 2. Kullanıcılar eklensin
+            // ✅ 2. Kullanıcılar 
             await AppUserSeeder.SeedUsersAsync(userManager);
 
+            // ✅ 4. Diğer Entityler
             await CategorySeeder.SeedCategoriesAsync(dbContext);
             await SellerApplicationSeeder.SeedSellerApplicationsAsync(dbContext);
             await ShopSeeder.SeedShopsAsync(dbContext);
             await ProductSeeder.SeedProductsAsync(dbContext);
+            await OrderSeeder.SeedOrdersAsync(dbContext);
 
 
-            
+
+
         }
     }
 }

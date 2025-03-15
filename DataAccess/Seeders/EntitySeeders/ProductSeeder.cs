@@ -10,12 +10,6 @@ namespace DataAccess.Seeders.EntitySeeders
             var firstShop = dbContext.Shops.AsNoTracking().FirstOrDefault(s => s.Name == "FirstShop");
             var secondShop = dbContext.Shops.AsNoTracking().FirstOrDefault(s => s.Name == "SecondShop");
 
-            if (firstShop == null || secondShop == null)
-            {
-                Console.WriteLine("❌ Hata: Mağazalar bulunamadı! Ürünler eklenemedi.");
-                return;
-            }
-
             var existingProductNames = await dbContext.Products
                  .AsNoTracking()
                  .Select(p => p.Name)
@@ -148,12 +142,8 @@ namespace DataAccess.Seeders.EntitySeeders
             {
                 dbContext.Products.AddRange(newProducts);
                 await dbContext.SaveChangesAsync();
-                Console.WriteLine("✅ Yeni ürünler eklendi!");
             }
-            else
-            {
-                Console.WriteLine("⚠️ Tüm ürünler zaten kayıtlı, yeni ekleme yapılmadı.");
-            }
+          
         }
 
     }

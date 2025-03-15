@@ -1,5 +1,4 @@
 ﻿using Models.Entities.Concrete;
-using Models.Identity;
 
 namespace DataAccess.Seeders.EntitySeeders
 {
@@ -7,7 +6,6 @@ namespace DataAccess.Seeders.EntitySeeders
     {
         public static async Task SeedSellerApplicationsAsync(ApplicationDbContext dbContext)
         {
-            // 🛠 Eğer hiç başvuru yoksa seed et
             if (!dbContext.SellerApplications.Any())
             {
                 var applications = new List<SellerApplication>
@@ -46,8 +44,7 @@ namespace DataAccess.Seeders.EntitySeeders
                 await dbContext.SaveChangesAsync();
             }
 
-            // 🛠 **Seller Application onaylı olanları AppUser ile eşleştir**
-            var approvedApplications = dbContext.SellerApplications
+             var approvedApplications = dbContext.SellerApplications
                 .Where(a => a.Status == ApplicationStatus.Approved && !a.IsDeleted)
                 .ToList();
 
