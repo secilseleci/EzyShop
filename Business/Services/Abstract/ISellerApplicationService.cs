@@ -9,7 +9,7 @@ namespace Business.Services.Abstract
     {
         Task<IResult> ApproveSellerAsync(Guid id);
         Task<IResult> RejectSellerAsync(Guid id);
-
+        Task<IDataResult<IEnumerable<SellerApplication>>> GetApplicationsByStatusAsync(ApplicationStatus status);
 
 
         #region Crud

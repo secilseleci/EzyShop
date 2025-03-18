@@ -4,6 +4,6 @@ namespace DataAccess.Repositories.Abstract
 {
     public interface IShopRepository : IBaseRepository<Shop>
     {
-        Task<Shop?> GetBySellerIdAsync(Guid sellerId);
+        Task<Shop?> GetShopBySellerIdAsync(Guid sellerId);
     }
 }

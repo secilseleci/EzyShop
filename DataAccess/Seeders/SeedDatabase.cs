@@ -22,11 +22,11 @@ namespace DataAccess.SeedDatabase
             await AppUserSeeder.SeedUsersAsync(userManager);
 
             // ✅ 4. Diğer Entityler
+            //await SellerApplicationSeeder.SeedSellerApplicationsAsync(dbContext, userManager);
+            // await ShopSeeder.SeedShopsAsync(dbContext);
             await CategorySeeder.SeedCategoriesAsync(dbContext);
-            await SellerApplicationSeeder.SeedSellerApplicationsAsync(dbContext);
-            await ShopSeeder.SeedShopsAsync(dbContext);
-            await ProductSeeder.SeedProductsAsync(dbContext);
-            await OrderSeeder.SeedOrdersAsync(dbContext);
+            //await ProductSeeder.SeedProductsAsync(dbContext);
+            //await OrderSeeder.SeedOrdersAsync(dbContext);
 
 
 

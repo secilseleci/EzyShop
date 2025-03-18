@@ -25,7 +25,7 @@ namespace Business.Services.Concrete
         {
             if (model.ShopId == Guid.Empty)
             {
-                return new ErrorResult("Invalid shop information. Please try again.");
+                return new ErrorResult(Messages.ShopNotFound);
             }
             var product = _mapper.Map<Product>(model);
  

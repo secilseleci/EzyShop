@@ -106,24 +106,21 @@ namespace Business.Services.Concrete
 
             var category = categoryResult.Data;
             int oldOrder = category.DisplayOrder;
-            int newOrder = model.DisplayOrder ?? oldOrder; // boş bırakılmışsa, mevcut sırayı koru
+            int newOrder = model.DisplayOrder ?? oldOrder; 
 
-            // hiçbir şey değişmemişse, güncellemeyi iptal et
             if (category.Name == model.Name &&
                 category.ImageUrl == model.ImageUrl &&
                 oldOrder == newOrder)
             {
-                return new SuccessResult("Herhangi bir değişiklik yapmadınız");
+                return new SuccessResult(Messages.SuccessMessages.NoChanges);
             }
 
-            // `DisplayOrder` değişmişse sıralamayı kaydır
             if (newOrder != oldOrder)
             {
                 await ShiftCategoriesAfterUpdate(oldOrder, newOrder);
                 category.DisplayOrder = newOrder;
             }
 
-            // Sadece değişen değerleri güncelle
             CompleteUpdate(model, categoryResult);
 
             return await GetUpdateResultAsync(categoryResult);
@@ -142,11 +139,9 @@ namespace Business.Services.Concrete
             var deletedCategory = categoryResult.Data;
             int deletedOrder = deletedCategory.DisplayOrder;
 
-            // 1️⃣ Silinecek kategoriden büyük DisplayOrder değerine sahip kategorileri al
             var affectedCategories = await _categoryRepository
                 .GetAllAsync(c => c.DisplayOrder > deletedOrder);
 
-            // 2️⃣ Eğer bu kategoriler varsa, DisplayOrder'larını bir azalt
             if (affectedCategories != null && affectedCategories.Any())
             {
                 foreach (var category in affectedCategories.OrderBy(c => c.DisplayOrder))
@@ -156,7 +151,6 @@ namespace Business.Services.Concrete
                 }
             }
 
-            // 3️⃣ Kategoriyi sil
             var deleteCategoryResult = await _categoryRepository.DeleteAsync(categoryId);
 
             return deleteCategoryResult > 0
@@ -194,25 +188,25 @@ namespace Business.Services.Concrete
 
         private async Task ShiftCategoriesAfterUpdate(int oldOrder, int newOrder)
         {
-            if (newOrder < oldOrder) // 🔼 Yukarı taşınıyor
+            if (newOrder < oldOrder) 
             {
                 var affectedCategories = await _categoryRepository
                     .GetAllAsync(c => c.DisplayOrder >= newOrder && c.DisplayOrder < oldOrder);
 
                 foreach (var category in affectedCategories.OrderBy(c => c.DisplayOrder))
                 {
-                    category.DisplayOrder += 1; // Diğerlerini aşağı kaydır
+                    category.DisplayOrder += 1; 
                     await _categoryRepository.UpdateAsync(category);
                 }
             }
-            else if (newOrder > oldOrder) // 🔽 Aşağı taşınıyor
+            else if (newOrder > oldOrder) 
             {
                 var affectedCategories = await _categoryRepository
                     .GetAllAsync(c => c.DisplayOrder > oldOrder && c.DisplayOrder <= newOrder);
 
                 foreach (var category in affectedCategories.OrderBy(c => c.DisplayOrder))
                 {
-                    category.DisplayOrder -= 1; // Diğerlerini yukarı kaydır
+                    category.DisplayOrder -= 1; 
                     await _categoryRepository.UpdateAsync(category);
                 }
             }

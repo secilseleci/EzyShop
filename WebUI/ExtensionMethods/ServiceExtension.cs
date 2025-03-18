@@ -47,7 +47,7 @@ namespace WebUI.ExtensionMethods
         {
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
-            //services.AddScoped<ISellerApplicationService, SellerApplicationService>();
+            services.AddScoped<ISellerApplicationService, SellerApplicationService>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IShopService, ShopService>();
             services.AddScoped<IShoppingCartService, ShoppingCartService>();
@@ -63,7 +63,7 @@ namespace WebUI.ExtensionMethods
             {
                 // Türkçe karakterleri UserName'de kabul et
                 options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@ çşğüöıÇŞĞÜÖİ";
-                options.User.RequireUniqueEmail = true; // Email benzersiz olsun
+                options.User.RequireUniqueEmail = true; 
             })
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
-using Business.Services.Concrete;
 using Core.Constants;
 using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
@@ -41,7 +40,7 @@ public class ShopService : IShopService
 
     public async Task<IDataResult<ShopViewModel>> GetShopBySellerIdAsync(Guid sellerId)
     {
-        var shop = await _shopRepository.GetBySellerIdAsync(sellerId);
+        var shop = await _shopRepository.GetShopBySellerIdAsync(sellerId);
         if (shop == null)
         {
             return new ErrorDataResult<ShopViewModel>(Messages.ShopNotFound);
@@ -55,14 +54,15 @@ public class ShopService : IShopService
     #region Create
     public async Task<IResult> CreateShopAsync(Shop entity)
     {
-        var existingShop = await GetShopBySellerIdAsync(entity.SellerId);
-        if (existingShop != null)
+        var shopResult = await GetShopBySellerIdAsync(entity.SellerId);
+
+        if (shopResult.Success && shopResult.Data != null)
         {
             return new ErrorResult(Messages.ShopAlreadyExists);
         }
 
-
         var result = await _shopRepository.CreateAsync(entity);
+
         return result > 0
             ? new SuccessResult(Messages.CreateShopSuccess)
             : new ErrorResult(Messages.CreateShopError);

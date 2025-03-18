@@ -44,8 +44,9 @@
         public const string CreateSellerApplicationError = "An error occurred while creating your application.";
         public const string UpdateSellerApplicationError = "Error occurred while updating the Seller Application in Database";
 
-        public const string ExistingSellerApplicationError = "You already have a pending application.";
-        public const string ApplicationAlreadyApproved = "You already approved this application.";
+        public const string ApplicationAlreadyExist = "You already have a pending application.";
+        public const string ApplicationAlreadyApproved = "This application already approved.";
+        public const string ApplicationAlreadyRejected = "This application already rejected.";
 
         public const string DeleteSellerApplicationSuccess = "Application successfully deleted";
         public const string DeleteSellerApplicationError = "Error occurred while deleting the Application from Database";
@@ -53,7 +54,6 @@
         public const string ApprovedApplicationError = "Error occurred while approving application";
         public const string RejectedApplicationSuccess = "Application is rejected successfully";
         public const string RejectedApplicationError = "Error occurred while rejecting application";
-        public const string ExistingRejectedSellerApplicationError = "You already rejected this application.";
         #endregion
 
         #region User
@@ -137,11 +137,15 @@
         public const string CustomerEmailError = "customer e-mail not found";
         #endregion
 
-        public class OrderMessages
+        public class SuccessMessages
         {
-            public const string OrderNotFound = "Order not found";
+            public const string NoChanges = "You haven't made any changes";
 
         }
+
+        #region Configuration
+        public const string PasswordError = "Default seller password is not configured. Please contact the administrator.";
+        #endregion
     }
 
 

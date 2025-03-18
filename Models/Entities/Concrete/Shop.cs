@@ -12,8 +12,7 @@ namespace Models.Entities.Concrete
         {
             Id = Guid.NewGuid();
             Products = new List<Product>();
-            Status =ShopStatus.Approved;
-            IsActive = true;
+          
         }
 
         [Key]

@@ -9,7 +9,11 @@ namespace DataAccess.Seeders.EntitySeeders
         {
             var firstShop = dbContext.Shops.AsNoTracking().FirstOrDefault(s => s.Name == "FirstShop");
             var secondShop = dbContext.Shops.AsNoTracking().FirstOrDefault(s => s.Name == "SecondShop");
-
+            if (firstShop == null || secondShop == null)
+            {
+                Console.WriteLine("⚠️ Shop bulunamadı, lütfen ShopSeeder'ı çalıştırın!");
+                return;  // Hata yerine, işlem yapmadan çık
+            }
             var existingProductNames = await dbContext.Products
                  .AsNoTracking()
                  .Select(p => p.Name)

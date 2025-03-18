@@ -1,64 +1,99 @@
-﻿using Models.Entities.Concrete;
+﻿using DataAccess;
+using Microsoft.AspNetCore.Identity;
+using Models.Entities.Concrete;
+using Models.Identity;
 
-namespace DataAccess.Seeders.EntitySeeders
+public static class SellerApplicationSeeder
 {
-    public static class SellerApplicationSeeder
+    public static async Task SeedSellerApplicationsAsync(ApplicationDbContext dbContext, UserManager<AppUser> userManager)
     {
-        public static async Task SeedSellerApplicationsAsync(ApplicationDbContext dbContext)
+        if (!dbContext.SellerApplications.Any())
         {
-            if (!dbContext.SellerApplications.Any())
+            var applications = new List<SellerApplication>
             {
-                var applications = new List<SellerApplication>
+                new SellerApplication
                 {
-                    new SellerApplication
-                    {
-                        Id = Guid.Parse("88888888-8888-8888-8888-888888888888"),
-                        Email = "secil.seleci@gmail.com",
-                        Name = "Seçil Seleci",
-                        UserId = Guid.Parse("22222222-2222-2222-2222-222222222222"),
-                        StoreName = "FirstShop",
-                        ContactNumber = "555-111-2222",
-                        ContactBusinessNumber = "555-999-2222",
-                        Address = "Istanbul, Turkey",
-                        TaxNumber = "1234567890",
-                        ApplicationDate = DateTime.UtcNow,
-                        Status = ApplicationStatus.Approved
-                    },
-                    new SellerApplication
-                    {
-                        Id = Guid.Parse("99999999-9999-9999-9999-999999999999"),
-                        Email = "secilseller@gmail.com",
-                        Name = "Seçil Seller",
-                        UserId = Guid.Parse("33333333-3333-3333-3333-333333333333"),
-                        StoreName = "SecondShop",
-                        ContactNumber = "555-333-4444",
-                        ContactBusinessNumber = "555-999-4444",
-                        Address = "Ankara, Turkey",
-                        TaxNumber = "9876543210",
-                        ApplicationDate = DateTime.UtcNow,
-                        Status = ApplicationStatus.Approved
-                    }
+                    Id = Guid.Parse("88888888-8888-8888-8888-888888888888"),
+                    Email = "secil.seleci@gmail.com",
+                    Name = "Seçil Seleci",
+                    StoreName = "FirstShop",
+                    ContactNumber = "555-111-2222",
+                    ContactBusinessNumber = "555-999-2222",
+                    Address = "Istanbul, Turkey",
+                    TaxNumber = "1234567890",
+                    ApplicationDate = DateTime.UtcNow,
+                    Status = ApplicationStatus.Approved
+                },
+                new SellerApplication
+                {
+                    Id = Guid.Parse("99999999-9999-9999-9999-999999999999"),
+                    Email = "secilseller@gmail.com",
+                    Name = "Seçil Seller",
+                    StoreName = "SecondShop",
+                    ContactNumber = "555-333-4444",
+                    ContactBusinessNumber = "555-999-4444",
+                    Address = "Ankara, Turkey",
+                    TaxNumber = "9876543210",
+                    ApplicationDate = DateTime.UtcNow,
+                    Status = ApplicationStatus.Approved
+                },
+                new SellerApplication
+                {
+                    Id = Guid.NewGuid(),
+                    Email = "selecisecil072@gmail.com",
+                    Name = "Seçil Hanım",
+                    StoreName = "HanımStore",
+                    ContactNumber = "444-333-4444",
+                    ContactBusinessNumber = "444-999-4344",
+                    Address = "İzmir, Turkey",
+                    TaxNumber = "9076543210",
+                    ApplicationDate = DateTime.UtcNow,
+                    Status = ApplicationStatus.Pending
+                }
+            };
+
+            dbContext.SellerApplications.AddRange(applications);
+            await dbContext.SaveChangesAsync();
+            Console.WriteLine("✅ Seller Applications Eklendi.");
+        }
+
+        // ✅ Approved başvuruları kontrol edip onaylıyoruz
+        var approvedApplications = dbContext.SellerApplications
+            .Where(a => a.Status == ApplicationStatus.Approved)
+            .ToList();
+
+        foreach (var application in approvedApplications)
+        {
+            var existingUser = await userManager.FindByEmailAsync(application.Email);
+            if (existingUser == null)
+            {
+                var seller = new AppUser
+                {
+                    Id = Guid.NewGuid(),
+                    UserName = application.Email,
+                    Email = application.Email,
+                    Name = application.Name,
+                    IsSeller = true,
+                    IsActive = true,
+                    PhoneNumber = application.ContactNumber,
+                    Address = application.Address,
+                    EmailConfirmed = true
                 };
 
-                dbContext.SellerApplications.AddRange(applications);
-                await dbContext.SaveChangesAsync();
-            }
-
-             var approvedApplications = dbContext.SellerApplications
-                .Where(a => a.Status == ApplicationStatus.Approved && !a.IsDeleted)
-                .ToList();
-
-            foreach (var application in approvedApplications)
-            {
-                var seller = dbContext.Users.FirstOrDefault(u => u.Id == application.UserId);
-                if (seller != null && !seller.IsActive)
+                var createUserResult = await userManager.CreateAsync(seller, "Seller.123");
+                if (createUserResult.Succeeded)
                 {
-                    seller.IsActive = true;
-                    dbContext.Users.Update(seller);
+                    await userManager.AddToRoleAsync(seller, "Seller");
+                    application.UserId = seller.Id;
+                    dbContext.SellerApplications.Update(application);
+                    await dbContext.SaveChangesAsync();
+                    Console.WriteLine($"✔️ Kullanıcı oluşturuldu ve Seller yapıldı: {seller.Email}");
+                }
+                else
+                {
+                    Console.WriteLine($"❌ Kullanıcı oluşturulamadı: {application.Email}");
                 }
             }
-
-            await dbContext.SaveChangesAsync();
         }
     }
 }

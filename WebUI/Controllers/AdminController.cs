@@ -211,8 +211,14 @@ namespace WebUI.Controllers
         public async Task<IActionResult> ApproveSeller(Guid id)
         {
             var result = await _sellerApplicationService.ApproveSellerAsync(id);
-            TempData[result.Success ? "SuccessMessage" : "ErrorMessage"] = result.Message;
-            return RedirectToAction("ListSellerApplications");
+            if (result.Success)
+            {
+                return Json(new { success = true, message = result.Message });
+            }
+            else
+            {
+                return Json(new { success = false, message = result.Message });
+            }
         }
 
         [HttpPost]

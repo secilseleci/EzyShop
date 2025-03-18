@@ -27,16 +27,33 @@ $(document).on("submit", ".approve-form, .reject-form", function (e) {
     var actionUrl = form.attr("action");
     var formData = form.serialize();
 
-    $.ajax({
-        url: actionUrl,
-        type: "POST",
-        data: formData,
-        success: function (response) {
-            toastr.success("Application updated successfully!");
-            loadApplications("pending"); // AJAX çağrısından sonra güncelle
-        },
-        error: function () {
-            toastr.error("An error occurred while updating the application.");
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you want to approve/reject this application?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, proceed!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: actionUrl,
+                type: "POST",
+                data: formData,
+                success: function (response) {
+                    console.log(response);
+                    if (response.success) {
+                        toastr.success(response.message);
+                        loadApplications("all"); // Başvuruları güncelle
+                    } else {
+                        toastr.error(response.message);
+                    }
+                },
+                error: function () {
+                    toastr.error("An error occurred while updating the application.");
+                }
+            });
         }
     });
 });
