@@ -1,0 +1,84 @@
+﻿@model Product 
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="card shadow border-0 rounded offset-1 col-10">
+    <div class="card-header bg-info bg-gradient text-light rounded">
+        <div class="row p-1">
+            <div class="col-12 text-center">
+                <h3 class="text-white">@Model.Name</h3>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="py-3">
+            <div class="row">
+                <div class="col-12 col-lg-4 text-center">
+                    <img src="~/@Model.ImageUrl" style="width:100%; height:100%" class="product-image rounded shadow" />
+                </div>
+                <div class="col-12 col-lg-7 offset-1">
+                    <div class="col-12 col-md-6 pb-4">
+                        <span class="badge text-bg-success">Category: @Model.Category.Name</span>
+                        @if (Model.IsSoldOut)
+                        {
+                            <span class="badge bg-danger text-white ms-2">Out of Stock</span>
+                        }
+                    </div>
+                    <div class="row ps-2">
+                        <h6 class="text-dark lh-sm">Color : @Model.Color</h6>
+                    </div>
+                  
+                    <div class="row pl-2 my-3">
+                        <h6 class="text-price lh-sm ">
+                                @Model.Price.ToString("c")
+                        </h6>
+                    </div>
+                    <div class="row pl-2 mb-3">
+                        <div class="col-md-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-light border-1 fw-semibold">
+                                    Count
+                                </span>
+                                <input type="number" id="productCount" class="form-control" value="1" min="1" max="100">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 pb-1">
+                            <button type="button" class="btn btn-success rounded shadow bg-gradient w-100 py-2 text-uppercase fw-semibold"
+                                    onclick="addToCart('@Model.Id')" @(Model.IsSoldOut ? "disabled" : "")>
+                                Add to Cart
+                            </button>
+                        </div>
+                        <div class="col-12 col-md-6 pb-1 text-end">
+                            <a asp-action="Shop" asp-controller="Home" class="btn btn-outline-info rounded shadow bg-gradient fw-semibold btn-sm text-uppercase mx-4">
+                                Back to Shop
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Resim İçin Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel"> </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" class="img-fluid rounded shadow" style="max-width: 100%;">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/cart.js"></script>
+}

@@ -1,0 +1,62 @@
+﻿@model List<SellerApplication>
+
+ 
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-warning text-center">
+        <i class="bi bi-exclamation-circle"></i> No application found with this status
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Store Name</th>
+                <th>Phone</th>
+                
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var app in Model)
+            {
+                 
+                <tr>
+                    <td>@app.Name</td>
+                    <td>@app.Email</td>
+                    <td>@app.StoreName</td>
+                    <td>@app.ContactBusinessNumber</td>
+                   
+                    <td>
+                        <span class="badge bg-@(app.Status == ApplicationStatus.Pending ? "warning" : (app.Status == ApplicationStatus.Approved ? "success" : "danger"))">
+                            @app.Status.ToString().ToUpper()
+                        </span>
+                    </td>
+                    <td>
+                        @if (app.Status == ApplicationStatus.Pending)
+                        {
+                            <div class="btn-group" role="group">
+                                <form method="post" asp-action="ApproveSeller" class="approve-form" onsubmit="return confirm('Are you sure you want to approve this application?');">
+                                    <input type="hidden" name="id" value="@app.Id" />
+                                    <button type="submit" class="btn btn-success btn-sm shadow rounded" onclick="approveSeller('@app.Id')">
+                                        <i class="bi bi-check-circle"></i> Approve
+                                    </button>
+                                </form>
+                                <form method="post" asp-action="RejectSeller" class="reject-form"  onsubmit="return confirm('Are you sure you want to reject this application?');">
+                                    <input type="hidden" name="id" value="@app.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm shadow rounded">
+                                        <i class="bi bi-x-circle"></i> Reject
+                                    </button>
+                                </form>
+                            </div>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

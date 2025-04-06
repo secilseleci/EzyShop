@@ -1,0 +1,19 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+*.vsidx
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Rider / JetBrains
+.idea/
+
+# npm / yarn
+node_modules/

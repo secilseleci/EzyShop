@@ -1,0 +1,124 @@
+﻿@* @* @* @model SellerApplicationViewModel
+
+@{
+    ViewData["Title"] = "Become a Seller";
+}
+
+<div class="renderCard">
+    <div class="card shadow border-0 rounded offset-2 col-8">
+        <div class="card-header">
+            <div class="row mt-2 text-center">
+                <h2 class="text-info">Sell on EzyShop</h2>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <form method="post" asp-controller="Application" asp-action="BecomeSeller">
+@*                 <input type="hidden" asp-for="Status" value="@StatusText.Pending" />
+                 <div class="border p-3">
+
+                    <!-- ✅ Kişisel Bilgiler -->
+                    <h4 class="text-primary mb-3">Personal Information</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input asp-for="Name" class="form-control border-0 shadow rounded" required />
+                                <label asp-for="Name"></label>
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input id="emailInput" asp-for="Email" class="form-control border-0 shadow rounded" />
+                                <label asp-for="Email" class="ms-0"></label>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- ✅ Kişisel Telefon -->
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input asp-for="ContactBusinessNumber" id="personalPhone" class="form-control border-0 shadow rounded" />
+                                <label asp-for="ContactBusinessNumber"></label>
+                                <span asp-validation-for="ContactBusinessNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- ✅ Kişisel Adres -->
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <textarea asp-for="Address" class="form-control border-0 shadow rounded"
+                                          minlength="10"></textarea>
+                                <label asp-for="Address"></label>
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ✅ Mağaza Bilgileri -->
+                    <h4 class="text-primary mt-4 mb-3">Business Information</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input asp-for="StoreName" class="form-control border-0 shadow rounded" required maxlength="30" />
+                                <label asp-for="StoreName"></label>
+                                <span asp-validation-for="StoreName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input asp-for="TaxNumber" class="form-control border-0 shadow rounded" />
+                                <label asp-for="TaxNumber"></label>
+                                <span asp-validation-for="TaxNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- ✅ İş Telefonu -->
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input asp-for="ContactBusinessNumber" id="businessPhone" class="form-control border-0 shadow rounded" />
+                                <label asp-for="ContactBusinessNumber"></label>
+                                <span asp-validation-for="ContactBusinessNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- ✅ Mağaza Adresi -->
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <textarea asp-for="BusinessAddress" class="form-control border-0 shadow rounded"
+                                          minlength="10"></textarea>
+                                <label asp-for="BusinessAddress"></label>
+                                <span asp-validation-for="BusinessAddress" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3 mb-3">
+                    <div class="col-6">
+                        <button id="submitButton" type="submit" class="form-control btn btn-info shadow rounded">Apply</button>
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <p class="text-info">Already have an account? <a asp-controller="Account" asp-action="Login">Login here</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+ 
+ 
+@section Scripts {
+    @{
+        <script src="~/js/validation.js" asp-append-version="true"></script>
+
+        <partial name="_ValidationScriptsPartial" />
+
+     }
+}
+ *@  
