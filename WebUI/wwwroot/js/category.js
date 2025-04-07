@@ -1,13 +1,13 @@
 ﻿let categoriesTable;
 
-$(document).ready(function () { 
-  categoriesTable = $('#tblCategory').DataTable({
+$(document).ready(function () {
+    categoriesTable = $('#tblCategory').DataTable({
         processing: true,
         serverSide: true,
-          ajax: { url: '/Admin/Category/GetPaginatedCategories' },
-          type: 'GET',
+        ajax: { url: '/Admin/Category/GetPaginatedCategories' },
+        type: 'GET',
 
-        columns: [   
+        columns: [
             {
                 title: "Img",
                 data: 'imageUrl',
@@ -26,33 +26,38 @@ $(document).ready(function () {
                 "width": "15%",
                 "render": function (data) {
                     return `<div class="w-75 btn-group" role="group">
-                     <a href="/Admin/category/update?id=${data}" class="btn btn-warning mx-2 rounded mx-4"> <i class="bi bi-pencil-square"></i></a>               
+                     <a href="/Admin/Category/Edit?id=${data}" class="btn btn-warning mx-2 rounded mx-4"> <i class="bi bi-pencil-square"></i></a>               
                      <a onClick=deleteCategory('${data}') class="btn btn-danger mx-2 rounded"> <i class="bi bi-trash-fill"></i></a>
                     </div>`
                 }
             },
         ]
-  });
+    });
 });
 
- 
+
 
 function deleteCategory(categoryId) {
-        $.ajax({
-            url: `/Admin/Category/Delete`,
-            type: 'POST',
-            data: { categoryId },
-            success: function (response) {
-                if (response.success) {
-                    toastr.success(response.message);
-                    categoriesTable.ajax.reload(null, false);
-                } else {
-                    toastr.error(response.message);
-                }
-            },
-            error: function (response) {
-                toastr.error("An error occurred. Unable to delete the user.");
+    $.ajax({
+        url: `/Admin/Category/Delete`,
+        type: 'POST',
+        data: { categoryId: categoryId },
+        success: function (response) {
+            if (response.success) {
+                toastr.success(response.message);
+                categoriesTable.ajax.reload(null, false);
+            } else {
+                toastr.error(response.message);
             }
-        });
-    }
+        },
+        error: function (response) {
+            toastr.error("An error occurred. Unable to delete the user.");
+        }
+    });
+}
+
+document.querySelector('input[name="file"]').addEventListener('change', function (e) {
+    const preview = document.querySelector('#preview');
+    preview.src = URL.createObjectURL(e.target.files[0]);
+});
 

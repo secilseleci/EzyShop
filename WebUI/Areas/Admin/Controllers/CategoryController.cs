@@ -85,16 +85,13 @@ public class CategoryController : BaseController
 
     #endregion
 
-
-
-
     #region Create Category
     [HttpGet]
     public IActionResult Create()
     {
         return View();
     }
- 
+
     [HttpPost]
     public async Task<IActionResult> Create(CategoryViewModel model, IFormFile? file)
     {
@@ -111,45 +108,43 @@ public class CategoryController : BaseController
     }
     #endregion
 
+
+
+    #region Edit Cetagory
+    [HttpGet]
+    public async Task<IActionResult> Edit(Guid id)
+    {
+        var category = await _categoryService.GetCategoryByIdAsync(id);
+        if (!category.Success)
+        {
+            TempData["ErrorMessage"] = category.Message;
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(Mapper.Map<CategoryViewModel>(category.Data));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(CategoryViewModel model, IFormFile? file)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(model);
+        }
+        HandleImageUpload(model, file);
+
+        var result = await _categoryService.UpdateCategoryAsync(model);
+        if (!result.Success)
+        {
+            TempData["ErrorMessage"] = result.Message;
+            return View(model);
+        }
+
+        TempData["SuccessMessage"] = result.Message;
+        return RedirectToAction(nameof(Index));
+    }
+    #endregion
 }
 
-//        #region Edit Cetagories
-//        [HttpGet]
-//        public async Task<IActionResult> Edit(Guid id)
-//        {
-//            var result = await _categoryService.GetCategoryByIdAsync(id);
-//            if (!result.Success)
-//            {
-//                TempData["ErrorMessage"] = result.Message;
-//                return View();
-//            }
 
-//            TempData["SuccessMessage"] = result.Message;
-//            return View(Mapper.Map<CategoryViewModel>(result.Data));
-//        }
-//        [HttpPost]
-//        public async Task<IActionResult>Edit(CategoryViewModel model, IFormFile? file)
-//        {
-//            HandleImageUpload(model, file);
 
-//            var result = await _categoryService.UpdateCategoryAsync(model);
-//            if (!result.Success)
-//            {
-//                TempData["ErrorMessage"] = result.Message;
-//                return View(model);
-//            }
-
-//            TempData["SuccessMessage"] = result.Message;
-//            return RedirectToAction(nameof(Index));
-//        }
-//        #endregion
-//    }
-//}
-//        [HttpGet]
-//        public async Task<IActionResult> GetAll()
-//        {
-//            var categories = await _categoryService.GetAllCategoriesAsync(c => true);
-//            return Json(new { data = categories.Data });
-
-//        }
-//        #endregion
