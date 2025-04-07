@@ -7,7 +7,6 @@ using Models.ViewModels.Order;
 using Models.ViewModels.Product;
 using Models.ViewModels.SellerApplication;
 using Models.ViewModels.Shop;
-using Models.ViewModels.User;
 
 namespace WebUI.Mappings.AutoMapper;
 
@@ -16,8 +15,8 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         #region Category
-        CreateMap<CategoryViewModel, Category>()
-        .ForMember(dest => dest.Name, opt => opt.MapFrom(src => (src.Name ?? string.Empty).Trim()));
+        CreateMap<Category,CategoryViewModel>()
+ .ForMember(dest => dest.Name, opt => opt.MapFrom(src => (src.Name ?? string.Empty).Trim())).ReverseMap();
 
         #endregion
 
@@ -25,16 +24,16 @@ public class MappingProfile : Profile
         CreateMap<Product, ProductCreateViewModel>().ReverseMap();
         CreateMap<Product, ProductUpdateViewModel>().ReverseMap();
 
-      
+
         CreateMap<Product, ProductCustomerViewModel>();
         CreateMap<Product, FilteredProductCustomerViewModel>()
         .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
         CreateMap<Product, ProductSellerViewModel>();
 
         #endregion
-   
+
         #region SellerApplication  
-       
+
         CreateMap<SellerApplication, SellerApplicationViewModel>().ReverseMap();
         #endregion
 
@@ -59,17 +58,16 @@ public class MappingProfile : Profile
         CreateMap<RegisterViewModel, Customer>()
             .ForMember(dest => dest.ShippingAddress, opt => opt.MapFrom(src => src.Address));
         #endregion
-        
-        
-        #region AppUser 
-        CreateMap<AppUser, UserProfileViewModel>().ReverseMap().ForMember(dest => dest.Id, opt => opt.Ignore());
-       
-        CreateMap<AppUser, UserViewModel>()
-        .ForMember(dest => dest.Role, opt => opt.Ignore()).ReverseMap();
 
-       
-  #endregion
-         
+        #region Customer for List
+        CreateMap<Customer, CustomerListViewModel>()
+        .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.User.Name} {src.User.Surname}".Trim()))
+        .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.User.Email))
+        .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.Id))
+        .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.User.PhoneNumber));
+        #endregion
+
+
 
         #region ShoppingCartItem → ShoppingCartItemViewModel
         CreateMap<ShoppingCartItem, ShoppingCartItemViewModel>()

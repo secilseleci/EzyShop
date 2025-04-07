@@ -76,11 +76,21 @@
         public const string EmptySellerApplicationList = "Application list is empty with the current filter";
         #endregion
 
-        #region Seller
-        public const string CreateSellerError = "An error occurred while creating Seller";
+        #region Customer
+        public const string CustomerNotFound = "Customer not found";
+        public const string DeleteCustomerSuccess = "Customer successfully deleted";
+        public const string DeleteCustomerError = "Error occurred while deleting the Customer from Database";
+        public const string EmptyCustomerList = "Customer list is empty with the current filter";
 
         #endregion
-       
+
+
+        #region Seller
+        public const string CreateSellerError = "An error occurred while creating Seller";
+        public const string SellerNotFound = "Seller not found";
+
+        #endregion
+
 
         #region User
         public const string UserNotFound = "User not found";

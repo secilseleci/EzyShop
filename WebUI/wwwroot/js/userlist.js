@@ -1,20 +1,26 @@
+﻿let customersTable;
+
+
+
+
 $(document).ready(function () {
-    $('#tblUsers').DataTable({
+    customersTable = $('#tblCustomers').DataTable({
+        processing: true,
+        serverSide: true,
         ajax: {
-            url: '/Admin/Users/GetPaginatedUsers',
+            url: '/Admin/Customers/GetPaginatedCustomers',
             type: 'GET',
         },
         columns: [
-            { data: 'name', "width": "20%",},
-            
-            { data: 'email', width: '25%'   },
-         
-            { data: 'phoneNumber', width: '25%' },
-
-            { data: 'id',width: '20%',
-              render: function (data)
-                {
-                    return `<button onclick="deleteUser('${data}')" class="btn btn-danger btn-sm">Delete</button> `;
+            { title: "Name", data: 'fullName', width: "25%" }, 
+            { title: "Email", data: 'email', width: "25%" },
+            { title: "Phone", data: 'phoneNumber', width: "25%" },
+            {
+                title: "Actions",
+                data: 'customerId',
+                width: "25%",
+                render: function (data) {
+                    return `<button onclick="deleteUser('${data}')" class="btn btn-danger btn-sm">Delete</button>`;
                 }
             }
         ]
@@ -22,22 +28,22 @@ $(document).ready(function () {
 });
 
 
-function deleteUser(userId) {
+
+function deleteUser(customerId) {
     $.ajax({
-        url: `Admin/Users/DeleteUser`,
+        url: `/Admin/Customers/Delete`,
         type: 'POST',
-        data: { userId },
+        data: { customerId },
         success: function (response) {
             if (response.success) {
-                toastr.success("User successfully deleted.");
-                $('#tblUsers').DataTable().ajax.reload();
+                toastr.success(response.message);
+                customersTable.ajax.reload(null, false);
             } else {
-                toastr.error("Failed to delete the user. Please try again.");
+                toastr.error(response.message);
             }
         },
-        error: function (error) {
+        error: function (response) {
             toastr.error("An error occurred. Unable to delete the user.");
-            console.error("Error:", error);
         }
     });
 }

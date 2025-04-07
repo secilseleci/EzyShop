@@ -1,1 +1,39 @@
-﻿Admin kategori listeleme ekleme silme edit belki ilerde yüzdelik kategorisel ürün dağılımı
+﻿@model IEnumerable<CategoryViewModel>
+
+@{
+    ViewData["Title"] = "Category List";
+}
+
+<div class="container renderCard">
+    <div class="card shadow border-0 rounded">
+        <div class="card-header">
+            <div class="row p-3">
+                <div class="col-6">
+                    <h2 class="text-info">Category List</h2>
+                </div>
+                <div class="col-6 text-end">
+                    <a asp-area="Admin" asp-controller="Category" asp-action="Create" class="btn btn-outline-info shadow rounded">
+                        <i class="bi bi-plus-circle"></i> Create New Category
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="tblCategory" class="table table-bordered table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Img</th>
+                            <th>Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/category.js"></script>
+}

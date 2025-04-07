@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
+using Models.ViewModels.Category;
 using WebUI.Controllers;
 
 namespace WebUI.Areas.Admin.Controllers;
@@ -12,7 +13,7 @@ namespace WebUI.Areas.Admin.Controllers;
 [Route("Admin/[controller]/[action]")]
 [Authorize(Roles = "Admin")]
 
-public class CategoryController :  BaseController
+public class CategoryController : BaseController
 {
     private readonly ICategoryService _categoryService;
     public CategoryController
@@ -27,102 +28,128 @@ public class CategoryController :  BaseController
     {
         _categoryService = categoryService;
     }
+
+
+
+    #region List Categories
+
+    [HttpGet]
     public IActionResult Index()
     {
         return View();
     }
+    #endregion
+
+    #region API
+
+    [HttpGet]
+    public async Task<IActionResult> GetPaginatedCategories()
+    {
+        int start = int.Parse(Request.Query["start"]);
+        int length = int.Parse(Request.Query["length"]);
+        string? search = Request.Query["search[value]"];
+
+        int page = (start / length) + 1;
+        int pageSize = length;
 
 
-    //        #region List Categories
+        var result = await _categoryService.GetPaginatedCategoriesAsync(page, length, search);
 
-    //        [HttpGet]
-    //        public IActionResult Index()
-    //        {
-    //            return View();
-    //        }
-    //        [HttpGet]
-    //        public async Task<IActionResult> GetAll()
-    //        {
-    //            var categories = await _categoryService.GetAllCategoriesAsync(c => true);
-    //            return Json(new { data = categories.Data });
+        if (!result.Success)
+        {
+            return Json(new { success = false, message = result.Message });
+        }
 
-    //        }
-    //        #endregion
+        return Json(new
+        {
+            draw = int.Parse(Request.Query["draw"]),
+            recordsTotal = result.Data.TotalItems,
+            recordsFiltered = result.Data.TotalItems,
+            data = result.Data.Items
+        });
+    }
+    #endregion
 
-    //        #region Create Categories
-    //        [HttpGet]
-    //        public IActionResult Create()
-    //        {
-    //            return View();
-    //        }
+    #region Delete Categories
+    [HttpPost]
+    public async Task<IActionResult> Delete(Guid categoryId)
+    {
 
-    //        [HttpPost]
-    //        public async Task<IActionResult> Create(CategoryViewModel model, IFormFile? file)
-    //        {
+        var result = await _categoryService.DeleteCategoryAsync(categoryId);
+        if (result.Success)
+        {
+            return Json(new { success = true, message = result.Message });
+        }
+        return Json(new { success = false, message = result.Message });
+    }
 
-    //            HandleImageUpload(model, file);
-    //            var result=await _categoryService.CreateCategoryAsync(model);
-    //            if (!result.Success)
-    //            {
-    //                TempData["ErrorMessage"]=result.Message;
-    //            }
+    #endregion
 
-    //            TempData["SuccessMessage"]=result.Message;
-    //            return RedirectToAction("Index");
-    //        }
-    //        #endregion
 
-    //        #region Delete Categories
-    //        public async Task<IActionResult> Delete(Guid id)
-    //        {
-    //            var categoryResult = await _categoryService.GetCategoryByIdAsync(id);
-    //            if (!categoryResult.Success)
-    //            {
-    //                return Json(categoryResult);
-    //            }
-    //            var result = await _categoryService.DeleteCategoryAsync(id);
-    //            if(!result.Success)
-    //            {
 
-    //                return Json(result);
-    //            }
-    //            DeleteOldImage(categoryResult.Data.ImageUrl, WebHostEnvironment.WebRootPath);
-    //            return Json(result);
-    //         }
 
-    //        #endregion
+    #region Create Category
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
+    }
+ 
+    [HttpPost]
+    public async Task<IActionResult> Create(CategoryViewModel model, IFormFile? file)
+    {
 
-    //        #region Edit Cetagories
-    //        [HttpGet]
-    //        public async Task<IActionResult> Edit(Guid id)
-    //        {
-    //            var result = await _categoryService.GetCategoryByIdAsync(id);
-    //            if (!result.Success)
-    //            {
-    //                TempData["ErrorMessage"] = result.Message;
-    //                return View();
-    //            }
+        HandleImageUpload(model, file);
+        var result = await _categoryService.CreateCategoryAsync(model);
+        if (!result.Success)
+        {
+            TempData["ErrorMessage"] = result.Message;
+        }
 
-    //            TempData["SuccessMessage"] = result.Message;
-    //            return View(Mapper.Map<CategoryViewModel>(result.Data));
-    //        }
-    //        [HttpPost]
-    //        public async Task<IActionResult>Edit(CategoryViewModel model, IFormFile? file)
-    //        {
-    //            HandleImageUpload(model, file);
-
-    //            var result = await _categoryService.UpdateCategoryAsync(model);
-    //            if (!result.Success)
-    //            {
-    //                TempData["ErrorMessage"] = result.Message;
-    //                return View(model);
-    //            }
-
-    //            TempData["SuccessMessage"] = result.Message;
-    //            return RedirectToAction(nameof(Index));
-    //        }
-    //        #endregion
-    //    }
-    //}
+        TempData["SuccessMessage"] = result.Message;
+        return RedirectToAction("Index");
+    }
+    #endregion
 
 }
+
+//        #region Edit Cetagories
+//        [HttpGet]
+//        public async Task<IActionResult> Edit(Guid id)
+//        {
+//            var result = await _categoryService.GetCategoryByIdAsync(id);
+//            if (!result.Success)
+//            {
+//                TempData["ErrorMessage"] = result.Message;
+//                return View();
+//            }
+
+//            TempData["SuccessMessage"] = result.Message;
+//            return View(Mapper.Map<CategoryViewModel>(result.Data));
+//        }
+//        [HttpPost]
+//        public async Task<IActionResult>Edit(CategoryViewModel model, IFormFile? file)
+//        {
+//            HandleImageUpload(model, file);
+
+//            var result = await _categoryService.UpdateCategoryAsync(model);
+//            if (!result.Success)
+//            {
+//                TempData["ErrorMessage"] = result.Message;
+//                return View(model);
+//            }
+
+//            TempData["SuccessMessage"] = result.Message;
+//            return RedirectToAction(nameof(Index));
+//        }
+//        #endregion
+//    }
+//}
+//        [HttpGet]
+//        public async Task<IActionResult> GetAll()
+//        {
+//            var categories = await _categoryService.GetAllCategoriesAsync(c => true);
+//            return Json(new { data = categories.Data });
+
+//        }
+//        #endregion

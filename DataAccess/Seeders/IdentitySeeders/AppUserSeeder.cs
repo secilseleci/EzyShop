@@ -17,6 +17,8 @@ public static class AppUserSeeder
             {
                 var newAdmin = new AppUser
                 {
+                    Name = "Admin",
+                    Surname = "User",
                     UserName = adminUserName,
                     Email = adminEmail,
                     EmailConfirmed = true,
@@ -37,6 +39,8 @@ public static class AppUserSeeder
         {
             var customer = new AppUser
             {
+                Name = "Derya",
+                Surname = "Karaman",
                 UserName = "Derya Karaman",
                 Email = customer1Email,
                 EmailConfirmed = true,
@@ -60,6 +64,8 @@ public static class AppUserSeeder
             {
                 var customer = new AppUser
                 {
+                    Name = "Nur",
+                    Surname = "Biral",
                     UserName = "Nur Biral",
                     Email = customer2Email,
                     EmailConfirmed = true,
@@ -82,6 +88,8 @@ public static class AppUserSeeder
         {
             var seller = new AppUser
             {
+                Name = "Seçil",
+                Surname = "Seleci",
                 UserName = "Seçil Seleci",
                 Email = seller1Email,
                 EmailConfirmed = true,
@@ -104,6 +112,8 @@ public static class AppUserSeeder
         {
             var seller = new AppUser
             {
+                Name = "Seçil",
+                Surname = "Hanım",
                 UserName = "Seçil Hanım",
                 Email = seller2Email,
                 EmailConfirmed = true,

@@ -8,6 +8,7 @@ using DataAccess.Repositories.Abstract;
 using Microsoft.Extensions.Configuration;
 using Models.Entities.Concrete;
 using Models.ViewModels.Category;
+using System.Linq.Expressions;
 
 namespace Business.Services.Concrete;
 
@@ -46,10 +47,22 @@ public class CategoryService : BaseService, ICategoryService
 
     }
 
-    public async Task<IDataResult<PaginatedList<CategoryViewModel>>> GetPaginatedCategoriesAsync(int page, int pageSize)
+    public async Task<IDataResult<PaginatedList<CategoryViewModel>>> GetPaginatedCategoriesAsync(int page, int pageSize, string? searchTerm = null)
     {
+        Expression<Func<Category, bool>> predicate;
+        if (!string.IsNullOrWhiteSpace(searchTerm))
+
+        {
+            predicate = c =>
+            (c.Name).Contains(searchTerm);
+        }
+        else
+        {
+            predicate = c => true;
+        }
+
         var paginatedCategories = await _categoryRepo.GetPaginatedAsync(
-            c => !c.IsDeleted,
+            predicate,
             page,
             pageSize);
 
@@ -96,9 +109,9 @@ public class CategoryService : BaseService, ICategoryService
         if (!exists)
             return new ErrorResult(Messages.CategoryNotFound);
 
-        var result = await _categoryRepo.SoftDeleteAsync(categoryId);
+        var affectedRows = await _categoryRepo.SoftDeleteAsync(categoryId);
 
-        return result > 0
+        return affectedRows > 0
         ? new SuccessResult(Messages.DeleteCategorySuccess)
         : new ErrorResult(Messages.DeleteCategoryError);
     }
@@ -135,5 +148,11 @@ public class CategoryService : BaseService, ICategoryService
     }
     #endregion
 
+  
 
+
+
+ 
+     
+     
 }

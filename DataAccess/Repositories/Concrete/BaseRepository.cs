@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Models.Entities.Abstract;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace DataAccess.Repositories.Concrete;
 
@@ -105,12 +106,16 @@ public class BaseRepository<T> : IBaseRepository<T> where T:class, IBaseEntity, 
     {
         return await _dataContext.Database.BeginTransactionAsync();
     }
-    public async Task<PaginatedList<T>> GetPaginatedAsync(Expression<Func<T, bool>> predicate, int page, int pageSize)
+    public async Task<PaginatedList<T>> GetPaginatedAsync(
+        Expression<Func<T, bool>> predicate, int page, int pageSize, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null)
     {
         var query = _dbSet
             .Where(predicate)
-            .Where(x => !x.IsDeleted);  
-
+            .Where(x => !x.IsDeleted);
+        if (include != null)
+        {
+            query = include(query);
+        }
         var totalItems = await query.CountAsync();
 
         var items = await query

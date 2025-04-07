@@ -2,22 +2,21 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Models.ViewModels.Category
+namespace Models.ViewModels.Category;
+
+public class CategoryViewModel : IImageViewModel
 {
-    public class CategoryViewModel : IImageViewModel
-    {
-        [Required]
-        public Guid Id { get; set; }
+    [Required]
+    public Guid Id { get; set; }
 
-        [Required]
-        [MaxLength(30)]
-        public string Name { get; set; } 
+    [Required]
+    [MaxLength(30)]
+    public string Name { get; set; } = null!;
 
-        
+    
 
-        [DisplayName("Image")]
-        public string? ImageUrl { get; set; }
+    [DisplayName("Image")]
+    public string? ImageUrl { get; set; }
 
-        public string FolderName { get; set; } = "category";
-    }
+    public string FolderName { get; set; } = "category";
 }
