@@ -215,7 +215,7 @@ namespace DataAccess.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StoreName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ShopName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ShopAddress = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     ContactBusinessNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TaxNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),

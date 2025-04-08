@@ -8,7 +8,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: {
-            url: '/Admin/Customers/GetPaginatedCustomers',
+            url: '/Admin/Customer/GetPaginatedCustomers',
             type: 'GET',
         },
         columns: [
@@ -17,7 +17,7 @@ $(document).ready(function () {
             { title: "Phone", data: 'phoneNumber', width: "25%" },
             {
                 title: "Actions",
-                data: 'customerId',
+                data: 'id',
                 width: "25%",
                 render: function (data) {
                     return `<button onclick="deleteUser('${data}')" class="btn btn-danger btn-sm">Delete</button>`;
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 function deleteUser(customerId) {
     $.ajax({
-        url: `/Admin/Customers/Delete`,
+        url: `/Admin/Customer/Delete`,
         type: 'POST',
         data: { customerId },
         success: function (response) {

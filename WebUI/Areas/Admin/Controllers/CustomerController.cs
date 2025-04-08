@@ -9,12 +9,11 @@ using WebUI.Controllers;
 
 namespace WebUI.Areas.Admin.Controllers;
 [Area("Admin")]
-[Route("Admin/[controller]/[action]")]
 [Authorize(Roles = "Admin")]
-public class CustomersController : BaseController
+public class CustomerController : BaseController
 {
     private readonly ICustomerService _customerService;
-    public CustomersController
+    public CustomerController
     (
     ICustomerService customerService,
     ICurrentUserService currentUserService,

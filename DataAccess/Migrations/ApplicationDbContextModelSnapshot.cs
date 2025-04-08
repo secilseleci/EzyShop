@@ -512,12 +512,12 @@ namespace DataAccess.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StoreName")
+                    b.Property<string>("ShopName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Surname")
                         .IsRequired()

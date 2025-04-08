@@ -32,15 +32,13 @@ public class SellerApplicationViewModel
     [DisplayName("Tax Number")]
     public string TaxNumber { get; set; } = null!;
 
-    public ApplicationStatus Status { get; set; } = ApplicationStatus.Pending;
+    public string StatusText => Status.ToString();
+
 
     // Sadece admin veya sistem içi işler için
     public Guid? UserId { get; set; }
     public Guid? SellerId { get; set; }
+     
+    public ApplicationStatus Status { get; set; } = ApplicationStatus.Pending;
 
-    [DisplayName("Created At")]
-    public DateTime CreatedAt { get; set; }
-
-    [DisplayName("Status Text")]
-    public string StatusText => Status.ToString();
-}
+ }

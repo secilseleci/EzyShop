@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Models.Entities.Concrete;
 using Models.Identity;
-using Models.ViewModels.Category;
 using Models.ViewModels.Customer;
 using System.Linq.Expressions;
 

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Business.Services.Abstract;
 using Core.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -12,10 +13,11 @@ namespace WebUI.Areas.Admin.Controllers;
 [Authorize(Roles = "Admin")]
 public class SellerController : BaseController
 {
-   
 
+    private readonly ISellerService _sellerService;
     public SellerController
-    (ICurrentUserService currentUserService,
+    (ISellerService sellerService,
+    ICurrentUserService currentUserService,
     UserManager<AppUser> userManager,
     RoleManager<AppRole> roleManager,
     SignInManager<AppUser> signInManager,
@@ -23,27 +25,63 @@ public class SellerController : BaseController
     IMapper mapper)
     : base(currentUserService, userManager, roleManager, signInManager, webHostEnvironment, mapper)
     {
+        _sellerService = sellerService;
     }
+  
+    #region List Sellers
+    [HttpGet]
     public IActionResult Index()
     {
         return View();
     }
 
-    //#region SellerApplication
+    #endregion
 
-    //[HttpGet]
-    //public async Task<IActionResult> ListSellerApplications()
-    //{
-    //    var result = await _sellerApplicationService.GetAllSellerApplicationsAsync(a => true);
+    #region API
+    [HttpGet]
+    public async Task<IActionResult> GetPaginatedSellers()
+    {
+        int start = int.Parse(Request.Query["start"]);
+        int length = int.Parse(Request.Query["length"]);
+        string? search = Request.Query["search[value]"];
 
-    //    if (!result.Success)
-    //    {
-    //        TempData["ErrorMessage"] = result.Message;
-    //        return RedirectToAction("Index", "Home");
-    //    }
+        int page = (start / length) + 1;
+        int pageSize = length;
 
-    //    return View(result.Data);
-    //}
+
+        var result = await _sellerService.GetPaginatedSellersAsync(page, length, search);
+
+        if (!result.Success)
+        {
+            return Json(new { success = false, message = result.Message });
+        }
+
+        return Json(new
+        {
+            draw = int.Parse(Request.Query["draw"]),
+            recordsTotal = result.Data.TotalItems,
+            recordsFiltered = result.Data.TotalItems,
+            data = result.Data.Items
+        });
+    }
+    #endregion
+
+    #region Delete Seller
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(Guid sellerId)
+    {
+
+        var result = await _sellerService.DeleteSellerAsync(sellerId);
+        if (result.Success)
+        {
+            return Json(new { success = true, message = result.Message });
+        }
+        return Json(new { success = false, message = result.Message });
+    }
+
+    #endregion
+  
 
     //[HttpGet]
     //public async Task<IActionResult> GetSellerApplications(string status = "all")

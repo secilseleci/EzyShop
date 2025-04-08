@@ -31,7 +31,7 @@ public class BaseController : Controller
         Mapper = mapper;
     }
 
-
+  
 
     protected Guid? GetUserId() => CurrentUserService.UserId;
 

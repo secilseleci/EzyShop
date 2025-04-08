@@ -8,7 +8,7 @@ namespace Business.Services.Abstract;
 public interface ISellerApplicationService
 {  
     #region Crud
-    Task<IResult> CreateSellerApplicationAsync(SellerApplicationViewModel model);
+    Task<IResult> CreateSellerApplicationAsync(SellerApplicationCreateViewModel model);
     Task<IResult> DeleteSellerApplicationAsync(Guid sellerApplicationId);
     Task<IDataResult<SellerApplication>> GetSellerApplicationByIdAsync(Guid sellerApplicationId);
     #endregion

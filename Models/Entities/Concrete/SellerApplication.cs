@@ -25,7 +25,7 @@ public class SellerApplication:BaseEntity
     [Required]
     public string Surname { get; set; } = null!;
     [Required]
-    public string StoreName { get; set; } = null!;
+    public string ShopName { get; set; } = null!;
    
     [Required]
     [StringLength(500)]

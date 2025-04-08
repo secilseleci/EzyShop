@@ -60,13 +60,14 @@ public static class ServiceExtension
 
         services.AddScoped<IShopService, ShopService>();
         services.AddScoped<IShoppingCartService, ShoppingCartService>();
-       services.AddScoped<IShoppingCartItemService, ShoppingCartItemService>();
+        services.AddScoped<IShoppingCartItemService, ShoppingCartItemService>();
         services.AddScoped<IOrderService, OrderService>();
         services.AddScoped<IOrderItemService, OrderItemService>();
         services.AddScoped<IRazorViewRenderer, RazorViewRenderer>();
         services.AddScoped<ICustomerService, CustomerService>();
         services.AddScoped<IAuthService, AuthService>();
-        services.AddScoped<IEmailService, EmailService>(); 
+        services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<ISellerService, SellerService>();
 
     }
 

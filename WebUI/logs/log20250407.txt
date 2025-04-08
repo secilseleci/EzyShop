@@ -18551,3 +18551,862 @@ OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
 2025-04-07 20:10:35.162 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 13.559ms
 2025-04-07 20:10:35.163 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
 2025-04-07 20:10:35.164 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=5&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1744045828533 - 200 null application/json; charset=utf-8 20.4388ms
+2025-04-07 22:57:44.130 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-07 22:57:44.395 +03:00 [WRN] Navigations 'SellerApplication.Seller' and 'Seller.SellerApplication' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-04-07 22:57:44.448 +03:00 [WRN] Navigations 'Seller.SellerApplication' and 'SellerApplication.Seller' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-04-07 22:57:44.451 +03:00 [WRN] Navigations 'Seller.SellerApplication' and 'SellerApplication.Seller' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-04-07 22:57:44.453 +03:00 [WRN] Navigations 'Seller.SellerApplication' and 'SellerApplication.Seller' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-04-07 22:57:44.526 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-04-07 22:57:44.566 +03:00 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-04-07 22:57:44.568 +03:00 [WRN] No store type was specified for the decimal property 'ProductPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-04-07 22:57:44.569 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-04-07 22:57:44.570 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-04-07 22:57:45.080 +03:00 [INF] Executed DbCommand (35ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-07 22:57:45.137 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='SELLER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-07 22:57:45.140 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='CUSTOMER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-07 22:57:45.152 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='ADMIN@EZYSHOP.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-07 22:57:45.189 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='DERYA.KARAMAN.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-07 22:57:45.191 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='NUR.BIRAL.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-07 22:57:45.194 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='SECIL.SELECI@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-07 22:57:45.196 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='SECILSELLER@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-07 22:57:45.210 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__email1_0='secil.seleci@gmail.com' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SellerApplications] AS [s]
+        WHERE [s].[Email] = @__email1_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:57:45.215 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email2_0='secilseller@gmail.com' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SellerApplications] AS [s]
+        WHERE [s].[Email] = @__email2_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:57:45.249 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = N'secil.seleci@gmail.com'
+2025-04-07 22:57:45.256 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[ContactBusinessNumber], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[Email], [s].[IsDeleted], [s].[ModifiedById], [s].[Name], [s].[SellerId], [s].[ShopAddress], [s].[Status], [s].[StoreName], [s].[Surname], [s].[TaxNumber], [s].[UpdatedAt], [s].[UserId]
+FROM [SellerApplications] AS [s]
+WHERE [s].[Email] = N'secil.seleci@gmail.com'
+2025-04-07 22:57:45.286 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user1_Id_0='180094e6-931b-4f5f-8c68-08dd7553cee5'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[SellerApplicationId], [s].[UpdatedAt], [s].[UserId]
+FROM [Sellers] AS [s]
+WHERE [s].[UserId] = @__user1_Id_0
+2025-04-07 22:57:45.328 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = N'secilseller@gmail.com'
+2025-04-07 22:57:45.335 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[ContactBusinessNumber], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[Email], [s].[IsDeleted], [s].[ModifiedById], [s].[Name], [s].[SellerId], [s].[ShopAddress], [s].[Status], [s].[StoreName], [s].[Surname], [s].[TaxNumber], [s].[UpdatedAt], [s].[UserId]
+FROM [SellerApplications] AS [s]
+WHERE [s].[Email] = N'secilseller@gmail.com'
+2025-04-07 22:57:45.341 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user2_Id_0='65425fd5-2932-457b-8c69-08dd7553cee5'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[SellerApplicationId], [s].[UpdatedAt], [s].[UserId]
+FROM [Sellers] AS [s]
+WHERE [s].[UserId] = @__user2_Id_0
+2025-04-07 22:57:45.397 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[SellerApplicationId], [s].[UpdatedAt], [s].[UserId], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [Sellers] AS [s]
+INNER JOIN [AspNetUsers] AS [a] ON [s].[UserId] = [a].[Id]
+WHERE [a].[Email] = N'secil.seleci@gmail.com'
+2025-04-07 22:57:45.405 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__seller1_Id_0='e356a43c-293e-4467-a823-f19944571eef'], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Shops] AS [s]
+        WHERE [s].[SellerId] = @__seller1_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:57:45.413 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[SellerApplicationId], [s].[UpdatedAt], [s].[UserId], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [Sellers] AS [s]
+INNER JOIN [AspNetUsers] AS [a] ON [s].[UserId] = [a].[Id]
+WHERE [a].[Email] = N'secilseller@gmail.com'
+2025-04-07 22:57:45.418 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__seller2_Id_0='5143f71e-ef8c-4ac2-89e4-31d51c57aed5'], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Shops] AS [s]
+        WHERE [s].[SellerId] = @__seller2_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:57:45.426 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = N'derya.karaman.ezyshop@gmail.com'
+2025-04-07 22:57:45.431 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = N'nur.biral.ezyshop@gmail.com'
+2025-04-07 22:57:45.436 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__derya_Id_0='11698f37-2c0a-44c0-8c66-08dd7553cee5'], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[UserId] = @__derya_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:57:45.441 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__nur_Id_0='f5a88799-425b-4206-8c67-08dd7553cee5'], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[UserId] = @__nur_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:57:45.451 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:57:45.466 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[Name], [s].[SellerId], [s].[ShopAddress], [s].[Status], [s].[TaxNumber], [s].[UpdatedAt], [s0].[Id], [s0].[CreatedAt], [s0].[CreatedById], [s0].[DeletedAt], [s0].[DeletedById], [s0].[IsDeleted], [s0].[ModifiedById], [s0].[SellerApplicationId], [s0].[UpdatedAt], [s0].[UserId], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+INNER JOIN [AspNetUsers] AS [a] ON [s0].[UserId] = [a].[Id]
+WHERE [s].[Name] = N'Seleci Home'
+2025-04-07 22:57:45.489 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]
+        WHERE [p].[Name] = N'Smartphone') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:57:45.494 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]
+        WHERE [p].[Name] = N'Design Patterns Book') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:57:45.556 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[Name], [s].[SellerId], [s].[ShopAddress], [s].[Status], [s].[TaxNumber], [s].[UpdatedAt], [s0].[Id], [s0].[CreatedAt], [s0].[CreatedById], [s0].[DeletedAt], [s0].[DeletedById], [s0].[IsDeleted], [s0].[ModifiedById], [s0].[SellerApplicationId], [s0].[UpdatedAt], [s0].[UserId], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+INNER JOIN [AspNetUsers] AS [a] ON [s0].[UserId] = [a].[Id]
+WHERE [s].[Name] = N'Hanım Moda'
+2025-04-07 22:57:45.564 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]
+        WHERE [p].[Name] = N'Women''s Blazer') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:57:45.568 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]
+        WHERE [p].[Name] = N'Silk Scarf') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:57:45.648 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='921e60cf-f8b3-42c1-aa88-097093508c26', @p1='279ac61d-0691-4d5a-aab0-caca11ed28c2', @p2='' (Size = 4000), @p3='2025-04-07T19:57:45.5692037Z', @p4=NULL (DbType = Guid), @p5=NULL (DbType = DateTime2), @p6=NULL (DbType = Guid), @p7='images\product\war_and_peace.jpg' (Size = 4000), @p8='True', @p9='False', @p10=NULL (DbType = Guid), @p11='War and Peace' (Nullable = false) (Size = 4000), @p12='299' (Precision = 18) (Scale = 2), @p13='9940ce0c-9ffa-43dd-8489-f62856e9e889', @p14='100', @p15=NULL (DbType = DateTime2), @p16='eb11f1fa-534a-4c89-802c-a7f6c623b8af', @p17='2025-04-07T19:57:45.5692037Z', @p18=NULL (DbType = Guid), @p19=NULL (DbType = DateTime2), @p20=NULL (DbType = Guid), @p21='images\product\war_and_peace.jpg' (Nullable = false) (Size = 4000), @p22='False', @p23=NULL (DbType = Guid), @p24='921e60cf-f8b3-42c1-aa88-097093508c26', @p25=NULL (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Id], [CategoryId], [Color], [CreatedAt], [CreatedById], [DeletedAt], [DeletedById], [ImageUrl], [IsActive], [IsDeleted], [ModifiedById], [Name], [Price], [ShopId], [Stock], [UpdatedAt])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+INSERT INTO [ProductImages] ([Id], [CreatedAt], [CreatedById], [DeletedAt], [DeletedById], [ImageUrl], [IsDeleted], [ModifiedById], [ProductId], [UpdatedAt])
+VALUES (@p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+2025-04-07 22:57:46.093 +03:00 [INF] Now listening on: https://localhost:7104
+2025-04-07 22:57:46.094 +03:00 [INF] Now listening on: http://localhost:5194
+2025-04-07 22:57:46.120 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-07 22:57:46.121 +03:00 [INF] Hosting environment: Development
+2025-04-07 22:57:46.121 +03:00 [INF] Content root path: C:\Users\ASUS\source\repos\EZYSHOP\WebUI
+2025-04-07 22:57:46.655 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-04-07 22:57:46.821 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-04-07 22:57:46.831 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-04-07 22:57:46.843 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-04-07 22:57:49.013 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:57:50.258 +03:00 [INF] Executed ViewResult - view Index executed in 3283.1748ms.
+2025-04-07 22:57:50.266 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 3419.9651ms
+2025-04-07 22:57:50.269 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-04-07 22:57:50.279 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 3635.832ms
+2025-04-07 22:57:50.308 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/WebUI.styles.css?v=N03WphAOHJMcSxd_hQKQ3omnP_jJau8HeQ4bkvHtYW8 - null null
+2025-04-07 22:57:50.323 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-07 22:57:50.323 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-07 22:57:50.323 +03:00 [INF] The file /WebUI.styles.css was not modified
+2025-04-07 22:57:50.333 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/WebUI.styles.css?v=N03WphAOHJMcSxd_hQKQ3omnP_jJau8HeQ4bkvHtYW8 - 304 null text/css 25.2609ms
+2025-04-07 22:57:50.338 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 15.7209ms
+2025-04-07 22:57:50.373 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 50.8672ms
+2025-04-07 22:57:50.487 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - null null
+2025-04-07 22:57:50.496 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-04-07 22:57:50.498 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - 404 0 null 11.9001ms
+2025-04-07 22:57:50.501 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/ShoppingCart/GetCartItemCount, Response status code: 404
+2025-04-07 22:57:50.543 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-04-07 22:57:50.547 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-04-07 22:57:50.548 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-04-07 22:57:50.549 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-04-07 22:57:50.571 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:57:50.577 +03:00 [INF] Executed ViewResult - view Index executed in 6.7611ms.
+2025-04-07 22:57:50.579 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 28.7911ms
+2025-04-07 22:57:50.580 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-04-07 22:57:50.581 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 38.8052ms
+2025-04-07 22:57:51.631 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Account/Login - null null
+2025-04-07 22:57:51.642 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-04-07 22:57:51.643 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-07 22:57:51.654 +03:00 [INF] Route matched with {action = "Login", controller = "Account", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String, System.String) on controller WebUI.Controllers.AccountController (WebUI).
+2025-04-07 22:57:52.008 +03:00 [INF] Executing ViewResult, running view Login.
+2025-04-07 22:57:52.263 +03:00 [INF] Executed ViewResult - view Login executed in 597.8277ms.
+2025-04-07 22:57:52.265 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 609.9331ms
+2025-04-07 22:57:52.265 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-07 22:57:52.267 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Account/Login - 200 null text/html; charset=utf-8 636.5795ms
+2025-04-07 22:57:52.293 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-07 22:57:52.298 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 4.9757ms
+2025-04-07 22:57:52.299 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-07 22:57:52.323 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - null null
+2025-04-07 22:57:52.324 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Account/Login - null null
+2025-04-07 22:57:52.326 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-04-07 22:57:52.330 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - 404 0 null 7.2336ms
+2025-04-07 22:57:52.331 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-04-07 22:57:52.334 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.9813ms
+2025-04-07 22:57:52.334 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/ShoppingCart/GetCartItemCount, Response status code: 404
+2025-04-07 22:57:52.335 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-07 22:57:52.339 +03:00 [INF] Route matched with {action = "Login", controller = "Account", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String, System.String) on controller WebUI.Controllers.AccountController (WebUI).
+2025-04-07 22:57:52.342 +03:00 [INF] Executing ViewResult, running view Login.
+2025-04-07 22:57:52.348 +03:00 [INF] Executed ViewResult - view Login executed in 6.693ms.
+2025-04-07 22:57:52.350 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 9.5362ms
+2025-04-07 22:57:52.351 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-07 22:57:52.352 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Account/Login - 200 null text/html; charset=utf-8 28.7187ms
+2025-04-07 22:57:59.904 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/Account/Login - application/x-www-form-urlencoded 244
+2025-04-07 22:57:59.909 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-04-07 22:57:59.910 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-07 22:57:59.917 +03:00 [INF] Route matched with {action = "Login", controller = "Account", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Models.ViewModels.User.LoginViewModel) on controller WebUI.Controllers.AccountController (WebUI).
+2025-04-07 22:57:59.976 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='ADMIN@EZYSHOP.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-07 22:58:00.066 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-04-07 22:58:00.086 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-07 22:58:00.090 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-07 22:58:00.098 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='132f4963-05b6-4258-a27c-08dd75531455'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-04-07 22:58:00.105 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-04-07 22:58:00.108 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-07 22:58:00.114 +03:00 [INF] Executing RedirectResult, redirecting to /Admin/Dashboard/Index.
+2025-04-07 22:58:00.115 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 196.3782ms
+2025-04-07 22:58:00.116 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-07 22:58:00.119 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/Account/Login - 302 0 null 215.4068ms
+2025-04-07 22:58:00.120 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Dashboard/Index - null null
+2025-04-07 22:58:00.134 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.DashboardController.Index (WebUI)'
+2025-04-07 22:58:00.136 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Areas.Admin.Controllers.DashboardController (WebUI).
+2025-04-07 22:58:00.567 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:58:00.841 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:01.024 +03:00 [INF] Executed ViewResult - view Index executed in 878.1796ms.
+2025-04-07 22:58:01.025 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.DashboardController.Index (WebUI) in 887.6577ms
+2025-04-07 22:58:01.026 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.DashboardController.Index (WebUI)'
+2025-04-07 22:58:01.027 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Dashboard/Index - 200 null text/html; charset=utf-8 907.5578ms
+2025-04-07 22:58:01.057 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-07 22:58:01.060 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-07 22:58:01.064 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 4.6946ms
+2025-04-07 22:58:01.074 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 16.8559ms
+2025-04-07 22:58:01.086 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Dashboard/Index - null null
+2025-04-07 22:58:01.092 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.DashboardController.Index (WebUI)'
+2025-04-07 22:58:01.094 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Areas.Admin.Controllers.DashboardController (WebUI).
+2025-04-07 22:58:01.097 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:58:01.102 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:01.106 +03:00 [INF] Executed ViewResult - view Index executed in 9.0298ms.
+2025-04-07 22:58:01.107 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.DashboardController.Index (WebUI) in 12.0651ms
+2025-04-07 22:58:01.108 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.DashboardController.Index (WebUI)'
+2025-04-07 22:58:01.109 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Dashboard/Index - 200 null text/html; charset=utf-8 23.8164ms
+2025-04-07 22:58:02.382 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Index - null null
+2025-04-07 22:58:02.390 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:02.392 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:02.483 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:58:02.490 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:02.495 +03:00 [INF] Executed ViewResult - view Index executed in 100.7059ms.
+2025-04-07 22:58:02.496 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI) in 102.8113ms
+2025-04-07 22:58:02.497 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:02.498 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Index - 200 null text/html; charset=utf-8 116.1319ms
+2025-04-07 22:58:02.525 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/category.js - null null
+2025-04-07 22:58:02.525 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-07 22:58:02.525 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-07 22:58:02.529 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 4.3876ms
+2025-04-07 22:58:02.549 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 23.6711ms
+2025-04-07 22:58:02.576 +03:00 [INF] Sending file. Request path: '/js/category.js'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\js\category.js'
+2025-04-07 22:58:02.577 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/category.js - 200 2120 text/javascript 52.3091ms
+2025-04-07 22:58:02.586 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Index - null null
+2025-04-07 22:58:02.589 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:02.590 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:02.592 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:58:02.595 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:02.599 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=1&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1744055882514 - null null
+2025-04-07 22:58:02.600 +03:00 [INF] Executed ViewResult - view Index executed in 8.543ms.
+2025-04-07 22:58:02.602 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI) in 11.8255ms
+2025-04-07 22:58:02.603 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:02.604 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Index - 200 null text/html; charset=utf-8 18.0716ms
+2025-04-07 22:58:02.608 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:02.612 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCategories() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:02.662 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:02.670 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-04-07 22:58:02.671 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-04-07 22:58:02.679 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='0', @__p_1='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-07 22:58:02.714 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-07 22:58:02.729 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 114.6925ms
+2025-04-07 22:58:02.731 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:02.732 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=1&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1744055882514 - 200 null application/json; charset=utf-8 133.5292ms
+2025-04-07 22:58:05.262 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Edit?id=636cf7e1-9bef-48f1-8ba7-9f6203b6f959 - null null
+2025-04-07 22:58:05.268 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:05.272 +03:00 [INF] Route matched with {area = "Admin", action = "Edit", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:05.289 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='636cf7e1-9bef-48f1-8ba7-9f6203b6f959'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:05.429 +03:00 [INF] Executing ViewResult, running view Edit.
+2025-04-07 22:58:05.445 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:05.531 +03:00 [INF] Executed ViewResult - view Edit executed in 238.1593ms.
+2025-04-07 22:58:05.532 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI) in 258.5415ms
+2025-04-07 22:58:05.533 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:05.534 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Edit?id=636cf7e1-9bef-48f1-8ba7-9f6203b6f959 - 200 null text/html; charset=utf-8 272.1079ms
+2025-04-07 22:58:05.559 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-07 22:58:05.559 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-07 22:58:05.563 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 5.0877ms
+2025-04-07 22:58:05.572 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 14.1055ms
+2025-04-07 22:58:05.574 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Edit?id=636cf7e1-9bef-48f1-8ba7-9f6203b6f959 - null null
+2025-04-07 22:58:05.579 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:05.580 +03:00 [INF] Route matched with {area = "Admin", action = "Edit", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:05.587 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='636cf7e1-9bef-48f1-8ba7-9f6203b6f959'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:05.590 +03:00 [INF] Executing ViewResult, running view Edit.
+2025-04-07 22:58:05.597 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:05.601 +03:00 [INF] Executed ViewResult - view Edit executed in 10.4362ms.
+2025-04-07 22:58:05.602 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI) in 20.6685ms
+2025-04-07 22:58:05.603 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:05.603 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Edit?id=636cf7e1-9bef-48f1-8ba7-9f6203b6f959 - 200 null text/html; charset=utf-8 29.5506ms
+2025-04-07 22:58:16.081 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/Admin/Category/Edit - multipart/form-data; boundary=----WebKitFormBoundaryXXup3uwoQZG1G5Si 13911
+2025-04-07 22:58:16.086 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:16.092 +03:00 [INF] Route matched with {area = "Admin", action = "Edit", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(Models.ViewModels.Category.CategoryViewModel, Microsoft.AspNetCore.Http.IFormFile) on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:16.122 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='636cf7e1-9bef-48f1-8ba7-9f6203b6f959'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:16.135 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__model_Id_0='636cf7e1-9bef-48f1-8ba7-9f6203b6f959', @__ToLower_1='fashionable' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Id] <> @__model_Id_0 AND LOWER([c].[Name]) = @__ToLower_1 AND [c].[IsDeleted] = CAST(0 AS bit)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:58:16.157 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p9='636cf7e1-9bef-48f1-8ba7-9f6203b6f959', @p0='2025-04-06T21:41:38.2357858', @p1=NULL (DbType = Guid), @p2='2025-04-07T14:35:21.7000196' (Nullable = true), @p3='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true), @p4='/images/category/efc9079b-79d3-4fd1-998e-ec9913a5a6bb.jpg' (Size = 4000), @p5='False', @p6='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true), @p7='Fashionable' (Nullable = false) (Size = 4000), @p8='2025-04-07T19:58:16.1406799Z' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Categories] SET [CreatedAt] = @p0, [CreatedById] = @p1, [DeletedAt] = @p2, [DeletedById] = @p3, [ImageUrl] = @p4, [IsDeleted] = @p5, [ModifiedById] = @p6, [Name] = @p7, [UpdatedAt] = @p8
+OUTPUT 1
+WHERE [Id] = @p9;
+2025-04-07 22:58:16.165 +03:00 [INF] Executing RedirectResult, redirecting to /Admin/Category/Index.
+2025-04-07 22:58:16.166 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI) in 73.1421ms
+2025-04-07 22:58:16.167 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:16.169 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/Admin/Category/Edit - 302 0 null 87.9709ms
+2025-04-07 22:58:16.172 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Index - null null
+2025-04-07 22:58:16.176 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:16.177 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:16.179 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:58:16.183 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:16.187 +03:00 [INF] Executed ViewResult - view Index executed in 7.8491ms.
+2025-04-07 22:58:16.187 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI) in 9.1618ms
+2025-04-07 22:58:16.189 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:16.190 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Index - 200 null text/html; charset=utf-8 17.9946ms
+2025-04-07 22:58:16.216 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/category.js - null null
+2025-04-07 22:58:16.218 +03:00 [INF] The file /js/category.js was not modified
+2025-04-07 22:58:16.219 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/category.js - 304 null text/javascript 3.241ms
+2025-04-07 22:58:16.222 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-07 22:58:16.224 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-07 22:58:16.228 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 4.1514ms
+2025-04-07 22:58:16.234 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 12.9212ms
+2025-04-07 22:58:16.251 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Index - null null
+2025-04-07 22:58:16.254 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:16.255 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:16.256 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:58:16.260 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=1&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1744055896207 - null null
+2025-04-07 22:58:16.260 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:16.263 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:16.265 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCategories() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:16.267 +03:00 [INF] Executed ViewResult - view Index executed in 10.9416ms.
+2025-04-07 22:58:16.268 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI) in 12.3264ms
+2025-04-07 22:58:16.269 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:16.273 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Index - 200 null text/html; charset=utf-8 22.1006ms
+2025-04-07 22:58:16.274 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:16.281 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='0', @__p_1='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-07 22:58:16.283 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-07 22:58:16.284 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 17.4464ms
+2025-04-07 22:58:16.285 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:16.286 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=1&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1744055896207 - 200 null application/json; charset=utf-8 26.6462ms
+2025-04-07 22:58:16.295 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/category/efc9079b-79d3-4fd1-998e-ec9913a5a6bb.jpg - null null
+2025-04-07 22:58:16.309 +03:00 [INF] Sending file. Request path: '/images/category/efc9079b-79d3-4fd1-998e-ec9913a5a6bb.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\category\efc9079b-79d3-4fd1-998e-ec9913a5a6bb.jpg'
+2025-04-07 22:58:16.310 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/category/efc9079b-79d3-4fd1-998e-ec9913a5a6bb.jpg - 200 13067 image/jpeg 15.8954ms
+2025-04-07 22:58:20.286 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Edit?id=636cf7e1-9bef-48f1-8ba7-9f6203b6f959 - null null
+2025-04-07 22:58:20.290 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:20.291 +03:00 [INF] Route matched with {area = "Admin", action = "Edit", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:20.295 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='636cf7e1-9bef-48f1-8ba7-9f6203b6f959'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:20.297 +03:00 [INF] Executing ViewResult, running view Edit.
+2025-04-07 22:58:20.302 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:20.305 +03:00 [INF] Executed ViewResult - view Edit executed in 7.9577ms.
+2025-04-07 22:58:20.306 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI) in 13.9942ms
+2025-04-07 22:58:20.307 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:20.308 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Edit?id=636cf7e1-9bef-48f1-8ba7-9f6203b6f959 - 200 null text/html; charset=utf-8 22.1953ms
+2025-04-07 22:58:20.347 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-07 22:58:20.347 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-07 22:58:20.357 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 9.3176ms
+2025-04-07 22:58:20.364 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.4965ms
+2025-04-07 22:58:20.369 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Edit?id=636cf7e1-9bef-48f1-8ba7-9f6203b6f959 - null null
+2025-04-07 22:58:20.373 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:20.374 +03:00 [INF] Route matched with {area = "Admin", action = "Edit", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:20.379 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='636cf7e1-9bef-48f1-8ba7-9f6203b6f959'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:20.381 +03:00 [INF] Executing ViewResult, running view Edit.
+2025-04-07 22:58:20.386 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:20.389 +03:00 [INF] Executed ViewResult - view Edit executed in 7.8626ms.
+2025-04-07 22:58:20.390 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI) in 15.0306ms
+2025-04-07 22:58:20.391 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:20.392 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Edit?id=636cf7e1-9bef-48f1-8ba7-9f6203b6f959 - 200 null text/html; charset=utf-8 23.2798ms
+2025-04-07 22:58:32.784 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/Admin/Category/Edit - multipart/form-data; boundary=----WebKitFormBoundaryWBhWZ1qKAE77JtHm 874
+2025-04-07 22:58:32.788 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:32.789 +03:00 [INF] Route matched with {area = "Admin", action = "Edit", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(Models.ViewModels.Category.CategoryViewModel, Microsoft.AspNetCore.Http.IFormFile) on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:32.795 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='636cf7e1-9bef-48f1-8ba7-9f6203b6f959'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:32.800 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__model_Id_0='636cf7e1-9bef-48f1-8ba7-9f6203b6f959', @__ToLower_1='fashion' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Id] <> @__model_Id_0 AND LOWER([c].[Name]) = @__ToLower_1 AND [c].[IsDeleted] = CAST(0 AS bit)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:58:32.805 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p9='636cf7e1-9bef-48f1-8ba7-9f6203b6f959', @p0='2025-04-06T21:41:38.2357858', @p1=NULL (DbType = Guid), @p2='2025-04-07T14:35:21.7000196' (Nullable = true), @p3='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true), @p4='/images/category/efc9079b-79d3-4fd1-998e-ec9913a5a6bb.jpg' (Size = 4000), @p5='False', @p6='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true), @p7='Fashion' (Nullable = false) (Size = 4000), @p8='2025-04-07T19:58:32.8017396Z' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Categories] SET [CreatedAt] = @p0, [CreatedById] = @p1, [DeletedAt] = @p2, [DeletedById] = @p3, [ImageUrl] = @p4, [IsDeleted] = @p5, [ModifiedById] = @p6, [Name] = @p7, [UpdatedAt] = @p8
+OUTPUT 1
+WHERE [Id] = @p9;
+2025-04-07 22:58:32.807 +03:00 [INF] Executing RedirectResult, redirecting to /Admin/Category/Index.
+2025-04-07 22:58:32.807 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI) in 17.7366ms
+2025-04-07 22:58:32.808 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:32.809 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/Admin/Category/Edit - 302 0 null 24.3783ms
+2025-04-07 22:58:32.813 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Index - null null
+2025-04-07 22:58:32.816 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:32.817 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:32.819 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:58:32.822 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:32.825 +03:00 [INF] Executed ViewResult - view Index executed in 6.3224ms.
+2025-04-07 22:58:32.826 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI) in 7.8288ms
+2025-04-07 22:58:32.827 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:32.828 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Index - 200 null text/html; charset=utf-8 16.2051ms
+2025-04-07 22:58:32.853 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/category.js - null null
+2025-04-07 22:58:32.855 +03:00 [INF] The file /js/category.js was not modified
+2025-04-07 22:58:32.856 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/category.js - 304 null text/javascript 3.867ms
+2025-04-07 22:58:32.862 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-07 22:58:32.864 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-07 22:58:32.868 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 4.7666ms
+2025-04-07 22:58:32.875 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 13.7322ms
+2025-04-07 22:58:32.888 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Index - null null
+2025-04-07 22:58:32.891 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:32.892 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:32.893 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:58:32.897 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:32.898 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=1&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1744055912844 - null null
+2025-04-07 22:58:32.901 +03:00 [INF] Executed ViewResult - view Index executed in 8.0905ms.
+2025-04-07 22:58:32.902 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:32.903 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI) in 9.9086ms
+2025-04-07 22:58:32.904 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCategories() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:32.904 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:32.907 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Index - 200 null text/html; charset=utf-8 19.5588ms
+2025-04-07 22:58:32.911 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:32.918 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='0', @__p_1='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-07 22:58:32.920 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-07 22:58:32.921 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 14.8856ms
+2025-04-07 22:58:32.922 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:32.923 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=1&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1744055912844 - 200 null application/json; charset=utf-8 24.9855ms
+2025-04-07 22:58:32.938 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/category/efc9079b-79d3-4fd1-998e-ec9913a5a6bb.jpg - null null
+2025-04-07 22:58:32.940 +03:00 [INF] The file /images/category/efc9079b-79d3-4fd1-998e-ec9913a5a6bb.jpg was not modified
+2025-04-07 22:58:32.941 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/category/efc9079b-79d3-4fd1-998e-ec9913a5a6bb.jpg - 304 null image/jpeg 3.7022ms
+2025-04-07 22:58:34.067 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Edit?id=636cf7e1-9bef-48f1-8ba7-9f6203b6f959 - null null
+2025-04-07 22:58:34.071 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:34.072 +03:00 [INF] Route matched with {area = "Admin", action = "Edit", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:34.076 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='636cf7e1-9bef-48f1-8ba7-9f6203b6f959'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:34.078 +03:00 [INF] Executing ViewResult, running view Edit.
+2025-04-07 22:58:34.080 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:34.084 +03:00 [INF] Executed ViewResult - view Edit executed in 6.6629ms.
+2025-04-07 22:58:34.085 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI) in 12.6135ms
+2025-04-07 22:58:34.086 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:34.087 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Edit?id=636cf7e1-9bef-48f1-8ba7-9f6203b6f959 - 200 null text/html; charset=utf-8 20.3131ms
+2025-04-07 22:58:34.112 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-07 22:58:34.112 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-07 22:58:34.118 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 6.1128ms
+2025-04-07 22:58:34.125 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 14.0197ms
+2025-04-07 22:58:34.144 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Edit?id=636cf7e1-9bef-48f1-8ba7-9f6203b6f959 - null null
+2025-04-07 22:58:34.147 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:34.147 +03:00 [INF] Route matched with {area = "Admin", action = "Edit", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:34.151 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='636cf7e1-9bef-48f1-8ba7-9f6203b6f959'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:34.154 +03:00 [INF] Executing ViewResult, running view Edit.
+2025-04-07 22:58:34.156 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:34.159 +03:00 [INF] Executed ViewResult - view Edit executed in 5.5228ms.
+2025-04-07 22:58:34.160 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI) in 11.833ms
+2025-04-07 22:58:34.161 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:34.162 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Edit?id=636cf7e1-9bef-48f1-8ba7-9f6203b6f959 - 200 null text/html; charset=utf-8 17.9382ms
+2025-04-07 22:58:34.829 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/Admin/Category/Edit - multipart/form-data; boundary=----WebKitFormBoundaryNN9BAsL4zhLQO6dI 874
+2025-04-07 22:58:34.833 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:34.834 +03:00 [INF] Route matched with {area = "Admin", action = "Edit", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(Models.ViewModels.Category.CategoryViewModel, Microsoft.AspNetCore.Http.IFormFile) on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:34.837 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='636cf7e1-9bef-48f1-8ba7-9f6203b6f959'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:34.841 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__model_Id_0='636cf7e1-9bef-48f1-8ba7-9f6203b6f959', @__ToLower_1='fashion' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Id] <> @__model_Id_0 AND LOWER([c].[Name]) = @__ToLower_1 AND [c].[IsDeleted] = CAST(0 AS bit)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 22:58:34.843 +03:00 [INF] Executing ViewResult, running view Edit.
+2025-04-07 22:58:34.845 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:34.849 +03:00 [INF] Executed ViewResult - view Edit executed in 5.9187ms.
+2025-04-07 22:58:34.850 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI) in 15.043ms
+2025-04-07 22:58:34.850 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:34.851 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/Admin/Category/Edit - 200 null text/html; charset=utf-8 22.5001ms
+2025-04-07 22:58:34.882 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-07 22:58:34.892 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-07 22:58:34.898 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 16.2523ms
+2025-04-07 22:58:34.898 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 6.2184ms
+2025-04-07 22:58:34.908 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Edit - null null
+2025-04-07 22:58:34.911 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:34.911 +03:00 [INF] Route matched with {area = "Admin", action = "Edit", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:34.914 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='00000000-0000-0000-0000-000000000000'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:34.917 +03:00 [INF] Executing RedirectResult, redirecting to /Admin/Category/Index.
+2025-04-07 22:58:34.918 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI) in 5.6732ms
+2025-04-07 22:58:34.918 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Edit (WebUI)'
+2025-04-07 22:58:34.919 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Edit - 302 0 null 11.5984ms
+2025-04-07 22:58:34.921 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Index - null null
+2025-04-07 22:58:34.923 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:34.924 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:34.925 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:58:34.927 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:34.931 +03:00 [INF] Executed ViewResult - view Index executed in 5.5786ms.
+2025-04-07 22:58:34.932 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI) in 6.8263ms
+2025-04-07 22:58:34.932 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:34.933 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Index - 200 null text/html; charset=utf-8 12.3954ms
+2025-04-07 22:58:37.123 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Index - null null
+2025-04-07 22:58:37.128 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:37.128 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:37.130 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:58:37.132 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:37.135 +03:00 [INF] Executed ViewResult - view Index executed in 5.5827ms.
+2025-04-07 22:58:37.137 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI) in 7.5588ms
+2025-04-07 22:58:37.138 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:37.139 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Index - 200 null text/html; charset=utf-8 16.1174ms
+2025-04-07 22:58:37.171 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-07 22:58:37.172 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-07 22:58:37.176 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 4.4157ms
+2025-04-07 22:58:37.182 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 11.3758ms
+2025-04-07 22:58:37.192 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/Index - null null
+2025-04-07 22:58:37.196 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:37.196 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:37.198 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-07 22:58:37.201 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='de6aceaf-fe9c-4cf0-8c65-08dd7553cee5' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-07 22:58:37.202 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=1&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1744055917153 - null null
+2025-04-07 22:58:37.205 +03:00 [INF] Executed ViewResult - view Index executed in 7.4266ms.
+2025-04-07 22:58:37.207 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI) in 9.7146ms
+2025-04-07 22:58:37.208 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:37.208 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.Index (WebUI)'
+2025-04-07 22:58:37.209 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCategories() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:37.210 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/Index - 200 null text/html; charset=utf-8 18.2021ms
+2025-04-07 22:58:37.213 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:37.216 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='0', @__p_1='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-07 22:58:37.218 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-07 22:58:37.219 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 8.1767ms
+2025-04-07 22:58:37.220 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:37.221 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=1&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1744055917153 - 200 null application/json; charset=utf-8 18.8068ms
+2025-04-07 22:58:37.230 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/category/efc9079b-79d3-4fd1-998e-ec9913a5a6bb.jpg - null null
+2025-04-07 22:58:37.232 +03:00 [INF] The file /images/category/efc9079b-79d3-4fd1-998e-ec9913a5a6bb.jpg was not modified
+2025-04-07 22:58:37.233 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/category/efc9079b-79d3-4fd1-998e-ec9913a5a6bb.jpg - 304 null image/jpeg 3.5277ms
+2025-04-07 22:58:46.536 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=2&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=f&search%5Bregex%5D=false&_=1744055917154 - null null
+2025-04-07 22:58:46.539 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:46.540 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCategories() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:46.552 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__searchTerm_0_rewritten='%f%' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:46.554 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-04-07 22:58:46.554 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-04-07 22:58:46.559 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__searchTerm_0_rewritten='%f%' (Size = 4000), @__p_1='0', @__p_2='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-04-07 22:58:46.561 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-07 22:58:46.562 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 20.3747ms
+2025-04-07 22:58:46.562 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:46.563 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=2&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=f&search%5Bregex%5D=false&_=1744055917154 - 200 null application/json; charset=utf-8 27.3336ms
+2025-04-07 22:58:47.817 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=3&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=ff&search%5Bregex%5D=false&_=1744055917155 - null null
+2025-04-07 22:58:47.820 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:47.822 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCategories() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:47.826 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%ff%' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:47.830 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%ff%' (Size = 4000), @__p_1='0', @__p_2='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-04-07 22:58:47.832 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-07 22:58:47.835 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 11.7126ms
+2025-04-07 22:58:47.836 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:47.837 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=3&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=ff&search%5Bregex%5D=false&_=1744055917155 - 200 null application/json; charset=utf-8 21.0356ms
+2025-04-07 22:58:51.237 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=4&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=b&search%5Bregex%5D=false&_=1744055917156 - null null
+2025-04-07 22:58:51.239 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:51.240 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCategories() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:51.244 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%b%' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:51.249 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%b%' (Size = 4000), @__p_1='0', @__p_2='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-04-07 22:58:51.250 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-07 22:58:51.251 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 9.4207ms
+2025-04-07 22:58:51.252 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:51.253 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=4&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=b&search%5Bregex%5D=false&_=1744055917156 - 200 null application/json; charset=utf-8 16.1811ms
+2025-04-07 22:58:53.289 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=5&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=bo&search%5Bregex%5D=false&_=1744055917157 - null null
+2025-04-07 22:58:53.291 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:53.292 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCategories() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:53.296 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%bo%' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:53.299 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%bo%' (Size = 4000), @__p_1='0', @__p_2='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-04-07 22:58:53.300 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-07 22:58:53.301 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 8.1066ms
+2025-04-07 22:58:53.302 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:53.303 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=5&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=bo&search%5Bregex%5D=false&_=1744055917157 - 200 null application/json; charset=utf-8 14.5831ms
+2025-04-07 22:58:53.758 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=6&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=bok&search%5Bregex%5D=false&_=1744055917158 - null null
+2025-04-07 22:58:53.761 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:53.762 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCategories() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:53.766 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%bok%' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:53.770 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%bok%' (Size = 4000), @__p_1='0', @__p_2='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-04-07 22:58:53.771 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-07 22:58:53.772 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 8.5665ms
+2025-04-07 22:58:53.773 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:53.773 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=6&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=bok&search%5Bregex%5D=false&_=1744055917158 - 200 null application/json; charset=utf-8 15.2785ms
+2025-04-07 22:58:56.742 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=7&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=f&search%5Bregex%5D=false&_=1744055917159 - null null
+2025-04-07 22:58:56.744 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:56.745 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCategories() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:56.748 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%f%' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:56.751 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%f%' (Size = 4000), @__p_1='0', @__p_2='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-04-07 22:58:56.753 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-07 22:58:56.754 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 7.7405ms
+2025-04-07 22:58:56.755 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:56.756 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=7&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=f&search%5Bregex%5D=false&_=1744055917159 - 200 null application/json; charset=utf-8 13.6831ms
+2025-04-07 22:58:59.886 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=8&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=o&search%5Bregex%5D=false&_=1744055917160 - null null
+2025-04-07 22:58:59.889 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:59.890 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCategories() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:58:59.894 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%o%' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:58:59.897 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__searchTerm_0_rewritten='%o%' (Size = 4000), @__p_1='0', @__p_2='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-04-07 22:58:59.898 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-07 22:58:59.899 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 7.2055ms
+2025-04-07 22:58:59.900 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:58:59.900 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=8&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=o&search%5Bregex%5D=false&_=1744055917160 - 200 null application/json; charset=utf-8 15.1859ms
+2025-04-07 22:59:00.898 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=9&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=on&search%5Bregex%5D=false&_=1744055917161 - null null
+2025-04-07 22:59:00.901 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:59:00.901 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCategories() on controller WebUI.Areas.Admin.Controllers.CategoryController (WebUI).
+2025-04-07 22:59:00.904 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%on%' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-07 22:59:00.907 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='%on%' (Size = 4000), @__p_1='0', @__p_2='10'], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] LIKE @__searchTerm_0_rewritten ESCAPE N'\' AND [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-04-07 22:59:00.909 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-07 22:59:00.910 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI) in 7.4681ms
+2025-04-07 22:59:00.910 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CategoryController.GetPaginatedCategories (WebUI)'
+2025-04-07 22:59:00.911 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Category/GetPaginatedCategories?draw=9&columns%5B0%5D%5Bdata%5D=imageUrl&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=name&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=on&search%5Bregex%5D=false&_=1744055917161 - 200 null application/json; charset=utf-8 13.323ms

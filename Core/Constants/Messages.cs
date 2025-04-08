@@ -88,6 +88,9 @@
         #region Seller
         public const string CreateSellerError = "An error occurred while creating Seller";
         public const string SellerNotFound = "Seller not found";
+        public const string DeleteSellerSuccess = "Seller successfully deleted";
+        public const string DeleteSellerError = "Error occurred while deleting the Seller from Database";
+        public const string EmptySellerList = "Seller list is empty with the current filter";
 
         #endregion
 

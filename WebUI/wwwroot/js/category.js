@@ -9,7 +9,7 @@ $(document).ready(function () {
 
         columns: [
             {
-                title: "Img",
+                title: "Image",
                 data: 'imageUrl',
                 "width": "15%",
                 "render": function (data) {
@@ -56,8 +56,5 @@ function deleteCategory(categoryId) {
     });
 }
 
-document.querySelector('input[name="file"]').addEventListener('change', function (e) {
-    const preview = document.querySelector('#preview');
-    preview.src = URL.createObjectURL(e.target.files[0]);
-});
+ 
 

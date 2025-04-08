@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250406213605_First")]
+    [Migration("20250408140743_First")]
     partial class First
     {
         /// <inheritdoc />
@@ -515,12 +515,12 @@ namespace DataAccess.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StoreName")
+                    b.Property<string>("ShopName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Surname")
                         .IsRequired()

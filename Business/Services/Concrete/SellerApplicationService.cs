@@ -39,9 +39,9 @@ public class SellerApplicationService : BaseService, ISellerApplicationService
         _emailService = emailService;
     }
 
-    #region Crud
+    #region Create
 
-    public async Task<IResult> CreateSellerApplicationAsync(SellerApplicationViewModel model)
+    public async Task<IResult> CreateSellerApplicationAsync(SellerApplicationCreateViewModel model)
     {
         var existingUser = await _userManager.FindByEmailAsync(model.Email);
         if (existingUser != null)
@@ -49,14 +49,13 @@ public class SellerApplicationService : BaseService, ISellerApplicationService
             return new ErrorResult(Messages.EmailAlreadyRegistered);
         }
 
-        if ((await _sellerApplicationRepo.ExistsAsync(a =>
-            a.Email == model.Email &&
-            a.Status == ApplicationStatus.Pending &&
-            !a.IsDeleted)))
+        if (await _sellerApplicationRepo.ExistsAsync(a =>
+       a.Email == model.Email &&
+       (a.Status == ApplicationStatus.Pending || a.Status == ApplicationStatus.Approved) &&
+       !a.IsDeleted))
         {
             return new ErrorResult(Messages.ApplicationAlreadyExist);
         }
-
 
         var sellerApplication = Mapper.Map<SellerApplication>(model);
         sellerApplication.Status = ApplicationStatus.Pending;
@@ -207,7 +206,7 @@ public class SellerApplicationService : BaseService, ISellerApplicationService
             var shop = new Shop
             {
                 SellerId = user.Id,
-                Name = application.StoreName,
+                Name = application.ShopName,
                 ShopAddress = application.ShopAddress,
                 TaxNumber = application.TaxNumber,
                 Status = Shop.ShopStatus.Approved,

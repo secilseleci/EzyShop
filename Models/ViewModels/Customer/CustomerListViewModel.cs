@@ -1,8 +1,11 @@
-﻿namespace Models.ViewModels.Customer;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Models.ViewModels.Customer;
 
 public class CustomerListViewModel
 {
-    public Guid CustomerId { get; set; }
+    [Required] 
+    public Guid Id { get; set; }
 
     public string FullName { get; set; } = "N/A";
 

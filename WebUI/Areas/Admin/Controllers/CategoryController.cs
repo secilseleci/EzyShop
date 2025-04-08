@@ -10,14 +10,14 @@ using WebUI.Controllers;
 
 namespace WebUI.Areas.Admin.Controllers;
 [Area("Admin")]
-[Route("Admin/[controller]/[action]")]
 [Authorize(Roles = "Admin")]
 
 public class CategoryController : BaseController
 {
     private readonly ICategoryService _categoryService;
     public CategoryController
-    (ICategoryService categoryService,
+    (
+    ICategoryService categoryService,
     ICurrentUserService currentUserService,
     UserManager<AppUser> userManager,
     RoleManager<AppRole> roleManager,
@@ -107,8 +107,6 @@ public class CategoryController : BaseController
         return RedirectToAction("Index");
     }
     #endregion
-
-
 
     #region Edit Cetagory
     [HttpGet]

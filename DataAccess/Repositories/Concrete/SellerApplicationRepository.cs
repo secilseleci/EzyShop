@@ -1,5 +1,4 @@
 ﻿using DataAccess.Repositories.Abstract;
-using Microsoft.EntityFrameworkCore;
 using Models.Entities.Concrete;
 
 namespace DataAccess.Repositories.Concrete;
