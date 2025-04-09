@@ -73,6 +73,11 @@
                                         <li><hr class="dropdown-divider"></li>
                                     }
                                     <li>
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="ChangePassword">
+                                            <i class="bi bi-key"></i> Change Password
+                                        </a>
+                                    </li>
                                         <form id="logoutForm" method="post" asp-area="" asp-controller="Account" asp-action="Logout" class="d-none">
                                             @Html.AntiForgeryToken()
                                         </form>

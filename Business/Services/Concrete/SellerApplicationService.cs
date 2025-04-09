@@ -236,7 +236,7 @@ public class SellerApplicationService : BaseService, ISellerApplicationService
             // Shop
             var shop = new Shop
             {
-                SellerId = user.Id,
+                SellerId = seller.Id,
                 Name = application.ShopName,
                 ShopAddress = application.ShopAddress,
                 TaxNumber = application.TaxNumber,

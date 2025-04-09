@@ -17,6 +17,7 @@ public class EmailService : IEmailService
         _razorViewRenderer = razorViewRenderer;
     }
 
+    #region SMTP gönderici 
     public async Task<bool> SendEmailAsync(string to, string subject, string body)
     {
         try
@@ -43,29 +44,28 @@ public class EmailService : IEmailService
             await smtpClient.SendMailAsync(mailMessage);
             return true;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            Console.WriteLine($"Email send failed: {ex.Message}");
             return false;
         }
-    }
 
+    }
+    #endregion
     public async Task<bool> SendSellerApprovedEmail(string to, string sellerName)
     {
         var subject = "Your Seller Application has been Approved!";
         var defaultPassword = _configuration["SellerSettings:DefaultSellerPassword"];
 
-        var replacements = new Dictionary<string, string>
-        {
-            { "seller_name", sellerName },
-            { "default_password", defaultPassword }
-        };
+        
 
         var model = new SendSellerApprovedEmailViewModel
         {
             Name = sellerName,
             ShopName = sellerName,
+            DefaultPassword = defaultPassword
         };
-        var notificationTemplatePath = "Views/Emails/_SendSellerApprovalTemplate.cshtml";
+        var notificationTemplatePath = "~/Areas/Admin/Views/Emails/_SendSellerApprovalTemplate.cshtml";
         var emailBody = await _razorViewRenderer.RenderViewToStringAsync(notificationTemplatePath, model);
         if (emailBody == null) { return false; }
 

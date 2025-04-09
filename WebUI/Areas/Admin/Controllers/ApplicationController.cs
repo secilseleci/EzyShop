@@ -77,7 +77,7 @@ public class ApplicationController : BaseController
 
     #endregion
 
-    #region Delete Applications
+    #region Delete Application
     [HttpPost]
     public async Task<IActionResult> Delete(Guid applicationId)
     {
@@ -91,9 +91,33 @@ public class ApplicationController : BaseController
     }
     #endregion
 
+    #region Approve Application
+    [HttpPost]
+    public async Task<IActionResult> Approve(Guid applicationId)
+    {
 
+        var result = await _applicationService.ApproveSellerAsync(applicationId);
+        if (result.Success)
+        {
+            return Json(new { success = true, message = result.Message });
+        }
+        return Json(new { success = false, message = result.Message });
+    }
+    #endregion
 
+    #region Reject Application
+    [HttpPost]
+    public async Task<IActionResult> Reject(Guid applicationId)
+    {
 
+        var result = await _applicationService.RejectSellerAsync(applicationId);
+        if (result.Success)
+        {
+            return Json(new { success = true, message = result.Message });
+        }
+        return Json(new { success = false, message = result.Message });
+    }
+    #endregion
 
 
 
