@@ -4,8 +4,8 @@ using Core.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Models.Entities.Concrete;
 using Models.Identity;
-using Models.ViewModels.SellerApplication;
 using WebUI.Controllers;
 
 namespace WebUI.Areas.Admin.Controllers;
@@ -16,6 +16,7 @@ namespace WebUI.Areas.Admin.Controllers;
 public class ApplicationController : BaseController
 {
     private readonly ISellerApplicationService _applicationService;
+
     public ApplicationController
     (ISellerApplicationService applicationService,
     ICurrentUserService currentUserService,
@@ -40,59 +41,64 @@ public class ApplicationController : BaseController
     }
     #endregion
 
-    //#region API
+    #region API
+    [HttpGet]
+    public async Task<IActionResult> GetPaginatedApplications()
+    {
+        int start = int.Parse(Request.Query["start"]);
+        int length = int.Parse(Request.Query["length"]);
+        string? search = Request.Query["search[value]"];
+        ApplicationStatus? statusFilter = null;
+        string? statusStr = Request.Query["statusFilter"];
 
-    //[HttpGet]
-    //public async Task<IActionResult> GetPaginatedApplications()
-    //{
-    //    int start = int.Parse(Request.Query["start"]);
-    //    int length = int.Parse(Request.Query["length"]);
-    //    string? search = Request.Query["search[value]"];
+        if (int.TryParse(statusStr, out int statusInt) &&
+            Enum.IsDefined(typeof(ApplicationStatus), statusInt))
+        {
+            statusFilter = (ApplicationStatus)statusInt;
+        }
 
-    //    int page = (start / length) + 1;
-    //    int pageSize = length;
+        int page = (start / length) + 1;
+        int pageSize = length;
 
-
-    //    var result = await _applicationService.GetPaginatedApplicationsAsync(page, length, search);
-
-    //    if (!result.Success)
-    //    {
-    //        return Json(new { success = false, message = result.Message });
-    //    }
-
-    //    return Json(new
-    //    {
-    //        draw = int.Parse(Request.Query["draw"]),
-    //        recordsTotal = result.Data.TotalItems,
-    //        recordsFiltered = result.Data.TotalItems,
-    //        data = result.Data.Items
-    //    });
-    //}
-    //#endregion
-
-    //#region Delete Applications
-    //[HttpPost]
-    //public async Task<IActionResult> Delete(Guid applicationId)
-    //{
-
-    //    var result = await _applicationService.DeleteApplicationAsync(applicationId);
-    //    if (result.Success)
-    //    {
-    //        return Json(new { success = true, message = result.Message });
-    //    }
-    //    return Json(new { success = false, message = result.Message });
-    //}
-
-    //#endregion
-
-    
-
-    
+        var result = await _applicationService.GetPaginatedApplicationsAsync(page, length, search,statusFilter);
+        if (!result.Success)
+        {
+            return Json(new { success = false, message = result.Message });
+        }
+        return Json(new
+        {
+            draw = int.Parse(Request.Query["draw"]),
+            recordsTotal = result.Data.TotalItems,
+            recordsFiltered = result.Data.TotalItems,
+            data = result.Data.Items
+        });
+    }
 
 
+    #endregion
+
+    #region Delete Applications
+    [HttpPost]
+    public async Task<IActionResult> Delete(Guid applicationId)
+    {
+
+        var result = await _applicationService.DeleteSellerApplicationAsync(applicationId);
+        if (result.Success)
+        {
+            return Json(new { success = true, message = result.Message });
+        }
+        return Json(new { success = false, message = result.Message });
+    }
+    #endregion
 
 
-   
+
+
+
+
+
+
+
 }
 
 

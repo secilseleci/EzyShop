@@ -1,8 +1,6 @@
 ﻿let sellersTable;
 
-
-
-
+ 
 $(document).ready(function () {
     sellersTable = $('#tblSellers').DataTable({
         processing: true,
@@ -14,7 +12,7 @@ $(document).ready(function () {
         columns: [
             { title: "Name", data: 'fullName', width: "30%" }, 
             { title: "Email", data: 'email', width: "20%" },
-            { title: "Shop", data: 'storeName', width: "25%" },
+            { title: "Shop", data: 'shopName', width: "25%" },
             { title: "Phone", data: 'phoneNumber', width: "30%" },
             { title: "TaxNumber", data: 'taxNumber', width: "15%" },
             {

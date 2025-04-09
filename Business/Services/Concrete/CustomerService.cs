@@ -80,7 +80,7 @@ public class CustomerService : BaseService, ICustomerService
         if (!string.IsNullOrWhiteSpace(searchTerm))
         {
             predicate = u =>
-         u.User != null &&
+            u.User != null &&
          (
              (u.User.Name + " " + u.User.Surname).Contains(searchTerm) ||
              u.User.Email!.Contains(searchTerm)

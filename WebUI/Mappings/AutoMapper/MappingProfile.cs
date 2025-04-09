@@ -71,17 +71,26 @@ public class MappingProfile : Profile
         .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.User.Email))
         .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.User.PhoneNumber))
         .ForMember(dest => dest.TaxNumber, opt => opt.MapFrom(src => src.SellerApplication != null ? src.SellerApplication.TaxNumber : null))
-        .ForMember(dest => dest.StoreName, opt => opt.MapFrom(src => src.SellerApplication != null ? src.SellerApplication.ShopName : null))
+        .ForMember(dest => dest.ShopName, opt => opt.MapFrom(src => src.SellerApplication != null ? src.SellerApplication.ShopName : null))
         .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.SellerApplication.Status));
         #endregion
 
 
         #region  Create SellerApplication 
         CreateMap<SellerApplicationCreateViewModel, SellerApplication>()
-          .ForMember(dest => dest.Status, opt => opt.MapFrom(src => ApplicationStatus.Pending))
-          .ForMember(dest => dest.UserId, opt => opt.Ignore())
-          .ForMember(dest => dest.SellerId, opt => opt.Ignore());
+        .ForMember(dest => dest.Status, opt => opt.MapFrom(src => ApplicationStatus.Pending))
+        .ForMember(dest => dest.UserId, opt => opt.Ignore())
+        .ForMember(dest => dest.SellerId, opt => opt.Ignore());
         #endregion
+
+        #region SellerApplication for List
+        CreateMap<SellerApplication, SellerApplicationViewModel>()
+        .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.Name} {src.Surname}".Trim()))
+        .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));  
+        #endregion
+
+
+
         #region ShoppingCartItem → ShoppingCartItemViewModel
         CreateMap<ShoppingCartItem, ShoppingCartItemViewModel>()
             .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))

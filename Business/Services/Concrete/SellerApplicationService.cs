@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Models.Entities.Concrete;
 using Models.Identity;
 using Models.ViewModels.SellerApplication;
+using System.Linq.Expressions;
 
 namespace Business.Services.Concrete;
 
@@ -63,10 +64,12 @@ public class SellerApplicationService : BaseService, ISellerApplicationService
         var result = await _sellerApplicationRepo.CreateAsync(sellerApplication);
 
         return result > 0
-           ? new SuccessResult(Messages.CreateSellerApplicationSuccess)
-           : new ErrorResult(Messages.CreateSellerApplicationError);
+           ? new SuccessResult(Messages.CreateApplicationSuccess)
+           : new ErrorResult(Messages.CreateApplicationError);
     }
-
+    #endregion
+    
+    #region Delete Application
     public async Task<IResult> DeleteSellerApplicationAsync(Guid sellerApplicationId)
     {
         var exists = await _sellerApplicationRepo.ExistsAsync(s => s.Id == sellerApplicationId && !s.IsDeleted);
@@ -76,10 +79,12 @@ public class SellerApplicationService : BaseService, ISellerApplicationService
         var result = await _sellerApplicationRepo.SoftDeleteAsync(sellerApplicationId);
 
         return result > 0
-        ? new SuccessResult(Messages.DeleteSellerApplicationSuccess)
-        : new ErrorResult(Messages.DeleteSellerApplicationError);
+        ? new SuccessResult(Messages.DeleteApplicationSuccess)
+        : new ErrorResult(Messages.DeleteApplicationError);
     }
+    #endregion
 
+    #region GetById
     public async Task<IDataResult<SellerApplication>> GetSellerApplicationByIdAsync(Guid sellerApplicationId)
     {
         var sellerApplication = await _sellerApplicationRepo.GetByIdAsync(sellerApplicationId);
@@ -89,48 +94,74 @@ public class SellerApplicationService : BaseService, ISellerApplicationService
     }
     #endregion
 
-    #region Read
 
+    #region API
 
-    public async Task<IDataResult<PaginatedList<SellerApplicationViewModel>>> GetPaginatedAllApplicationsAsync(int page, int pageSize)
+    public async Task<IDataResult<PaginatedList<SellerApplicationViewModel>>> GetPaginatedApplicationsAsync(
+      int page, int pageSize, string? searchTerm = null, ApplicationStatus? statusFilter=null)
     {
-        var pagedApplications = await _sellerApplicationRepo
-            .GetPaginatedAsync(app => !app.IsDeleted, page, pageSize);
+        Expression<Func<SellerApplication, bool>> predicate;
 
-        var viewModels = Mapper.Map<IEnumerable<SellerApplicationViewModel>>(pagedApplications.Items);
+        bool hasSearch = !string.IsNullOrWhiteSpace(searchTerm);
+        bool hasStatus = statusFilter.HasValue;
+        //Sadece Arama varsa
+        if (hasSearch && !hasStatus)
+        {
+            predicate = app =>
+                (app.Name + " " + app.Surname).Contains(searchTerm!) ||
+                app.Email!.Contains(searchTerm!) ||
+                app.ShopName!.Contains(searchTerm!) ||
+                app.ShopAddress!.Contains(searchTerm!) ||
+                app.TaxNumber!.Contains(searchTerm!) ||
+                app.ContactBusinessNumber!.Contains(searchTerm!);
+        }
+        //Sadece Status varsa
+        else if (!hasSearch && hasStatus)
+        {
+            predicate = app => app.Status == statusFilter;
+        }
+        //Her ikisi de varsa
+        else if (hasSearch && hasStatus)
+        {
+            predicate = app =>
+                (
+                    (app.Name + " " + app.Surname).Contains(searchTerm!) ||
+                    app.Email!.Contains(searchTerm!) ||
+                    app.ShopName!.Contains(searchTerm!) ||
+                    app.ShopAddress!.Contains(searchTerm!) ||
+                    app.TaxNumber!.Contains(searchTerm!) ||
+                    app.ContactBusinessNumber!.Contains(searchTerm!)
+                )
+                && app.Status == statusFilter;
+        }
+
+        else
+        {
+            predicate = app =>  true;
+        }
+     
+        var paginatedApps = await _sellerApplicationRepo.GetPaginatedAsync(
+            predicate, 
+            page, 
+            pageSize);
+
+
+        var viewModels = Mapper.Map<IEnumerable<SellerApplicationViewModel>>(paginatedApps.Items);
 
         var result = new PaginatedList<SellerApplicationViewModel>(
             viewModels,
-            pagedApplications.TotalItems,
-            pagedApplications.Page,
-            pagedApplications.PageSize);
-
+            paginatedApps.TotalItems,
+            paginatedApps.Page,
+            paginatedApps.PageSize
+        );
         return result.Items.Any()
-            ? new SuccessDataResult<PaginatedList<SellerApplicationViewModel>>(result)
-            : new ErrorDataResult<PaginatedList<SellerApplicationViewModel>>(Messages.ApplicationNotFound);
-    }
-
-
-    public async Task<IDataResult<PaginatedList<SellerApplicationViewModel>>> GetPaginatedApplicationsByStatusAsync(
-    ApplicationStatus status, int page, int pageSize)
-    {
-        var pagedApplications = await _sellerApplicationRepo
-            .GetPaginatedAsync(app => !app.IsDeleted && app.Status == status, page, pageSize);
-
-        var viewModels = Mapper.Map<IEnumerable<SellerApplicationViewModel>>(pagedApplications.Items);
-
-        var result = new PaginatedList<SellerApplicationViewModel>(
-            viewModels,
-            pagedApplications.TotalItems,
-            pagedApplications.Page,
-            pagedApplications.PageSize);
-
-        return result.Items.Any()
-            ? new SuccessDataResult<PaginatedList<SellerApplicationViewModel>>(result)
-            : new ErrorDataResult<PaginatedList<SellerApplicationViewModel>>(Messages.ApplicationNotFound);
+         ? new SuccessDataResult<PaginatedList<SellerApplicationViewModel>>(result)
+         : new ErrorDataResult<PaginatedList<SellerApplicationViewModel>>(Messages.EmptyApplicationList);
     }
 
     #endregion
+
+  
 
     #region Approve
 
@@ -184,7 +215,7 @@ public class SellerApplicationService : BaseService, ISellerApplicationService
 
             var updateApp = await _sellerApplicationRepo.UpdateAsync(application);
             if (updateApp <= 0)
-                return new ErrorResult(Messages.UpdateSellerApplicationError);
+                return new ErrorResult(Messages.UpdateApplicationError);
 
             //Seller
             var seller = new Seller
@@ -243,14 +274,14 @@ public class SellerApplicationService : BaseService, ISellerApplicationService
             return new ErrorResult(Messages.ApplicationAlreadyApproved);
         if (application.Status == ApplicationStatus.Rejected)
             return new ErrorResult(Messages.ApplicationAlreadyRejected);
-       
-      
+
+
 
         application.Status = ApplicationStatus.Rejected;
         var updateResult = await _sellerApplicationRepo.UpdateAsync(application);
         if (updateResult <= 0)
-          return new ErrorResult(Messages.UpdateSellerApplicationError);
-        
+            return new ErrorResult(Messages.UpdateApplicationError);
+
         var emailSubject = "Your Seller Application has been Rejected!";
         var emailBody = $"Hello {application.Name}, " +
             $"Your seller application to EzyShop has been reviewed. " +
@@ -262,6 +293,8 @@ public class SellerApplicationService : BaseService, ISellerApplicationService
 
         return new SuccessResult(Messages.RejectedApplicationSuccess);
     }
+
+  
 
 
 

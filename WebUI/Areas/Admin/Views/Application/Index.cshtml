@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Application List";
 }
 
@@ -10,20 +9,31 @@
                 <div class="col-6">
                     <h2 class="text-info">Application List</h2>
                 </div>
-                
+               
+
             </div>
         </div>
         <div class="card-body">
+            <div class="mb-3">
+                <label for="statusFilter" class="form-label">Filter by Status:</label>
+                <select id="statusFilter" class="form-select" style="width: 200px;">
+                    <option value="">All</option>
+                    <option value="1">Pending</option>
+                    <option value="2">Approved</option>
+                    <option value="3">Rejected</option>
+                </select>
+            </div>
             <div class="table-responsive">
-                <table id="tblApplication" class="table table-bordered table-striped" style="width:100%">
+                <table id="tblApplications" class="table table-bordered table-striped" style="width:100%">
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Phone</th>
                             <th>Shop</th>
-                            <th>Address</th>
+                            <th>Phone</th>
                             <th>Tax Number</th>
+                            <th>Address</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

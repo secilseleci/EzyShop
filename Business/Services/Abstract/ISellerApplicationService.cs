@@ -13,12 +13,12 @@ public interface ISellerApplicationService
     Task<IDataResult<SellerApplication>> GetSellerApplicationByIdAsync(Guid sellerApplicationId);
     #endregion
 
-    #region Read
-    Task<IDataResult<PaginatedList<SellerApplicationViewModel>>> GetPaginatedAllApplicationsAsync(int page, int pageSize);
-    Task<IDataResult<PaginatedList<SellerApplicationViewModel>>> GetPaginatedApplicationsByStatusAsync(ApplicationStatus status, int page, int pageSize);
+    #region Application Listing (Admin/API)
+    Task<IDataResult<PaginatedList<SellerApplicationViewModel>>> GetPaginatedApplicationsAsync(int page, int pageSize, string? search=null, ApplicationStatus? statusFilter = null);
     #endregion
-
+    #region Application Review Actions
     Task<IResult> ApproveSellerAsync(Guid id);
     Task<IResult> RejectSellerAsync(Guid id);
-   
+    #endregion
+
 }

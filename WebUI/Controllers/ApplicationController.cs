@@ -49,6 +49,8 @@ public class ApplicationController : BaseController
     }
 
     #endregion
+
+    #region CheckEmailAvailability
     [HttpGet]
     public async Task<IActionResult> CheckEmailAvailability(string email)
     {
@@ -60,7 +62,7 @@ public class ApplicationController : BaseController
 
         return Json(new { available = true });
     }
-
+    #endregion
 
 
 }

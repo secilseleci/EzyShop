@@ -56,16 +56,16 @@
         public const string ApplicationNotFound = "Application not found";
         public const string EmailAlreadyRegistered = "This email is already registered in the system. Please use another email address for your seller application.";
 
-        public const string CreateSellerApplicationSuccess = "Your application has been successfully received";
-        public const string CreateSellerApplicationError = "An error occurred while creating your application";
-        public const string UpdateSellerApplicationError = "Error occurred while updating the Seller Application in Database";
+        public const string CreateApplicationSuccess = "Your application has been successfully received";
+        public const string CreateApplicationError = "An error occurred while creating your application";
+        public const string UpdateApplicationError = "An error occurred while updating your application";
 
         public const string ApplicationAlreadyExist = "You already have a pending application";
         public const string ApplicationAlreadyApproved = "This application already approved";
         public const string ApplicationAlreadyRejected = "This application already rejected";
 
-        public const string DeleteSellerApplicationSuccess = "Application successfully deleted";
-        public const string DeleteSellerApplicationError = "Error occurred while deleting the Application from Database";
+        public const string DeleteApplicationSuccess = "Application successfully deleted";
+        public const string DeleteApplicationError = "Error occurred while deleting the Application from Database";
 
         public const string ApprovedApplicationSuccess = "Application is approved and seller is created successfully";
         public const string ApprovedApplicationError = "Error occurred while approving application";
@@ -73,7 +73,7 @@
         public const string RejectedApplicationSuccess = "Application is rejected successfully";
         public const string RejectedApplicationError = "Error occurred while rejecting application";
 
-        public const string EmptySellerApplicationList = "Application list is empty with the current filter";
+        public const string EmptyApplicationList = "Application list is empty with the current filter";
         #endregion
 
         #region Customer

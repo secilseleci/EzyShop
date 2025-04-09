@@ -16,6 +16,4 @@ public interface ISellerService
     Task<IDataResult<Seller>> GetSellerByIdAsync(Guid sellerId);
  
 
-    //Task<IResult> CreateCategoryAsync(SellerViewModel model);
-    //Task<IResult> UpdateCategoryAsync(SellerViewModel model);
 }
