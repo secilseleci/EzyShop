@@ -5,6 +5,7 @@ namespace DataAccess.Repositories.Abstract;
 
 public interface IShopRepository : IBaseRepository<Shop>
 {
+    Task<Shop?> GetShopByUserIdAsync(Guid userId);
     Task<Shop?> GetShopBySellerIdAsync(Guid sellerId);
     Task<PaginatedList<Shop>> GetPaginatedShopsAsync(int page, int pageSize);
 

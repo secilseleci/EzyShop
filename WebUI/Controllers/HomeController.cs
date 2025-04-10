@@ -22,13 +22,38 @@ public class HomeController : BaseController
 
 
     #region Home Page
-    public IActionResult Index()
+
+    public async Task<IActionResult> Index()
     {
-        return View();
+        if (CurrentUserService.IsAuthenticated && CurrentUserService.UserId.HasValue)
+        {
+            var userId = CurrentUserService.UserId.Value.ToString();
+            var user = await UserManager.FindByIdAsync(userId);
+
+            if (user != null)
+            {
+                var roles = await UserManager.GetRolesAsync(user);
+
+                if (roles.Contains("Seller"))
+                {
+                    return RedirectToAction("Index", "Dashboard", new { area = "Seller" });
+                }
+
+                if (roles.Contains("Admin"))
+                {
+                    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                }
+            }
+        }
+
+
+        return View();  
     }
+
+
     #endregion
 
-    
+
 
     #region Details
     public IActionResult Details()

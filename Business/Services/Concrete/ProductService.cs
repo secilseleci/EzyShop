@@ -5,9 +5,11 @@ using Core.Pagination;
 using Core.Security;
 using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Models.Entities.Concrete;
 using Models.ViewModels.Product;
+using System.Linq.Expressions;
 
 namespace Business.Services.Concrete;
 
@@ -15,12 +17,12 @@ public class ProductService : BaseService, IProductService
 {
     private readonly IProductRepository _productRepo;
     private readonly ICategoryRepository _categoryRepo;
-    private readonly IShopRepository _shopRepo;
+    private readonly IShopService _shopService;
 
     public ProductService(
         IProductRepository productRepo,
         ICategoryRepository categoryRepo,
-        IShopRepository shopRepo,
+        IShopService shopService,
         IMapper mapper,
         IConfiguration config,
         ICurrentUserService currentUser)
@@ -28,31 +30,22 @@ public class ProductService : BaseService, IProductService
     {
         _productRepo = productRepo;
         _categoryRepo = categoryRepo;
-        _shopRepo = shopRepo;
+        _shopService = shopService;
     }
 
     #region Create
-    public async Task<IResult> CreateProductAsync(ProductCreateViewModel model)
+    public async Task<IResult> CreateProductAsync(ProductCreateViewModel model, Guid userId)
     {
-        if (model.ShopId == Guid.Empty)
-        {
+        var shopCheckResult = await _shopService.CheckShopIsActiveAsync(userId);
+        if (!shopCheckResult.Success)
+            return shopCheckResult;
+
+        var shop = await _shopService.GetShopByUserIdAsync(userId);
+        if (shop == null)
             return new ErrorResult(Messages.ShopNotFound);
-        }
-
-        var currentUserId=GetUserId();
-        if(currentUserId is null) {
-            return new ErrorResult(Messages.UserNotFound);
-        }
-
-        var shop = await _shopRepo.GetByIdAsync(model.ShopId);
-        if (shop is null || shop.SellerId != currentUserId)
-            return new ErrorResult(Messages.UnauthorizedAccess);
-        
-        var categoryExists = await _categoryRepo.ExistsAsync(c => c.Id == model.CategoryId && !c.IsDeleted);
-        if (!categoryExists)
-            return new ErrorResult(Messages.CategoryNotFound);
 
         var product = Mapper.Map<Product>(model);
+        product.ShopId = shop.Data.Id;
 
 
         var addResult = await _productRepo.CreateAsync(product);
@@ -68,7 +61,7 @@ public class ProductService : BaseService, IProductService
         var exists = await _productRepo.ExistsAsync(p => p.Id == productId && !p.IsDeleted);
         if (!exists)
             return new ErrorResult(Messages.ProductNotFound);
- 
+
         var result = await _productRepo.SoftDeleteAsync(productId);
         return result > 0
             ? new SuccessResult(Messages.DeleteProductSuccess)
@@ -160,7 +153,7 @@ public class ProductService : BaseService, IProductService
             page,
             pageSize);
 
-      
+
         var viewModels = Mapper.Map<IEnumerable<ProductCustomerViewModel>>(pagedProducts.Items);
 
         var result = new PaginatedList<ProductCustomerViewModel>(
@@ -204,45 +197,64 @@ public class ProductService : BaseService, IProductService
             ? new SuccessDataResult<PaginatedList<FilteredProductCustomerViewModel>>(result)
             : new ErrorDataResult<PaginatedList<FilteredProductCustomerViewModel>>(Messages.ProductNotFound);
     }
-     
+
     #endregion
 
     #region Seller Read
 
-    public async Task<IDataResult<PaginatedList<ProductSellerViewModel>>> GetPaginatedProductsForSellerAsync(int page, int pageSize)
+    public async Task<IDataResult<PaginatedList<ProductSellerViewModel>>> GetPaginatedProductsForSellerAsync(Guid userId, int page, int pageSize, string? searchTerm = null)
     {
-        var currentUserId = GetUserId();
-        if (currentUserId is null)
-            return new ErrorDataResult<PaginatedList<ProductSellerViewModel>>(Messages.UserNotFound);
+        Expression<Func<Product, bool>> predicate;
+        if (!string.IsNullOrWhiteSpace(searchTerm))
 
-        var shop = await _shopRepo.GetShopBySellerIdAsync(currentUserId.Value);
-        if (shop is null)
-            return new ErrorDataResult<PaginatedList<ProductSellerViewModel>>(Messages.ShopNotFound);
+        {
+            var loweredSearchTerm = searchTerm.ToLower().Trim();
 
-        var pagedProducts = await _productRepo.GetPaginatedForSellerAsync(shop.Id, page, pageSize);
+            predicate = p =>
+            p.Shop.Seller.UserId == userId && (
+                    p.Name.Contains(loweredSearchTerm) ||
+                    p.Color!.Contains(loweredSearchTerm)) ||
+                    (p.Category != null && (p.Category.Name.ToLower().Contains(loweredSearchTerm)));
 
-        var viewModels = Mapper.Map<IEnumerable<ProductSellerViewModel>>(pagedProducts.Items);
+        }
+        else
+        {
+            predicate = p => p.Shop.Seller.UserId == userId;
+        }
+
+        var paginatedProducts = await _productRepo.GetPaginatedAsync(
+               predicate,
+               page,
+               pageSize,
+               q => q
+               .Include(p => p.ProductImages)
+               .Include(p => p.Category));
+
+        var viewModels = Mapper.Map<IEnumerable<ProductSellerViewModel>>(paginatedProducts.Items);
 
         var result = new PaginatedList<ProductSellerViewModel>(
             viewModels,
-            pagedProducts.TotalItems,
-            pagedProducts.Page,
-            pagedProducts.PageSize);
+            paginatedProducts.TotalItems,
+            paginatedProducts.Page,
+            paginatedProducts.PageSize
+        );
 
         return result.Items.Any()
             ? new SuccessDataResult<PaginatedList<ProductSellerViewModel>>(result)
-            : new ErrorDataResult<PaginatedList<ProductSellerViewModel>>(Messages.ProductNotFound);
+            : new ErrorDataResult<PaginatedList<ProductSellerViewModel>>(Messages.EmptyProductList);
+
+
     }
     #endregion
 
-    
-                //    GetDeletedProductsForSellerAsync() → çöp kutusu
 
-                //RecoverProductAsync(Guid id) → soft-delete geri alma
+    //    GetDeletedProductsForSellerAsync() → çöp kutusu
 
-                //SearchProductsForSellerAsync(string query)
+    //RecoverProductAsync(Guid id) → soft-delete geri alma
 
-                //TopSellingProductsAsync() → dashboard için
+    //SearchProductsForSellerAsync(string query)
 
-                //ProductImageService → dosya yükleme/yenileme için ayrı servis
+    //TopSellingProductsAsync() → dashboard için
+
+    //ProductImageService → dosya yükleme/yenileme için ayrı servis
 }

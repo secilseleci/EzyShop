@@ -10,7 +10,7 @@ public class ProductCreateViewModel : IImageViewModel
     public string Name { get; set; } = null!;
 
     [Required]
-    public string Color { get; set; } = null!;
+    public string? Color { get; set; } 
 
     [Required]
     [Range(1, 10000)]
@@ -31,9 +31,5 @@ public class ProductCreateViewModel : IImageViewModel
     public Guid CategoryId { get; set; }
     
 
-    
-    [Required(ErrorMessage = "Shop required")]
-    [DisplayName("Shop")]
-    public Guid ShopId { get; set; }
 
 }

@@ -1,4 +1,4 @@
-﻿@* @model ProductCreateViewModel
+﻿@model ProductCreateViewModel
 @inject ICategoryRepository _categoryRepo
 
 @{
@@ -17,8 +17,7 @@
         </div>
         <div class="card-body p-0">
             <form method="post" asp-controller="Product" asp-action="Create" enctype="multipart/form-data">
-                <input type="hidden" asp-for="ShopId" />
-                <div class="border p-3">
+                 <div class="border p-3">
 
                     <div class="row">
                         <div class="col-md-6">
@@ -107,4 +106,3 @@
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }
- *@

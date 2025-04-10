@@ -10,7 +10,7 @@
                     <h2 class="text-info">Product List</h2>
                 </div>
                 <div class="col-6 text-end">
-                    <a asp-controller="Product" asp-action="Create" class="btn btn-outline-info shadow rounded">
+                    <a asp-area="Seller" asp-controller="Product" asp-action="Create" class="btn btn-outline-info shadow rounded">
                         <i class="bi bi-plus-circle"></i> Create New Product
                     </a>
                 </div>
@@ -25,12 +25,11 @@
                             <th>Image</th>
                             <th>Category</th>
                             <th>Name</th>
-                            <th>Description</th>
                             <th>Color</th>
                             <th>Price</th>
                             <th>Stock</th>
-                            <th>Is Active</th>
-                            <th>Edit / Delete</th>
+                            <th>Status</th>
+                            <th>Actions</th>
 
                         </tr>
                     </thead>

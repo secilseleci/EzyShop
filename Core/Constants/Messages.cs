@@ -108,8 +108,8 @@
 
         #region Shop Messages
         public const string ShopNotFound = "Shop not found";
-
-        public const string ShopAlreadyExists = "You can only have one shop. Please update your existing shop instead.";
+        public const string ShopInActive = "Your shop is currently inactive.";
+        public const string ShopAlreadyExists = "Shop is already exists.";
         public const string CreateShopSuccess = "Shop request submitted. Waiting for admin approval.";
         public const string CreateShopError = "Error occurred while creating the shop.";
 

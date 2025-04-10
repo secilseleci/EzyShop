@@ -1,45 +1,7 @@
-﻿//using AutoMapper;
-//using Business.Services.Abstract;
-//using Microsoft.AspNetCore.Authorization;
-//using Microsoft.AspNetCore.Identity;
-//using Microsoft.AspNetCore.Mvc;
-//using Models.Identity;
-//using Models.ViewModels.Product;
-
-//namespace WebUI.Controllers
-//{
-//    public class ProductController : BaseController
-//    {
-//        private readonly IProductService _productService;
-//        private readonly IShopService _shopService;
-
-//        public ProductController(
-//              IProductService productService,
-//              IShopService shopService,
-
-//              UserManager<AppUser> userManager,
-//              RoleManager<AppRole> roleManager,
-//              SignInManager<AppUser> signInManager,
-//              IWebHostEnvironment webHostEnvironment,
-//              IMapper mapper)
-//      : base(userManager, roleManager, signInManager, webHostEnvironment, mapper)
-//        {
-//            _productService = productService;
-//            _shopService = shopService;
-//        }
-
-//        #region Read
-//        [Authorize(Roles = "Seller")]
-//        [HttpGet]
-//        public IActionResult Index()
-//        {
-//            return View();
-//        }
-//        #endregion
+﻿ 
 
 //        #region Create
-//        [Authorize(Roles = "Seller")]
-//        [HttpGet]
+ //        [HttpGet]
 //        public async Task<IActionResult> Create()
 //        {
 //            var user = await GetCurrentUserAsync();
@@ -59,74 +21,8 @@
 
 //            return View(model);
 //        }
-//        [Authorize(Roles = "Seller")]
-//        [HttpPost]
-//        public async Task<IActionResult> Create(ProductCreateViewModel model, IFormFile? file)
-//        {
-//            if (!ModelState.IsValid)
-//            {
-//                return View(model);
-//            }
-//             HandleImageUpload(model, file);
-
-//            var result = await _productService.CreateProductAsync(model);
-//            if (!result.Success)
-//            {
-//                TempData["ErrorMessage"] = result.Message;
-//                return View();
-//            }
-
-//            TempData["SuccessMessage"] = result.Message;
-//            return RedirectToAction("Index");
-//        }
-//        #endregion
-
-//        #region Edit
-//        [Authorize(Roles = "Seller")]
-//        [HttpGet]
-//        public async Task<IActionResult> Edit(Guid id)
-//        {
-//            var result = await _productService.GetProductByIdAsync(id);
-//            if (!result.Success)
-//            {
-//                TempData["ErrorMessage"] = result.Message;
-//                return View();
-//            }
-
-//            TempData["SuccessMessage"] = result.Message;
-//            return View(Mapper.Map<ProductUpdateViewModel>(result.Data));
-//        }
-
-//        [HttpPost]
-//        [Authorize(Roles = "Seller")]
-//        public async Task<IActionResult> Edit(ProductUpdateViewModel model, IFormFile? file)
-//        {
-//            HandleImageUpload(model, file);
-
-//            var result = await _productService.UpdateProductAsync(model);
-//            if (!result.Success)
-//            {
-//                TempData["ErrorMessage"] = result.Message;
-//                return View(model);
-//            }
-
-//            TempData["SuccessMessage"] = result.Message;
-//            return RedirectToAction("Index");
-//        }
-
-//        [HttpPost]
-//        public async Task<IActionResult> ToggleStatus(Guid id)
-//        {
-//            var result = await _productService.ToggleProductStatusAsync(id);
-
-//            if (!result.Success)
-//                return BadRequest(result.Message);
-
-//            return Ok();
-//        }
-
-//        #endregion
-
+ //    
+ 
 //        #region API
 //        [HttpGet]
 //        public async Task<IActionResult> GetSellerProducts()
@@ -151,27 +47,7 @@
 //        }
 
 
-//        [Authorize(Roles = "Seller")]
-//        [HttpDelete]
-//        public async Task<IActionResult> Delete(Guid id)
-//        {
-//            var productResult = await _productService.GetProductByIdAsync(id);
-//            if (!productResult.Success)
-//            {
-//                return Json(productResult);
-//            }
-
-//            var deleteResult = await _productService.DeleteProductAsync(id);
-//            if (!deleteResult.Success)
-//            {
-//                TempData["ErrorMessage"] = deleteResult.Message;
-//                return Json(deleteResult);
-//            }
-
-//            DeleteOldImage(productResult.Data.ImageUrl, WebHostEnvironment.WebRootPath);
-//            TempData["SuccessMessage"] = deleteResult.Message;
-//            return Json(deleteResult);
-//        }
+//       
 
 //        [AllowAnonymous]
 //        [HttpGet]

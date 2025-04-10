@@ -7,10 +7,13 @@ namespace Business.Services.Abstract;
 
 public interface IShopService
 {
+    Task<IResult> CheckShopIsActiveAsync(Guid userId);
+
     Task<IResult> CreateShopAsync(Shop entity);
  
     Task<IDataResult<Shop>> GetShopByIdAsync(Guid shopId);
     Task<IDataResult<ShopViewModel>> GetShopBySellerIdAsync(Guid sellerId);
+    Task<IDataResult<ShopViewModel>> GetShopByUserIdAsync(Guid userId);
 
 
     Task<IDataResult<PaginatedList<ShopViewModel>>> GetPaginatedShopsAsync(int page, int pageSize);

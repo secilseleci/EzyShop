@@ -8,7 +8,7 @@ namespace Business.Services.Abstract;
 public interface IProductService
 {
     #region Crud
-    Task<IResult> CreateProductAsync(ProductCreateViewModel model);
+    Task<IResult> CreateProductAsync(ProductCreateViewModel model,Guid userId);
     Task<IResult> UpdateProductAsync(ProductUpdateViewModel model);
     Task<IResult> DeleteProductAsync(Guid productId);
     Task<IDataResult<Product>> GetProductByIdAsync(Guid productId);
@@ -29,8 +29,8 @@ public interface IProductService
     #endregion
     
     #region Seller
-    Task<IDataResult<PaginatedList<ProductSellerViewModel>>> GetPaginatedProductsForSellerAsync(int page, int pageSize);
-
+    Task<IDataResult<PaginatedList<ProductSellerViewModel>>> GetPaginatedProductsForSellerAsync(Guid userId, int page, int pageSize, string? searchTerm = null);
+     
     #endregion
 
     Task<IResult> ToggleProductStatusAsync(Guid productId);

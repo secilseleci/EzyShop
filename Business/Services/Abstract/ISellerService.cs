@@ -7,6 +7,7 @@ namespace Business.Services.Abstract;
 
 public interface ISellerService
 {
+     
     Task<IResult> DeleteSellerAsync(Guid sellerId);
     Task<IDataResult<PaginatedList<SellerListViewModel>>> GetPaginatedSellersAsync(
         int page,
@@ -14,6 +15,7 @@ public interface ISellerService
         string? searchTerm = null);
 
     Task<IDataResult<Seller>> GetSellerByIdAsync(Guid sellerId);
- 
+
+    Task<IDataResult<SellerViewModel>> GetSellerByUserId(Guid userId);
 
 }

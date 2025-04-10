@@ -7,6 +7,13 @@ namespace DataAccess.Repositories.Concrete;
 
 public class ShopRepository(ApplicationDbContext context) : BaseRepository<Shop>(context), IShopRepository
 {
+    public async Task<Shop?> GetShopByUserIdAsync(Guid userId)
+    {
+        return await _dataContext.Shops
+            .Include(s => s.Seller)
+            .FirstOrDefaultAsync(s => s.Seller.UserId == userId && !s.IsDeleted);
+    }
+
     public async Task<Shop?> GetShopBySellerIdAsync(Guid sellerId) =>
     await _dataContext.Shops
         .AsNoTracking()

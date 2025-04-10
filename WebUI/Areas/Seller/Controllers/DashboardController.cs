@@ -7,32 +7,28 @@ using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
 using WebUI.Controllers;
 
-namespace WebUI.Areas.Admin.Controllers;
+namespace WebUI.Areas.Seller.Controllers;
 
-[Area("Admin")]
-[Route("Admin/[controller]/[action]")]
-[Authorize(Roles = "Admin")]
+[Area("Seller")]
+[Route("Seller/[controller]/[action]")]
+[Authorize(Roles = "Seller")]
 public class DashboardController : BaseController
 {
-    private readonly ISellerApplicationService _sellerApplicationService;
-    private readonly IEmailService _emailService;
+    private readonly ISellerService _sellerService;
 
 
     public DashboardController
     (
         ICurrentUserService currentUserService,
-        ISellerApplicationService sellerApplicationService,
+        ISellerService sellerService,
         UserManager<AppUser> userManager,
         RoleManager<AppRole> roleManager,
         SignInManager<AppUser> signInManager,
         IWebHostEnvironment webHostEnvironment,
-        IEmailService emailService,
         IMapper mapper)
         : base(currentUserService, userManager, roleManager, signInManager, webHostEnvironment, mapper)
     {
-        _sellerApplicationService = sellerApplicationService;
-        _emailService = emailService;
-
+        _sellerService = sellerService;
     }
     public IActionResult Index()
     {

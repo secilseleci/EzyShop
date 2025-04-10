@@ -68,11 +68,17 @@ public class AccountController : BaseController
 
 
         var roles = await UserManager.GetRolesAsync(user);
+
         if (roles.Contains("Admin"))
         {
             return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
         }
-        
+
+        if (roles.Contains("Seller"))
+        {
+            return RedirectToAction("Index", "Dashboard", new { area = "Seller" });
+        }
+
         TempData["SuccessMessage"] = Messages.LoginSuccess;
         return RedirectToAction("Index", "Home");
       

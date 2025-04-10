@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Models.Entities.Concrete;
 using Models.ViewModels.Shop;
 using System.Linq.Expressions;
+using static Models.Entities.Concrete.Shop;
 
 namespace Business.Services.Concrete;
 public class ShopService : BaseService,IShopService
@@ -27,8 +28,20 @@ public class ShopService : BaseService,IShopService
         _shopRepo = shopRepo;
         _productRepo = productRepo;
         _sellerRepo=sellerRepo;
-    } 
-    
+    }
+    public async Task<IResult> CheckShopIsActiveAsync(Guid userId)
+    {
+        var shop = await _shopRepo.GetShopByUserIdAsync(userId);
+
+        if (shop == null)
+            return new ErrorResult(Messages.ShopNotFound);
+
+        if (shop.Status != ShopStatus.Approved)
+            return new ErrorResult(Messages.ShopInActive);
+
+        return new SuccessResult();
+    }
+
     #region Create
     public async Task<IResult> CreateShopAsync(Shop entity)
     {
@@ -60,6 +73,15 @@ public class ShopService : BaseService,IShopService
         if (shop == null)
             return new ErrorDataResult<ShopViewModel>(Messages.ShopNotFound);
          
+        var mappedShop = Mapper.Map<ShopViewModel>(shop);
+        return new SuccessDataResult<ShopViewModel>(mappedShop);
+    }
+    public async Task<IDataResult<ShopViewModel>> GetShopByUserIdAsync(Guid userId)
+    {
+        var shop = await _shopRepo.GetShopByUserIdAsync(userId);
+        if (shop == null)
+            return new ErrorDataResult<ShopViewModel>(Messages.ShopNotFound);
+
         var mappedShop = Mapper.Map<ShopViewModel>(shop);
         return new SuccessDataResult<ShopViewModel>(mappedShop);
     }
@@ -142,6 +164,7 @@ public class ShopService : BaseService,IShopService
         }
     }
 
+  
 
     #endregion
 

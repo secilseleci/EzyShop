@@ -26,6 +26,8 @@ public class SellerService : BaseService, ISellerService
     {
         _sellerRepo = sellerRepo;
     }
+    #region Delete Seller
+    
     public async Task<IResult> DeleteSellerAsync(Guid sellerId)
     {
         var exists = await _sellerRepo.ExistsAsync(s => s.Id == sellerId && !s.IsDeleted);
@@ -38,7 +40,9 @@ public class SellerService : BaseService, ISellerService
         ? new SuccessResult(Messages.DeleteSellerSuccess)
         : new ErrorResult(Messages.DeleteSellerError);
     }
-
+    #endregion
+    #region List Seller
+  
     public async Task<IDataResult<PaginatedList<SellerListViewModel>>> GetPaginatedSellersAsync(
         int page,
         int pageSize,
@@ -95,9 +99,9 @@ public class SellerService : BaseService, ISellerService
         return result.Items.Any()
             ? new SuccessDataResult<PaginatedList<SellerListViewModel>>(result)
             : new ErrorDataResult<PaginatedList<SellerListViewModel>>(Messages.EmptySellerList);
-    }
-
-
+    }  
+    #endregion
+    #region GetById Seller
     public async Task<IDataResult<Seller>> GetSellerByIdAsync(Guid sellerId)
     {
         var seller = await _sellerRepo.GetByIdAsync(sellerId);
@@ -105,4 +109,17 @@ public class SellerService : BaseService, ISellerService
             ? new SuccessDataResult<Seller>(seller)
             : new ErrorDataResult<Seller>(Messages.SellerNotFound);
     }
+    #endregion
+    #region GetByUserId
+    public async Task<IDataResult<SellerViewModel>> GetSellerByUserId(Guid userId)
+    {
+        var seller = await _sellerRepo.GetSellerByUserIdAsync(userId);
+
+        if (seller == null)
+            return new ErrorDataResult<SellerViewModel>(Messages.SellerNotFound);
+
+        var vm = Mapper.Map<SellerViewModel>(seller);
+        return new SuccessDataResult<SellerViewModel>(vm);
+    }
+    #endregion
 }

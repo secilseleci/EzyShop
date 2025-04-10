@@ -22,15 +22,28 @@ public class MappingProfile : Profile
         #endregion
 
         #region Product 
-        CreateMap<Product, ProductCreateViewModel>().ReverseMap();
+        CreateMap<ProductCreateViewModel, Product>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore()) // yeni ürün oluşturuluyor
+            .ForMember(dest => dest.ShopId, opt => opt.Ignore()) // userId'den servis içinde set edilir
+            .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.ImageUrl ?? string.Empty))
+            .ForMember(dest => dest.IsSoldOut, opt => opt.Ignore()) // zaten readonly, map gerekmez
+            .ForMember(dest => dest.ProductImages, opt => opt.Ignore()) // bu işlemde kullanılmıyor
+            .ForMember(dest => dest.ShoppingCartItems, opt => opt.Ignore())
+            .ForMember(dest => dest.OrderItems, opt => opt.Ignore())
+            .ForMember(dest => dest.Shop, opt => opt.Ignore())
+            .ForMember(dest => dest.Category, opt => opt.Ignore());
         CreateMap<Product, ProductUpdateViewModel>().ReverseMap();
+       
+        CreateMap<Product, ProductSellerViewModel>()
+        .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category != null ? src.Category.Name : "N/A"))
+        .ForMember(dest => dest.StatusText, opt => opt.MapFrom(src => src.IsActive ? "Active" : "Passive"))
+        .ForMember(dest => dest.StockStatus, opt => opt.MapFrom(src => src.Stock <= 0 ? "Out of Stock" : "In Stock"));
 
 
         CreateMap<Product, ProductCustomerViewModel>();
         CreateMap<Product, FilteredProductCustomerViewModel>()
         .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
-        CreateMap<Product, ProductSellerViewModel>();
-
+ 
         #endregion
 
         #region SellerApplication  
@@ -56,15 +69,12 @@ public class MappingProfile : Profile
         .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email));
         #endregion
         
-
-
         #region Customer for List
         CreateMap<Customer, CustomerListViewModel>()
         .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.User.Name} {src.User.Surname}".Trim()))
         .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.User.Email))
         .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.User.PhoneNumber));
         #endregion
-
         #region Seller for List
         CreateMap<Seller, SellerListViewModel>()
         .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.User.Name} {src.User.Surname}".Trim()))
@@ -75,6 +85,19 @@ public class MappingProfile : Profile
         .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.SellerApplication.Status));
         #endregion
 
+        #region Seller for Profile
+        CreateMap<Seller, SellerViewModel>()
+          .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.User.Name} {src.User.Surname}".Trim()))
+          .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.User.Email))
+          .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.User.PhoneNumber))
+          .ForMember(dest => dest.TaxNumber, opt => opt.MapFrom(src => src.Shop != null ? src.Shop.TaxNumber : null))
+          .ForMember(dest => dest.ShopName, opt => opt.MapFrom(src => src.Shop != null ? src.Shop.Name : null))
+          .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Shop != null ? src.Shop.Status : default))
+          .ForMember(dest => dest.ShopAddress, opt => opt.MapFrom(src => src.Shop != null ? src.Shop.ShopAddress : null))
+          .ForMember(dest => dest.OpeningDate, opt => opt.MapFrom(src => src.Shop != null ? src.Shop.CreatedAt : (DateTime?)null)).ReverseMap();
+
+
+        #endregion
 
         #region  Create SellerApplication 
         CreateMap<SellerApplicationCreateViewModel, SellerApplication>()
