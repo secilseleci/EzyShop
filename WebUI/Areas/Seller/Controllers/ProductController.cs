@@ -135,6 +135,7 @@ public class ProductController : BaseController
 
 
         HandleImageUpload(model, file);
+
         var result = await _productService.CreateProductAsync(model, CurrentUserService.UserId.Value);
 
         if (!result.Success)
@@ -146,40 +147,49 @@ public class ProductController : BaseController
         TempData["SuccessMessage"] = result.Message;
         return RedirectToAction("Index");
     }
-    
+
     #endregion
 
-    [HttpPost]
-    public async Task<IActionResult> ToggleStatus(Guid id)
-    {
-        var result = await _productService.ToggleProductStatusAsync(id);
-
-        if (!result.Success)
-            return BadRequest(result.Message);
-
-        return Ok();
-    }
     #region Edit
     [HttpGet]
     public async Task<IActionResult> Edit(Guid id)
     {
+        if (!CurrentUserService.UserId.HasValue)
+            return Unauthorized();
+
+        var checkResult = await _shopService.CheckShopIsActiveAsync(CurrentUserService.UserId.Value);
+        if (!checkResult.Success)
+        {
+            TempData["ErrorMessage"] = checkResult.Message;
+            return RedirectToAction("Index", "Dashboard");
+        }
+
         var result = await _productService.GetProductByIdAsync(id);
         if (!result.Success)
         {
             TempData["ErrorMessage"] = result.Message;
-            return View();
+            return RedirectToAction(nameof(Index));
         }
 
-        TempData["SuccessMessage"] = result.Message;
-        return View(Mapper.Map<ProductUpdateViewModel>(result.Data));
+        var model = Mapper.Map<ProductUpdateViewModel>(result.Data);
+        return View(model);
     }
+
 
     [HttpPost]
     public async Task<IActionResult> Edit(ProductUpdateViewModel model, IFormFile? file)
     {
+        if (!ModelState.IsValid)
+        {
+            return View(model);
+        }
+
+        if (!CurrentUserService.UserId.HasValue)
+            return Unauthorized();
+
         HandleImageUpload(model, file);
 
-        var result = await _productService.UpdateProductAsync(model);
+        var result = await _productService.UpdateProductAsync(model, CurrentUserService.UserId.Value);
         if (!result.Success)
         {
             TempData["ErrorMessage"] = result.Message;
@@ -192,5 +202,26 @@ public class ProductController : BaseController
 
 
 
+    #endregion
+
+    #region Toggle
+    [HttpPost]
+    public async Task<IActionResult> ToggleStatus(Guid productId)
+    {
+        if (!CurrentUserService.UserId.HasValue)
+            return BadRequest(new { success = false, message = "User not authenticated." });
+        var userId = CurrentUserService.UserId.Value;
+
+        var result = await _productService.ToggleProductStatusAsync(productId, userId);
+
+        if (!result.Success)
+            return BadRequest(new { success = false, message = result.Message });
+
+        return Ok(new
+        {
+            success = true,
+            message = result.Message
+        });
+    }
     #endregion
 }

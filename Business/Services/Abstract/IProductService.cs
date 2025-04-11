@@ -9,7 +9,7 @@ public interface IProductService
 {
     #region Crud
     Task<IResult> CreateProductAsync(ProductCreateViewModel model,Guid userId);
-    Task<IResult> UpdateProductAsync(ProductUpdateViewModel model);
+    Task<IResult> UpdateProductAsync(ProductUpdateViewModel model, Guid userId);
     Task<IResult> DeleteProductAsync(Guid productId);
     Task<IDataResult<Product>> GetProductByIdAsync(Guid productId);
     #endregion
@@ -33,6 +33,6 @@ public interface IProductService
      
     #endregion
 
-    Task<IResult> ToggleProductStatusAsync(Guid productId);
+    Task<IResult> ToggleProductStatusAsync(Guid productId, Guid userId);
 
 }

@@ -13,8 +13,8 @@ public class ProductRepository(ApplicationDbContext context) : BaseRepository<Pr
     {
         return await _dataContext.Products
             .Include(p => p.Category)
-            .Include(p => p.Shop)
-            .FirstOrDefaultAsync(p => p.Id == id);
+            .Include(p => p.Shop).ThenInclude(s => s.Seller)
+            .FirstOrDefaultAsync(p => p.Id == id && !p.IsDeleted);
     }
     public async Task<IEnumerable<Product>> GetAllProductsWithIncludesAsync(Expression<Func<Product, bool>>? predicate = null)
     {

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Models.Entities.Concrete;
 using Models.ViewModels.Product;
 using System.Linq.Expressions;
+using static Models.Entities.Concrete.Shop;
 
 namespace Business.Services.Concrete;
 
@@ -69,31 +70,20 @@ public class ProductService : BaseService, IProductService
     }
     #endregion
 
-    #region Update
-    public async Task<IResult> UpdateProductAsync(ProductUpdateViewModel model)
+    #region Edit
+    public async Task<IResult> UpdateProductAsync(ProductUpdateViewModel model, Guid userId)
     {
         var product = await _productRepo.GetProductWithIncludesAsync(model.Id);
         if (product is null)
             return new ErrorResult(Messages.ProductNotFound);
 
-        var currentUserId = GetUserId();
-        if (currentUserId is null || product.Shop.SellerId != currentUserId)
+        if (product.Shop.Seller.UserId != userId)
             return new ErrorResult(Messages.UnauthorizedAccess);
 
         var categoryExists = await _categoryRepo.ExistsAsync(c => c.Id == model.CategoryId && !c.IsDeleted);
         if (!categoryExists)
             return new ErrorResult(Messages.CategoryNotFound);
-
-        if (product.Name == model.Name &&
-             product.Color == model.Color &&
-             product.Price == model.Price &&
-             product.Stock == model.Stock &&
-             product.CategoryId == model.CategoryId &&
-             product.ImageUrl == model.ImageUrl &&
-             product.IsActive == model.IsActive)
-        {
-            return new ErrorResult(Messages.NoChangesDetected);
-        }
+ 
 
         product = Mapper.Map(model, product);
 
@@ -103,15 +93,22 @@ public class ProductService : BaseService, IProductService
             ? new SuccessResult(Messages.UpdateProductSuccess)
             : new ErrorResult(Messages.UpdateProductError);
     }
-    public async Task<IResult> ToggleProductStatusAsync(Guid productId)
+
+
+    #endregion
+    #region Toogle 
+
+    public async Task<IResult> ToggleProductStatusAsync(Guid productId,Guid userId)
     {
         var product = await _productRepo.GetProductWithIncludesAsync(productId);
         if (product is null || product.IsDeleted)
             return new ErrorResult(Messages.ProductNotFound);
 
-        var currentUserId = GetUserId();
-        if (currentUserId is null || product.Shop.SellerId != currentUserId)
-            return new ErrorResult(Messages.UnauthorizedAccess);
+        if (product.Shop.Seller.UserId != userId)
+            return new ErrorResult(Messages.UnauthorizedAccess);  
+
+        if (product.Shop.Status != ShopStatus.Approved)
+            return new ErrorResult(Messages.ShopInActive);
 
         product.IsActive = !product.IsActive;
 
@@ -121,9 +118,7 @@ public class ProductService : BaseService, IProductService
             ? new SuccessResult(Messages.UpdateProductSuccess)
             : new ErrorResult(Messages.UpdateProductError);
     }
-
     #endregion
-
     #region Customer Read
     public async Task<IDataResult<Product>> GetProductByIdAsync(Guid productId)
     {

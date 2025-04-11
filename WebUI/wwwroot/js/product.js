@@ -35,7 +35,7 @@ $(document).ready(function () {
                 "render": function (data, type, row) {
                     let btnClass = data ? "btn-success" : "btn-danger";
                     let btnText = data ? "Active" : "Inactive";
-                    return `<button onClick="toggleProductStatus('${row.id}', ${data})" class="btn btn-sm ${btnClass}">
+                    return `<button onClick="toggleProductStatus('${row.id}')" class="btn btn-sm ${btnClass}">
                                 ${btnText}
                             </button>`;
                 }
@@ -54,6 +54,7 @@ $(document).ready(function () {
     });
 });
 
+//Delete Function
 function deleteProduct(productId) {
     $.ajax({
         url: `/Seller/Product/Delete`,
@@ -72,20 +73,22 @@ function deleteProduct(productId) {
         }
     });
 }
+//Delete Function
+ 
 
-
-function toggleProductStatus(productId, currentStatus) {
-    let newStatus = !currentStatus;
+function toggleProductStatus(productId) {
     $.ajax({
-        url: `/Seller/Product/ToggleStatus/${productId}`,
+        url: `/Seller/Product/ToggleStatus`,  
         type: "POST",
-        data: JSON.stringify({ isActive: newStatus }),
-        contentType: "application/json",
-        success: function () {
+        data: { productId },  
+        success: function (response) {
+            toastr.success(response.message);
             productsTable.ajax.reload();
         },
-        error: function () {
-            alert("Product toogle cannot change!");
+        error: function (xhr) {
+            const err = xhr.responseJSON?.message || "Status could not be changed.";
+            toastr.error(err);
         }
     });
 }
+

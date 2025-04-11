@@ -1,10 +1,8 @@
-﻿@* @model ProductUpdateViewModel
+﻿@model ProductUpdateViewModel
 @inject ICategoryRepository _categoryRepo
 
 @{
     var allCategories = await _categoryRepo.GetWhereAsync(c => true);
-}
-@{
     ViewData["Title"] = "Product Edit";
 }
 
@@ -17,54 +15,50 @@
         </div>
         <div class="card-body p-0">
             <form method="post" asp-controller="Product" asp-action="Edit" enctype="multipart/form-data">
-                <input type="hidden" asp-for="ShopId" />
+                <!-- ID ve Mevcut ImageUrl -->
                 <input type="hidden" asp-for="Id" />
-                <input asp-for="ImageUrl" hidden />
+                <input type="hidden" asp-for="ImageUrl" />
 
                 <div class="border p-3">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
-                                <input asp-for="Name" class="form-control border-0 shadow rounded" />
-                                <label asp-for="Name" class="ms-0"></label>
+                                <input asp-for="Name" class="form-control border-0 shadow rounded" id="Name" />
+                                <label asp-for="Name"></label>
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
-                                <input asp-for="Color" class="form-control border-0 shadow rounded" />
-                                <label asp-for="Color" class="ms-0"></label>
+                                <input asp-for="Color" class="form-control border-0 shadow rounded" id="Color" />
+                                <label asp-for="Color"></label>
                                 <span asp-validation-for="Color" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
-                                <input asp-for="Price" class="form-control border-0 shadow rounded" step="0.01" />
-                                <label asp-for="Price" class="ms-0"></label>
+                                <input asp-for="Price" class="form-control border-0 shadow rounded" step="0.01" id="Price" />
+                                <label asp-for="Price"></label>
                                 <span asp-validation-for="Price" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
-                                <input asp-for="Stock" class="form-control border-0 shadow rounded" />
-                                <label asp-for="Stock" class="ms-0"></label>
+                                <input asp-for="Stock" class="form-control border-0 shadow rounded" id="Stock" />
+                                <label asp-for="Stock"></label>
                                 <span asp-validation-for="Stock" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Kategori -->
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating py-2 col-12 mb-3">
-                                <textarea asp-for="Description" class="form-control border-0 shadow rounded"></textarea>
-                                <label asp-for="Description" class="ms-0"></label>
-                                <span asp-validation-for="Description" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating py-2 col-12 mb-3">
-                                <select asp-for="CategoryId" class="form-select border-0 shadow rounded">
+                                <select asp-for="CategoryId" class="form-select border-0 shadow rounded" id="CategoryId">
                                     <option value="">Select a Category</option>
                                     @foreach (var category in allCategories)
                                     {
@@ -75,30 +69,43 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Görsel -->
                     <div class="row">
                         <div class="col-md-6">
+                            <div class="mb-3">
+                                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                                {
+                                    <img src="@Model.ImageUrl" alt="Current Image" style="max-width:150px; border-radius: 8px;" />
+                                }
+                            </div>
                             <div class="form-floating py-2 col-12 mb-3">
-                                <input asp-for="ImageUrl" type="file" name="file" class="form-control border-0 shadow rounded" />
-                                <label asp-for="ImageUrl" class="ms-0"></label>
+                                <input type="file" name="file" class="form-control border-0 shadow rounded" />
+                                <label>Upload New Image</label>
                             </div>
                         </div>
                     </div>
 
-                     <div class="row">
+                    <!-- Aktiflik -->
+                    <div class="row">
                         <div class="col-md-6">
-                            <div class="form-floating py-2 col-12 mb-3">
-                                <input type="checkbox" asp-for="IsActive" class="form-check-input" />
-                                <label asp-for="IsActive" class="ms-2"> Active </label>
+                            <div class="form-check py-2 col-12 mb-3">
+                                <input type="checkbox" asp-for="IsActive" class="form-check-input" id="IsActive" />
+                                <label asp-for="IsActive" class="form-check-label"> Active </label>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Butonlar -->
                     <div class="row mt-4">
                         <div class="col-6">
-                            <button type="submit" class="form-control btn btn-info shadow">Update</button>
+                            <button id="btnSubmit" type="submit" class="form-control btn btn-info shadow">
+                                <span class="spinner-border spinner-border-sm d-none" id="btnSpinner"></span>
+                                <span id="btnText">Update</span>
+                            </button>
                         </div>
                         <div class="col-6">
-                            <a asp-controller="Product" asp-action="Index" class="form-control btn btn-outline-secondary shadow">Back To List</a>
+                            <a asp-area="Seller" asp-controller="Product" asp-action="Index" class="form-control btn btn-outline-secondary shadow">Back To List</a>
                         </div>
                     </div>
 
@@ -109,6 +116,7 @@
 </div>
 
 @section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
+    @await Html.PartialAsync("_ValidationScriptsPartial")    
+    <script src="~/js/product-edit.js"></script>
+
 }
- *@

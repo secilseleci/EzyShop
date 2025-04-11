@@ -13,7 +13,7 @@ public class ProductCreateViewModel : IImageViewModel
     public string? Color { get; set; } 
 
     [Required]
-    [Range(1, 10000)]
+    [Range(1, 100000)]
     public decimal Price { get; set; }
 
     [Required]

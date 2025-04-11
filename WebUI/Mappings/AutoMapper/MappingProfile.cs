@@ -23,15 +23,16 @@ public class MappingProfile : Profile
 
         #region Product 
         CreateMap<ProductCreateViewModel, Product>()
-            .ForMember(dest => dest.Id, opt => opt.Ignore()) // yeni ürün oluşturuluyor
-            .ForMember(dest => dest.ShopId, opt => opt.Ignore()) // userId'den servis içinde set edilir
+            .ForMember(dest => dest.Id, opt => opt.Ignore())  
+            .ForMember(dest => dest.ShopId, opt => opt.Ignore())  
             .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.ImageUrl ?? string.Empty))
-            .ForMember(dest => dest.IsSoldOut, opt => opt.Ignore()) // zaten readonly, map gerekmez
-            .ForMember(dest => dest.ProductImages, opt => opt.Ignore()) // bu işlemde kullanılmıyor
+            .ForMember(dest => dest.IsSoldOut, opt => opt.Ignore())  
+            .ForMember(dest => dest.ProductImages, opt => opt.Ignore())  
             .ForMember(dest => dest.ShoppingCartItems, opt => opt.Ignore())
             .ForMember(dest => dest.OrderItems, opt => opt.Ignore())
             .ForMember(dest => dest.Shop, opt => opt.Ignore())
             .ForMember(dest => dest.Category, opt => opt.Ignore());
+        
         CreateMap<Product, ProductUpdateViewModel>().ReverseMap();
        
         CreateMap<Product, ProductSellerViewModel>()
