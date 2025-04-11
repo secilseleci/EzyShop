@@ -203,6 +203,7 @@ public class ProductService : BaseService, IProductService
         Expression<Func<Product, bool>> predicate = p =>
             p.IsActive &&
             !p.IsDeleted &&
+             p.Stock > 0 &&
             (string.IsNullOrEmpty(name) || p.Name.Contains(name)) &&
             (string.IsNullOrEmpty(category) || p.Category.Name == category) &&
             (string.IsNullOrEmpty(color) || p.Color == color) &&
@@ -224,6 +225,19 @@ public class ProductService : BaseService, IProductService
 
     #endregion
 
+    #region Product Details
+    public async Task<IDataResult<ProductDetailViewModel>> GetProductWithDetailsByIdAsync(Guid productId)
+    {
+        var product = await _productRepo.GetProductWithIncludesAsync(productId);
+
+        if (product is null || product.IsDeleted || !product.IsActive)
+            return new ErrorDataResult<ProductDetailViewModel>(Messages.ProductNotFound);
+        
+        var viewModel = Mapper.Map<ProductDetailViewModel>(product);
+
+        return new SuccessDataResult<ProductDetailViewModel>(viewModel);
+    }
+    #endregion
     //    GetDeletedProductsForSellerAsync() → çöp kutusu
 
     //RecoverProductAsync(Guid id) → soft-delete geri alma

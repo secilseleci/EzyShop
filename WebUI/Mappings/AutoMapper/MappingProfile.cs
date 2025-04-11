@@ -43,6 +43,9 @@ public class MappingProfile : Profile
 
         CreateMap<Product, ProductCustomerViewModel>();
         CreateMap<Product, ProductFilterViewModel>();
+        CreateMap<Product, ProductDetailViewModel>()
+        .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
+        .ForMember(dest => dest.ShopName, opt => opt.MapFrom(src => src.Shop.Name));
 
         #endregion
 

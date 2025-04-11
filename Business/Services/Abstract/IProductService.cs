@@ -11,7 +11,7 @@ public interface IProductService
     Task<IResult> CreateProductAsync(ProductCreateViewModel model, Guid userId);
     Task<IResult> UpdateProductAsync(ProductUpdateViewModel model, Guid userId);
     Task<IResult> DeleteProductAsync(Guid productId);
-     Task<IResult> ToggleProductStatusAsync(Guid productId, Guid userId);
+    Task<IResult> ToggleProductStatusAsync(Guid productId, Guid userId);
     Task<IDataResult<Product>> GetProductByIdAsync(Guid productId);
 
     #endregion
@@ -22,6 +22,7 @@ public interface IProductService
     #endregion
 
     #region Customer
+    Task<IDataResult<ProductDetailViewModel>> GetProductWithDetailsByIdAsync(Guid productId);
 
     Task<IDataResult<PaginatedList<ProductCustomerViewModel>>> GetFilteredProductsAsync(
     int page, int pageSize, string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice);

@@ -1,9 +1,6 @@
-﻿using Core.Pagination;
-using DataAccess.Repositories.Abstract;
+﻿using DataAccess.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
 using Models.Entities.Concrete;
-using System.Linq.Expressions;
-using static Models.Entities.Concrete.Shop;
 
 namespace DataAccess.Repositories.Concrete;
 

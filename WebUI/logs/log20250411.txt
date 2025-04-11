@@ -21949,3 +21949,599 @@ INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
 2025-04-11 22:44:48.024 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/favicon.ico - null null
 2025-04-11 22:44:48.027 +03:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\favicon.ico'
 2025-04-11 22:44:48.029 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/favicon.ico - 200 871 image/x-icon 5.962ms
+2025-04-11 22:46:28.751 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-11 22:46:29.057 +03:00 [WRN] Navigations 'SellerApplication.Seller' and 'Seller.SellerApplication' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-04-11 22:46:29.112 +03:00 [WRN] Navigations 'Seller.SellerApplication' and 'SellerApplication.Seller' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-04-11 22:46:29.115 +03:00 [WRN] Navigations 'Seller.SellerApplication' and 'SellerApplication.Seller' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-04-11 22:46:29.116 +03:00 [WRN] Navigations 'Seller.SellerApplication' and 'SellerApplication.Seller' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2025-04-11 22:46:29.192 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-04-11 22:46:29.230 +03:00 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-04-11 22:46:29.232 +03:00 [WRN] No store type was specified for the decimal property 'ProductPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-04-11 22:46:29.233 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-04-11 22:46:29.234 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'ShoppingCartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-04-11 22:46:29.744 +03:00 [INF] Executed DbCommand (36ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-11 22:46:29.802 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='SELLER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-11 22:46:29.805 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='CUSTOMER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-11 22:46:29.817 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='ADMIN@EZYSHOP.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-11 22:46:29.850 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='DERYA.KARAMAN.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-11 22:46:29.853 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='NUR.BIRAL.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-11 22:46:29.855 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='SECIL.SELECI@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-11 22:46:29.856 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='SECILSELLER@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-11 22:46:29.858 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='SELECISECIL072@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-11 22:46:29.872 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__email1_0='secil.seleci@gmail.com' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SellerApplications] AS [s]
+        WHERE [s].[Email] = @__email1_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-11 22:46:29.878 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email2_0='secilseller@gmail.com' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SellerApplications] AS [s]
+        WHERE [s].[Email] = @__email2_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-11 22:46:29.882 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email3_0='selecisecil072@gmail.com' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SellerApplications] AS [s]
+        WHERE [s].[Email] = @__email3_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-11 22:46:29.915 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = N'secil.seleci@gmail.com'
+2025-04-11 22:46:29.922 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[ContactBusinessNumber], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[Email], [s].[IsDeleted], [s].[ModifiedById], [s].[Name], [s].[SellerId], [s].[ShopAddress], [s].[ShopName], [s].[Status], [s].[Surname], [s].[TaxNumber], [s].[UpdatedAt], [s].[UserId]
+FROM [SellerApplications] AS [s]
+WHERE [s].[Email] = N'secil.seleci@gmail.com'
+2025-04-11 22:46:29.955 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user1_Id_0='9161d588-f3cb-4925-47ef-08dd7910ed1d'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[SellerApplicationId], [s].[UpdatedAt], [s].[UserId]
+FROM [Sellers] AS [s]
+WHERE [s].[UserId] = @__user1_Id_0
+2025-04-11 22:46:29.980 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = N'secilseller@gmail.com'
+2025-04-11 22:46:29.987 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[ContactBusinessNumber], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[Email], [s].[IsDeleted], [s].[ModifiedById], [s].[Name], [s].[SellerId], [s].[ShopAddress], [s].[ShopName], [s].[Status], [s].[Surname], [s].[TaxNumber], [s].[UpdatedAt], [s].[UserId]
+FROM [SellerApplications] AS [s]
+WHERE [s].[Email] = N'secilseller@gmail.com'
+2025-04-11 22:46:29.992 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user2_Id_0='f6745d91-c886-40e6-47f0-08dd7910ed1d'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[SellerApplicationId], [s].[UpdatedAt], [s].[UserId]
+FROM [Sellers] AS [s]
+WHERE [s].[UserId] = @__user2_Id_0
+2025-04-11 22:46:29.997 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = N'selecisecil072@gmail.com'
+2025-04-11 22:46:30.003 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[ContactBusinessNumber], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[Email], [s].[IsDeleted], [s].[ModifiedById], [s].[Name], [s].[SellerId], [s].[ShopAddress], [s].[ShopName], [s].[Status], [s].[Surname], [s].[TaxNumber], [s].[UpdatedAt], [s].[UserId]
+FROM [SellerApplications] AS [s]
+WHERE [s].[Email] = N'selecisecil072@gmail.com'
+2025-04-11 22:46:30.008 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user3_Id_0='9f1c880e-8d3e-4658-f40e-08dd7911c597'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[SellerApplicationId], [s].[UpdatedAt], [s].[UserId]
+FROM [Sellers] AS [s]
+WHERE [s].[UserId] = @__user3_Id_0
+2025-04-11 22:46:30.063 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[SellerApplicationId], [s].[UpdatedAt], [s].[UserId], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [Sellers] AS [s]
+INNER JOIN [AspNetUsers] AS [a] ON [s].[UserId] = [a].[Id]
+WHERE [a].[Email] = N'secil.seleci@gmail.com'
+2025-04-11 22:46:30.069 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__seller1_Id_0='42edd5d6-bb53-477f-b7a2-957cfab1b191'], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Shops] AS [s]
+        WHERE [s].[SellerId] = @__seller1_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-11 22:46:30.078 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[SellerApplicationId], [s].[UpdatedAt], [s].[UserId], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [Sellers] AS [s]
+INNER JOIN [AspNetUsers] AS [a] ON [s].[UserId] = [a].[Id]
+WHERE [a].[Email] = N'secilseller@gmail.com'
+2025-04-11 22:46:30.083 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__seller2_Id_0='cc0cb1bc-a519-4676-bb7d-ddfed7fdfa87'], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Shops] AS [s]
+        WHERE [s].[SellerId] = @__seller2_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-11 22:46:30.090 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[SellerApplicationId], [s].[UpdatedAt], [s].[UserId], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [Sellers] AS [s]
+INNER JOIN [AspNetUsers] AS [a] ON [s].[UserId] = [a].[Id]
+WHERE [a].[Email] = N'selecisecil072@gmail.com'
+2025-04-11 22:46:30.094 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__seller3_Id_0='5f12be6f-e140-4d93-a01e-5a462a45e677'], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Shops] AS [s]
+        WHERE [s].[SellerId] = @__seller3_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-11 22:46:30.101 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = N'derya.karaman.ezyshop@gmail.com'
+2025-04-11 22:46:30.106 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = N'nur.biral.ezyshop@gmail.com'
+2025-04-11 22:46:30.111 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__derya_Id_0='17c37149-9d4f-4bfb-47ed-08dd7910ed1d'], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[UserId] = @__derya_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-11 22:46:30.114 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__nur_Id_0='1c071cfb-df6a-4e76-47ee-08dd7910ed1d'], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[UserId] = @__nur_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-11 22:46:30.124 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-11 22:46:30.142 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[Name], [s].[SellerId], [s].[ShopAddress], [s].[Status], [s].[TaxNumber], [s].[UpdatedAt], [s0].[Id], [s0].[CreatedAt], [s0].[CreatedById], [s0].[DeletedAt], [s0].[DeletedById], [s0].[IsDeleted], [s0].[ModifiedById], [s0].[SellerApplicationId], [s0].[UpdatedAt], [s0].[UserId], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+INNER JOIN [AspNetUsers] AS [a] ON [s0].[UserId] = [a].[Id]
+WHERE [s].[Name] = N'Seleci Home'
+2025-04-11 22:46:30.179 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__seleciShop_Id_0='c8b33fa9-995e-4aea-bbf7-8f0930bbb9a9'], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]
+        WHERE [p].[ShopId] = @__seleciShop_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-11 22:46:30.191 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[Name], [s].[SellerId], [s].[ShopAddress], [s].[Status], [s].[TaxNumber], [s].[UpdatedAt], [s0].[Id], [s0].[CreatedAt], [s0].[CreatedById], [s0].[DeletedAt], [s0].[DeletedById], [s0].[IsDeleted], [s0].[ModifiedById], [s0].[SellerApplicationId], [s0].[UpdatedAt], [s0].[UserId], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+INNER JOIN [AspNetUsers] AS [a] ON [s0].[UserId] = [a].[Id]
+WHERE [s].[Name] = N'FashionBlack'
+2025-04-11 22:46:30.196 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__FashionBlack_Id_0='1adfdd5a-3e23-46c5-8a0d-a29a75c9cc19'], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]
+        WHERE [p].[ShopId] = @__FashionBlack_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-11 22:46:30.205 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedById], [s].[DeletedAt], [s].[DeletedById], [s].[IsDeleted], [s].[ModifiedById], [s].[Name], [s].[SellerId], [s].[ShopAddress], [s].[Status], [s].[TaxNumber], [s].[UpdatedAt], [s0].[Id], [s0].[CreatedAt], [s0].[CreatedById], [s0].[DeletedAt], [s0].[DeletedById], [s0].[IsDeleted], [s0].[ModifiedById], [s0].[SellerApplicationId], [s0].[UpdatedAt], [s0].[UserId], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+INNER JOIN [AspNetUsers] AS [a] ON [s0].[UserId] = [a].[Id]
+WHERE [s].[Name] = N'Book Store'
+2025-04-11 22:46:30.209 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__BookShop_Id_0='e5fd48ed-42ed-4453-b626-c4fc58777370'], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]
+        WHERE [p].[ShopId] = @__BookShop_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-11 22:46:30.596 +03:00 [INF] Now listening on: https://localhost:7104
+2025-04-11 22:46:30.596 +03:00 [INF] Now listening on: http://localhost:5194
+2025-04-11 22:46:30.621 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-11 22:46:30.622 +03:00 [INF] Hosting environment: Development
+2025-04-11 22:46:30.623 +03:00 [INF] Content root path: C:\Users\ASUS\source\repos\EZYSHOP\WebUI
+2025-04-11 22:46:37.958 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-04-11 22:46:38.096 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-04-11 22:46:38.108 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-04-11 22:46:40.226 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-11 22:46:41.226 +03:00 [INF] Executed ViewResult - view Index executed in 3005.1607ms.
+2025-04-11 22:46:41.231 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 3120.451ms
+2025-04-11 22:46:41.233 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-04-11 22:46:41.241 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 3294.0073ms
+2025-04-11 22:46:41.286 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-11 22:46:41.286 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-11 22:46:41.299 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 13.219ms
+2025-04-11 22:46:41.327 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 41.3472ms
+2025-04-11 22:46:41.401 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - null null
+2025-04-11 22:46:41.409 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - 404 0 null 8.0871ms
+2025-04-11 22:46:41.412 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/ShoppingCart/GetCartItemCount, Response status code: 404
+2025-04-11 22:46:41.458 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-04-11 22:46:41.461 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-04-11 22:46:41.462 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-04-11 22:46:41.471 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-11 22:46:41.476 +03:00 [INF] Executed ViewResult - view Index executed in 4.9873ms.
+2025-04-11 22:46:41.477 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 14.4306ms
+2025-04-11 22:46:41.478 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-04-11 22:46:41.479 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 21.5828ms
+2025-04-11 22:46:42.704 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Product/Index - null null
+2025-04-11 22:46:42.714 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-04-11 22:46:42.717 +03:00 [INF] Route matched with {action = "Index", controller = "Product", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:46:42.985 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-11 22:46:43.000 +03:00 [INF] Executed ViewResult - view Index executed in 245.0593ms.
+2025-04-11 22:46:43.002 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Index (WebUI) in 283.0451ms
+2025-04-11 22:46:43.002 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-04-11 22:46:43.005 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Product/Index - 200 null text/html; charset=utf-8 301.2879ms
+2025-04-11 22:46:43.028 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/filter.js - null null
+2025-04-11 22:46:43.028 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-11 22:46:43.028 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-11 22:46:43.034 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 6.6112ms
+2025-04-11 22:46:43.049 +03:00 [INF] The file /js/filter.js was not modified
+2025-04-11 22:46:43.054 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/filter.js - 304 null text/javascript 26.695ms
+2025-04-11 22:46:43.060 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 32.3477ms
+2025-04-11 22:46:43.074 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Product/Index - null null
+2025-04-11 22:46:43.074 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - null null
+2025-04-11 22:46:43.075 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/product/getallcategories - null null
+2025-04-11 22:46:43.075 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=&color=&minPrice=&maxPrice=&page=1 - null null
+2025-04-11 22:46:43.080 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-04-11 22:46:43.081 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - 404 0 null 7.3494ms
+2025-04-11 22:46:43.083 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.GetAllCategories (WebUI)'
+2025-04-11 22:46:43.085 +03:00 [INF] Route matched with {action = "Index", controller = "Product", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:46:43.087 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/ShoppingCart/GetCartItemCount, Response status code: 404
+2025-04-11 22:46:43.090 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:46:43.092 +03:00 [INF] Route matched with {action = "GetAllCategories", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCategories() on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:46:43.102 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-11 22:46:43.106 +03:00 [INF] Executed ViewResult - view Index executed in 3.9562ms.
+2025-04-11 22:46:43.107 +03:00 [INF] Route matched with {action = "GetFilteredProducts", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFilteredProducts(System.String, System.String, System.String, System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal], Int32) on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:46:43.108 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Index (WebUI) in 18.6433ms
+2025-04-11 22:46:43.110 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-04-11 22:46:43.111 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Product/Index - 200 null text/html; charset=utf-8 37.246ms
+2025-04-11 22:46:43.130 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-11 22:46:43.174 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType7`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-11 22:46:43.193 +03:00 [INF] Executed action WebUI.Controllers.ProductController.GetAllCategories (WebUI) in 99.4461ms
+2025-04-11 22:46:43.194 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.GetAllCategories (WebUI)'
+2025-04-11 22:46:43.198 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+2025-04-11 22:46:43.199 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/product/getallcategories - 200 null application/json; charset=utf-8 123.8412ms
+2025-04-11 22:46:43.207 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-04-11 22:46:43.208 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-04-11 22:46:43.227 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='0', @__p_1='9'], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[Color], [t].[CreatedAt], [t].[CreatedById], [t].[DeletedAt], [t].[DeletedById], [t].[ImageUrl], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedById], [t].[Name], [t].[Price], [t].[ShopId], [t].[Stock], [t].[UpdatedAt], [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM (
+    SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[CreatedAt], [p].[CreatedById], [p].[DeletedAt], [p].[DeletedById], [p].[ImageUrl], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedById], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [p].[UpdatedAt]
+    FROM [Products] AS [p]
+    WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+2025-04-11 22:46:43.262 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType6`5[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Product.ProductCustomerViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-11 22:46:43.273 +03:00 [INF] Executed action WebUI.Controllers.ProductController.GetFilteredProducts (WebUI) in 163.9827ms
+2025-04-11 22:46:43.274 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:46:43.275 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=&color=&minPrice=&maxPrice=&page=1 - 200 null application/json; charset=utf-8 199.9371ms
+2025-04-11 22:46:48.347 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=Electronics&color=&minPrice=&maxPrice=&page=1 - null null
+2025-04-11 22:46:48.350 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:46:48.351 +03:00 [INF] Route matched with {action = "GetFilteredProducts", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFilteredProducts(System.String, System.String, System.String, System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal], Int32) on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:46:48.364 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__category_0='Electronics' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [c].[Name] = @__category_0 AND [p].[IsDeleted] = CAST(0 AS bit)
+2025-04-11 22:46:48.367 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-04-11 22:46:48.367 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-04-11 22:46:48.375 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__category_0='Electronics' (Size = 4000), @__p_1='0', @__p_2='9'], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[CreatedAt], [p].[CreatedById], [p].[DeletedAt], [p].[DeletedById], [p].[ImageUrl], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedById], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [p].[UpdatedAt], [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [c].[Name] = @__category_0 AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-04-11 22:46:48.379 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType6`5[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Product.ProductCustomerViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-11 22:46:48.379 +03:00 [INF] Executed action WebUI.Controllers.ProductController.GetFilteredProducts (WebUI) in 27.5044ms
+2025-04-11 22:46:48.380 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:46:48.381 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=Electronics&color=&minPrice=&maxPrice=&page=1 - 200 null application/json; charset=utf-8 34.5408ms
+2025-04-11 22:46:59.324 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=Fashion&color=&minPrice=&maxPrice=&page=1 - null null
+2025-04-11 22:46:59.327 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:46:59.327 +03:00 [INF] Route matched with {action = "GetFilteredProducts", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFilteredProducts(System.String, System.String, System.String, System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal], Int32) on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:46:59.331 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__category_0='Fashion' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [c].[Name] = @__category_0 AND [p].[IsDeleted] = CAST(0 AS bit)
+2025-04-11 22:46:59.335 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__category_0='Fashion' (Size = 4000), @__p_1='0', @__p_2='9'], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[CreatedAt], [p].[CreatedById], [p].[DeletedAt], [p].[DeletedById], [p].[ImageUrl], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedById], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [p].[UpdatedAt], [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [c].[Name] = @__category_0 AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-04-11 22:46:59.337 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType6`5[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Product.ProductCustomerViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-11 22:46:59.337 +03:00 [INF] Executed action WebUI.Controllers.ProductController.GetFilteredProducts (WebUI) in 9.0491ms
+2025-04-11 22:46:59.338 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:46:59.339 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=Fashion&color=&minPrice=&maxPrice=&page=1 - 200 null application/json; charset=utf-8 15.0334ms
+2025-04-11 22:47:03.907 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=Books&color=&minPrice=&maxPrice=&page=1 - null null
+2025-04-11 22:47:03.909 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:47:03.909 +03:00 [INF] Route matched with {action = "GetFilteredProducts", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFilteredProducts(System.String, System.String, System.String, System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal], Int32) on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:47:03.914 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__category_0='Books' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [c].[Name] = @__category_0 AND [p].[IsDeleted] = CAST(0 AS bit)
+2025-04-11 22:47:03.919 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__category_0='Books' (Size = 4000), @__p_1='0', @__p_2='9'], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[CreatedAt], [p].[CreatedById], [p].[DeletedAt], [p].[DeletedById], [p].[ImageUrl], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedById], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [p].[UpdatedAt], [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [c].[Name] = @__category_0 AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-04-11 22:47:03.921 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType6`5[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Product.ProductCustomerViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-11 22:47:03.922 +03:00 [INF] Executed action WebUI.Controllers.ProductController.GetFilteredProducts (WebUI) in 11.0209ms
+2025-04-11 22:47:03.922 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:47:03.923 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=Books&color=&minPrice=&maxPrice=&page=1 - 200 null application/json; charset=utf-8 17.0808ms
+2025-04-11 22:48:06.157 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=&color=&minPrice=&maxPrice=&page=1 - null null
+2025-04-11 22:48:06.160 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:48:06.160 +03:00 [INF] Route matched with {action = "GetFilteredProducts", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFilteredProducts(System.String, System.String, System.String, System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal], Int32) on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:48:06.165 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+2025-04-11 22:48:06.170 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='0', @__p_1='9'], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[Color], [t].[CreatedAt], [t].[CreatedById], [t].[DeletedAt], [t].[DeletedById], [t].[ImageUrl], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedById], [t].[Name], [t].[Price], [t].[ShopId], [t].[Stock], [t].[UpdatedAt], [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM (
+    SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[CreatedAt], [p].[CreatedById], [p].[DeletedAt], [p].[DeletedById], [p].[ImageUrl], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedById], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [p].[UpdatedAt]
+    FROM [Products] AS [p]
+    WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+2025-04-11 22:48:06.172 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType6`5[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Product.ProductCustomerViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-11 22:48:06.172 +03:00 [INF] Executed action WebUI.Controllers.ProductController.GetFilteredProducts (WebUI) in 10.9808ms
+2025-04-11 22:48:06.173 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:48:06.174 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=&color=&minPrice=&maxPrice=&page=1 - 200 null application/json; charset=utf-8 17.2828ms
+2025-04-11 22:48:11.881 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Account/Login - null null
+2025-04-11 22:48:11.892 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-11 22:48:11.894 +03:00 [INF] Route matched with {action = "Login", controller = "Account", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String, System.String) on controller WebUI.Controllers.AccountController (WebUI).
+2025-04-11 22:48:12.274 +03:00 [INF] Executing ViewResult, running view Login.
+2025-04-11 22:48:12.539 +03:00 [INF] Executed ViewResult - view Login executed in 641.7624ms.
+2025-04-11 22:48:12.546 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 650.4693ms
+2025-04-11 22:48:12.547 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-11 22:48:12.548 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Account/Login - 200 null text/html; charset=utf-8 666.8623ms
+2025-04-11 22:48:12.579 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-11 22:48:12.582 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 3.7838ms
+2025-04-11 22:48:12.590 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-11 22:48:12.607 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.7351ms
+2025-04-11 22:48:12.655 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Account/Login - null null
+2025-04-11 22:48:12.659 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - null null
+2025-04-11 22:48:12.659 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-11 22:48:12.661 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - 404 0 null 2.373ms
+2025-04-11 22:48:12.661 +03:00 [INF] Route matched with {action = "Login", controller = "Account", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String, System.String) on controller WebUI.Controllers.AccountController (WebUI).
+2025-04-11 22:48:12.663 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/ShoppingCart/GetCartItemCount, Response status code: 404
+2025-04-11 22:48:12.665 +03:00 [INF] Executing ViewResult, running view Login.
+2025-04-11 22:48:12.672 +03:00 [INF] Executed ViewResult - view Login executed in 6.5179ms.
+2025-04-11 22:48:12.673 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 9.8605ms
+2025-04-11 22:48:12.674 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-11 22:48:12.675 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Account/Login - 200 null text/html; charset=utf-8 19.9448ms
+2025-04-11 22:48:18.737 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/Account/Login - application/x-www-form-urlencoded 256
+2025-04-11 22:48:18.741 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-11 22:48:18.748 +03:00 [INF] Route matched with {action = "Login", controller = "Account", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Models.ViewModels.User.LoginViewModel) on controller WebUI.Controllers.AccountController (WebUI).
+2025-04-11 22:48:18.773 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='DERYA.KARAMAN.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-11 22:48:18.839 +03:00 [INF] Executing ViewResult, running view Login.
+2025-04-11 22:48:18.845 +03:00 [INF] Executed ViewResult - view Login executed in 5.5837ms.
+2025-04-11 22:48:18.851 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 102.822ms
+2025-04-11 22:48:18.852 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-11 22:48:18.853 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/Account/Login - 200 null text/html; charset=utf-8 116.1465ms
+2025-04-11 22:48:18.875 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-11 22:48:18.876 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-11 22:48:18.884 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 7.9615ms
+2025-04-11 22:48:18.889 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 14.4751ms
+2025-04-11 22:48:18.901 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Account/Login - null null
+2025-04-11 22:48:18.901 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - null null
+2025-04-11 22:48:18.903 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-11 22:48:18.905 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - 404 0 null 3.6566ms
+2025-04-11 22:48:18.905 +03:00 [INF] Route matched with {action = "Login", controller = "Account", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String, System.String) on controller WebUI.Controllers.AccountController (WebUI).
+2025-04-11 22:48:18.907 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/ShoppingCart/GetCartItemCount, Response status code: 404
+2025-04-11 22:48:18.908 +03:00 [INF] Executing ViewResult, running view Login.
+2025-04-11 22:48:18.912 +03:00 [INF] Executed ViewResult - view Login executed in 3.8954ms.
+2025-04-11 22:48:18.914 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 6.666ms
+2025-04-11 22:48:18.916 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-11 22:48:18.916 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Account/Login - 200 null text/html; charset=utf-8 15.6862ms
+2025-04-11 22:48:27.062 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/Account/Login - application/x-www-form-urlencoded 261
+2025-04-11 22:48:27.067 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-11 22:48:27.068 +03:00 [INF] Route matched with {action = "Login", controller = "Account", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Models.ViewModels.User.LoginViewModel) on controller WebUI.Controllers.AccountController (WebUI).
+2025-04-11 22:48:27.075 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='DERYA.KARAMAN.EZYSHOP@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-11 22:48:27.168 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='17c37149-9d4f-4bfb-47ed-08dd7910ed1d'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-04-11 22:48:27.190 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='17c37149-9d4f-4bfb-47ed-08dd7910ed1d'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-11 22:48:27.195 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='CUSTOMER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-11 22:48:27.202 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='3ffb4c22-9f6b-46f0-feda-08dd7910ecfb'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-04-11 22:48:27.210 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-04-11 22:48:27.213 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='17c37149-9d4f-4bfb-47ed-08dd7910ed1d'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-11 22:48:27.215 +03:00 [INF] Executing RedirectResult, redirecting to /.
+2025-04-11 22:48:27.216 +03:00 [INF] Executed action WebUI.Controllers.AccountController.Login (WebUI) in 147.1566ms
+2025-04-11 22:48:27.217 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AccountController.Login (WebUI)'
+2025-04-11 22:48:27.218 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/Account/Login - 302 0 null 155.6544ms
+2025-04-11 22:48:27.222 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-04-11 22:48:27.231 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-04-11 22:48:27.232 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-04-11 22:48:27.244 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='17c37149-9d4f-4bfb-47ed-08dd7910ed1d' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-11 22:48:27.247 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='17c37149-9d4f-4bfb-47ed-08dd7910ed1d'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-11 22:48:27.248 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-11 22:48:27.254 +03:00 [INF] Executed ViewResult - view Index executed in 5.9361ms.
+2025-04-11 22:48:27.255 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 22.7174ms
+2025-04-11 22:48:27.256 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-04-11 22:48:27.257 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 35.2823ms
+2025-04-11 22:48:27.284 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-11 22:48:27.285 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-11 22:48:27.288 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 4.7093ms
+2025-04-11 22:48:27.302 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 16.9728ms
+2025-04-11 22:48:27.330 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - null null
+2025-04-11 22:48:27.330 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-04-11 22:48:27.334 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - 404 0 null 5.241ms
+2025-04-11 22:48:27.337 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-04-11 22:48:27.338 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/ShoppingCart/GetCartItemCount, Response status code: 404
+2025-04-11 22:48:27.338 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-04-11 22:48:27.345 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='17c37149-9d4f-4bfb-47ed-08dd7910ed1d' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-11 22:48:27.348 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='17c37149-9d4f-4bfb-47ed-08dd7910ed1d'], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-11 22:48:27.351 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-11 22:48:27.354 +03:00 [INF] Executed ViewResult - view Index executed in 2.9547ms.
+2025-04-11 22:48:27.355 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 15.046ms
+2025-04-11 22:48:27.357 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-04-11 22:48:27.358 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 27.9485ms
+2025-04-11 22:48:29.585 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Product/Index - null null
+2025-04-11 22:48:29.590 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-04-11 22:48:29.590 +03:00 [INF] Route matched with {action = "Index", controller = "Product", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:48:29.592 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-11 22:48:29.595 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='17c37149-9d4f-4bfb-47ed-08dd7910ed1d' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-11 22:48:29.601 +03:00 [INF] Executed ViewResult - view Index executed in 8.7827ms.
+2025-04-11 22:48:29.602 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Index (WebUI) in 10.4072ms
+2025-04-11 22:48:29.603 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-04-11 22:48:29.604 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Product/Index - 200 null text/html; charset=utf-8 19.4521ms
+2025-04-11 22:48:29.629 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/filter.js - null null
+2025-04-11 22:48:29.632 +03:00 [INF] The file /js/filter.js was not modified
+2025-04-11 22:48:29.633 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/filter.js - 304 null text/javascript 3.7573ms
+2025-04-11 22:48:29.634 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-11 22:48:29.634 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-04-11 22:48:29.639 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 5.3829ms
+2025-04-11 22:48:29.654 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 19.5781ms
+2025-04-11 22:48:29.678 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - null null
+2025-04-11 22:48:29.678 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=&color=&minPrice=&maxPrice=&page=1 - null null
+2025-04-11 22:48:29.677 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/product/getallcategories - null null
+2025-04-11 22:48:29.678 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Product/Index - null null
+2025-04-11 22:48:29.687 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ShoppingCart/GetCartItemCount - 404 0 null 10.4433ms
+2025-04-11 22:48:29.690 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:48:29.691 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.GetAllCategories (WebUI)'
+2025-04-11 22:48:29.692 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-04-11 22:48:29.693 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/ShoppingCart/GetCartItemCount, Response status code: 404
+2025-04-11 22:48:29.694 +03:00 [INF] Route matched with {action = "GetFilteredProducts", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFilteredProducts(System.String, System.String, System.String, System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal], Int32) on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:48:29.694 +03:00 [INF] Route matched with {action = "GetAllCategories", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCategories() on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:48:29.695 +03:00 [INF] Route matched with {action = "Index", controller = "Product", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:48:29.703 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+2025-04-11 22:48:29.703 +03:00 [INF] Executing ViewResult, running view Index.
+2025-04-11 22:48:29.714 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='0', @__p_1='9'], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[Color], [t].[CreatedAt], [t].[CreatedById], [t].[DeletedAt], [t].[DeletedById], [t].[ImageUrl], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedById], [t].[Name], [t].[Price], [t].[ShopId], [t].[Stock], [t].[UpdatedAt], [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM (
+    SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[CreatedAt], [p].[CreatedById], [p].[DeletedAt], [p].[DeletedById], [p].[ImageUrl], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedById], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [p].[UpdatedAt]
+    FROM [Products] AS [p]
+    WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+2025-04-11 22:48:29.718 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType6`5[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Product.ProductCustomerViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-11 22:48:29.719 +03:00 [INF] Executed action WebUI.Controllers.ProductController.GetFilteredProducts (WebUI) in 21.629ms
+2025-04-11 22:48:29.719 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-04-11 22:48:29.720 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:48:29.724 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='17c37149-9d4f-4bfb-47ed-08dd7910ed1d' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-04-11 22:48:29.724 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType7`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-11 22:48:29.724 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=&color=&minPrice=&maxPrice=&page=1 - 200 null application/json; charset=utf-8 46.362ms
+2025-04-11 22:48:29.727 +03:00 [INF] Executed action WebUI.Controllers.ProductController.GetAllCategories (WebUI) in 28.1971ms
+2025-04-11 22:48:29.728 +03:00 [INF] Executed ViewResult - view Index executed in 24.4021ms.
+2025-04-11 22:48:29.729 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.GetAllCategories (WebUI)'
+2025-04-11 22:48:29.730 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Index (WebUI) in 30.0291ms
+2025-04-11 22:48:29.731 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/product/getallcategories - 200 null application/json; charset=utf-8 54.2016ms
+2025-04-11 22:48:29.732 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-04-11 22:48:29.735 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Product/Index - 200 null text/html; charset=utf-8 57.5933ms
+2025-04-11 22:48:38.564 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=Electronics&color=&minPrice=&maxPrice=&page=1 - null null
+2025-04-11 22:48:38.566 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:48:38.567 +03:00 [INF] Route matched with {action = "GetFilteredProducts", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFilteredProducts(System.String, System.String, System.String, System.Nullable`1[System.Decimal], System.Nullable`1[System.Decimal], Int32) on controller WebUI.Controllers.ProductController (WebUI).
+2025-04-11 22:48:38.572 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__category_0='Electronics' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [c].[Name] = @__category_0 AND [p].[IsDeleted] = CAST(0 AS bit)
+2025-04-11 22:48:38.577 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__category_0='Electronics' (Size = 4000), @__p_1='0', @__p_2='9'], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[CreatedAt], [p].[CreatedById], [p].[DeletedAt], [p].[DeletedById], [p].[ImageUrl], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedById], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [p].[UpdatedAt], [c].[Id], [c].[CreatedAt], [c].[CreatedById], [c].[DeletedAt], [c].[DeletedById], [c].[ImageUrl], [c].[IsDeleted], [c].[ModifiedById], [c].[Name], [c].[UpdatedAt]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit) AND [c].[Name] = @__category_0 AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-04-11 22:48:38.579 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType6`5[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Product.ProductCustomerViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-11 22:48:38.580 +03:00 [INF] Executed action WebUI.Controllers.ProductController.GetFilteredProducts (WebUI) in 12.6303ms
+2025-04-11 22:48:38.581 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.GetFilteredProducts (WebUI)'
+2025-04-11 22:48:38.582 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/product/getfilteredproducts?name=&category=Electronics&color=&minPrice=&maxPrice=&page=1 - 200 null application/json; charset=utf-8 18.5063ms

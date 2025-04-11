@@ -27,7 +27,7 @@ public class ProductController : BaseController
         _productService = productService;
         _categoryService = categoryService;
     }
-
+    #region List
     [HttpGet]
     public IActionResult Index()
     { return View(); }
@@ -43,7 +43,7 @@ public class ProductController : BaseController
 
         if (!result.Success)
             return Json(new { success = false, message = result.Message });
- 
+
         return Json(new
         {
             success = true,
@@ -54,7 +54,7 @@ public class ProductController : BaseController
         });
     }
 
-
+    #endregion
 
     #region List All Categories For Product Filter
     [HttpGet]
@@ -70,7 +70,19 @@ public class ProductController : BaseController
 
     #endregion
 
+    #region Details
+    [HttpGet]
+    public async Task<IActionResult> Details(Guid productId)
+    {
+        var result = await _productService.GetProductWithDetailsByIdAsync(productId);
 
+        if (!result.Success || result.Data == null)
+            return RedirectToAction("Index", new { error = result.Message });
+
+        return View(result.Data);  
+    }
+
+    #endregion
 
 }
 
