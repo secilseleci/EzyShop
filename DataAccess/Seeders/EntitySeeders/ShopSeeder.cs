@@ -33,8 +33,25 @@ public static class ShopSeeder
             dbContext.Shops.Add(new Shop
             {
                 SellerId = seller2.Id,
-                Name = "Hanım Moda",
+                Name = "FashionBlack",
                 ShopAddress = "Ankara, Kızılay Cd. No:12",
+                TaxNumber = "TR987654321",
+                Status = Shop.ShopStatus.Approved,
+                CreatedAt = DateTime.UtcNow
+            });
+        }
+
+        var seller3 = await dbContext.Sellers
+     .Include(s => s.User)
+     .FirstOrDefaultAsync(s => s.User.Email == "selecisecil072@gmail.com");
+
+        if (seller3 != null && !await dbContext.Shops.AnyAsync(sh => sh.SellerId == seller3.Id))
+        {
+            dbContext.Shops.Add(new Shop
+            {
+                SellerId = seller3.Id,
+                Name = "Book Store",
+                ShopAddress = "İzmir, Konak Berkemal Cd. No:2",
                 TaxNumber = "TR987654321",
                 Status = Shop.ShopStatus.Approved,
                 CreatedAt = DateTime.UtcNow

@@ -112,9 +112,9 @@ public static class AppUserSeeder
         {
             var seller = new AppUser
             {
-                Name = "Seçil",
-                Surname = "Hanım",
-                UserName = "Seçil Hanım",
+                Name = "Fatma",
+                Surname = "Kara",
+                UserName = "Fatma Kara",
                 Email = seller2Email,
                 EmailConfirmed = true,
                 PhoneNumber = "05555552506",
@@ -128,7 +128,27 @@ public static class AppUserSeeder
             }
         }
 
+        // ✅ Seller3
+        var seller3Email = "selecisecil072@gmail.com";
+        if (await userManager.FindByEmailAsync(seller3Email) == null)
+        {
+            var seller = new AppUser
+            {
+                Name = "Mete",
+                Surname = "Bakırcı",
+                UserName = "Mete Bakırcı",
+                Email = seller1Email,
+                EmailConfirmed = true,
+                PhoneNumber = "05534102555",
 
+            };
+            var resultSeller1 = await userManager.CreateAsync(seller, "Seller.123");
+
+            if (resultSeller1.Succeeded)
+            {
+                await userManager.AddToRoleAsync(seller, "Seller");
+            }
+        }
     }
 }
 

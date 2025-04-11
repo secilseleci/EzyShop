@@ -44,6 +44,26 @@ public static class SellerSeeder
             }
         }
 
+
+        var user3 = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == "selecisecil072@gmail.com");
+        var application3 = await dbContext.SellerApplications.FirstOrDefaultAsync(a => a.Email == "selecisecil072@gmail.com");
+
+        if (user3 != null && application3 != null)
+        {
+            var existingSeller3 = await dbContext.Sellers.FirstOrDefaultAsync(s => s.UserId == user3.Id);
+
+            if (existingSeller3 == null)
+            {
+                dbContext.Sellers.Add(new Seller
+                {
+                    UserId = user3.Id,
+                    SellerApplicationId = application3.Id,
+                    CreatedAt = DateTime.UtcNow
+                });
+            }
+        }
+        
+        
         await dbContext.SaveChangesAsync();
     }
 

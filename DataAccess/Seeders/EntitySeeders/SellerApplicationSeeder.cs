@@ -16,9 +16,9 @@ public static class SellerApplicationSeeder
                 Email = email1,
                 Name = "Seçil",
                 Surname="Seleci",
-                ShopName = "Seleci home",
+                ShopName = "Seleci Home",
                 ContactBusinessNumber = "212-999-2222",
-                TaxNumber = "1234",
+                TaxNumber = "111",
                 CreatedAt = DateTime.UtcNow,
                 Status = ApplicationStatus.Approved,
                 ShopAddress = "İstanbul/Sarıyer"
@@ -35,17 +35,36 @@ public static class SellerApplicationSeeder
 
             {
                 Email = email2,
-                Name = "Seçil",
-                Surname ="Hanım",
-                ShopName = "Hanım Moda",
+                Name = "Fatma",
+                Surname ="Kara",
+                ShopName = "FashionBlack",
                 ContactBusinessNumber = "212-999-3333",
-                TaxNumber = "1236",
+                TaxNumber = "222",
                 CreatedAt = DateTime.UtcNow,
                 Status = ApplicationStatus.Approved,
                 ShopAddress = "Ankara/Çankaya"
             });
         }
 
+
+        var email3 ="selecisecil072@gmail.com";
+
+        if (!await dbContext.SellerApplications.AnyAsync(sa => sa.Email == email3))
+        {
+            dbContext.SellerApplications.Add(new SellerApplication
+
+            {
+                Email = email2,
+                Name = "Mete",
+                Surname = "Bakırcı",
+                ShopName = "Book Store",
+                ContactBusinessNumber = "212-999-3333",
+                TaxNumber = "333",
+                CreatedAt = DateTime.UtcNow,
+                Status = ApplicationStatus.Approved,
+                ShopAddress = "İzmir/Konak"
+            });
+        }
         await dbContext.SaveChangesAsync();
 
     }
