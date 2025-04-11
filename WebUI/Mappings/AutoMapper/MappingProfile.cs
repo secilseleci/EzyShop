@@ -42,9 +42,8 @@ public class MappingProfile : Profile
 
 
         CreateMap<Product, ProductCustomerViewModel>();
-        CreateMap<Product, FilteredProductCustomerViewModel>()
-        .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
- 
+        CreateMap<Product, ProductFilterViewModel>();
+
         #endregion
 
         #region SellerApplication  

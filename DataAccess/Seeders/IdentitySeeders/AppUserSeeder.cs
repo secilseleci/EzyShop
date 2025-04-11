@@ -137,7 +137,7 @@ public static class AppUserSeeder
                 Name = "Mete",
                 Surname = "Bakırcı",
                 UserName = "Mete Bakırcı",
-                Email = seller1Email,
+                Email = seller3Email,
                 EmailConfirmed = true,
                 PhoneNumber = "05534102555",
 

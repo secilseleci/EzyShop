@@ -96,6 +96,7 @@ public class ProductService : BaseService, IProductService
 
 
     #endregion
+    
     #region Toogle 
 
     public async Task<IResult> ToggleProductStatusAsync(Guid productId,Guid userId)
@@ -119,7 +120,8 @@ public class ProductService : BaseService, IProductService
             : new ErrorResult(Messages.UpdateProductError);
     }
     #endregion
-    #region Customer Read
+
+    #region Seller Read
     public async Task<IDataResult<Product>> GetProductByIdAsync(Guid productId)
     {
         var product = await _productRepo.GetByIdAsync(productId);
@@ -129,74 +131,6 @@ public class ProductService : BaseService, IProductService
 
         return new SuccessDataResult<Product>(product);
     }
-    public async Task<IDataResult<ProductCustomerViewModel>> GetProductWithIncludesByIdAsync(Guid productId)
-    {
-        var product = await _productRepo.GetProductWithIncludesAsync(productId);
-
-        if (product is null)
-            return new ErrorDataResult<ProductCustomerViewModel>(Messages.ProductNotFound);
-
-        var viewModel = Mapper.Map<ProductCustomerViewModel>(product);
-
-        return new SuccessDataResult<ProductCustomerViewModel>(viewModel);
-    }
-
-    public async Task<IDataResult<PaginatedList<ProductCustomerViewModel>>> GetPaginatedProductsForCustomerAsync(int page, int pageSize)
-    {
-        var pagedProducts = await _productRepo.GetPaginatedForCustomerAsync(
-            p => p.IsActive && p.Stock > 0,
-            page,
-            pageSize);
-
-
-        var viewModels = Mapper.Map<IEnumerable<ProductCustomerViewModel>>(pagedProducts.Items);
-
-        var result = new PaginatedList<ProductCustomerViewModel>(
-            viewModels,
-            pagedProducts.TotalItems,
-            pagedProducts.Page,
-            pagedProducts.PageSize);
-
-        return result.Items.Any()
-            ? new SuccessDataResult<PaginatedList<ProductCustomerViewModel>>(result)
-            : new ErrorDataResult<PaginatedList<ProductCustomerViewModel>>(Messages.ProductNotFound);
-    }
-
-    public async Task<IDataResult<PaginatedList<FilteredProductCustomerViewModel>>> GetFilteredPaginatedProductsForCustomerAsync(
-    string? name,
-    string? category,
-    string? color,
-    decimal? minPrice,
-    decimal? maxPrice,
-    int page,
-    int pageSize)
-    {
-        var pagedProducts = await _productRepo.GetFilteredPaginatedProductsAsync(
-            name,
-            category,
-            color,
-            minPrice,
-            maxPrice,
-            page,
-            pageSize);
-
-        var viewModels = Mapper.Map<IEnumerable<FilteredProductCustomerViewModel>>(pagedProducts.Items);
-
-        var result = new PaginatedList<FilteredProductCustomerViewModel>(
-            viewModels,
-            pagedProducts.TotalItems,
-            pagedProducts.Page,
-            pagedProducts.PageSize);
-
-        return result.Items.Any()
-            ? new SuccessDataResult<PaginatedList<FilteredProductCustomerViewModel>>(result)
-            : new ErrorDataResult<PaginatedList<FilteredProductCustomerViewModel>>(Messages.ProductNotFound);
-    }
-
-    #endregion
-
-    #region Seller Read
-
     public async Task<IDataResult<PaginatedList<ProductSellerViewModel>>> GetPaginatedProductsForSellerAsync(Guid userId, int page, int pageSize, string? searchTerm = null)
     {
         Expression<Func<Product, bool>> predicate;
@@ -242,6 +176,53 @@ public class ProductService : BaseService, IProductService
     }
     #endregion
 
+
+    #region Customer Read
+
+    public async Task<IDataResult<ProductCustomerViewModel>> GetProductWithIncludesByIdAsync(Guid productId)
+    {
+        var product = await _productRepo.GetProductWithIncludesAsync(productId);
+
+        if (product is null)
+            return new ErrorDataResult<ProductCustomerViewModel>(Messages.ProductNotFound);
+
+        var viewModel = Mapper.Map<ProductCustomerViewModel>(product);
+
+        return new SuccessDataResult<ProductCustomerViewModel>(viewModel);
+    }
+
+
+
+
+    #endregion
+
+    #region Customer Filtered List
+    public async Task<IDataResult<PaginatedList<ProductCustomerViewModel>>> GetFilteredProductsAsync(
+     int page, int pageSize, string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice)
+    {
+        Expression<Func<Product, bool>> predicate = p =>
+            p.IsActive &&
+            !p.IsDeleted &&
+            (string.IsNullOrEmpty(name) || p.Name.Contains(name)) &&
+            (string.IsNullOrEmpty(category) || p.Category.Name == category) &&
+            (string.IsNullOrEmpty(color) || p.Color == color) &&
+            (!minPrice.HasValue || p.Price >= minPrice.Value) &&
+            (!maxPrice.HasValue || p.Price <= maxPrice.Value);
+
+        var paginated = await _productRepo.GetPaginatedAsync(
+            predicate,
+            page,
+            pageSize,
+            q => q.Include(p => p.Category));
+
+        var vmList = Mapper.Map<IEnumerable<ProductCustomerViewModel>>(paginated.Items);
+
+        var result = new PaginatedList<ProductCustomerViewModel>(vmList, paginated.TotalItems, paginated.Page, paginated.PageSize);
+
+        return new SuccessDataResult<PaginatedList<ProductCustomerViewModel>>(result);
+    }
+
+    #endregion
 
     //    GetDeletedProductsForSellerAsync() → çöp kutusu
 

@@ -1,13 +1,16 @@
 ﻿$(document).ready(function () {
+    applyFilter();
+
     $("#filterButton").on("click", function () {
         applyFilter();
     });
+
     $("#resetButton").on("click", function () {
         resetFilters();
     });
 });
 
-function applyFilter() {
+function applyFilter(page = 1) {
     let name = $("#name").val();
     let category = $("#category").find(":selected").val();
     let color = $("#color").val();
@@ -18,44 +21,52 @@ function applyFilter() {
     $.ajax({
         url: "/product/getfilteredproducts",
         type: "GET",
-        data: { name, category, color, minPrice, maxPrice },
+        data: { name, category, color, minPrice, maxPrice, page },
         success: function (response) {
-            console.log("✅ Gelen Ürünler:", response.data);
-
+            
             if (response.success && response.data.length > 0) {
-                reloadProductCard(response.data, name, category, color, minPrice, maxPrice);
+                reloadProductCard(response.data);
+                renderPagination(response.totalPages, response.currentPage);
             } else {
                 showNoProductsMessage();
+                renderPagination(0, 0);
             }
         },
         error: function (xhr) {
-            console.error("❌ AJAX ERROR:", xhr.responseText);
-            showNoProductsMessage();
+             showNoProductsMessage();
         }
     });
 }
 
-function reloadProductCard(products, name, category, color, minPrice, maxPrice) {
+function reloadProductCard(products) {
+    const container = $("#productCardContainer");
+    container.empty();
 
-    $.ajax({
-        url: "/home/renderproductcard",
-        type: "GET",
-        data: { name, category, color, minPrice, maxPrice },
-        success: function (data) {
-            let container = $("#productCardContainer");
+    if (products.length === 0) {
+        container.html('<div class="alert alert-warning">No products found matching your criteria.</div>');
+        return;
+    }
 
-            if (container.length === 0) {
-                return;
-            }
-
-            container.empty();
-            container.html(data);
-        },
-        error: function (xhr, status, error) {
-            console.error("❌ AJAX ERROR:", xhr.responseText);
-        }
+    let html = '<div class="row">';
+    products.forEach(p => {
+        html += `
+            <div class="col-md-4 mb-4">
+                <div class="card border rounded shadow-sm">
+                    <img src="${p.imageUrl}" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title text-center">${p.name}</h5>
+                        <p class="text-center text-muted">${p.categoryName}</p>
+                        <p class="text-center fw-bold">${p.price} ₺</p>
+                        <a href="/Product/Details?productId=${p.id}" class="btn btn-outline-info form-control">Details</a>
+                    </div>
+                </div>
+            </div>`;
     });
+    html += '</div>';
+
+    container.html(html);
 }
+
 
 function showNoProductsMessage() {
     let container = $("#productCardContainer");
@@ -72,6 +83,31 @@ function showNoProductsMessage() {
         `);
     }
 }
+
+function renderPagination(totalPages, currentPage) {
+    const container = $("#productCardContainer");
+    const paginationContainerId = "paginationContainer";
+
+    // Varsa önce temizle
+    $(`#${paginationContainerId}`).remove();
+
+    if (totalPages <= 1) return;
+
+    let paginationHtml = `<div id="${paginationContainerId}" class="d-flex justify-content-center mt-4"><nav><ul class="pagination">`;
+
+    for (let i = 1; i <= totalPages; i++) {
+        let activeClass = i === currentPage ? "active" : "";
+        paginationHtml += `
+            <li class="page-item ${activeClass}">
+                <button class="page-link" onclick="applyFilter(${i})">${i}</button>
+            </li>`;
+    }
+
+    paginationHtml += `</ul></nav></div>`;
+
+    container.append(paginationHtml);
+}
+
 function resetFilters() {
     $("#name").val("");
     $("#category").prop('selectedIndex', 0);

@@ -10,6 +10,7 @@ public class ProductCustomerViewModel : IImageViewModel
     public string? Color { get; set; }
     public string? ImageUrl { get; set; }
 
- 
+    public string CategoryName { get; set; } = "Uncategorized";  
+
     public string FolderName { get; set; } = "product";
 }

@@ -54,7 +54,7 @@ public static class SellerApplicationSeeder
             dbContext.SellerApplications.Add(new SellerApplication
 
             {
-                Email = email2,
+                Email = email3,
                 Name = "Mete",
                 Surname = "Bakırcı",
                 ShopName = "Book Store",

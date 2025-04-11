@@ -1,83 +1,60 @@
-﻿ 
+﻿using AutoMapper;
+using Business.Services.Abstract;
+using Core.Security;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Models.Identity;
 
-//        #region Create
- //        [HttpGet]
-//        public async Task<IActionResult> Create()
-//        {
-//            var user = await GetCurrentUserAsync();
-//            if (user == null) return RedirectToAction("Login", "Account");
+namespace WebUI.Controllers;
+[Route("[controller]/[action]")]
 
-//            var shopResult = await _shopService.GetShopBySellerIdAsync(user.Id);
-//            if (!shopResult.Success || shopResult.Data == null)
-//            {
-//                TempData["ErrorMessage"] = "You don't have an active shop. Please contact admin.";
-//                return RedirectToAction(nameof(Index));
-//            }
+public class ProductController : BaseController
+{
+    private readonly IProductService _productService;
+    public ProductController(
+        ICurrentUserService currentUserService,
+        IProductService productService,
+        UserManager<AppUser> userManager,
+        RoleManager<AppRole> roleManager,
+        SignInManager<AppUser> signInManager,
+        IWebHostEnvironment webHostEnvironment,
+        IMapper mapper)
+         : base(currentUserService, userManager, roleManager, signInManager, webHostEnvironment, mapper)
+    {
+        _productService = productService;
+    }
 
-//            var model = new ProductCreateViewModel
-//            {
-//                ShopId = shopResult.Data.Id  
-//            };
+    [HttpGet]
+    public IActionResult Index()
+    { return View(); }
 
-//            return View(model);
-//        }
- //    
+    [HttpGet]
+    public async Task<IActionResult> GetFilteredProducts(
+     string? name, string? category, string? color,
+     decimal? minPrice, decimal? maxPrice, int page = 1)
+    {
+        int pageSize = 9;
+
+        var result = await _productService.GetFilteredProductsAsync(page, pageSize, name, category, color, minPrice, maxPrice);
+
+        if (!result.Success)
+            return Json(new { success = false, message = result.Message });
  
-//        #region API
-//        [HttpGet]
-//        public async Task<IActionResult> GetSellerProducts()
-//        {
-//            var user = await GetCurrentUserAsync();
-//            if (user == null) return Unauthorized();
-
-//            var shopResult = await _shopService.GetShopBySellerIdAsync(user.Id);
-//            if (!shopResult.Success || shopResult.Data == null)
-//            {
-//                return Json(new { data = new List<object>() });  
-//            }
-
-//            var products = await _productService.GetAllProductsWithCategoryAsync(p => p.ShopId == shopResult.Data.Id);
-//            if (products.Data == null || !products.Data.Any())
-//            {
-//                return Json(new { data = new List<object>() });
-//            }
-//            var sortedProducts = products.Data.OrderByDescending(p => p.CreatedDate).ToList(); // ✅ En yeni ürünler başta
-
-//            return Json(new { data = sortedProducts });
-//        }
+        return Json(new
+        {
+            success = true,
+            data = result.Data.Items,
+            totalItems = result.Data.TotalItems,
+            currentPage = result.Data.Page,
+            totalPages = result.Data.TotalPages
+        });
+    }
 
 
-//       
 
-//        [AllowAnonymous]
-//        [HttpGet]
-//        public async Task<IActionResult> GetFilteredProducts(string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice)
-//        {
-//            var result = await _productService.GetFilteredProductsAsync(name, category, color, minPrice, maxPrice);
 
-//            if (!result.Success || result.Data == null || !result.Data.Any())
-//            {
-//                return NotFound(new { success = false, message = "No products found matching the filters." });
-//            }
 
-//            return Json(new { success = true, data = result.Data });
-//        }
-//        #endregion
 
-//        #region Product Details
-//        [Authorize(Roles = "Customer")]
-//        [HttpGet]
-//        public async Task<IActionResult> Details(Guid productId)
-//        {
-//            var result = await _productService.GetProductByIdWithCategoryAsync(productId);
-//            if (!result.Success || result.Data == null)
-//            {
-//                TempData["ErrorMessage"] = "Product not found.";
-//                return RedirectToAction("Shop", "Home");  
-//            }
 
-//            return View(result.Data); 
-//        }
-//        #endregion
-//    }
-//}
+}
+

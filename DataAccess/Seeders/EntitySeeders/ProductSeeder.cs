@@ -215,7 +215,7 @@ public static class ProductSeeder
                 CreatedAt = DateTime.UtcNow,
                 ProductImages = new List<ProductImage>
             {
-                new() { ImageUrl = "/images/product/blazer_1.jpg" }
+                new() { ImageUrl = "/images/product/blazer.jpg" }
             }
             });
 
@@ -227,11 +227,11 @@ public static class ProductSeeder
                 ShopId = FashionBlack.Id,
                 CategoryId = fashionCatId,
                 Color = "Kırmızı",
-                ImageUrl = "images/product/scarf.jpg",
+                ImageUrl = "/images/product/scarf.jpg",
                 CreatedAt = DateTime.UtcNow,
                 ProductImages = new List<ProductImage>
             {
-                new() { ImageUrl = "/images/product/scarf_1.jpg" }
+                new() { ImageUrl = "/images/product/scarf.jpg" }
             }
             });
 
@@ -275,7 +275,7 @@ public static class ProductSeeder
                 ShopId = BookShop.Id,
                 CategoryId = booksCatId,
                 Color = "Kırmızı",
-                ImageUrl = "images/product/2.jpg",
+                ImageUrl = "/images/product/2.jpg",
                 CreatedAt = DateTime.UtcNow,
                 ProductImages = new List<ProductImage>
             {

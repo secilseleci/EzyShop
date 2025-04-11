@@ -30,10 +30,7 @@ public class ShopController : BaseController
     {
         return View();
     }
-    public async Task<IActionResult> RenderProductCard(string? name, string? category, string? color, decimal? minPrice, decimal? maxPrice)
-    {
-        return ViewComponent("ProductCard", new { name, category, color, minPrice, maxPrice });
-    }
+    
     #endregion    
     
     //[HttpGet]
