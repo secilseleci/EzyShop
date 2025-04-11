@@ -142,6 +142,8 @@ public class CategoryController : BaseController
         return RedirectToAction(nameof(Index));
     }
     #endregion
+
+ 
 }
 
 

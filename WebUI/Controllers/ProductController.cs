@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
+using Business.Services.Concrete;
 using Core.Security;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,12 @@ namespace WebUI.Controllers;
 
 public class ProductController : BaseController
 {
+    private readonly ICategoryService _categoryService;
     private readonly IProductService _productService;
     public ProductController(
         ICurrentUserService currentUserService,
         IProductService productService,
+        ICategoryService categoryService,
         UserManager<AppUser> userManager,
         RoleManager<AppRole> roleManager,
         SignInManager<AppUser> signInManager,
@@ -22,6 +25,7 @@ public class ProductController : BaseController
          : base(currentUserService, userManager, roleManager, signInManager, webHostEnvironment, mapper)
     {
         _productService = productService;
+        _categoryService = categoryService;
     }
 
     [HttpGet]
@@ -52,7 +56,19 @@ public class ProductController : BaseController
 
 
 
+    #region List All Categories For Product Filter
+    [HttpGet]
+    public async Task<IActionResult> GetAllCategories()
+    {
+        var result = await _categoryService.GetAllCategoriesAsync();
 
+        if (!result.Success)
+            return Json(new { success = false, message = result.Message });
+
+        return Json(new { success = true, data = result.Data });
+    }
+
+    #endregion
 
 
 

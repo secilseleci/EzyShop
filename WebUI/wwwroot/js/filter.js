@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    loadCategories();
     applyFilter();
 
     $("#filterButton").on("click", function () {
@@ -66,8 +67,7 @@ function reloadProductCard(products) {
 
     container.html(html);
 }
-
-
+ 
 function showNoProductsMessage() {
     let container = $("#productCardContainer");
     container.empty();
@@ -116,4 +116,24 @@ function resetFilters() {
     $("#maxPrice").val("");
 
     applyFilter();
+}
+
+function loadCategories() {
+    $.ajax({
+        url: "/product/getallcategories",
+        type: "GET",
+        success: function (response) {
+            if (response.success && response.data.length > 0) {
+                const categoryDropdown = $("#category");
+                categoryDropdown.empty();
+                categoryDropdown.append(`<option value="">All Categories</option>`);
+                response.data.forEach(cat => {
+                    categoryDropdown.append(`<option value="${cat.name}">${cat.name}</option>`);
+                });
+            }
+        },
+        error: function (xhr) {
+            console.error("❌ Category Load Error:", xhr.status, xhr.statusText);
+        }
+    });
 }
