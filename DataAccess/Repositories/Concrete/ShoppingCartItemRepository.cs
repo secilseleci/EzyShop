@@ -111,15 +111,15 @@ namespace DataAccess.Repositories.Concrete
             return await _dataContext.SaveChangesAsync();
         }
         #endregion
-
+        #region Get Total Cartİtems
         public async Task<int> GetTotalCartItemsAsync(Guid cartId)
         {
             return await _dataContext.ShoppingCartItems
-         .Where(i => i.CartId == cartId)
-         .Select(i => (int?)i.Count)  
-         .SumAsync() ?? 0;  
+                .Where(item => item.CartId == cartId && !item.IsDeleted)
+                .SumAsync(item => item.Count);
         }
 
+        #endregion
 
     }
 }

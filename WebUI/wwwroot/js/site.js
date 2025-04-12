@@ -3,7 +3,24 @@
 
     if (priceInput) {
         priceInput.addEventListener("input", function () {
-            this.value = this.value.replace(",", "."); // Virgülü noktaya çevir
+            this.value = this.value.replace(",", ".");  
         });
     }
 });
+
+ 
+    $(document).ready(function () {
+        $.ajax({
+            url: "/ShoppingCart/GetCartItemCount",
+            type: "GET",
+            success: function (data) {
+                if (data.success) {
+                    $("#cartItemCount").text(data.count);
+                }
+            },
+            error: function () {
+                console.log("Cart count çekilemedi.");
+            }
+        });
+    });
+ 

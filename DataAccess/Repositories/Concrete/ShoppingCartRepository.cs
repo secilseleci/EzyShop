@@ -1,18 +1,16 @@
 ﻿using DataAccess.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
 using Models.Entities.Concrete;
- 
 
 namespace DataAccess.Repositories.Concrete;
 
 public class ShoppingCartRepository(ApplicationDbContext context) : BaseRepository<ShoppingCart>(context), IShoppingCartRepository
 {
-    public async Task<ShoppingCart?> GetCartByCustomerIdAsync(Guid customerId)
+    public async Task<ShoppingCart?> GetCartByUserIdAsync(Guid userId)
     {
         return await _dataContext.ShoppingCarts
-            .Include(c => c.CartItems)
-            .FirstOrDefaultAsync(c => c.CustomerId == customerId && !c.IsDeleted);
+                .Include(c => c.CartItems)
+                .Include(c => c.Customer)
+                .FirstOrDefaultAsync(c => c.Customer.UserId == userId && !c.IsDeleted);
     }
-
-
 }

@@ -1,17 +1,4 @@
-﻿function updateCartCount() {
-    $.ajax({
-        url: "/ShoppingCart/GetCartItemCount",
-        type: "GET",
-        success: function (response) {
-            if (response.success) {
-                $("#cartItemCount").text(response.count);
-            }
-        },
-        error: function () {
-            console.error("Cart item count update failed.");
-        }
-    });
-}
+﻿ 
 
 function addToCart(productId) {
     let count = parseInt($("#productCount").val());
