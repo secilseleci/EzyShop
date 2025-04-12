@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using Core.Security;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
+using System.Diagnostics;
+using WebUI.Models;
 
 namespace WebUI.Controllers;
 
@@ -19,7 +22,20 @@ public class HomeController : BaseController
    : base(currentUserService, userManager, roleManager, signInManager, webHostEnvironment, mapper)
     {
     }
+    [Route("Home/Error")]
+    public IActionResult Error()
+    {
+        var feature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+        var exception = feature?.Error;
 
+        var model = new ErrorViewModel
+        {
+            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+        };
+
+        return View(model);
+    }
+   
 
     #region Home Page
 

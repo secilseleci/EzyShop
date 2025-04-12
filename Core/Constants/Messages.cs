@@ -7,6 +7,8 @@
         public const string LoginInvalidCredentials = "Email or password is incorrect.";
         public const string LoginUserNotFound = "User not found.";
         public const string LogoutSuccess = "Logout successful.";
+        public const string LoginUnauthorized = "Please login to add items to cart.";
+
         #endregion
 
         #region Registration
@@ -32,7 +34,14 @@
         public const string DeleteProductSuccess = "Product successfully deleted";
         public const string DeleteProductError = "Error occurred while deleting the Product from Database";
 
-        public const string NoProductFilters = "No products found matching the filters.";
+        public const string NoProductFilters = "No products found matching the filters";
+
+        public const string ProductAddedSuccess = " Product added to cart";
+        public const string ProductAddedError = "Error occurred while adding the Product to Cart";
+
+
+        public const string InsufficientStock = "Product stock is insufficient";
+
         #endregion
 
         #region Category Messages
@@ -99,7 +108,9 @@
         public const string UserNotFound = "User not found";
         public const string CreateUserError = "Error occurred while creating user";
         public const string UserRoleError = "Error occurred while adding 'Seller' role to user";
-        public const string UnauthorizedAccess = "You do not have authorization to perform this action.\r\n";
+        public const string UnauthorizedAccess = "You do not have authorization to perform this action";
+        public const string UserNotAuthenticated = "User not authenticated ";
+
         #endregion
 
         #region Email

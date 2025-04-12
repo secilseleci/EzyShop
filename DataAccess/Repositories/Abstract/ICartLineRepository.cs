@@ -7,6 +7,6 @@ public interface ICartLineRepository : IBaseRepository<CartLine>
   
     Task<int> GetTotalCartLinesAsync(Guid cartId);
 
-
+    Task<CartLine?> GetLineByCartAndProductAsync(Guid cartId, Guid productId);
 
 }

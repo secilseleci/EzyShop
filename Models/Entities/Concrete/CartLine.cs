@@ -21,6 +21,5 @@ public class CartLine : BaseEntity
     [Range(1, 100, ErrorMessage = "Please enter a value between 1 and 100")]
     public int Count { get; set; } = 1;
 
-    [Required]
-    public decimal Price { get; set; }
+    
 }

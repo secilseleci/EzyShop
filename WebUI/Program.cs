@@ -2,6 +2,7 @@ using DataAccess.SeedDatabase;
 using Serilog;
 using System.Text.Json.Serialization;
 using WebUI.ExtensionMethods;
+using WebUI.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseMiddleware<GlobalExceptionMiddleware>();
+app.UseExceptionHandler("/Home/Error");  
+
 
 app.UseAuthentication();
 app.UseAuthorization();

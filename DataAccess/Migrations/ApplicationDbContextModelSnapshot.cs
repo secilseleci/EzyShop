@@ -193,9 +193,6 @@ namespace DataAccess.Migrations
                     b.Property<Guid?>("ModifiedById")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 

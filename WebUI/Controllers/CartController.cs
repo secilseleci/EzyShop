@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
+using Core.Constants;
 using Core.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -45,5 +46,18 @@ public class CartController : BaseController
     }
     #endregion
 
+    #region add to cart
+    [HttpPost]
+    public async Task<IActionResult> AddToCart(Guid productId)
+    {
+        if (!CurrentUserService.UserId.HasValue)
+            return Json(new { success = false, message = Messages.UserNotAuthenticated });
 
+        var result = await _cartLineService.CreateCartLineAsync(CurrentUserService.UserId.Value, productId);
+
+        return Json(new { success = result.Success, message = result.Message });
+    }
+
+
+    #endregion
 }

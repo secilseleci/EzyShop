@@ -18,6 +18,12 @@ namespace DataAccess.Repositories.Concrete
         }
 
         #endregion
-
+        #region Get Line By Cart and Product
+        public async Task<CartLine?> GetLineByCartAndProductAsync(Guid cartId, Guid productId)
+        {
+            return await _dataContext.CartLines
+                .FirstOrDefaultAsync(cl => cl.CartId == cartId && cl.ProductId == productId && !cl.IsDeleted);
+        }
+        #endregion
     }
 }

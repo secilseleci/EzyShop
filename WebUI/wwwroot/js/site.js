@@ -3,13 +3,13 @@
 
     if (priceInput) {
         priceInput.addEventListener("input", function () {
-            this.value = this.value.replace(",", ".");  
+            this.value = this.value.replace(",", ".");
         });
     }
 });
 
- 
-    $(document).ready(function () {
+$(document).ready(function () {
+    if (isCustomer === "true") {
         $.ajax({
             url: "/Cart/GetCartLineCount",
             type: "GET",
@@ -22,5 +22,5 @@
                 console.log("Cart count çekilemedi.");
             }
         });
-    });
- 
+    }
+});
