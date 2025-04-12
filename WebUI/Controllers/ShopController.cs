@@ -25,30 +25,9 @@ public class ShopController : BaseController
     {
         _shopService = shopService;
     }
-    #region Shop Page
-    public IActionResult Shop()
-    {
-        return View();
-    }
+  
     
-    #endregion    
     
-    //[HttpGet]
-    //public async Task<IActionResult> Index()
-    //{
-    //    var user = await GetCurrentUserAsync();
-    //    if (user == null) return RedirectToAction("Login", "Account");
-
-    //    var result = await _shopService.GetShopBySellerIdAsync(user.Id);
-
-    //    if (!result.Success || result.Data == null)
-    //    {
-    //        TempData["ErrorMessage"] = "No shop found. Please contact admin.";
-    //        return View(null);
-    //    }
-
-    //    return View(result.Data);
-    //}
 
   
    

@@ -25,7 +25,7 @@ namespace Models.Entities.Concrete
         public ICollection<ProductImage> ProductImages { get; set; } = [];
 
         [JsonIgnore]
-        public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; } = [];
+        public ICollection<CartLine>  CartLines { get; set; } = [];
         [JsonIgnore]
         public ICollection<OrderItem> OrderItems { get; set; } = [];
 

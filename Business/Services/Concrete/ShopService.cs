@@ -8,7 +8,6 @@ using DataAccess.Repositories.Abstract;
 using Microsoft.Extensions.Configuration;
 using Models.Entities.Concrete;
 using Models.ViewModels.Shop;
-using System.Linq.Expressions;
 using static Models.Entities.Concrete.Shop;
 
 namespace Business.Services.Concrete;

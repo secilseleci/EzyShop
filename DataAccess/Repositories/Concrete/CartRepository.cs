@@ -4,12 +4,12 @@ using Models.Entities.Concrete;
 
 namespace DataAccess.Repositories.Concrete;
 
-public class ShoppingCartRepository(ApplicationDbContext context) : BaseRepository<ShoppingCart>(context), IShoppingCartRepository
+public class CartRepository(ApplicationDbContext context) : BaseRepository<Cart>(context), ICartRepository
 {
-    public async Task<ShoppingCart?> GetCartByUserIdAsync(Guid userId)
+    public async Task<Cart?> GetCartByUserIdAsync(Guid userId)
     {
-        return await _dataContext.ShoppingCarts
-                .Include(c => c.CartItems)
+        return await _dataContext.Carts
+                .Include(c => c.CartLines)
                 .Include(c => c.Customer)
                 .FirstOrDefaultAsync(c => c.Customer.UserId == userId && !c.IsDeleted);
     }

@@ -10,15 +10,15 @@ namespace Business.Services.Concrete;
 public class AuthService : BaseService, IAuthService
 {
     private readonly UserManager<AppUser> _userManager;
-     public AuthService(
-     UserManager<AppUser> userManager,
-     IMapper mapper,
-     IConfiguration config,
-     ICurrentUserService currentUser)
-     : base(mapper, config, currentUser)
+    public AuthService(
+    UserManager<AppUser> userManager,
+    IMapper mapper,
+    IConfiguration config,
+    ICurrentUserService currentUser)
+    : base(mapper, config, currentUser)
     {
         _userManager = userManager;
-     }
+    }
     public async Task<AppUser?> FindByEmailAsync(string email)
     {
         return await _userManager.FindByEmailAsync(email);

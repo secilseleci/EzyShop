@@ -3,7 +3,6 @@ using Models.Entities.Concrete;
 using Models.Identity;
 using Models.ViewModels.Category;
 using Models.ViewModels.Customer;
-using Models.ViewModels.Order;
 using Models.ViewModels.Product;
 using Models.ViewModels.Seller;
 using Models.ViewModels.SellerApplication;
@@ -28,7 +27,7 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.ImageUrl ?? string.Empty))
             .ForMember(dest => dest.IsSoldOut, opt => opt.Ignore())  
             .ForMember(dest => dest.ProductImages, opt => opt.Ignore())  
-            .ForMember(dest => dest.ShoppingCartItems, opt => opt.Ignore())
+            .ForMember(dest => dest.CartLines, opt => opt.Ignore())
             .ForMember(dest => dest.OrderItems, opt => opt.Ignore())
             .ForMember(dest => dest.Shop, opt => opt.Ignore())
             .ForMember(dest => dest.Category, opt => opt.Ignore());
@@ -117,82 +116,9 @@ public class MappingProfile : Profile
 
 
 
-        #region ShoppingCartItem → ShoppingCartItemViewModel
-        CreateMap<ShoppingCartItem, ShoppingCartItemViewModel>()
-            .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
-            .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Product.ImageUrl))
-            .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Product.Color))
-            .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Product.Price))
-            .ForMember(dest => dest.ShopId, opt => opt.MapFrom(src => src.Product.ShopId))  // 🏪 Shop ID maplendi
-            .ForMember(dest => dest.ShopName, opt => opt.MapFrom(src => src.Product.Shop.Name));
-        #endregion
+         
 
-        #region ShoppingCartItem → OrderItemViewModel
-        CreateMap<ShoppingCartItem, OrderItemViewModel>()
-            .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Product.Id))
-            .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
-            .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Product.ImageUrl))
-            .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Product.Color))
-            .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.Product.Price))
-            .ForMember(dest => dest.Count, opt => opt.MapFrom(src => src.Count))
-            .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.Price * src.Count))
-            .ForMember(dest => dest.ShopId, opt => opt.MapFrom(src => src.Product.Shop.Id))
-            .ForMember(dest => dest.ShopName, opt => opt.MapFrom(src => src.Product.Shop.Name));
-        #endregion
-
-
-        #region ShoppingCartItem → ShopOrderViewModel
-        CreateMap<ShoppingCartItem, ShopOrderViewModel>()
-            .ForMember(dest => dest.ShopId, opt => opt.MapFrom(src => src.Product.ShopId))
-            .ForMember(dest => dest.ShopName, opt => opt.MapFrom(src => src.Product.Shop.Name))
-            .ForMember(dest => dest.OrderItems, opt => opt.Ignore());
-        #endregion
-
-        //#region AppUser → SummaryViewModel
-        //CreateMap<AppUser, SummaryViewModel>()
-        //    .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.Id))
-        //    .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Name))
-        //    .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address));
-        //#endregion
-
-        //#region SummaryViewModel → Order
-        //CreateMap<SummaryViewModel, Order>()
-        //    .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.CustomerId))
-        //    .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.TotalAmount))
-        //    .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod))
-        //    .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Status.Pending))
-        //    .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.ShopOrders.SelectMany(s => s.OrderItems)));  // ✅ **OrderItems artık map edilecek!**
-        //#endregion
-
-        //#region Order → OrderViewModel
-        //CreateMap<Order, OrderViewModel>()
-        //.ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Customer.Name))
-        //.ForMember(dest => dest.CustomerEmail, opt => opt.MapFrom(src => src.Customer.Email))
-        //.ForMember(dest => dest.CustomerAddress, opt => opt.MapFrom(src => src.Customer.Address))
-        //.ForMember(dest => dest.CustomerPhone, opt => opt.MapFrom(src => src.Customer.PhoneNumber))
-        //.ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItems))
-        //.ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.ToString()))
-        //.ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()));
-        //#endregion
-
-        //#region ShopOrderViewModel → Order
-
-        //CreateMap<ShopOrderViewModel, Order>()
-        //.ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItems))
-        //.ForMember(dest => dest.Status, opt => opt.MapFrom(src => Status.Pending))
-        //.ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => (PaymentMethod)Enum.Parse(typeof(PaymentMethod), src.PaymentMethod.ToString()))); // ✅ PaymentMethod Enum mapping
-        //#endregion
-
-        #region OrderItem → OrderItemViewModel
-        CreateMap<OrderItem, OrderItemViewModel>()
-        .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))
-        .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.ProductName))
-        .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.ProductPrice))
-        .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Color))
-        .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.ImageUrl))
-        .ForMember(dest => dest.Count, opt => opt.MapFrom(src => src.Count));
-        CreateMap<OrderItemViewModel, OrderItem>();
-
-        #endregion  
+  
+  
     }
 }

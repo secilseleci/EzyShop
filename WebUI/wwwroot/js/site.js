@@ -11,11 +11,11 @@
  
     $(document).ready(function () {
         $.ajax({
-            url: "/ShoppingCart/GetCartItemCount",
+            url: "/Cart/GetCartLineCount",
             type: "GET",
             success: function (data) {
                 if (data.success) {
-                    $("#cartItemCount").text(data.count);
+                    $("#cartLineCount").text(data.count);
                 }
             },
             error: function () {

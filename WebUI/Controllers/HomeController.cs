@@ -52,15 +52,7 @@ public class HomeController : BaseController
 
 
     #endregion
-
-
-
-    #region Details
-    public IActionResult Details()
-    {
-        return View();
-    }
-    #endregion
+     
 
     #region About & Contact
     public IActionResult About() => View();

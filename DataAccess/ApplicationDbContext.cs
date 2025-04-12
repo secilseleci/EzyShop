@@ -44,10 +44,10 @@ public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, Guid>
             .HasForeignKey(pi => pi.ProductId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        //  Product - ShoppingCartItems 
-        modelBuilder.Entity<ShoppingCartItem>()
+        //  Product -  CartLines 
+        modelBuilder.Entity<CartLine>()
             .HasOne(sci => sci.Product)
-            .WithMany(p => p.ShoppingCartItems)
+            .WithMany(p => p.CartLines)
             .HasForeignKey(sci => sci.ProductId)
             .OnDelete(DeleteBehavior.Restrict);
 
@@ -91,11 +91,11 @@ public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, Guid>
             .HasForeignKey(o => o.CustomerId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        // Customer - ShoppingCart
-        modelBuilder.Entity<ShoppingCart>()
+        // Customer -  Cart
+        modelBuilder.Entity<Cart>()
             .HasOne(sc => sc.Customer)
-            .WithOne(c => c.ShoppingCart)
-            .HasForeignKey<ShoppingCart>(sc => sc.CustomerId)
+            .WithOne(c => c.Cart)
+            .HasForeignKey<Cart>(sc => sc.CustomerId)
             .OnDelete(DeleteBehavior.Restrict);
 
         #endregion
@@ -127,13 +127,13 @@ public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, Guid>
 
         #endregion
 
-        #region ShoppingCartItem
+        #region CartLines
 
-        // ShoppingCart - ShoppingCartItem
-        modelBuilder.Entity<ShoppingCartItem>()
-            .HasOne(sci => sci.Cart)
-            .WithMany(sc => sc.CartItems)
-            .HasForeignKey(sci => sci.CartId)
+        //  Cart - CartLines
+        modelBuilder.Entity<CartLine>()
+            .HasOne(cl => cl.Cart)
+            .WithMany(c => c.CartLines)
+            .HasForeignKey(cl => cl.CartId)
             .OnDelete(DeleteBehavior.Restrict);
 
         #endregion
@@ -159,8 +159,8 @@ public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, Guid>
 
     public DbSet<SellerApplication> SellerApplications { get; set; }
     public DbSet<Shop> Shops { get; set; }
-    public DbSet<ShoppingCart> ShoppingCarts { get; set; }
-    public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+    public DbSet<Cart> Carts { get; set; }
+    public DbSet<CartLine> CartLines { get; set; }
 
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderItem> OrderItems { get; set; }

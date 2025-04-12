@@ -21,5 +21,5 @@ public class Customer: BaseEntity
     public ICollection<Order> Orders { get; set; } = [];
 
     [JsonIgnore]
-    public ShoppingCart? ShoppingCart { get; set; }
+    public Cart?  Cart { get; set; }
 }

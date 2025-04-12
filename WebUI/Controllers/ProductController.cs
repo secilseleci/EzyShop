@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
-using Business.Services.Concrete;
 using Core.Security;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250411155205_First")]
+    [Migration("20250412143736_First")]
     partial class First
     {
         /// <inheritdoc />
@@ -126,6 +126,92 @@ namespace DataAccess.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Models.Entities.Concrete.Cart", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CustomerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("DeletedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("ModifiedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId")
+                        .IsUnique();
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("Models.Entities.Concrete.CartLine", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CartId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("DeletedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("ModifiedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartLines");
                 });
 
             modelBuilder.Entity("Models.Entities.Concrete.Category", b =>
@@ -598,92 +684,6 @@ namespace DataAccess.Migrations
                     b.ToTable("Shops");
                 });
 
-            modelBuilder.Entity("Models.Entities.Concrete.ShoppingCart", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("DeletedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid?>("ModifiedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId")
-                        .IsUnique();
-
-                    b.ToTable("ShoppingCarts");
-                });
-
-            modelBuilder.Entity("Models.Entities.Concrete.ShoppingCartItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CartId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("DeletedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid?>("ModifiedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ShoppingCartItems");
-                });
-
             modelBuilder.Entity("Models.Identity.AppRole", b =>
                 {
                     b.Property<Guid>("Id")
@@ -840,6 +840,36 @@ namespace DataAccess.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Models.Entities.Concrete.Cart", b =>
+                {
+                    b.HasOne("Models.Entities.Concrete.Customer", "Customer")
+                        .WithOne("Cart")
+                        .HasForeignKey("Models.Entities.Concrete.Cart", "CustomerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("Models.Entities.Concrete.CartLine", b =>
+                {
+                    b.HasOne("Models.Entities.Concrete.Cart", "Cart")
+                        .WithMany("CartLines")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Models.Entities.Concrete.Product", "Product")
+                        .WithMany("CartLines")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Models.Entities.Concrete.Customer", b =>
                 {
                     b.HasOne("Models.Identity.AppUser", "User")
@@ -959,34 +989,9 @@ namespace DataAccess.Migrations
                     b.Navigation("Seller");
                 });
 
-            modelBuilder.Entity("Models.Entities.Concrete.ShoppingCart", b =>
+            modelBuilder.Entity("Models.Entities.Concrete.Cart", b =>
                 {
-                    b.HasOne("Models.Entities.Concrete.Customer", "Customer")
-                        .WithOne("ShoppingCart")
-                        .HasForeignKey("Models.Entities.Concrete.ShoppingCart", "CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("Models.Entities.Concrete.ShoppingCartItem", b =>
-                {
-                    b.HasOne("Models.Entities.Concrete.ShoppingCart", "Cart")
-                        .WithMany("CartItems")
-                        .HasForeignKey("CartId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Models.Entities.Concrete.Product", "Product")
-                        .WithMany("ShoppingCartItems")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Cart");
-
-                    b.Navigation("Product");
+                    b.Navigation("CartLines");
                 });
 
             modelBuilder.Entity("Models.Entities.Concrete.Category", b =>
@@ -996,9 +1001,9 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Models.Entities.Concrete.Customer", b =>
                 {
-                    b.Navigation("Orders");
+                    b.Navigation("Cart");
 
-                    b.Navigation("ShoppingCart");
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("Models.Entities.Concrete.Order", b =>
@@ -1008,11 +1013,11 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Models.Entities.Concrete.Product", b =>
                 {
+                    b.Navigation("CartLines");
+
                     b.Navigation("OrderItems");
 
                     b.Navigation("ProductImages");
-
-                    b.Navigation("ShoppingCartItems");
                 });
 
             modelBuilder.Entity("Models.Entities.Concrete.Seller", b =>
@@ -1030,11 +1035,6 @@ namespace DataAccess.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Models.Entities.Concrete.ShoppingCart", b =>
-                {
-                    b.Navigation("CartItems");
                 });
 #pragma warning restore 612, 618
         }

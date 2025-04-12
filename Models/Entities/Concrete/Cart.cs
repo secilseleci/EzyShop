@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.Entities.Concrete;
 
-public class ShoppingCart : BaseEntity
+public class Cart : BaseEntity
 {
    
 
@@ -13,6 +13,6 @@ public class ShoppingCart : BaseEntity
     [ForeignKey(nameof(CustomerId))]
     public Customer Customer { get; set; } = null!;
 
-    public ICollection<ShoppingCartItem> CartItems { get; set; } = [];
+    public ICollection<CartLine> CartLines { get; set; } = [];
 
 }

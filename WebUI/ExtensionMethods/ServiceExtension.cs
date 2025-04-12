@@ -37,8 +37,8 @@ public static class ServiceExtension
 
         services.AddScoped<ISellerApplicationRepository, SellerApplicationRepository>();
         services.AddScoped<IShopRepository, ShopRepository>();
-        services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
-        services.AddScoped<IShoppingCartItemRepository, ShoppingCartItemRepository>();
+        services.AddScoped<ICartRepository, CartRepository>();
+        services.AddScoped<ICartLineRepository, CartLineRepository>();
         services.AddScoped<IOrderRepository, OrderRepository>();
         services.AddScoped<IOrderItemRepository, OrderItemRepository>();
 
@@ -59,8 +59,8 @@ public static class ServiceExtension
         services.AddScoped<ISellerApplicationService, SellerApplicationService>();
 
         services.AddScoped<IShopService, ShopService>();
-        services.AddScoped<IShoppingCartService, ShoppingCartService>();
-        services.AddScoped<IShoppingCartItemService, ShoppingCartItemService>();
+        services.AddScoped<ICartService, CartService>();
+        services.AddScoped<ICartLineService, CartLineService>();
         services.AddScoped<IOrderService, OrderService>();
         services.AddScoped<IOrderItemService, OrderItemService>();
         services.AddScoped<IRazorViewRenderer, RazorViewRenderer>();

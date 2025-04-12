@@ -25,7 +25,7 @@ public class CustomerRepository(ApplicationDbContext context) : BaseRepository<C
     public async Task<Customer?> GetCustomerWithCartAsync(Guid customerId)
     {
         return await _dataContext.Customers
-            .Include(c => c.ShoppingCart)
+            .Include(c => c.Cart)
             .FirstOrDefaultAsync(c => c.Id == customerId && !c.IsDeleted);
     }
 

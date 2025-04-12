@@ -238,6 +238,8 @@ public class ProductService : BaseService, IProductService
         return new SuccessDataResult<ProductDetailViewModel>(viewModel);
     }
     #endregion
+    
+    
     //    GetDeletedProductsForSellerAsync() → çöp kutusu
 
     //RecoverProductAsync(Guid id) → soft-delete geri alma

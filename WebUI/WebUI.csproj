@@ -30,4 +30,9 @@
 		<ProjectReference Include="..\Business\Business.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Views\Order\" />
+	  <Folder Include="Views\Shop\" />
+	</ItemGroup>
+
 </Project>

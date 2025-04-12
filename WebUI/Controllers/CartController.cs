@@ -11,36 +11,36 @@ namespace WebUI.Controllers;
 
 [Authorize(Roles = "Customer")]
 
-public class ShoppingCartController : BaseController
+public class CartController : BaseController
 {
-    private readonly IShoppingCartService _shoppingCartService;
-    private readonly IShoppingCartItemService _shoppingCartItemService;
+    private readonly ICartService _cartService;
+    private readonly ICartLineService _cartLineService;
 
-    public ShoppingCartController(
+    public CartController(
         ICurrentUserService currentUserService,
         UserManager<AppUser> userManager,
         RoleManager<AppRole> roleManager,
         SignInManager<AppUser> signInManager,
         IWebHostEnvironment webHostEnvironment,
         IMapper mapper,
-        IShoppingCartService shoppingCartService,
-        IShoppingCartItemService shoppingCartItemService
+        ICartService cartService,
+        ICartLineService cartLineService
 
         )
         : base(currentUserService, userManager, roleManager, signInManager, webHostEnvironment, mapper)
     {
-        _shoppingCartService = shoppingCartService;
-        _shoppingCartItemService = shoppingCartItemService;
+        _cartService = cartService;
+        _cartLineService = cartLineService;
     }
 
     #region cartitem count
     [HttpGet]
-    public async Task<IActionResult> GetCartItemCount()
+    public async Task<IActionResult> GetCartLineCount()
     {
         if (!CurrentUserService.UserId.HasValue)
             return Json(0);
         
-        int totalItems = await _shoppingCartItemService.GetTotalCartItemsAsync(CurrentUserService.UserId.Value);
+        int totalItems = await _cartLineService.GetTotalCartLinesAsync(CurrentUserService.UserId.Value);
         return Json(new { success = true, count = totalItems });
     }
     #endregion

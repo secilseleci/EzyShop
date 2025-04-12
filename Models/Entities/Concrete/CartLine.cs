@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.Entities.Concrete;
 
-public class ShoppingCartItem : BaseEntity
+public class CartLine : BaseEntity
 { 
    
     [Required]
     public Guid CartId { get; set; }
 
     [ForeignKey("CartId")]
-    public ShoppingCart Cart { get; set; } = null!;
+    public Cart Cart { get; set; } = null!;
 
     [Required]
     public Guid ProductId { get; set; }
