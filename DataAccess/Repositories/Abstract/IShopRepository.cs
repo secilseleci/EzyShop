@@ -13,5 +13,6 @@ public interface IShopRepository : IBaseRepository<Shop>
 
     Task<int> CountPendingShopsAsync(ShopStatus status);
     Task<int> CountActiveShopsAsync(ShopStatus status);
+    Task<Shop?> GetActiveShopBySellerIdAsync(Guid sellerId);
 
 }

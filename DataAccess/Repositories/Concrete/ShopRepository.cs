@@ -88,4 +88,11 @@ public class ShopRepository(ApplicationDbContext context) : BaseRepository<Shop>
         return await _dataContext.Shops.Where(GetStatusFilter(ShopStatus.Active))
                    .CountAsync();
     }
+
+    public async Task<Shop?> GetActiveShopBySellerIdAsync(Guid sellerId)
+    { 
+            var result = await GetWhereAsync(s => s.SellerId == sellerId && s.IsActive);
+            return result?.FirstOrDefault();
+    }
+
 }

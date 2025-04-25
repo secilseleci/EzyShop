@@ -52,7 +52,7 @@ public static class ServiceExtension
     {
         services.AddScoped<ICustomerRepository, CustomerRepository>();
         services.AddScoped<ISellerRepository, SellerRepository>();
-        //services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IShopRepository, ShopRepository>();
         //services.AddScoped<IOrderRepository, OrderRepository>();
@@ -68,7 +68,7 @@ public static class ServiceExtension
         services.AddScoped<ICustomerService, CustomerService>();
         services.AddScoped<ISellerService, SellerService>();
 
-        //services.AddScoped<IProductService, ProductService>();
+        services.AddScoped<IProductService, ProductService>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<IShopService, ShopService>();
         //  services.AddScoped<IOrderService, OrderService>();

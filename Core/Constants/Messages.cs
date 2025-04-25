@@ -87,12 +87,13 @@
 
 
         #region Seller
+        public const string NotAllowed = "To access this area, you must have an active store and account";
 
         #endregion
 
 
         #region User
-         public const string UnauthorizedAccess = "You do not have authorization to perform this action";
+        public const string UnauthorizedAccess = "You do not have authorization to perform this action";
         public const string UserNotAuthenticated = "User not authenticated ";
 
         #endregion

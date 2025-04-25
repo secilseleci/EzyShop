@@ -175,10 +175,17 @@ public class SellerService : BaseService, ISellerService
 
         return new SuccessDataResult<Shop>(data: shop);
     }
+ 
     #endregion
 
+     
+   public async Task<IDataResult<Seller>> GetActiveSellerByUserIdAsync(Guid userId)
+    {
+        var seller = await _sellerRepo.GetActiveSellerByUserIdAsync(userId);
 
+        if (seller == null)
+            return new ErrorDataResult<Seller>(message: Messages.SellerNotFound);
 
-
-
+        return new SuccessDataResult<Seller>(data: seller);
+    }
 }

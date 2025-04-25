@@ -2,6 +2,7 @@
 using Core.Pagination;
 using Core.Utilities.Results;
 using Models.DTOs;
+using Models.Entities.Concrete;
 namespace Business.Services.Abstract;
 
 public interface IShopService
@@ -16,4 +17,6 @@ public interface IShopService
 
     Task<int> CountPendingShopsAsync();
     Task<int> CountActiveShopsAsync();
+
+    Task<IDataResult<Shop>> GetActiveShopBySellerIdAsync(Guid sellerId);
 }

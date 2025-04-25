@@ -333,4 +333,15 @@ public class ShopService : BaseService, IShopService
         return await _shopRepo.CountActiveShopsAsync(ShopStatus.Active);
     }
     #endregion
+
+    public async Task<IDataResult<Shop>> GetActiveShopBySellerIdAsync(Guid sellerId)
+    {
+        var shop = await _shopRepo.GetActiveShopBySellerIdAsync(sellerId);
+
+        if (shop == null)
+            return new ErrorDataResult<Shop>(message: Messages.ShopNotFound);
+
+        return new SuccessDataResult<Shop>(data: shop);
+    }
+
 }

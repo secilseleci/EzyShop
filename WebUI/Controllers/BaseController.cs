@@ -52,12 +52,9 @@ public class BaseController : Controller
 
         return await UserManager.FindByIdAsync(CurrentUserId.Value.ToString());
     }
-
-
+  
     #endregion
-
-
-
+     
     #region Image Upload 
     protected void HandleImageUpload(IImageViewModel model, IFormFile? file)
     {
