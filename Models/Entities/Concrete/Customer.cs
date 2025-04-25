@@ -1,25 +1,20 @@
-﻿using Models.Identity;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Models.Entities.Concrete;
 
-public class Customer: BaseEntity
-
+public class Customer : BaseEntity
 {
     [Required]
-    public Guid UserId { get; set; }
-
-    [ForeignKey(nameof(UserId))]
-    public AppUser User { get; set; } = null!;
+    public string FirstName { get; set; } = null!;
 
     [Required]
-    public string ShippingAddress { get; set; } = null!;
+    public string LastName { get; set; } = null!;
 
-    [JsonIgnore]
+    [Required]
+    public string Phone { get; set; } = null!;
+
+    [Required]
+    public string Address { get; set; } = null!;
+
     public ICollection<Order> Orders { get; set; } = [];
-
-    [JsonIgnore]
-    public Cart?  Cart { get; set; }
 }

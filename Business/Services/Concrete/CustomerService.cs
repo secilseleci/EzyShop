@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
 using Core.Constants;
+using Core.Interfaces;
 using Core.Pagination;
-using Core.Security;
 using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Models.Entities.Concrete;
 using Models.Identity;
+using Models.ViewModels.Auth;
 using Models.ViewModels.Customer;
 using System.Linq.Expressions;
 
@@ -17,86 +17,76 @@ namespace Business.Services.Concrete;
 
 public class CustomerService : BaseService, ICustomerService
 {
-    private readonly UserManager<AppUser> _userManager;
-    private readonly RoleManager<AppRole> _roleManager;
+
     private readonly ICustomerRepository _customerRepo;
     public CustomerService(
       IMapper mapper,
       IConfiguration config,
-      ICurrentUserService currentUser,
+      ICurrentUserService currentUserService,
       UserManager<AppUser> userManager,
       RoleManager<AppRole> roleManager,
-      ICustomerRepository customerRepo
-  ) : base(mapper, config, currentUser)
+      ICustomerRepository customerRepo)
+   : base(mapper, config, currentUserService)
     {
-        _userManager = userManager;
-        _roleManager = roleManager;
+
         _customerRepo = customerRepo;
     }
 
-    public async Task<IResult> Register(RegisterViewModel model)
+    public async Task<int> CountAsync()
     {
-        var user = Mapper.Map<AppUser>(model);
-        var result = await _userManager.CreateAsync(user, model.Password);
-
-        if (!result.Succeeded)
-        {
-            return new ErrorResult(string.Join(" | ", result.Errors.Select(e => e.Description)));
-        }
-
-        await _userManager.AddToRoleAsync(user, "Customer");
-
-        var customer = Mapper.Map<Customer>(model);
-        customer.UserId = user.Id;
-        customer.CreatedById = customer.UserId;
-
-        await _customerRepo.CreateAsync(customer);
-
-        return new SuccessResult(Messages.RegisterSuccess);
+        return await _customerRepo.CountAsync();
     }
 
+
+    public async Task<IResult> CreateCustomerAsync(Guid userId, RegisterCustomerViewModel model)
+    {
+        var existingCustomer = await _customerRepo.GetByIdAsync(userId);
+        if (existingCustomer != null)
+        {
+            return new ErrorResult(Messages.AlreadyExistsCustomer);
+        }
+
+        var customer = Mapper.Map<Customer>(model);
+        customer.Id = userId;
+        customer.CreatedBy = model.FullName;
+
+        var createResult = await _customerRepo.CreateAsync(customer);
+        return createResult > 0
+            ? new SuccessResult(Messages.CreateSuccess)
+            : new ErrorResult(Messages.CreateError);
+    }
     public async Task<IResult> DeleteCustomerAsync(Guid customerId)
     {
         if (!await _customerRepo.ExistsAsync(c => c.Id == customerId && !c.IsDeleted))
             return new ErrorResult(Messages.CustomerNotFound);
 
-        var affectedRows = await _customerRepo.SoftDeleteAsync(customerId);
+        var deleteResult = await _customerRepo.SoftDeleteAsync(customerId);
 
-        return affectedRows > 0
-            ? new SuccessResult(Messages.DeleteCustomerSuccess)
-        : new ErrorResult(Messages.DeleteCustomerError);
+        return deleteResult > 0
+            ? new SuccessResult(Messages.DeleteSuccess)
+        : new ErrorResult(Messages.DeleteError);
 
     }
-
-
-
     public async Task<IDataResult<PaginatedList<CustomerListViewModel>>> GetPaginatedCustomersAsync(
-    int page,
-    int pageSize,
-    string? searchTerm = null)
+     int page,
+     int pageSize,
+     string? searchTerm = null)
     {
         Expression<Func<Customer, bool>> predicate;
 
         if (!string.IsNullOrWhiteSpace(searchTerm))
-        {
-            predicate = u =>
-            u.User != null &&
-         (
-             (u.User.Name + " " + u.User.Surname).Contains(searchTerm) ||
-             u.User.Email!.Contains(searchTerm)
-         );
+            predicate = p => (p.FirstName + " " + p.LastName).Contains(searchTerm) ||
+            p.Address.Contains(searchTerm) ||
+            p.Phone.Contains(searchTerm);
 
-        }
         else
-        {
-            predicate = u => true;
-        }
+            predicate = p => true;
+
 
         var paginatedCustomers = await _customerRepo.GetPaginatedAsync(
             predicate,
             page,
-            pageSize,
-            q => q.Include(c => c.User));
+            pageSize);
 
         var viewModels = Mapper.Map<IEnumerable<CustomerListViewModel>>(paginatedCustomers.Items);
 
@@ -109,7 +99,6 @@ public class CustomerService : BaseService, ICustomerService
 
         return result.Items.Any()
             ? new SuccessDataResult<PaginatedList<CustomerListViewModel>>(result)
-            : new ErrorDataResult<PaginatedList<CustomerListViewModel>>(Messages.EmptyCustomerList);
+            : new ErrorDataResult<PaginatedList<CustomerListViewModel>>(Messages.EmptyEntityList);
     }
-
 }

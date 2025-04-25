@@ -1,20 +1,7 @@
-﻿using DataAccess;
-
-namespace WebUI.ExtensionMethods;
+﻿namespace WebUI.ExtensionMethods;
 
 public static class ApplicationExtension
 {
-    public static void ConfigureAndCheckMigration(this IApplicationBuilder app)
-    {
-        ApplicationDbContext context = app
-            .ApplicationServices
-            .CreateScope()
-            .ServiceProvider
-            .GetRequiredService<ApplicationDbContext>();
-
-
-    }
-
     public static void ConfigureLocalization(this WebApplication app)
     {
         app.UseRequestLocalization(options =>
@@ -24,6 +11,5 @@ public static class ApplicationExtension
                 .SetDefaultCulture("en-US");
         });
     }
-
-
 }
+

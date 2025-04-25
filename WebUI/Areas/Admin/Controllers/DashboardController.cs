@@ -1,45 +1,44 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
-using Core.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
+using Models.ViewModels.Admin;
 using WebUI.Controllers;
 
 namespace WebUI.Areas.Admin.Controllers;
 
 [Area("Admin")]
-[Route("Admin/[controller]/[action]")]
 [Authorize(Roles = "Admin")]
 public class DashboardController : BaseController
 {
-    private readonly ISellerApplicationService _sellerApplicationService;
-    private readonly IEmailService _emailService;
-
+    private readonly IShopService _shopService;
+    private readonly ICustomerService _customerService;
 
     public DashboardController
     (
-        ICurrentUserService currentUserService,
-        ISellerApplicationService sellerApplicationService,
         UserManager<AppUser> userManager,
         RoleManager<AppRole> roleManager,
         SignInManager<AppUser> signInManager,
         IWebHostEnvironment webHostEnvironment,
-        IEmailService emailService,
-        IMapper mapper)
-        : base(currentUserService, userManager, roleManager, signInManager, webHostEnvironment, mapper)
+        IMapper mapper,
+        IShopService shopService,
+        ICustomerService customerService) : base(userManager, roleManager, signInManager, webHostEnvironment, mapper)
     {
-        _sellerApplicationService = sellerApplicationService;
-        _emailService = emailService;
-
+        _shopService = shopService;
+        _customerService = customerService;
     }
-    public IActionResult Index()
+     
+    public async Task<IActionResult> Index()
     {
-        return View();
-     }
+        var model = new AdminDashboardViewModel
+        {
+            TotalCustomers = await _customerService.CountAsync(),
+            PendingShops = await _shopService.CountPendingShopsAsync(),
+            ActiveShops = await _shopService.CountActiveShopsAsync()
+        };
+        return View(model);
+    }
 
-    
-
-   
 }

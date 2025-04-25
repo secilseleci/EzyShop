@@ -1,13 +1,17 @@
-﻿using Core.Pagination;
+﻿using Core.Constants;
+using Core.Pagination;
+using Models.DTOs;
 using Models.Entities.Concrete;
 
 namespace DataAccess.Repositories.Abstract;
 
 public interface IShopRepository : IBaseRepository<Shop>
 {
-    Task<Shop?> GetShopByUserIdAsync(Guid userId);
-    Task<Shop?> GetShopBySellerIdAsync(Guid sellerId);
-    Task<PaginatedList<Shop>> GetPaginatedShopsAsync(int page, int pageSize);
+    Task<PaginatedList<ShopListDto>> GetShopDtosAsync(ShopStatus status,string? searchTerm, int page, int pageSize);
+  
+    Task<ShopDetailsDto> GetShopDetailsDtosAsync(Guid shopId);
 
-    Task<PaginatedList<Shop>> GetPaginatedShopsByStatusAsync(Shop.ShopStatus status, int page, int pageSize);
+    Task<int> CountPendingShopsAsync(ShopStatus status);
+    Task<int> CountActiveShopsAsync(ShopStatus status);
+
 }

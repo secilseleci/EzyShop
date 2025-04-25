@@ -1,9 +1,8 @@
-﻿ 
-$(document).ready(function () {
+﻿$(document).ready(function () {
     $("#addToCartBtn").on("click", function (e) {
         e.preventDefault();
 
-         if (!isUserAuthenticated) {
+        if (!isUserAuthenticated) {
             window.location.href = "/Account/Login";
             return;
         }
@@ -21,7 +20,10 @@ $(document).ready(function () {
                 }
 
                 toastr.success(response.message);
-                updateCartLineCount();
+
+                 setTimeout(() => {
+                    refreshCartIconCount();
+                }, 300); 
             },
             error: function () {
                 toastr.error("An unexpected error occurred.");
@@ -29,16 +31,3 @@ $(document).ready(function () {
         });
     });
 });
-function updateCartLineCount() {
-    if (!isUserAuthenticated) return;
-
-    $.ajax({
-        url: "/Cart/GetCartLineCount",
-        type: "GET",
-        success: function (data) {
-            if (data.success) {
-                $("#cartLineCount").text(data.count);
-            }
-        }
-    });
-}

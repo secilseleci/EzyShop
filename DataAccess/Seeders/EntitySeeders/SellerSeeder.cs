@@ -7,64 +7,71 @@ public static class SellerSeeder
 {
     public static async Task SeedSellersAsync(ApplicationDbContext dbContext)
     {
-        var user1 = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == "secil.seleci@gmail.com");
-        var application1 = await dbContext.SellerApplications.FirstOrDefaultAsync(a => a.Email == "secil.seleci@gmail.com");
+        if (await dbContext.Sellers.AnyAsync())
+            return;
 
-        if (user1 != null && application1 != null)
+        var users = await dbContext.Users.ToListAsync();
+
+        var sellers = new List<Seller>
         {
-            var existingSeller1 = await dbContext.Sellers.FirstOrDefaultAsync(s => s.UserId == user1.Id);
-
-            if (existingSeller1 == null)
+            // Active Seller - Secil Seleci
+            new Seller
             {
-                dbContext.Sellers.Add(new Seller
-                {
-                    UserId = user1.Id,
-                    SellerApplicationId = application1.Id,
-                    CreatedAt = DateTime.UtcNow
-                });
-            }
-        }
+                Id = users.FirstOrDefault(u => u.Email == "secil.seleci@gmail.com")!.Id,
+                FirstName = "Secil",
+                LastName = "Seleci",
+                Phone = "05534102506",
+                CreatedBy = "Seeder",
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow,
+                ModifiedBy ="Seeder",
+                IsActive = true
+            },
 
-
-        var user2 = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == "secilseller@gmail.com");
-        var application2 = await dbContext.SellerApplications.FirstOrDefaultAsync(a => a.Email == "secilseller@gmail.com");
-
-        if (user2 != null && application2 != null)
-        {
-            var existingSeller2 = await dbContext.Sellers.FirstOrDefaultAsync(s => s.UserId == user2.Id);
-
-            if (existingSeller2 == null)
+            // Inactive Seller - Ali Demir
+            new Seller
             {
-                dbContext.Sellers.Add(new Seller
-                {
-                    UserId = user2.Id,
-                    SellerApplicationId = application2.Id,
-                    CreatedAt = DateTime.UtcNow
-                });
-            }
-        }
+                Id = users.FirstOrDefault(u => u.Email == "alidemir@gmail.com")!.Id,
+                FirstName = "Ali",
+                LastName = "Demir",
+                Phone = "05555552506",
+                CreatedBy = "Seeder",
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow,
+                ModifiedBy ="Seeder",
+                IsActive = false
+            },
 
-
-        var user3 = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == "selecisecil072@gmail.com");
-        var application3 = await dbContext.SellerApplications.FirstOrDefaultAsync(a => a.Email == "selecisecil072@gmail.com");
-
-        if (user3 != null && application3 != null)
-        {
-            var existingSeller3 = await dbContext.Sellers.FirstOrDefaultAsync(s => s.UserId == user3.Id);
-
-            if (existingSeller3 == null)
+            // Deleted Seller - Ayşe Kaya
+            new Seller
             {
-                dbContext.Sellers.Add(new Seller
-                {
-                    UserId = user3.Id,
-                    SellerApplicationId = application3.Id,
-                    CreatedAt = DateTime.UtcNow
-                });
+                Id = users.FirstOrDefault(u => u.Email == "aysekaya@gmail.com")!.Id,
+                FirstName = "Ayşe",
+                LastName = "Kaya",
+                Phone = "05534102555",
+                CreatedBy = "Seeder",
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow,
+                ModifiedBy ="Seeder", 
+                IsDeleted = true,
+                DeletedAt = DateTime.UtcNow,
+                DeletedBy="Seeder"
+            },
+
+            // Pending Seller - Alper Sütçü
+            new Seller
+            {
+                Id = users.FirstOrDefault(u => u.Email == "alper@gmail.com")!.Id,
+                FirstName = "Alper",
+                LastName = "Sütçü",
+                Phone = "05551234567",
+                CreatedBy = "Seeder",
+                CreatedAt = DateTime.UtcNow,
+                IsActive = false  
             }
-        }
-        
-        
+        };
+
+        await dbContext.Sellers.AddRangeAsync(sellers);
         await dbContext.SaveChangesAsync();
     }
-
 }

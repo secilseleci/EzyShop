@@ -16,36 +16,29 @@ public static class SeedDatabase
         var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
         // ✅ Roles
-        await RoleSeeder.SeedRolesAsync(roleManager);
+        await RoleSeeder.SeedRolesAsync(dbContext, roleManager);
 
         // ✅ Users 
-        await AppUserSeeder.SeedUsersAsync(userManager);
+        await AppUserSeeder.SeedUsersAsync(dbContext, userManager);
 
-        // ✅ Applications
-        await SellerApplicationSeeder.SeedSellerApplicationsAsync(dbContext);
-
-        // ✅ Sellers  
+        ////// ✅ Sellers  
         await SellerSeeder.SeedSellersAsync(dbContext);
-        
-        // ✅ Shops
+
+        ////// ✅ Shops
         await ShopSeeder.SeedShopsAsync(dbContext);
 
-        // ✅ Customers  
+        ////// ✅ Customers  
         await CustomerSeeder.SeedCustomersAsync(dbContext);
-
-       
-
-        // ✅ Categories
+         
+        //// ✅ Categories
         await CategorySeeder.SeedCategoriesAsync(dbContext);
 
         // ✅ Products
-        await ProductSeeder.SeedProductsAsync(dbContext);
+        //await ProductSeeder.SeedProductsAsync(dbContext);
 
         // ✅ Orders
         //await OrderSeeder.SeedOrdersAsync(dbContext);
 
-
-
-
+         
     }
 }

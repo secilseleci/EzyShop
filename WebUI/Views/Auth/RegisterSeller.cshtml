@@ -1,0 +1,105 @@
+﻿@model RegisterSellerViewModel
+
+@{
+    ViewData["Title"] = "Become a Seller";
+}
+<div class="renderCard">
+    <div class="card shadow border-0 rounded offset-2 col-8">
+        <div class="card-header">
+            <div class="row mt-2 text-center">
+                <h2 class="text-info">Sell on EzyShop</h2>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <form method="post" asp-controller="Auth" asp-action="RegisterSeller">
+                <div class="border p-3">
+                    <!-- ✅ Personal Info -->
+                    <h4 class="text-info mb-3">Personal Information</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input asp-for="FullName" class="form-control border-0 shadow rounded" required />
+                                <label asp-for="FullName"></label>
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input id="emailInput" asp-for="Email" class="form-control border-0 shadow rounded" />
+                                <label asp-for="Email"></label>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input id="phoneInput" asp-for="Phone" class="form-control border-0 shadow rounded" />
+                                <label asp-for="Phone"></label>
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input asp-for="Address" class="form-control border-0 shadow rounded" maxlength="20" />
+                                <label asp-for="Address"></label>
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating py-2 col-12 mb-3">
+                                    <input asp-for="Password" type="password" class="form-control border-0 shadow rounded" />
+                                    <label asp-for="Password" class="ms-0"></label>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating py-2 col-12 mb-3">
+                                    <input asp-for="ConfirmPassword" type="password" class="form-control border-0 shadow rounded" />
+                                    <label asp-for="ConfirmPassword" class="ms-0"></label>
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- ✅ Business Info -->
+                    <h4 class="text-info mt-4 mb-3">Business Information</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input id="shopNameInput" asp-for="ShopName" class="form-control border-0 shadow rounded" maxlength="100" required />
+                                <label asp-for="ShopName"></label>
+                                <span asp-validation-for="ShopName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating py-2 col-12 mb-3">
+                                <input id="taxNumberInput" asp-for="TaxNumber" class="form-control border-0 shadow rounded" maxlength="20" />
+                                <label asp-for="TaxNumber"></label>
+                                <span asp-validation-for="TaxNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                </div>
+
+                <div class="row  ">
+                    <div class="col-md-12  p-4">
+                        <button id="submitButton" type="submit" class="form-control btn btn-info shadow rounded">Apply</button>
+                    </div>
+                    <div class="col-12 d-flex p-4 align-items-center">
+                        <p class="text-info">Already have an account? <a asp-controller="Auth" asp-action="Login">Login here</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/validation.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    }

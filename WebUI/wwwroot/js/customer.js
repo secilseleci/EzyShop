@@ -1,33 +1,27 @@
 ﻿let customersTable;
 
-
-
-
 $(document).ready(function () {
     customersTable = $('#tblCustomers').DataTable({
         processing: true,
         serverSide: true,
-        ajax: {
-            url: '/Admin/Customer/GetPaginatedCustomers',
-            type: 'GET',
-        },
+        ajax: { url: '/Admin/Customer/GetPaginatedCustomers',type: 'GET'},
         columns: [
             { title: "Name", data: 'fullName', width: "25%" }, 
-            { title: "Email", data: 'email', width: "25%" },
-            { title: "Phone", data: 'phoneNumber', width: "25%" },
+            { title: "Address", data: 'address', width: "25%" },
+            { title: "Phone", data: 'phone', width: "25%" },
             {
                 title: "Actions",
                 data: 'id',
                 width: "25%",
                 render: function (data) {
-                    return `<button onclick="deleteUser('${data}')" class="btn btn-danger btn-sm">Delete</button>`;
+                    return `<div class="w-75 btn-group" role="group">
+                     <a onClick=deleteUser('${data}') class="btn btn-danger mx-2 rounded"> <i class="bi bi-trash-fill"></i></a>
+                    </div>`
                 }
             }
         ]
     });
 });
-
-
 
 function deleteUser(customerId) {
     $.ajax({

@@ -1,21 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.Entities.Concrete;
 
 public class OrderItem : BaseEntity
 {
+
+    [ForeignKey("Order"), Required]
+    public Guid OrderId { get; set; }
+
+
+    [ForeignKey("Product"), Required]
+    public Guid ProductId { get; set; }
+
      
     [Required]
-    public Guid OrderId { get; set; }
-    public Order Order { get; set; } = null!;
-
-
-    [Required]
-    public Guid ProductId { get; set; }
-    public Product Product { get; set; }=null!;
-    
-    [Required]
     public string ProductName { get; set; } = null!;
+
 
     [Required]
     public decimal ProductPrice { get; set; }

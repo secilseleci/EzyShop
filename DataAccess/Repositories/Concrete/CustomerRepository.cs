@@ -2,31 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Models.Entities.Concrete;
 
+
 namespace DataAccess.Repositories.Concrete;
 
 public class CustomerRepository(ApplicationDbContext context) : BaseRepository<Customer>(context), ICustomerRepository
 {
-    public async Task<Customer?> GetCustomerByUserIdAsync(Guid userId)
+    public async Task<int> CountAsync()
     {
         return await _dataContext.Customers
-            .FirstOrDefaultAsync(c => c.UserId == userId && !c.IsDeleted);
+            .Where(c => !c.IsDeleted)
+            .CountAsync();
     }
-
-
-    public async Task<IEnumerable<Customer>> GetCustomersWithOrdersAsync()
-    {
-        return await _dataContext.Customers
-            .Include(c => c.Orders)
-            .Where(c => !c.IsDeleted && c.Orders.Any())
-            .ToListAsync();
-    }
-
-
-    public async Task<Customer?> GetCustomerWithCartAsync(Guid customerId)
-    {
-        return await _dataContext.Customers
-            .Include(c => c.Cart)
-            .FirstOrDefaultAsync(c => c.Id == customerId && !c.IsDeleted);
-    }
-
 }

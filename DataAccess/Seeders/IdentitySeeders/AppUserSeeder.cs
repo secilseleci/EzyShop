@@ -5,75 +5,150 @@ namespace DataAccess.Seeders.IdentitySeeders;
 
 public static class AppUserSeeder
 {
-    public static async Task SeedUsersAsync(UserManager<AppUser> userManager)
+    public static async Task SeedUsersAsync(ApplicationDbContext dbContext, UserManager<AppUser> userManager)
     {
-        // ✅ Admin
+        if (!dbContext.Users.Any())
+        {
+            // ✅ Admin
+            var adminEmail = "admin@ezyshop.com";
+            var adminUser = await userManager.FindByEmailAsync(adminEmail);
 
-        var adminEmail = "admin@ezyshop.com";
-        var adminUserName = "Admin";
-        var adminUser = await userManager.FindByEmailAsync(adminEmail);
-
-        if (adminUser == null)
+            if (adminUser == null)
             {
                 var newAdmin = new AppUser
                 {
-                    Name = "Admin",
-                    Surname = "User",
-                    UserName = adminUserName,
+                    UserName = "Admin",
                     Email = adminEmail,
                     EmailConfirmed = true,
                     PhoneNumber = "05550000000",
                 };
-            
-            var result = await userManager.CreateAsync(newAdmin, "Admin123*");
 
-            if (result.Succeeded)
-            {
-                await userManager.AddToRoleAsync(newAdmin, "Admin");
+                var result = await userManager.CreateAsync(newAdmin, "Admin.1");
+
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(newAdmin, "Admin");
+                }
             }
-        }
 
-        // ✅ Customer1
-        var customer1Email = "derya.karaman.ezyshop@gmail.com";
-        if (await userManager.FindByEmailAsync(customer1Email) == null)
-        {
-            var customer = new AppUser
+
+            // ✅ Seller1
+            var seller1Email = "secil.seleci@gmail.com";
+            if (await userManager.FindByEmailAsync(seller1Email) == null)
             {
-                Name = "Derya",
-                Surname = "Karaman",
-                UserName = "Derya Karaman",
-                Email = customer1Email,
-                EmailConfirmed = true,
-                PhoneNumber = "05551112233",
-               
-            };
+                var seller = new AppUser
+                {
+                    UserName = "Secil Seleci",
+                    Email = seller1Email,
+                    EmailConfirmed = true,
+                    PhoneNumber = "05534102506",
 
-            var resultCustomer1 = await userManager.CreateAsync(customer, "Customer.123");
+                };
+                var resultSeller1 = await userManager.CreateAsync(seller, "Seller.1");
 
-            if (resultCustomer1.Succeeded)
-            {
-                await userManager.AddToRoleAsync(customer, "Customer");
+                if (resultSeller1.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(seller, "Seller");
+                }
             }
-                 
-        }
 
-        // ✅ Customer2
 
-        var customer2Email = "nur.biral.ezyshop@gmail.com";
-        if (await userManager.FindByEmailAsync(customer2Email) == null)
+            // ✅ Seller2
+            var seller2Email = "alidemir@gmail.com";
+
+            if (await userManager.FindByEmailAsync(seller2Email) == null)
+            {
+                var seller = new AppUser
+                {
+                    UserName = "Ali Demir",
+                    Email = seller2Email,
+                    EmailConfirmed = true,
+                    PhoneNumber = "05555552506",
+                };
+                var resultSeller2 = await userManager.CreateAsync(seller, "Seller.1");
+
+                if (resultSeller2.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(seller, "Seller");
+                }
+            }
+
+
+            // ✅ Seller3
+            var seller3Email = "aysekaya@gmail.com";
+            if (await userManager.FindByEmailAsync(seller3Email) == null)
+            {
+                var seller = new AppUser
+                {
+                    UserName = "Ayşe Kaya",
+                    Email = seller3Email,
+                    EmailConfirmed = true,
+                    PhoneNumber = "05534102555",
+                    IsDeleted = true
+                };
+                var resultSeller3 = await userManager.CreateAsync(seller, "Seller.1");
+
+                if (resultSeller3.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(seller, "Seller");
+                }
+            }
+            // ✅ Seller4
+            var seller4Email = "alper@gmail.com";
+            if (await userManager.FindByEmailAsync(seller4Email) == null)
+            {
+                var seller = new AppUser
+                {
+                    UserName = "Alper Sütçü",
+                    Email = seller4Email,
+                    EmailConfirmed = true,
+                    PhoneNumber = "05534102555"
+                   
+                };
+                var resultSeller4 = await userManager.CreateAsync(seller, "Seller.1");
+
+                if (resultSeller4.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(seller, "Seller");
+                }
+            }
+
+
+            // ✅ Customer1
+            var customer1Email = "derya.karaman.ezyshop@gmail.com";
+            if (await userManager.FindByEmailAsync(customer1Email) == null)
             {
                 var customer = new AppUser
                 {
-                    Name = "Nur",
-                    Surname = "Biral",
+                    UserName = "Derya Karaman",
+                    Email = customer1Email,
+                    EmailConfirmed = true,
+                    PhoneNumber = "05551112233",
+                };
+
+                var resultCustomer1 = await userManager.CreateAsync(customer, "Customer.1");
+
+                if (resultCustomer1.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(customer, "Customer");
+                }
+
+            }
+
+            // ✅ Customer2
+
+            var customer2Email = "nur.biral.ezyshop@gmail.com";
+            if (await userManager.FindByEmailAsync(customer2Email) == null)
+            {
+                var customer = new AppUser
+                {
                     UserName = "Nur Biral",
                     Email = customer2Email,
                     EmailConfirmed = true,
                     PhoneNumber = "05551112244",
-                    
                 };
 
-                var resultCustomer2 = await userManager.CreateAsync(customer, "Customer.123");
+                var resultCustomer2 = await userManager.CreateAsync(customer, "Customer.1");
 
                 if (resultCustomer2.Succeeded)
                 {
@@ -81,74 +156,6 @@ public static class AppUserSeeder
                 }
 
             }
-
-        // ✅ Seller1
-        var seller1Email = "secil.seleci@gmail.com";
-        if(await userManager.FindByEmailAsync(seller1Email) == null) 
-        {
-            var seller = new AppUser
-            {
-                Name = "Seçil",
-                Surname = "Seleci",
-                UserName = "Seçil Seleci",
-                Email = seller1Email,
-                EmailConfirmed = true,
-                PhoneNumber = "05534102506",
-                
-            };
-            var resultSeller1 = await userManager.CreateAsync(seller, "Seller.123");
-
-            if (resultSeller1.Succeeded)
-            {
-                await userManager.AddToRoleAsync(seller, "Seller");
-            }
-        }
-
-
-        // ✅ Seller2
-        var seller2Email = "secilseller@gmail.com";
-
-        if (await userManager.FindByEmailAsync(seller2Email) == null)
-        {
-            var seller = new AppUser
-            {
-                Name = "Fatma",
-                Surname = "Kara",
-                UserName = "Fatma Kara",
-                Email = seller2Email,
-                EmailConfirmed = true,
-                PhoneNumber = "05555552506",
-              
-            };
-            var resultSeller2 = await userManager.CreateAsync(seller, "Seller.123");
-
-            if (resultSeller2.Succeeded)
-            {
-                await userManager.AddToRoleAsync(seller, "Seller");
-            }
-        }
-
-        // ✅ Seller3
-        var seller3Email = "selecisecil072@gmail.com";
-        if (await userManager.FindByEmailAsync(seller3Email) == null)
-        {
-            var seller = new AppUser
-            {
-                Name = "Mete",
-                Surname = "Bakırcı",
-                UserName = "Mete Bakırcı",
-                Email = seller3Email,
-                EmailConfirmed = true,
-                PhoneNumber = "05534102555",
-
-            };
-            var resultSeller1 = await userManager.CreateAsync(seller, "Seller.123");
-
-            if (resultSeller1.Succeeded)
-            {
-                await userManager.AddToRoleAsync(seller, "Seller");
-            }
         }
     }
 }
-

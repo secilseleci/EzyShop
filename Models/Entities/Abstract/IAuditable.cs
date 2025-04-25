@@ -6,9 +6,9 @@ public interface IAuditable
     DateTime? UpdatedAt { get; set; }
     DateTime? DeletedAt { get; set; }
     bool IsDeleted { get; set; }
-
-    Guid? CreatedById { get; set; }
-    Guid? ModifiedById { get; set; }
-    Guid? DeletedById { get; set; }
+    bool IsActive { get; set; }
+    string CreatedBy { get; set; } 
+    string? ModifiedBy { get; set; }
+    string? DeletedBy { get; set; }
 
 }

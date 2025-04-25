@@ -1,12 +1,10 @@
 ﻿let categoriesTable;
 
 $(document).ready(function () {
-    categoriesTable = $('#tblCategory').DataTable({
+    categoriesTable = $('#tblCategories').DataTable({
         processing: true,
         serverSide: true,
-        ajax: { url: '/Admin/Category/GetPaginatedCategories' },
-        type: 'GET',
-
+        ajax: {url: '/Admin/Category/GetAllCategories',type: 'GET'},
         columns: [
             {
                 title: "Image",
@@ -19,7 +17,6 @@ $(document).ready(function () {
                 }
             },
             { title: "Name", data: 'name', "width": "15%" },
-
             {
                 title: "Actions",
                 data: 'id',
@@ -34,8 +31,6 @@ $(document).ready(function () {
         ]
     });
 });
-
-
 
 function deleteCategory(categoryId) {
     $.ajax({

@@ -52,26 +52,38 @@ public class EmailService : IEmailService
 
     }
     #endregion
-    public async Task<bool> SendSellerApprovedEmail(string to, string sellerName)
+    public async Task<bool> SendSellerApprovedEmail(string to, string sellerName, string shopName)
     {
-        var subject = "Your Seller Application has been Approved!";
-        var defaultPassword = _configuration["SellerSettings:DefaultSellerPassword"];
+        var subject = "Your Application has been Approved!";
 
-        
-
-        var model = new SendSellerApprovedEmailViewModel
+        var model = new SendSellerEmailViewModel
         {
             Name = sellerName,
-            ShopName = sellerName,
-            DefaultPassword = defaultPassword
+            ShopName = shopName,
         };
+
         var notificationTemplatePath = "~/Areas/Admin/Views/Emails/_SendSellerApprovalTemplate.cshtml";
         var emailBody = await _razorViewRenderer.RenderViewToStringAsync(notificationTemplatePath, model);
         if (emailBody == null) { return false; }
 
         return await SendEmailAsync(to, subject, emailBody);
     }
+    public async Task<bool> SendSellerRejectedEmail(string to, string sellerName, string shopName)
+    {
+        var subject = "Your Application has been rejected";
 
+        var model = new SendSellerEmailViewModel
+        {
+            Name = sellerName,
+            ShopName = shopName,
+        };
+
+        var notificationTemplatePath = "~/Areas/Admin/Views/Emails/_SendSellerRejectedTemplate.cshtml";
+        var emailBody = await _razorViewRenderer.RenderViewToStringAsync(notificationTemplatePath, model);
+        if (emailBody == null) { return false; }
+
+        return await SendEmailAsync(to, subject, emailBody);
+    }
     public async Task<bool> SendOrderConfirmationEmail(string to, string orderCode, string customerName)
     {
         var subject = $"Order Confirmation - {orderCode}";
@@ -85,5 +97,22 @@ public class EmailService : IEmailService
         var body = await EmailTemplateHelper.GetTemplateContentAsync("OrderConfirmation.html", replacements);
 
         return await SendEmailAsync(to, subject, body);
+    }
+
+    public async Task<bool> SendSellerDeactivatedEmail(string to, string sellerName, string shopName)
+    {
+        var subject = "Your account has been suspended";
+
+        var model = new SendSellerEmailViewModel
+        {
+            Name = sellerName,
+            ShopName = shopName,
+        };
+
+        var notificationTemplatePath = "~/Areas/Admin/Views/Emails/_SendSellerDeactivatedTemplate.cshtml";
+        var emailBody = await _razorViewRenderer.RenderViewToStringAsync(notificationTemplatePath, model);
+        if (emailBody == null) { return false; }
+
+        return await SendEmailAsync(to, subject, emailBody);
     }
 }

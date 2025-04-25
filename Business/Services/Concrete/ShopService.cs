@@ -1,171 +1,336 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
+using Business.Services.Results;
 using Core.Constants;
+using Core.Interfaces;
 using Core.Pagination;
-using Core.Security;
 using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Models.DTOs;
 using Models.Entities.Concrete;
-using Models.ViewModels.Shop;
-using static Models.Entities.Concrete.Shop;
+using Models.Identity;
 
 namespace Business.Services.Concrete;
-public class ShopService : BaseService,IShopService
+
+public class ShopService : BaseService, IShopService
 {
     private readonly IShopRepository _shopRepo;
-    private readonly IProductRepository _productRepo;
     private readonly ISellerRepository _sellerRepo;
+    private readonly UserManager<AppUser> _userManager;
+    private readonly IEmailService _emailService;
+    private readonly ILogger<ShopService>? _logger;
+
     public ShopService(
-        IShopRepository shopRepo, 
-        IProductRepository productRepo,
-        ISellerRepository sellerRepo,
-        IMapper mapper,
-        IConfiguration config,
-        ICurrentUserService currentUser) : base(mapper, config, currentUser)
+      IMapper mapper,
+      IConfiguration config,
+      ICurrentUserService currentUserService,
+      UserManager<AppUser> userManager,
+      IShopRepository shopRepo,
+      ISellerRepository sellerRepo,
+      IEmailService emailService,
+       ILogger<ShopService> logger) : base(mapper, config, currentUserService)
     {
         _shopRepo = shopRepo;
-        _productRepo = productRepo;
-        _sellerRepo=sellerRepo;
+        _sellerRepo = sellerRepo;
+        _userManager = userManager;
+        _emailService = emailService;
+        _logger = logger;
     }
-    public async Task<IResult> CheckShopIsActiveAsync(Guid userId)
+
+    #region list
+    public async Task<IDataResult<PaginatedList<ShopListDto>>> GetShopsAsync(ShopStatus status, string? searchTerm, int page, int pageSize)
     {
-        var shop = await _shopRepo.GetShopByUserIdAsync(userId);
+        var result = await _shopRepo.GetShopDtosAsync(status, searchTerm, page, pageSize);
 
-        if (shop == null)
-            return new ErrorResult(Messages.ShopNotFound);
+        return new SuccessDataResult<PaginatedList<ShopListDto>>(result);
+    }
+    public async Task<IDataResult<ShopDetailsDto>> GetShopDetailsAsync(Guid shopId)
+    {
+        var result = await _shopRepo.GetShopDetailsDtosAsync(shopId);
 
-        if (shop.Status != ShopStatus.Approved)
-            return new ErrorResult(Messages.ShopInActive);
+        if (result == null)
+        {
+            return new ErrorDataResult<ShopDetailsDto>(message: Messages.ShopNotFound);
+        }
+
+        return new SuccessDataResult<ShopDetailsDto>(data: result);
+    }
+
+    #endregion
+
+    #region Approve
+    public async Task<IResult> ApproveShopAsync(Guid shopId, Guid sellerId)
+    {
+        var validation = await ValidateShopApplication(shopId, sellerId);
+        if (!validation.Success)
+        {
+            return validation;
+        }
+
+        var shop = validation.Data.Shop;
+        var seller = validation.Data.Seller;
+        var user = validation.Data.User;
+
+        if (!IsShopPending(shop))
+            return new ErrorDataResult<ShopValidationResult>(Messages.ShopAlreadyProcessed);
+
+        // Update values
+        shop.IsActive = true;
+        seller.IsActive = true;
+        user.EmailConfirmed = true;
+
+        // Update all
+        var updateResult = await UpdateAllAsync(shop, seller, user);
+        if (!updateResult.Success)
+            return updateResult;
+
+        //Send email
+        var emailResult = await _emailService.SendSellerApprovedEmail(user.Email!, seller.FirstName, shop.Name);
+        if (!emailResult)
+            _logger?.LogWarning(LogMessages.EmailFailed, user.Email);
+
+        return new SuccessResult(Messages.ApprovedSuccess);
+    }
+
+    #endregion
+
+    #region Reject
+    public async Task<IResult> RejectShopAsync(Guid shopId, Guid sellerId)
+    {
+        var validation = await ValidateShopApplication(shopId, sellerId);
+
+        if (!validation.Success)
+        {
+            return validation;
+        }
+
+        var shop = validation.Data.Shop;
+        var seller = validation.Data.Seller;
+        var user = validation.Data.User;
+
+        if (!IsShopPending(shop))
+            return new ErrorDataResult<ShopValidationResult>(Messages.ShopAlreadyProcessed);
+
+
+        user.IsDeleted = true;
+
+        // Update and delete all
+        var deleteResult = await DeleteAllAsync(shop, seller, user);
+        if (!deleteResult.Success)
+            return deleteResult;
+
+        //Send email
+        var emailResult = await _emailService.SendSellerRejectedEmail(user.Email!, seller.FirstName, shop.Name);
+
+        if (!emailResult)
+            _logger?.LogWarning(LogMessages.EmailFailed, user.Email);
+
+        return new SuccessResult(Messages.RejectedSuccess);
+    }
+
+    #endregion
+
+    #region Deactivate
+    public async Task<IResult> DeactivateShopAsync(Guid shopId, Guid sellerId)
+    {
+        var validation = await ValidateShopApplication(shopId, sellerId);
+
+        if (!validation.Success)
+        {
+            return validation;
+        }
+        var shop = validation.Data.Shop;
+        var seller = validation.Data.Seller;
+        var user = validation.Data.User;
+
+        if (!IsShopActive(shop))
+            return new ErrorDataResult<ShopValidationResult>(Messages.ShopAlreadyInactive);
+
+        shop.IsActive = false;
+        seller.IsActive = false;
+
+        // update all
+        using var transaction = await _shopRepo.BeginTransactionAsync();
+
+        if (await _shopRepo.UpdateAsync(shop) <= 0)
+            return new ErrorResult(Messages.UpdateError);
+
+        if (await _sellerRepo.UpdateAsync(seller) <= 0)
+            return new ErrorResult(Messages.UpdateError);
+
+        await transaction.CommitAsync();
+
+        //Send email
+        var emailResult = await _emailService.SendSellerDeactivatedEmail(user.Email!, seller.FirstName, shop.Name);
+        if (!emailResult)
+            _logger?.LogWarning(LogMessages.EmailFailed, user.Email);
+
+        return new SuccessResult(Messages.DeactivateSuccess);
+    }
+    #endregion
+
+    #region Reactivate
+    public async Task<IResult> ReactivateShopAsync(Guid shopId, Guid sellerId)
+    {
+        var validation = await ValidateShopApplication(shopId, sellerId);
+        if (!validation.Success)
+        {
+            return validation;
+        }
+        var shop = validation.Data.Shop;
+        var seller = validation.Data.Seller;
+
+        if (!IsShopInactive(shop))
+            return new ErrorDataResult<ShopValidationResult>(Messages.ShopAlreadyActive);
+
+        shop.IsActive = true;
+        seller.IsActive = true;
+
+        // update all
+        using var transaction = await _shopRepo.BeginTransactionAsync();
+
+        if (await _shopRepo.UpdateAsync(shop) <= 0)
+            return new ErrorResult(Messages.UpdateError);
+
+        if (await _sellerRepo.UpdateAsync(seller) <= 0)
+            return new ErrorResult(Messages.UpdateError);
+
+        await transaction.CommitAsync();
+
+        return new SuccessResult(Messages.ReactivateSuccess);
+    }
+    #endregion
+
+    #region Delete
+    public async Task<IResult> DeleteShopAsync(Guid shopId, Guid sellerId)
+    {
+        var validation = await ValidateShopApplication(shopId, sellerId);
+
+        if (!validation.Success)
+        {
+            return validation;
+        }
+
+        var shop = validation.Data.Shop;
+        var seller = validation.Data.Seller;
+        var user = validation.Data.User;
+
+        if (!IsShopInactive(shop))
+            return new ErrorResult(Messages.NotAllowedDelete);
+
+        if (IsShopDeleted(shop))
+            return new ErrorDataResult<ShopValidationResult>(Messages.ShopAlreadyDeleted);
+
+        user.IsDeleted = true;
+
+        // Update and delete all
+        var deleteResult = await DeleteAllAsync(shop, seller, user);
+        if (!deleteResult.Success)
+            return deleteResult;
+
+        return new SuccessResult(Messages.DeleteSuccess);
+    }
+    #endregion
+
+    #region Validate
+    private async Task<IDataResult<ShopValidationResult>> ValidateShopApplication(Guid shopId, Guid sellerId)
+    {
+        var shop = await _shopRepo.GetByIdAsync(shopId);
+        if (shop == null || shop.IsDeleted)
+            return new ErrorDataResult<ShopValidationResult>(Messages.ShopNotFound);
+
+        if (shop.SellerId != sellerId)
+            return new ErrorDataResult<ShopValidationResult>(Messages.ShopSellerMismatch);
+
+        var seller = await _sellerRepo.GetByIdAsync(sellerId);
+
+        if (seller == null || seller.IsDeleted)
+            return new ErrorDataResult<ShopValidationResult>(Messages.SellerNotFound);
+
+        var user = await _userManager.FindByIdAsync(seller.Id.ToString());
+
+        if (user == null)
+            return new ErrorDataResult<ShopValidationResult>(Messages.UserNotFound);
+
+        return new SuccessDataResult<ShopValidationResult>(new ShopValidationResult
+        {
+            Shop = shop,
+            Seller = seller,
+            User = user
+        });
+    }
+
+    #endregion
+
+    #region private
+    private static bool IsShopPending(Shop shop) =>
+       !shop.IsDeleted && !shop.IsActive && shop.UpdatedAt == null;
+
+    private static bool IsShopActive(Shop shop) =>
+        !shop.IsDeleted && shop.IsActive;
+
+    private static bool IsShopInactive(Shop shop) =>
+        !shop.IsDeleted && !shop.IsActive && shop.UpdatedAt != null;
+
+    private static bool IsShopDeleted(Shop shop) =>
+        shop.IsDeleted;
+
+    private async Task<IResult> UpdateAllAsync(Shop shop, Seller seller, AppUser user)
+    {
+        using var transaction = await _shopRepo.BeginTransactionAsync();
+
+        var shopResult = await _shopRepo.UpdateAsync(shop);
+        if (shopResult <= 0)
+            return new ErrorResult(Messages.UpdateError);
+
+        var sellerResult = await _sellerRepo.UpdateAsync(seller);
+        if (sellerResult <= 0)
+            return new ErrorResult(Messages.UpdateError);
+
+        var userResult = await _userManager.UpdateAsync(user);
+        if (!userResult.Succeeded)
+            return new ErrorResult(Messages.UpdateError);
+
+        await transaction.CommitAsync();
 
         return new SuccessResult();
     }
 
-    #region Create
-    public async Task<IResult> CreateShopAsync(Shop entity)
+    private async Task<IResult> DeleteAllAsync(Shop shop, Seller seller, AppUser user)
     {
-        var shopResult = await GetShopBySellerIdAsync(entity.SellerId);
-
-        if (shopResult.Success && shopResult.Data != null)
-            return new ErrorResult(Messages.ShopAlreadyExists);
-         
-        var result = await _shopRepo.CreateAsync(entity);
-
-        return result > 0
-            ? new SuccessResult(Messages.CreateShopSuccess)
-            : new ErrorResult(Messages.CreateShopError);
-    }
-    #endregion
-
-    #region Read
-    public async Task<IDataResult<Shop>> GetShopByIdAsync(Guid shopId)
-    {
-        var shop = await _shopRepo.GetByIdAsync(shopId);
-        return shop is not null
-            ? new SuccessDataResult<Shop>(shop)
-            : new ErrorDataResult<Shop>(Messages.ShopNotFound);
-    }
-
-    public async Task<IDataResult<ShopViewModel>> GetShopBySellerIdAsync(Guid sellerId)
-    {
-        var shop = await _shopRepo.GetShopBySellerIdAsync(sellerId);
-        if (shop == null)
-            return new ErrorDataResult<ShopViewModel>(Messages.ShopNotFound);
-         
-        var mappedShop = Mapper.Map<ShopViewModel>(shop);
-        return new SuccessDataResult<ShopViewModel>(mappedShop);
-    }
-    public async Task<IDataResult<ShopViewModel>> GetShopByUserIdAsync(Guid userId)
-    {
-        var shop = await _shopRepo.GetShopByUserIdAsync(userId);
-        if (shop == null)
-            return new ErrorDataResult<ShopViewModel>(Messages.ShopNotFound);
-
-        var mappedShop = Mapper.Map<ShopViewModel>(shop);
-        return new SuccessDataResult<ShopViewModel>(mappedShop);
-    }
-
-    public async Task<IDataResult<PaginatedList<ShopViewModel>>> GetPaginatedShopsAsync(int page, int pageSize)
-    {
-        var pagedShops = await _shopRepo.GetPaginatedAsync(s => !s.IsDeleted, page, pageSize);
-
-        var viewModels = Mapper.Map<IEnumerable<ShopViewModel>>(pagedShops.Items);
-
-        var result = new PaginatedList<ShopViewModel>(
-            viewModels,
-            pagedShops.TotalItems,
-            pagedShops.Page,
-            pagedShops.PageSize
-        );
-
-        return result.Items.Any()
-            ? new SuccessDataResult<PaginatedList<ShopViewModel>>(result)
-            : new ErrorDataResult<PaginatedList<ShopViewModel>>(Messages.EmptyShopList);
-    }
-
-    public async Task<IDataResult<PaginatedList<ShopViewModel>>> GetPaginatedShopsByStatusAsync(Shop.ShopStatus status, int page, int pageSize)
-    {
-        var pagedShops = await _shopRepo.GetPaginatedAsync(s => !s.IsDeleted && s.Status == status, page, pageSize);
-
-        var viewModels = Mapper.Map<IEnumerable<ShopViewModel>>(pagedShops.Items);
-
-        var result = new PaginatedList<ShopViewModel>(
-            viewModels,
-            pagedShops.TotalItems,
-            pagedShops.Page,
-            pagedShops.PageSize
-        );
-
-        return result.Items.Any()
-            ? new SuccessDataResult<PaginatedList<ShopViewModel>>(result)
-            : new ErrorDataResult<PaginatedList<ShopViewModel>>(Messages.EmptyShopList);
-    }
-
-    #endregion
-
-    #region Delete
-    public async Task<IResult> DeleteShopAsync(Guid shopId)
-    {
-        var shop = await _shopRepo.GetByIdAsync(shopId);
-        if (shop is null)
-            return new ErrorResult(Messages.ShopNotFound);
-
         using var transaction = await _shopRepo.BeginTransactionAsync();
 
-        try
-        {
-            // Seller
-            var seller = await _sellerRepo.GetByIdAsync(shop.SellerId);
-            if (seller is not null)
-                await _sellerRepo.SoftDeleteAsync(seller.Id);
+        var shopResult = await _shopRepo.SoftDeleteAsync(shop.Id);
+        if (shopResult <= 0)
+            return new ErrorResult(Messages.DeleteError);
 
-            // Products
-            var products = await _productRepo.GetWhereAsync(p => p.ShopId == shopId);
-            if (products is not null && products.Any())
-                await _productRepo.SoftDeleteRangeAsync(products);
+        var sellerResult = await _sellerRepo.SoftDeleteAsync(seller.Id);
+        if (sellerResult <= 0)
+            return new ErrorResult(Messages.DeleteError);
 
-            // Shop
-            var result = await _shopRepo.SoftDeleteAsync(shopId);
+        var userResult = await _userManager.UpdateAsync(user);
+        if (!userResult.Succeeded)
+            return new ErrorResult(Messages.UpdateError);
 
-            if (result <= 0)
-            {
-                await transaction.RollbackAsync();
-                return new ErrorResult(Messages.DeleteShopError);
-            }
+        await transaction.CommitAsync();
 
-            await transaction.CommitAsync();
-            return new SuccessResult(Messages.DeleteShopSuccess);
-        }
-        catch (Exception)
-        {
-            await transaction.RollbackAsync();
-            return new ErrorResult(Messages.DeleteShopError);
-        }
+        return new SuccessResult();
     }
-
-  
 
     #endregion
 
+    #region Count
+    public async Task<int> CountPendingShopsAsync()
+    {
+        return await _shopRepo.CountPendingShopsAsync(ShopStatus.Pending);
+    }
 
+    public async Task<int> CountActiveShopsAsync()
+    {
+        return await _shopRepo.CountActiveShopsAsync(ShopStatus.Active);
+    }
+    #endregion
 }

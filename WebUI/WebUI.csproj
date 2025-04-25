@@ -7,6 +7,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Views\Order\**" />
+	  <Compile Remove="Views\Shop\**" />
+	  <Content Remove="Views\Order\**" />
+	  <Content Remove="Views\Shop\**" />
+	  <EmbeddedResource Remove="Views\Order\**" />
+	  <EmbeddedResource Remove="Views\Shop\**" />
+	  <None Remove="Views\Order\**" />
+	  <None Remove="Views\Shop\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Include="Properties\launchSettings.json" />
 	</ItemGroup>
 	<ItemGroup>
@@ -28,11 +39,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Business\Business.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Views\Order\" />
-	  <Folder Include="Views\Shop\" />
 	</ItemGroup>
 
 </Project>

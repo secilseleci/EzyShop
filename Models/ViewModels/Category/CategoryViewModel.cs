@@ -10,10 +10,8 @@ public class CategoryViewModel : IImageViewModel
     public Guid Id { get; set; }
 
     [Required]
-    [MaxLength(30)]
+    [StringLength(30, MinimumLength = 3, ErrorMessage = "Category name must be between 3-30 characters")]
     public string Name { get; set; } = null!;
-
-    
 
     [DisplayName("Image")]
     public string? ImageUrl { get; set; }

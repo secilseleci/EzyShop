@@ -7,57 +7,64 @@ public static class ShopSeeder
 {
     public static async Task SeedShopsAsync(ApplicationDbContext dbContext)
     {
-        var seller1 = await dbContext.Sellers
-     .Include(s => s.User)
-     .FirstOrDefaultAsync(s => s.User.Email == "secil.seleci@gmail.com");
+        if (await dbContext.Shops.AnyAsync()) return;
 
-        if (seller1 != null && !await dbContext.Shops.AnyAsync(sh => sh.SellerId == seller1.Id))
+        var shopConfigs = new List<(string Email, string ShopName, string Status)>
         {
-            dbContext.Shops.Add(new Shop
+            ("secil.seleci@gmail.com", "Secil's Shop", "Active"),
+            ("alidemir@gmail.com", "Ali's Shop", "Inactive"),
+            ("aysekaya@gmail.com", "Ayşe's Shop", "Deleted"),
+            ("alper@gmail.com", "Alper's Shop", "Pending")
+        };
+
+        foreach (var (email, shopName, status) in shopConfigs)
+        {
+            var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null) continue;
+
+            var seller = await dbContext.Sellers.FindAsync(user.Id);
+            if (seller == null) continue;
+
+            var now = DateTime.UtcNow;
+
+            var shop = new Shop
             {
-                SellerId = seller1.Id,
-                Name = "Seleci Home",
-                ShopAddress = "İstanbul, Erenköy Mah. No:23",
-                TaxNumber = "TR123456789",
-                Status = Shop.ShopStatus.Approved,
-                CreatedAt = DateTime.UtcNow
-            });
+                Name = shopName,
+                SellerId = seller.Id,
+                Address = "Edirne, Turkey",
+                TaxNumber = Guid.NewGuid().ToString().Substring(0, 10),
+                CreatedAt = now,
+                CreatedBy = seller.FirstName + " " + seller.LastName,
+                ModifiedBy = "Seeder"
+            };
+
+            switch (status)
+            {
+                case "Active":
+                    shop.IsActive = true;
+                    break;
+
+                case "Inactive":
+                    shop.IsActive = false;
+                    shop.UpdatedAt = now;
+                    break;
+
+                case "Deleted":
+                    shop.IsActive = false;
+                    shop.IsDeleted = true;
+                    shop.UpdatedAt = now;
+                    shop.DeletedAt = now;
+                    shop.DeletedBy = "Seeder";
+                    break;
+
+                case "Pending":
+                    shop.IsActive = false;
+                    break;
+            }
+
+            await dbContext.Shops.AddAsync(shop);
         }
 
-        var seller2 = await dbContext.Sellers
-       .Include(s => s.User)
-       .FirstOrDefaultAsync(s => s.User.Email == "secilseller@gmail.com");
-
-        if (seller2 != null && !await dbContext.Shops.AnyAsync(sh => sh.SellerId == seller2.Id))
-        {
-            dbContext.Shops.Add(new Shop
-            {
-                SellerId = seller2.Id,
-                Name = "FashionBlack",
-                ShopAddress = "Ankara, Kızılay Cd. No:12",
-                TaxNumber = "TR987654321",
-                Status = Shop.ShopStatus.Approved,
-                CreatedAt = DateTime.UtcNow
-            });
-        }
-
-        var seller3 = await dbContext.Sellers
-     .Include(s => s.User)
-     .FirstOrDefaultAsync(s => s.User.Email == "selecisecil072@gmail.com");
-
-        if (seller3 != null && !await dbContext.Shops.AnyAsync(sh => sh.SellerId == seller3.Id))
-        {
-            dbContext.Shops.Add(new Shop
-            {
-                SellerId = seller3.Id,
-                Name = "Book Store",
-                ShopAddress = "İzmir, Konak Berkemal Cd. No:2",
-                TaxNumber = "TR987654321",
-                Status = Shop.ShopStatus.Approved,
-                CreatedAt = DateTime.UtcNow
-            });
-        }
         await dbContext.SaveChangesAsync();
-
     }
 }

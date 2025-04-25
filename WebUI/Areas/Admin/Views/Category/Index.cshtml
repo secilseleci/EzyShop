@@ -1,6 +1,4 @@
-﻿@model IEnumerable<CategoryViewModel>
-
-@{
+﻿@{
     ViewData["Title"] = "Category List";
 }
 
@@ -20,12 +18,12 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table id="tblCategory" class="table table-bordered table-striped" style="width:100%">
+                <table id="tblCategories" class="table table-bordered table-striped" style="width:100%">
                     <thead>
                         <tr>
                             <th>Image</th>
                             <th>Name</th>
-                            <th>Actions</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                 </table>
@@ -36,4 +34,8 @@
 
 @section Scripts {
     <script src="~/js/category.js"></script>
+    <partial name="_DataTable" />
 }
+
+
+

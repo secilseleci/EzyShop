@@ -7,27 +7,35 @@ public static class CustomerSeeder
 {
     public static async Task SeedCustomersAsync(ApplicationDbContext dbContext)
     {
-        var derya = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == "derya.karaman.ezyshop@gmail.com");
-        var nur = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == "nur.biral.ezyshop@gmail.com");
-
-        if (derya != null && !await dbContext.Customers.AnyAsync(c => c.UserId == derya.Id))
+        var customerMails = new[]
         {
-            dbContext.Customers.Add(new Customer
-            {
-                UserId = derya.Id,
-                ShippingAddress = "İstanbul, Kadıköy",
-                CreatedAt = DateTime.UtcNow
-            });
-        }
+            "derya.karaman.ezyshop@gmail.com",
+            "nur.biral.ezyshop@gmail.com"
+        };
 
-        if (nur != null && !await dbContext.Customers.AnyAsync(c => c.UserId == nur.Id))
+        foreach (var email in customerMails)
         {
-            dbContext.Customers.Add(new Customer
+            var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+
+            if (user != null && !await dbContext.Customers.AnyAsync(c => c.Id == user.Id))
             {
-                UserId = nur.Id,
-                ShippingAddress = "İzmir, Karşıyaka",
-                CreatedAt = DateTime.UtcNow
-            });
+                var firstName = user.UserName.Split(" ")[0];
+                var lastName = user.UserName.Split(" ").Length > 1 ? user.UserName.Split(" ")[1] : "";
+
+                var customer = new Customer
+                {
+                    Id = user.Id,
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Phone = user.PhoneNumber,
+                    IsActive = true,
+                    Address="Default Address",
+                    CreatedBy = "Seeder",
+                    CreatedAt = DateTime.UtcNow
+                };
+
+                await dbContext.Customers.AddAsync(customer);
+            }
         }
 
         await dbContext.SaveChangesAsync();

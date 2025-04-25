@@ -1,6 +1,8 @@
 ﻿using Models.Entities.Abstract;
 
-public abstract class BaseEntity : IBaseEntity, IAuditable
+namespace Models.Entities.Concrete;
+
+public class BaseEntity : IBaseEntity, IAuditable
 {
     public Guid Id { get; set; } = Guid.NewGuid();
 
@@ -8,9 +10,9 @@ public abstract class BaseEntity : IBaseEntity, IAuditable
     public DateTime? UpdatedAt { get; set; }
     public DateTime? DeletedAt { get; set; }
     public bool IsDeleted { get; set; }
+    public bool IsActive { get; set; }
+    public string CreatedBy { get; set; }
+    public string? ModifiedBy { get; set; }
+    public  string? DeletedBy { get; set; }
 
-    public Guid? CreatedById { get; set; }
-    public Guid? ModifiedById { get; set; }
-    public Guid? DeletedById { get; set; }
- 
 }

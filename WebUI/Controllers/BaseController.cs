@@ -1,29 +1,25 @@
 ﻿using AutoMapper;
-using Core.Security;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Models.Identity;
 using Models.ViewModels.Abstract;
+using System.Security.Claims;
 namespace WebUI.Controllers;
 public class BaseController : Controller
 {
     protected UserManager<AppUser> UserManager { get; }
     protected RoleManager<AppRole> RoleManager { get; }
     protected SignInManager<AppUser> SignInManager { get; }
-    protected ICurrentUserService CurrentUserService { get; }
     protected IWebHostEnvironment WebHostEnvironment { get; }
     protected IMapper Mapper { get; }
 
     public BaseController(
-     ICurrentUserService currentUserService,
      UserManager<AppUser> userManager,
      RoleManager<AppRole> roleManager,
      SignInManager<AppUser> signInManager,
      IWebHostEnvironment webHostEnvironment,
      IMapper mapper)
     {
-        CurrentUserService = currentUserService;
         UserManager = userManager;
         RoleManager = roleManager;
         SignInManager = signInManager;
@@ -31,20 +27,36 @@ public class BaseController : Controller
         Mapper = mapper;
     }
 
-  
+    #region CurrentUser
+    protected Guid? CurrentUserId
+    {
+        get
+        {
+            var userId = HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Guid.TryParse(userId, out var id) ? id : null;
+        }
+    }
+    protected string? CurrentUserEmail =>
+        HttpContext?.User?.FindFirst(ClaimTypes.Email)?.Value;
 
-    protected Guid? GetUserId() => CurrentUserService.UserId;
+    protected string? CurrentUserName =>
+        HttpContext?.User?.FindFirst(ClaimTypes.Name)?.Value;
+
+    protected bool IsAuthenticated =>
+        HttpContext?.User?.Identity?.IsAuthenticated ?? false;
 
     protected async Task<AppUser?> GetCurrentUserAsync()
     {
-        
-
-        if (!CurrentUserService.UserId.HasValue)
+        if (!IsAuthenticated || !CurrentUserId.HasValue)
             return null;
 
-        return await UserManager.Users
-            .FirstOrDefaultAsync(u => u.Id == CurrentUserService.UserId.Value);
+        return await UserManager.FindByIdAsync(CurrentUserId.Value.ToString());
     }
+
+
+    #endregion
+
+
 
     #region Image Upload 
     protected void HandleImageUpload(IImageViewModel model, IFormFile? file)

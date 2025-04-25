@@ -20,25 +20,26 @@ builder.Host.UseSerilog((context, config) =>
            .WriteTo.Console()
            .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day);
 });
-// Servis Extension
 
+// Servis Extension
+builder.Services.AddHttpContextAccessor();
 builder.Services.ConfigureDbContext(builder.Configuration);
 builder.Services.ConfigureIdentity();
 builder.Services.ConfigureRepositoryRegistration();
 builder.Services.ConfigureServiceRegistration();
 builder.Services.AddAutoMapper(typeof(Program));
-
 builder.Services.AddRazorPages();
+
+
 var app = builder.Build();
  
+// Application extension
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.ConfigureLocalization();
 app.UseRouting();
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseExceptionHandler("/Home/Error");  
-
-
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -54,6 +55,5 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-app.ConfigureLocalization();
 
 app.Run();

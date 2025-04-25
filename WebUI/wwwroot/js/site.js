@@ -8,19 +8,22 @@
     }
 });
 
-$(document).ready(function () {
-    if (isCustomer === "true") {
-        $.ajax({
-            url: "/Cart/GetCartLineCount",
-            type: "GET",
-            success: function (data) {
-                if (data.success) {
-                    $("#cartLineCount").text(data.count);
-                }
-            },
-            error: function () {
-                console.log("Cart count çekilemedi.");
-            }
-        });
-    }
-});
+
+//document.addEventListener("DOMContentLoaded", function () {
+//    if (isUserAuthenticated === "true") {
+//        refreshCartIconCount();
+//    }
+//});
+
+//function refreshCartIconCount() {
+//    fetch("/Cart/GetCartLineCount")
+//        .then(res => res.json())
+//        .then(data => {
+//            if (data.success) {
+//                document.getElementById("cartLineCount").textContent = data.count;
+//            }
+//        })
+//        .catch(() => {
+//            console.warn("Cart count çekilemedi.");
+//        });
+//}

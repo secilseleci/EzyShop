@@ -5,15 +5,19 @@ namespace DataAccess.Seeders.IdentitySeeders
 {
     public static class RoleSeeder
     {
-        public static async Task SeedRolesAsync(RoleManager<AppRole> roleManager)
+        public static async Task SeedRolesAsync(ApplicationDbContext dbContext, RoleManager<AppRole> roleManager)
         {
-            var roles = new[] { "Admin", "Seller", "Customer" };
-
-            foreach (var role in roles)
+            if (!dbContext.Roles.Any())
             {
-                if (!await roleManager.RoleExistsAsync(role))
+
+                var roles = new[] { "Admin", "Seller", "Customer" };
+
+                foreach (var role in roles)
                 {
-                    await roleManager.CreateAsync(new AppRole { Name = role });
+                    if (!await roleManager.RoleExistsAsync(role))
+                    {
+                        await roleManager.CreateAsync(new AppRole { Name = role });
+                    }
                 }
             }
         }

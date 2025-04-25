@@ -1,17 +1,17 @@
 ﻿using Core.Pagination;
 using DataAccess.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.EntityFrameworkCore.Storage;
 using Models.Entities.Abstract;
 using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore.Query;
 
 namespace DataAccess.Repositories.Concrete;
 
 public class BaseRepository<T> : IBaseRepository<T> where T:class, IBaseEntity, IAuditable, new()
 {
     protected readonly ApplicationDbContext _dataContext;
-    private readonly DbSet<T> _dbSet;
+    protected readonly DbSet<T> _dbSet;
 
     public BaseRepository(ApplicationDbContext context)
     {
@@ -125,5 +125,4 @@ public class BaseRepository<T> : IBaseRepository<T> where T:class, IBaseEntity, 
 
         return new PaginatedList<T>(items, totalItems, page, pageSize);
     }
-
 }

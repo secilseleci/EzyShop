@@ -23,14 +23,15 @@
                                 <label asp-for="Name" class="ms-0"></label>
                             </div>
                         </div>
-                    </div> <div class="col-md-6">
+                    </div> 
+                    <div class="col-md-6">
                         <div class="form-floating py-2 col-12 mb-3">
                             <input asp-for="ImageUrl" type="file" name="file" class="form-control border-0 shadow rounded" />
                             <label asp-for="ImageUrl" class="ms-0"></label>
                         </div>
                     </div>
-              
-                     <div class="row mt-4">
+
+                    <div class="row mt-4">
                         <div class="col-6">
                             <button type="submit" class="form-control btn btn-info shadow">Create</button>
                         </div>
@@ -46,6 +47,6 @@
 
 @section Scripts {
     @{
-                <partial name="_ValidationScriptsPartial" />
+        <partial name="_ValidationScriptsPartial" />
     }
 }

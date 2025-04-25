@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Core.Security;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,42 +10,24 @@ namespace WebUI.Controllers;
 
 public class HomeController : BaseController
 {
-
     public HomeController(
-     ICurrentUserService currentUserService, 
      UserManager<AppUser> userManager,
      RoleManager<AppRole> roleManager,
      SignInManager<AppUser> signInManager,
      IWebHostEnvironment webHostEnvironment,
      IMapper mapper)
-   : base(currentUserService, userManager, roleManager, signInManager, webHostEnvironment, mapper)
+   : base(userManager, roleManager, signInManager, webHostEnvironment, mapper)
     {
     }
-    [Route("Home/Error")]
-    public IActionResult Error()
-    {
-        var feature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-        var exception = feature?.Error;
-
-        var model = new ErrorViewModel
-        {
-            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
-        };
-
-        return View(model);
-    }
-   
 
     #region Home Page
-
     public async Task<IActionResult> Index()
     {
-        if (CurrentUserService.IsAuthenticated && CurrentUserService.UserId.HasValue)
+        if (IsAuthenticated && CurrentUserId.HasValue)
         {
-            var userId = CurrentUserService.UserId.Value.ToString();
-            var user = await UserManager.FindByIdAsync(userId);
+            var user = await UserManager.FindByIdAsync(CurrentUserId.Value.ToString());
 
-            if (user != null)
+            if (user is not null)
             {
                 var roles = await UserManager.GetRolesAsync(user);
 
@@ -61,14 +42,28 @@ public class HomeController : BaseController
                 }
             }
         }
-
-
-        return View();  
+        return View();
     }
-
-
     #endregion
-     
+
+    #region Error
+    [Route("Home/Error")]
+    public IActionResult Error()
+    {
+        var feature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+        var exception = feature?.Error;
+
+        var model = new ErrorViewModel
+        {
+            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+            Message = exception?.Message,
+            Path = feature?.Path,
+            StackTrace = exception?.StackTrace
+        };
+
+        return View(model);
+    }
+    #endregion
 
     #region About & Contact
     public IActionResult About() => View();
