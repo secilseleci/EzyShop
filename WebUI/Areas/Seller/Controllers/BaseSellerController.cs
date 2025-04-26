@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Models.Identity;
 using WebUI.Controllers;
 
-namespace WebUI.Areas.Seller.Controller;
+namespace WebUI.Areas.Seller.Controllers;
 
 public class BaseSellerController : BaseController
 {

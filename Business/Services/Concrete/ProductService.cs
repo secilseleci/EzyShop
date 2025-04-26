@@ -39,10 +39,22 @@ public class ProductService : BaseService, IProductService
              : new SuccessResult(message: Messages.CreateSuccess);
     }
 
-    public async Task<IDataResult<PaginatedList<ProductListDto>>> GetProductsAsync(Guid currentShopId, string? searchTerm, int page, int pageSize)
+    public async Task<IDataResult<PaginatedList<ProductListDto>>> GetProductsAsync(ProductStatus status, Guid currentShopId, string? searchTerm, int page, int pageSize)
     {
-        var result = await _productRepo.GetProductDtosAsync(currentShopId, searchTerm, page, pageSize);
+        var result = await _productRepo.GetProductDtosAsync(status, currentShopId, searchTerm, page, pageSize);
 
         return new SuccessDataResult<PaginatedList<ProductListDto>>(result);
+    }
+
+    public async Task<IDataResult<ProductDetailsDto>> GetProductDetailsAsync(Guid currentShopId, Guid productId)
+    {
+        var result = await _productRepo.GetProductDetailsDtosAsync(currentShopId, productId);
+
+        if (result == null)
+        {
+            return new ErrorDataResult<ProductDetailsDto>(message: Messages.ProductNotFound);
+        }
+
+        return new SuccessDataResult<ProductDetailsDto>(data: result);
     }
 }

@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
-using Business.Services.Concrete;
 using Core.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
 using Models.ViewModels.Product;
- 
-namespace WebUI.Areas.Seller.Controller;
+
+namespace WebUI.Areas.Seller.Controllers;
 
 [Area("Seller")]
 [Authorize(Roles = "Seller")]
@@ -45,7 +44,7 @@ public class ProductController : BaseSellerController
 
     [HttpPost]
     public async Task<IActionResult> Create(CreateProductViewModel model, IFormFile? file)
-    {  
+    {
         if (!ModelState.IsValid)
             return View(model);
 
@@ -68,43 +67,50 @@ public class ProductController : BaseSellerController
         }
 
         TempData["SuccessMessage"] = result.Message;
-        return RedirectToAction("Index");
+        return RedirectToAction("Available");
     }
 
     #endregion
 
+    #region List
     [HttpGet]
-    public IActionResult Index()
+    public IActionResult Available()
     {
-        return View();
+        ViewBag.Status = "Available";
+        return View("ProductList");
     }
+
+    [HttpGet]
+    public IActionResult SoldOut()
+    {
+        ViewBag.Status = "SoldOut";
+        return View("ProductList");
+    }
+
+    #endregion 
+
     #region API
     [HttpGet]
-    public async Task<IActionResult> GetProducts()
+    public async Task<IActionResult> GetProducts(string status)
     {
-        int page = 1;
-        int pageSize = 10;
-        int draw = 0;
-
-        // Query string'den oku ve TryParse ile güvenli yakala
-        if (int.TryParse(Request.Query["start"], out int start) &&
-            int.TryParse(Request.Query["length"], out int length) &&
-            length > 0)
-        {
-            page = (start / length) + 1;
-            pageSize = length;
-        }
-
-        int.TryParse(Request.Query["draw"], out draw);
+        int.TryParse(Request.Query["start"], out int start);
+        int.TryParse(Request.Query["length"], out int length);
         string? search = Request.Query["search[value]"];
-        
+        int page = (start / length) + 1;
+        int pageSize = length;
+
+
+        if (!Enum.TryParse<ProductStatus>(status, true, out var productStatus))
+            return Json(new { success = false, message = "Invalid status parameter" });
+
         var currentShopId = await GetCurrentShopIdAsync();
         if (!currentShopId.HasValue)
         {
             return Json(new { success = false, message = Messages.NotAllowed });
         }
-       
-        var result = await _productService.GetProductsAsync(currentShopId.Value, search, page, pageSize);
+
+
+        var result = await _productService.GetProductsAsync(productStatus, currentShopId.Value, search, page, pageSize);
 
         if (!result.Success)
         {
@@ -113,12 +119,32 @@ public class ProductController : BaseSellerController
 
         return Json(new
         {
-            draw = draw,
+            draw = int.Parse(Request.Query["draw"]),
             recordsTotal = result.Data.TotalItems,
             recordsFiltered = result.Data.TotalItems,
             data = result.Data.Items
         });
     }
 
+    #endregion
+
+    #region Product Detail
+    [HttpGet]
+    public async Task<IActionResult> Details(Guid id, string status)
+    {
+        var currentShopId = await GetCurrentShopIdAsync();
+
+        if (currentShopId==null)
+        {
+            return Unauthorized();
+        }
+ 
+        var result = await _productService.GetProductDetailsAsync(currentShopId.Value, id);
+
+        if (!result.Success)
+            return NotFound();
+
+        return PartialView("_ProductDetailsPartial", result.Data);
+    }
     #endregion
 }

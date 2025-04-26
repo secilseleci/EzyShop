@@ -3,13 +3,13 @@
         processing: true,
         serverSide: true,
         ajax: {
-            url: '/Seller/Product/GetProducts',
+            url: '/Seller/Product/GetProducts?status=' + productStatus, 
             type: 'GET',
             data: function (d) {
                 return d;
             },
             error: function (xhr, error, thrown) {
-                toastr.error("Ürünler yüklenirken bir hata oluştu.");
+                toastr.error("An error occurred while loading products.");
             }
         },
         columns: [
@@ -23,9 +23,16 @@
             { title: "Name", data: 'productName', width: "15%" },
 
             { title: "Category", data: 'categoryName', width: "10%" },
-            { title: "Details", data: 'productName', width: "15%" },
             {
-                title: "Actions", data: 'id', width: "10%",
+                title: "Details", data: "productId",
+                width: "15%",
+                render: function (data) {
+                    return `<a onClick="viewDetails('${data}')" class="btn btn-info btn-sm rounded d-block text-center">
+                        <i class="bi bi-eye"></i> Details
+                    </a>`;
+                } },
+            {
+                title: "Actions", data: 'productId', width: "10%",
                 render: function (data) {
                     return `<div class="btn-group">
                         <a href="/Seller/Product/Edit?id=${data}" class="btn btn-sm btn-warning mx-2">
@@ -41,7 +48,17 @@
     });
 });
 
-
+function viewDetails(id) {
+   
+    $.ajax({
+        url: `/Seller/Product/Details/${id}?status=${productStatus}`,
+        type: 'GET',
+        success: function (html) {
+            $("#productDetailModalContent").html(html);
+            $("#productDetailModal").modal('show');
+        }
+    });
+}
 //Delete Function
 function deleteProduct(productId) {
     $.ajax({

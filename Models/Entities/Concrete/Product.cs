@@ -5,10 +5,14 @@ namespace Models.Entities.Concrete;
 
 public class Product : BaseEntity
 {
-    [ForeignKey(nameof(Category)), Required]
+    public Product()
+    {
+        IsActive = true;
+    }
+    [ForeignKey("Category"), Required]
     public Guid CategoryId { get; set; }
 
-    [ForeignKey(nameof(Shop)), Required]
+    [ForeignKey("Shop"), Required]
     public Guid ShopId { get; set; }
 
     [Required]
@@ -20,9 +24,7 @@ public class Product : BaseEntity
     [Required]
     public int Stock { get; set; } = 1;
  
-    [Required]
-    public bool IsSoldOut => Stock <= 0;
-
+       
     public string? ImageUrl { get; set; }
 
     public string? Color { get; set; } 
