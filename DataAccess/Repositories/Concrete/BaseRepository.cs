@@ -46,6 +46,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T:class, IBaseEntity, 
         {
             entity.IsDeleted = true;
             entity.DeletedAt = DateTime.UtcNow;
+            entity.IsActive = false;
             _dbSet.Update(entity);
         }
         return await _dataContext.SaveChangesAsync();

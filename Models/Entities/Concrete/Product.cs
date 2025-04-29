@@ -23,8 +23,7 @@ public class Product : BaseEntity
 
     [Required]
     public int Stock { get; set; } = 1;
- 
-       
+  
     public string? ImageUrl { get; set; }
 
     public string? Color { get; set; } 

@@ -33,8 +33,8 @@ public static class SeedDatabase
         //// ✅ Categories
         await CategorySeeder.SeedCategoriesAsync(dbContext);
 
-        // ✅ Products
-        //await ProductSeeder.SeedProductsAsync(dbContext);
+        ////  ✅ Products
+        await ProductSeeder.SeedProductsAsync(dbContext);
 
         // ✅ Orders
         //await OrderSeeder.SeedOrdersAsync(dbContext);

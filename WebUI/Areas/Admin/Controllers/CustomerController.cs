@@ -68,7 +68,6 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Guid customerId)
         {
-
             var result = await _customerService.DeleteCustomerAsync(customerId);
             if (result.Success)
             {

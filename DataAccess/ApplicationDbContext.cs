@@ -50,6 +50,7 @@ public class ApplicationDbContext(
                 case EntityState.Deleted:
                     entry.State = EntityState.Modified;
                     entry.Entity.IsDeleted = true;
+                    entry.Entity.IsActive = false;
                     entry.Entity.DeletedAt = now;
                     entry.Entity.DeletedBy = userName;
 

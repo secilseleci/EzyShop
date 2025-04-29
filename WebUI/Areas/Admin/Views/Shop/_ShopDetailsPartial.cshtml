@@ -45,33 +45,33 @@
             <div class="col-8">@Model.CreatedAt.ToString("dd MMM yyyy HH:mm")</div>
         </div>
     </div>
-
     <div class="modal-footer border-top-0 d-flex justify-content-end">
-        @if (ViewBag.Status == "Pending")
-        {
-            <button class="btn btn-success me-2" onclick="approveShop('@Model.Id', '@Model.SellerId')">
-                <i class="bi bi-check-circle me-1"></i> Approve
-            </button>
-            <button class="btn btn-danger" onclick="rejectShop('@Model.Id', '@Model.SellerId')">
-                <i class="bi bi-x-circle me-1"></i> Reject
-            </button>
-        }
 
-        else if (ViewBag.Status == "Active")
-        {
-            <button class="btn btn-warning" onclick="deactivateShop('@Model.Id')">
-                <i class="bi bi-dash-circle me-1"></i> Deactivate
-            </button>
-        }
-        else if (ViewBag.Status == "Inactive")
-        {
-            <button class="btn btn-success me-2" onclick="reactivateShop('@Model.Id')">
-                <i class="bi bi-check-circle me-1"></i> Activate
-            </button>
-            <button class="btn btn-danger" onclick="deleteShop('@Model.Id')">
-                <i class="bi bi-trash me-1"></i> Delete
-            </button>
-        }
+    @if (ViewBag.Status == "Pending")
+    {
+        <button class="btn btn-success me-2" onclick="approveShop('@Model.Id', '@Model.SellerId')">
+            <i class="bi bi-check-circle me-1"></i> Approve
+        </button>
+        <button class="btn btn-danger" onclick="rejectShop('@Model.Id', '@Model.SellerId')">
+            <i class="bi bi-x-circle me-1"></i> Reject
+        </button>
+    }
+
+    else if (ViewBag.Status == "Active")
+    {
+        <button class="btn btn-warning" onclick="deactivateShop('@Model.Id', '@Model.SellerId')">
+            <i class="bi bi-dash-circle me-1"></i> Deactivate
+        </button>
+    }
+    else if (ViewBag.Status == "Inactive")
+    {
+        <button class="btn btn-success me-2" onclick="reactivateShop('@Model.Id', '@Model.SellerId')">
+            <i class="bi bi-check-circle me-1"></i> Activate
+        </button>
+        <button class="btn btn-danger" onclick="deleteShop('@Model.Id', '@Model.SellerId')">
+            <i class="bi bi-trash me-1"></i> Delete
+        </button>
+    }
     </div>
 
 </div>

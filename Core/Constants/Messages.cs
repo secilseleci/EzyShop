@@ -65,14 +65,19 @@
 
 
         #region Product Messages 
-
-        public const string NoProductFilters = "No products found matching the filters";
-
+         
         public const string ProductAddedSuccess = "Product added to cart";
         public const string ProductAddedError = "Error occurred while adding the Product to Cart";
-
+        public const string DeactivateProductSuccess = "Product has been successfully deactivated";
+        public const string DeactivateProductError = "Error occurred while deactivating Product";
+        public const string ProductAlreadyInactive = "Product is already inactive.";
+        public const string ReactivateProductError = "Error occurred while reactivating Product";
+        public const string ReactivateProductSuccess = "Product has been successfully reactivated";
+        public const string ProductAlreadyActive = "Product is already active.";
+        public const string DeleteProductError = "You can only delete products that are in soldout status";
         public const string InsufficientStock = "Product stock is insufficient";
-
+        public const string NoProductFilters = "No products found matching the filters";
+         
         #endregion
 
         #region Category Messages
@@ -80,16 +85,6 @@
         #endregion
 
 
-
-        #region Customer
-
-        #endregion
-
-
-        #region Seller
-        public const string NotAllowed = "To access this area, you must have an active store and account";
-
-        #endregion
 
 
         #region User
@@ -108,7 +103,7 @@
 
         public const string ApprovedSuccess = "Shop has been successfully approved";
         public const string RejectedSuccess = "Shop has been successfully rejected";
-        public const string DeactivateSuccess = "Shop has been successfully deactivated";
+        public const string DeactivateShopSuccess = "Shop has been successfully deactivated";
         public const string ReactivateSuccess = "Shop has been successfully reactivated";
         public const string NotAllowedDelete = "You can only delete inactive shops";
 

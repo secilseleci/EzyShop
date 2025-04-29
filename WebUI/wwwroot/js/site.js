@@ -8,7 +8,13 @@
     }
 });
 
-
+$(document).ajaxStart(function () {
+    // Tüm ajaxlar başladığında loader göster
+    $('#globalLoader').show();
+}).ajaxStop(function () {
+    // Tüm ajaxlar bitince loader gizle
+    $('#globalLoader').hide();
+});
 //document.addEventListener("DOMContentLoaded", function () {
 //    if (isUserAuthenticated === "true") {
 //        refreshCartIconCount();

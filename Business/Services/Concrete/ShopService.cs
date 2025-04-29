@@ -168,7 +168,7 @@ public class ShopService : BaseService, IShopService
         if (!emailResult)
             _logger?.LogWarning(LogMessages.EmailFailed, user.Email);
 
-        return new SuccessResult(Messages.DeactivateSuccess);
+        return new SuccessResult(Messages.DeactivateShopSuccess);
     }
     #endregion
 
@@ -334,14 +334,13 @@ public class ShopService : BaseService, IShopService
     }
     #endregion
 
-    public async Task<IDataResult<Shop>> GetActiveShopBySellerIdAsync(Guid sellerId)
+    public async Task<IDataResult<Guid>> GetActiveShopIdByUserIdAsync(Guid userId)
     {
-        var shop = await _shopRepo.GetActiveShopBySellerIdAsync(sellerId);
+        var shopId = await _shopRepo.GetActiveShopIdByUserIdAsync(userId);
+        if (!shopId.HasValue)
+            return new ErrorDataResult<Guid>(message: Messages.ShopNotFound);
 
-        if (shop == null)
-            return new ErrorDataResult<Shop>(message: Messages.ShopNotFound);
-
-        return new SuccessDataResult<Shop>(data: shop);
+        return new SuccessDataResult<Guid>(shopId.Value);
     }
 
 }

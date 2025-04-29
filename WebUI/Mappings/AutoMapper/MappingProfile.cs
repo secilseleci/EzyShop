@@ -57,9 +57,9 @@ public class MappingProfile : Profile
 
         #region Product 
         CreateMap<CreateProductViewModel, Product>();
-        #endregion
-        //CreateMap<Product, ProductUpdateViewModel>().ReverseMap();
-
+      
+       CreateMap<Product, UpdateProductViewModel>().ReverseMap();
+  #endregion
         //CreateMap<Product, ProductSellerViewModel>();
 
         //CreateMap<Product, ProductCustomerViewModel>();

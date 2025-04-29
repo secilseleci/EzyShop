@@ -7,12 +7,12 @@ namespace DataAccess.Repositories.Abstract;
 
 public interface IShopRepository : IBaseRepository<Shop>
 {
-    Task<PaginatedList<ShopListDto>> GetShopDtosAsync(ShopStatus status,string? searchTerm, int page, int pageSize);
-  
+    Task<PaginatedList<ShopListDto>> GetShopDtosAsync(ShopStatus status, string? searchTerm, int page, int pageSize);
+
     Task<ShopDetailsDto> GetShopDetailsDtosAsync(Guid shopId);
 
     Task<int> CountPendingShopsAsync(ShopStatus status);
     Task<int> CountActiveShopsAsync(ShopStatus status);
-    Task<Shop?> GetActiveShopBySellerIdAsync(Guid sellerId);
+    Task<Guid?> GetActiveShopIdByUserIdAsync(Guid userId);
 
 }

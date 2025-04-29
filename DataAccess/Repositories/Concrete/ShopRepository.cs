@@ -1,5 +1,6 @@
 ﻿using Core.Constants;
 using Core.Pagination;
+using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
 using Models.DTOs;
@@ -89,10 +90,13 @@ public class ShopRepository(ApplicationDbContext context) : BaseRepository<Shop>
                    .CountAsync();
     }
 
-    public async Task<Shop?> GetActiveShopBySellerIdAsync(Guid sellerId)
-    { 
-            var result = await GetWhereAsync(s => s.SellerId == sellerId && s.IsActive);
-            return result?.FirstOrDefault();
+    public async Task<Guid?> GetActiveShopIdByUserIdAsync(Guid userId)
+    {
+        var shop = await _dataContext.Shops
+          .Where(s => s.SellerId == userId && s.IsActive && !s.IsDeleted)
+          .FirstOrDefaultAsync();
+
+        return shop?.Id;
     }
 
 }

@@ -18,8 +18,14 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: {
-            url: '/Admin/Shop/GetShops?status=' + shopStatus,
-            type: 'GET'
+            url: '/admin/api/shops?status=' + shopStatus,
+            type: 'GET',
+            error: function(xhr) {
+                let errorMessage = "data could not be retrieved";
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
+                }
+            },
         },
         columns: columns
     });
@@ -62,7 +68,7 @@ function viewDetails(id) {
 }
 function approveShop(shopId, sellerId) {
     $.ajax({
-        url: `/Admin/Shop/ApproveShop`,
+        url: `/admin/api/shops/approve`,
         type: 'POST',
         data: {
             shopId: shopId,
@@ -84,7 +90,7 @@ function approveShop(shopId, sellerId) {
 }
 function rejectShop(shopId, sellerId) {
     $.ajax({
-        url: `/Admin/Shop/RejectShop`,
+        url: `/admin/api/shops/reject`,
         type: 'POST',
         data: {
             shopId: shopId,
@@ -106,7 +112,7 @@ function rejectShop(shopId, sellerId) {
 }
 function deleteShop(shopId, sellerId) {
     $.ajax({
-        url: `/Admin/Shop/DeleteShop`,
+        url: `/admin/api/shops/delete`,
         type: 'POST',
         data: {
             shopId: shopId,
@@ -128,7 +134,7 @@ function deleteShop(shopId, sellerId) {
 }
 function reactivateShop(shopId, sellerId) {
     $.ajax({
-        url: `/Admin/Shop/ReactivateShop`,
+        url: `/admin/api/shops/reactivate`,
         type: 'POST',
         data: {
             shopId: shopId,
@@ -150,7 +156,7 @@ function reactivateShop(shopId, sellerId) {
 }
 function deactivateShop(shopId, sellerId) {
     $.ajax({
-        url: `/Admin/Shop/DeactivateShop`,
+        url: `/admin/api/shops/deactivate`,
         type: 'POST',
         data: {
             shopId: shopId,
