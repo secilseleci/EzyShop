@@ -19,6 +19,8 @@ public class ShopService : BaseService, IShopService
 {
     private readonly IShopRepository _shopRepo;
     private readonly ISellerRepository _sellerRepo;
+    private readonly IProductRepository _productRepo;
+
     private readonly UserManager<AppUser> _userManager;
     private readonly IEmailService _emailService;
     private readonly ILogger<ShopService>? _logger;
@@ -31,12 +33,14 @@ public class ShopService : BaseService, IShopService
       IShopRepository shopRepo,
       ISellerRepository sellerRepo,
       IEmailService emailService,
+      IProductRepository productRepo,
        ILogger<ShopService> logger) : base(mapper, config, currentUserService)
     {
         _shopRepo = shopRepo;
         _sellerRepo = sellerRepo;
         _userManager = userManager;
         _emailService = emailService;
+        _productRepo = productRepo;
         _logger = logger;
     }
 
@@ -151,9 +155,22 @@ public class ShopService : BaseService, IShopService
 
         shop.IsActive = false;
         seller.IsActive = false;
+        
+        var products = await _productRepo.GetWhereAsync(p => p.ShopId == shop.Id && !p.IsDeleted && p.IsActive);
+        foreach (var product in products)
+        {
+            product.IsActive = false;
+        }
 
         // update all
         using var transaction = await _shopRepo.BeginTransactionAsync();
+         
+        if (products.Any())
+        {
+            var updateResult = await _productRepo.UpdateRangeAsync(products);
+            if (updateResult <= 0)
+                return new ErrorResult(Messages.UpdateError);
+        }
 
         if (await _shopRepo.UpdateAsync(shop) <= 0)
             return new ErrorResult(Messages.UpdateError);
@@ -189,8 +206,22 @@ public class ShopService : BaseService, IShopService
         shop.IsActive = true;
         seller.IsActive = true;
 
+        var products = await _productRepo.GetWhereAsync(p => p.ShopId == shop.Id && !p.IsDeleted && !p.IsActive);
+        foreach (var product in products)
+        {
+            product.IsActive = true;
+        }
+       
+        
         // update all
         using var transaction = await _shopRepo.BeginTransactionAsync();
+
+        if(products.Any())
+{
+            var updateResult = await _productRepo.UpdateRangeAsync(products);
+            if (updateResult <= 0)
+                return new ErrorResult(Messages.UpdateError);
+        }
 
         if (await _shopRepo.UpdateAsync(shop) <= 0)
             return new ErrorResult(Messages.UpdateError);

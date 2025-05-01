@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Models.DTOs;
 using Models.Entities.Concrete;
 using System.Linq.Expressions;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DataAccess.Repositories.Concrete;
 
@@ -53,7 +54,7 @@ public class ProductRepository(ApplicationDbContext context) : BaseRepository<Pr
     }
     public async Task<ProductDetailsDto> GetProductDetailsDtosAsync(Guid shopId, Guid productId)
     {
-        
+
         var result = await (from p in _dataContext.Products
                             join c in _dataContext.Categories
                                 on p.CategoryId equals c.Id
@@ -72,5 +73,42 @@ public class ProductRepository(ApplicationDbContext context) : BaseRepository<Pr
                   .FirstOrDefaultAsync();
 
         return result!;
+    }
+
+    public async Task<PaginatedList<ProductListForCustomersDto>> GetProductForCustomersDtosAsync(string? searchTerm, int page, int pageSize)
+    {
+        var filter = GetAvailableForCustomerFilter();
+
+        var query = from p in _dataContext.Products.Where(filter)
+                    join c in _dataContext.Categories on p.CategoryId equals c.Id
+                    join s in _dataContext.Shops on p.ShopId equals s.Id
+                    where string.IsNullOrEmpty(searchTerm) ||
+                          p.Name.Contains(searchTerm) ||
+                          c.Name.Contains(searchTerm) ||
+                          s.Name.Contains(searchTerm)
+                    select new ProductListForCustomersDto
+                    {
+                        ShopName = s.Name,
+                        CategoryName = c.Name,
+                        ProductName = p.Name,
+                        ImageUrl = p.ImageUrl,
+                        Price = p.Price,
+                        Color = p.Color,
+                        Stock = p.Stock
+                    };
+
+        var totalItems = await query.CountAsync();
+        var items = await query
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        return new PaginatedList<ProductListForCustomersDto>(items, totalItems, page, pageSize);
+    }
+
+
+    private static Expression<Func<Product, bool>> GetAvailableForCustomerFilter()
+    {
+        return p => !p.IsDeleted && p.IsActive && p.Stock > 0;
     }
 }

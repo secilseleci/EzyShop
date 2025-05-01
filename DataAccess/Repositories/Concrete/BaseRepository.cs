@@ -92,7 +92,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T:class, IBaseEntity, 
     {
         return await _dbSet.Where(x => !x.IsDeleted).ToListAsync();
     }
-    public async Task<IEnumerable<T>?> GetWhereAsync(Expression<Func<T, bool>> predicate)
+    public async Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> predicate)
     {
         return await _dbSet.Where(predicate).Where(x => !x.IsDeleted).ToListAsync();
     }

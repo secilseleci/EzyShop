@@ -10,7 +10,7 @@ public interface IBaseRepository<T> where T : class, IBaseEntity, IAuditable
 {
     Task<T?> GetByIdAsync(Guid id);
     Task<IEnumerable<T>> GetAllAsync();
-    Task<IEnumerable<T>?> GetWhereAsync(Expression<Func<T, bool>> predicate);
+    Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> predicate);
 
     Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate);
     Task<IDbContextTransaction> BeginTransactionAsync();
