@@ -12,4 +12,6 @@ public class CustomerListViewModel
     public string Address { get; set; } = "N/A";
 
     public string Phone { get; set; } = "-";
+    public string Email { get; set; } = "-";
+
 }

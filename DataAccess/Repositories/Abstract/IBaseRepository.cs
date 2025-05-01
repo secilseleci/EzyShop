@@ -1,12 +1,12 @@
 ﻿using Core.Pagination;
-using Microsoft.EntityFrameworkCore.Query;
+using Core.Utilities.Results;
 using Microsoft.EntityFrameworkCore.Storage;
 using Models.Entities.Abstract;
 using System.Linq.Expressions;
 
 namespace DataAccess.Repositories.Abstract;
 
-public interface IBaseRepository<T> where T : class, IBaseEntity,IAuditable
+public interface IBaseRepository<T> where T : class, IBaseEntity, IAuditable
 {
     Task<T?> GetByIdAsync(Guid id);
     Task<IEnumerable<T>> GetAllAsync();
@@ -14,12 +14,8 @@ public interface IBaseRepository<T> where T : class, IBaseEntity,IAuditable
 
     Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate);
     Task<IDbContextTransaction> BeginTransactionAsync();
-    Task<PaginatedList<T>> GetPaginatedAsync(
-         Expression<Func<T, bool>> predicate,
-         int page,
-         int pageSize,
-         Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null);
-
+    Task<PaginatedList<TResult>> GetPaginatedAsync<TResult>(IQueryable<TResult> query, int page, int pageSize);
+     
     Task<int> CreateAsync(T entity);
     Task<int> CreateRangeAsync(IEnumerable<T> entities);
 

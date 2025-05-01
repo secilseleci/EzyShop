@@ -11,7 +11,6 @@ using Models.Entities.Concrete;
 using Models.Identity;
 using Models.ViewModels.Auth;
 using Models.ViewModels.Customer;
-using System.Linq.Expressions;
 
 namespace Business.Services.Concrete;
 
@@ -36,8 +35,7 @@ public class CustomerService : BaseService, ICustomerService
     {
         return await _customerRepo.CountAsync();
     }
-
-
+     
     public async Task<IResult> CreateCustomerAsync(Guid userId, RegisterCustomerViewModel model)
     {
         var existingCustomer = await _customerRepo.GetByIdAsync(userId);
@@ -67,38 +65,14 @@ public class CustomerService : BaseService, ICustomerService
         : new ErrorResult(Messages.DeleteError);
 
     }
-    public async Task<IDataResult<PaginatedList<CustomerListViewModel>>> GetPaginatedCustomersAsync(
-     int page,
-     int pageSize,
-     string? searchTerm = null)
+    public async Task<IDataResult<PaginatedList<CustomerListViewModel>>> GetPaginatedCustomerListAsync(string? searchTerm, int page, int pageSize)
     {
-        Expression<Func<Customer, bool>> predicate;
+        var paginated = await _customerRepo.GetPaginatedCustomerDtosAsync(searchTerm, page, pageSize);
 
-        if (!string.IsNullOrWhiteSpace(searchTerm))
-            predicate = p => (p.FirstName + " " + p.LastName).Contains(searchTerm) ||
-            p.Address.Contains(searchTerm) ||
-            p.Phone.Contains(searchTerm);
+        if (!paginated.Items.Any())
+            return new ErrorDataResult<PaginatedList<CustomerListViewModel>>(Messages.EmptyEntityList);
 
-        else
-            predicate = p => true;
-
-
-        var paginatedCustomers = await _customerRepo.GetPaginatedAsync(
-            predicate,
-            page,
-            pageSize);
-
-        var viewModels = Mapper.Map<IEnumerable<CustomerListViewModel>>(paginatedCustomers.Items);
-
-        var result = new PaginatedList<CustomerListViewModel>(
-            viewModels,
-            paginatedCustomers.TotalItems,
-            paginatedCustomers.Page,
-            paginatedCustomers.PageSize
-        );
-
-        return result.Items.Any()
-            ? new SuccessDataResult<PaginatedList<CustomerListViewModel>>(result)
-            : new ErrorDataResult<PaginatedList<CustomerListViewModel>>(Messages.EmptyEntityList);
+        return new SuccessDataResult<PaginatedList<CustomerListViewModel>>(paginated);
     }
+
 }

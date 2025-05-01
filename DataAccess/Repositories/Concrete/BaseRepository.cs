@@ -107,16 +107,10 @@ public class BaseRepository<T> : IBaseRepository<T> where T:class, IBaseEntity, 
     {
         return await _dataContext.Database.BeginTransactionAsync();
     }
-    public async Task<PaginatedList<T>> GetPaginatedAsync(
-        Expression<Func<T, bool>> predicate, int page, int pageSize, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null)
+    public async Task<PaginatedList<TResult>> GetPaginatedAsync<TResult>(
+        IQueryable<TResult> query,
+        int page, int pageSize)
     {
-        var query = _dbSet
-            .Where(predicate)
-            .Where(x => !x.IsDeleted);
-        if (include != null)
-        {
-            query = include(query);
-        }
         var totalItems = await query.CountAsync();
 
         var items = await query
@@ -124,6 +118,6 @@ public class BaseRepository<T> : IBaseRepository<T> where T:class, IBaseEntity, 
             .Take(pageSize)
             .ToListAsync();
 
-        return new PaginatedList<T>(items, totalItems, page, pageSize);
+        return new PaginatedList<TResult>(items, totalItems, page, pageSize);
     }
 }

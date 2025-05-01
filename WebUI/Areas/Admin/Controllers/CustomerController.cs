@@ -46,7 +46,7 @@ namespace WebUI.Areas.Admin.Controllers
             int pageSize = length;
 
 
-            var result = await _customerService.GetPaginatedCustomersAsync(page, length, search);
+            var result = await _customerService.GetPaginatedCustomerListAsync(search, page, length);
 
             if (!result.Success)
             {
