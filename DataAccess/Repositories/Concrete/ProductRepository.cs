@@ -4,14 +4,14 @@ using DataAccess.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
 using Models.DTOs;
 using Models.Entities.Concrete;
+using Models.ViewModels.Product;
 using System.Linq.Expressions;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DataAccess.Repositories.Concrete;
 
 public class ProductRepository(ApplicationDbContext context) : BaseRepository<Product>(context), IProductRepository
 {
-    public async Task<PaginatedList<ProductListDto>> GetProductDtosAsync(ProductStatus status, Guid shopId, string? searchTerm, int page, int pageSize)
+    public async Task<PaginatedList<ProductListForSellerDto>> GetProductDtosAsync(ProductStatus status, Guid shopId, string? searchTerm, int page, int pageSize)
     {
 
         var filteredProducts = _dataContext.Products.Where(GetStatusFilter(status, shopId));
@@ -25,7 +25,7 @@ public class ProductRepository(ApplicationDbContext context) : BaseRepository<Pr
                 product.Name.Contains(searchTerm) ||
                 category.Name.Contains(searchTerm)
              )
-            select new ProductListDto
+            select new ProductListForSellerDto
             {
                 ProductId = product.Id,
                 CategoryId = category.Id,
@@ -40,29 +40,17 @@ public class ProductRepository(ApplicationDbContext context) : BaseRepository<Pr
             .Take(pageSize)
             .ToListAsync();
 
-        return new PaginatedList<ProductListDto>(items, totalItems, page, pageSize);
+        return new PaginatedList<ProductListForSellerDto>(items, totalItems, page, pageSize);
     }
-
-    private static Expression<Func<Product, bool>> GetStatusFilter(ProductStatus status, Guid shopId)
-    {
-        return status switch
-        {
-            ProductStatus.Available => product => !product.IsDeleted && product.IsActive && product.ShopId == shopId && product.Stock > 0,
-            ProductStatus.SoldOut => product => !product.IsDeleted && !product.IsActive && product.ShopId == shopId && product.Stock <= 0,
-            _ => product => false
-        };
-    }
-    public async Task<ProductDetailsDto> GetProductDetailsDtosAsync(Guid shopId, Guid productId)
+    public async Task<ProductDetailsForSellerDto> GetProductDetailsDtosForSellerAsync(Guid shopId, Guid productId)
     {
 
         var result = await (from p in _dataContext.Products
                             join c in _dataContext.Categories
                                 on p.CategoryId equals c.Id
                             where p.Id == productId && p.ShopId == shopId
-                            select new ProductDetailsDto
+                            select new ProductDetailsForSellerDto
                             {
-                                ProductId = p.Id,
-                                CategoryId = c.Id,
                                 CategoryName = c.Name,
                                 ProductName = p.Name,
                                 ImageUrl = p.ImageUrl,
@@ -74,20 +62,27 @@ public class ProductRepository(ApplicationDbContext context) : BaseRepository<Pr
 
         return result!;
     }
-
-    public async Task<PaginatedList<ProductListForCustomersDto>> GetProductForCustomersDtosAsync(string? searchTerm, int page, int pageSize)
+    public async Task<PaginatedList<ProductListForCustomerDto>> GetFilteredProductDtosAsync(ProductFilterViewModel model)
     {
-        var filter = GetAvailableForCustomerFilter();
+        var productFilter = GetAvailableForCustomerFilter();
+        var productQuery = _dataContext.Products.Where(productFilter);
 
-        var query = from p in _dataContext.Products.Where(filter)
-                    join c in _dataContext.Categories on p.CategoryId equals c.Id
+        var categoryQuery = _dataContext.Categories.AsQueryable();
+        if (!string.IsNullOrEmpty(model.Category))
+            categoryQuery = categoryQuery.Where(c => c.Name == model.Category);
+
+        var query = from p in productQuery
+                    join c in categoryQuery on p.CategoryId equals c.Id
                     join s in _dataContext.Shops on p.ShopId equals s.Id
-                    where string.IsNullOrEmpty(searchTerm) ||
-                          p.Name.Contains(searchTerm) ||
-                          c.Name.Contains(searchTerm) ||
-                          s.Name.Contains(searchTerm)
-                    select new ProductListForCustomersDto
+                    where s.IsActive &&
+                       (string.IsNullOrEmpty(model.Name) || p.Name.Contains(model.Name))
+                    && (string.IsNullOrEmpty(model.Category) || c.Name == model.Category)
+                    && (string.IsNullOrEmpty(model.Color) || p.Color == model.Color)
+                    && (!model.MinPrice.HasValue || p.Price >= model.MinPrice)
+                    && (!model.MaxPrice.HasValue || p.Price <= model.MaxPrice)
+                    select new ProductListForCustomerDto
                     {
+                        ProductId = p.Id,
                         ShopName = s.Name,
                         CategoryName = c.Name,
                         ProductName = p.Name,
@@ -99,16 +94,48 @@ public class ProductRepository(ApplicationDbContext context) : BaseRepository<Pr
 
         var totalItems = await query.CountAsync();
         var items = await query
-            .Skip((page - 1) * pageSize)
-            .Take(pageSize)
+            .Skip((model.Page - 1) * model.PageSize)
+            .Take(model.PageSize)
+            .AsNoTracking()
             .ToListAsync();
 
-        return new PaginatedList<ProductListForCustomersDto>(items, totalItems, page, pageSize);
+        return new PaginatedList<ProductListForCustomerDto>(items, totalItems, model.Page, model.PageSize);
     }
+    public async Task<ProductDetailsForCustomerDto> GetProductDetailsDtosForCustomerAsync(Guid productId)
+    {
+        var result = await (from p in _dataContext.Products
+                            join c in _dataContext.Categories
+                                on p.CategoryId equals c.Id
+                            join s in _dataContext.Shops
+                                on p.ShopId equals s.Id
+                            where p.Id == productId
+                            select new ProductDetailsForCustomerDto
+                            {
+                                CategoryName = c.Name,
+                                ProductName = p.Name,
+                                ShopName = s.Name,
+                                ImageUrl = p.ImageUrl,
+                                Price = p.Price,
+                                Color = p.Color,
+                                Stock = p.Stock
+                            })
+                  .AsNoTracking()
+                  .FirstOrDefaultAsync();
 
-
+        return result!;
+    }
     private static Expression<Func<Product, bool>> GetAvailableForCustomerFilter()
     {
         return p => !p.IsDeleted && p.IsActive && p.Stock > 0;
     }
+    private static Expression<Func<Product, bool>> GetStatusFilter(ProductStatus status, Guid shopId)
+    {
+        return status switch
+        {
+            ProductStatus.Available => product => !product.IsDeleted && product.IsActive && product.ShopId == shopId && product.Stock > 0,
+            ProductStatus.SoldOut => product => !product.IsDeleted && !product.IsActive && product.ShopId == shopId && product.Stock <= 0,
+            _ => product => false
+        };
+    }
+
 }
