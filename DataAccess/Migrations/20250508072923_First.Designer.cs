@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250508055628_First")]
+    [Migration("20250508072923_First")]
     partial class First
     {
         /// <inheritdoc />
@@ -328,6 +328,9 @@ namespace DataAccess.Migrations
 
                     b.Property<decimal>("ProductPrice")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");

@@ -4,6 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Models.Entities.Concrete;
 public class Order : BaseEntity
 {
+    public Order()
+    {
+        Status = OrderStatus.InCart;
+    }
     [ForeignKey("Customer"), Required]
     public Guid CustomerId { get; set; }
 

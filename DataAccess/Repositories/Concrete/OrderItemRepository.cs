@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Models.DTOs.OrderItem;
 using Models.Entities.Concrete;
-using System.Diagnostics.Metrics;
-using System.Security.Cryptography;
 
 namespace DataAccess.Repositories.Concrete;
 

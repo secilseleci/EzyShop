@@ -102,7 +102,8 @@ public class OrderService : BaseService, IOrderService
                 ProductName = product.Name,
                 ProductPrice = product.Price,
                 Color = product.Color,
-                ImageUrl = product.ImageUrl
+                ImageUrl = product.ImageUrl,
+                Status=0
             };
             var createResult = await _orderItemRepo.CreateAsync(neworderItem);
             if (createResult <= 0)
@@ -110,5 +111,13 @@ public class OrderService : BaseService, IOrderService
         }
 
         return new SuccessResult(message: Messages.ProductAddedSuccess);
+    }
+
+    public async Task<Order?> GetInCartOrderAsync(Guid customerId)
+    {
+        var order=await _orderRepo.GetOrderByCustomerIdAsync(customerId);
+        if (order != null && order.Status == OrderStatus.InCart)
+            return order;
+        return null;
     }
 }

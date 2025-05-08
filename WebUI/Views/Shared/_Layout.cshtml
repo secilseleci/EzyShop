@@ -71,17 +71,10 @@
                                 </ul>
                             </li>
 
-                           @*  @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark position-relative" href="/Cart/Index">
-                                        <i class="bi bi-cart-fill"></i> Cart
-                                        <span id="cartLineCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                            0
-                                        </span>
-                                    </a>
-                                </li>
-                            } *@
+                                @await Component.InvokeAsync("CartIcon")
+                            }
                         }
                     </ul>
                 </div>
