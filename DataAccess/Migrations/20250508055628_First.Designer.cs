@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250501113040_First")]
+    [Migration("20250508055628_First")]
     partial class First
     {
         /// <inheritdoc />
@@ -252,6 +252,9 @@ namespace DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PaymentMethod")

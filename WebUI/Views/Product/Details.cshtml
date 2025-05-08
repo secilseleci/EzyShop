@@ -1,0 +1,61 @@
+﻿@model ProductDetailsForCustomerDto
+@{
+    ViewData["Title"] = Model.ProductName;
+}
+
+<div class="container my-5">
+    <div class="card shadow border-0 rounded-4 mx-auto" style="max-width: 900px;">
+        <div class="row g-0 align-items-center">
+            <div class="col-md-6 p-4 text-center">
+                <img src="@Model.ImageUrl"
+                     class="img-fluid rounded shadow-sm cursor-pointer"
+                     alt="@Model.ProductName"
+                     style="max-height: 300px; width: auto;"
+                     data-bs-toggle="modal"
+                     data-bs-target="#imageModal" />
+
+            </div>
+            <div class="col-md-6 p-4">
+                <h2 class="fw-bold mb-3">@Model.ProductName</h2>
+                <p><strong>Category:</strong> @Model.CategoryName</p>
+                <p><strong>Color:</strong> @Model.Color</p>
+                <p><strong>Price:</strong> <span class="text-success fw-semibold">@Model.Price.ToString("C")</span></p>
+                <p><strong>Stock:</strong> @(Model.IsSoldOut ? "<span class='text-danger fw-semibold'>Out of Stock</span>" : Model.Stock.ToString())</p>
+                <p><strong>Seller:</strong> @Model.ShopName</p>
+
+                <div class="mt-4 d-flex flex-wrap gap-3">
+                    <button id="addToCartBtn"
+                            class="btn btn-primary px-4 py-2"
+                            data-product-id="@Model.ProductId"
+                    @(Model.IsSoldOut ? "disabled" : "")>
+                        <i class="bi bi-cart-plus"></i> Add to Cart
+                    </button>
+
+                    <a href="@Url.Action("Index", "Product")" class="btn btn-outline-secondary px-4 py-2">
+                        Back to Shop
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-body p-0 text-center">
+                <img src="@Model.ImageUrl"
+                     class="img-fluid rounded shadow-lg"
+                     alt="@Model.ProductName"
+                     style="max-height: 90vh; width: auto;" />
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    
+   <script src="~/js/product-details.js"></script> 
+}

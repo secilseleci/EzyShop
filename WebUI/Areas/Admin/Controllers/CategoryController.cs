@@ -37,7 +37,7 @@ public class CategoryController : BaseController
     [HttpGet]
     public async Task<IActionResult> GetAllCategories()
     {
-        var result = await _categoryService.GetAllCategories();
+        var result = await _categoryService.GetAllCategoriesAsync();
         if (result.Success)
         {
             return Json(new

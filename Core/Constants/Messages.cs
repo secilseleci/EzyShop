@@ -44,11 +44,11 @@
         #endregion
 
         #region Login / Logout Messages
-        public const string LoginSuccess = "Login successful.";
+        public const string LoginSuccess = "Login successfull.";
         public const string LoginInvalidCredentials = "Email or password is incorrect.";
         public const string LoginUserNotFound = "User not found.";
-        public const string LogoutSuccess = "Logout successful.";
-        public const string LoginUnauthorized = "Please login to add items to cart.";
+        public const string LogoutSuccess = "Logout successfull.";
+        public const string LoginUnauthorized = "Please log in to perform this operation.";
 
         #endregion
 

@@ -12,22 +12,26 @@
 });
 
 function applyFilter(page = 1) {
-    let name = $("#name").val();
-    let category = $("#category").find(":selected").val();
-    let color = $("#color").val();
-    let minPrice = $("#minPrice").val();
-    let maxPrice = $("#maxPrice").val();
-
+    let model = {
+        name: $("#name").val(),
+        category: $("#category").val(),
+        color: $("#color").val(),
+        minPrice: $("#minPrice").val(),
+        maxPrice: $("#maxPrice").val(),
+        page: page,
+        pageSize: 12
+    };
 
     $.ajax({
-        url: "/product/getfilteredproducts",
-        type: "GET",
-        data: { name, category, color, minPrice, maxPrice, page },
+        url: "/api/products/filter",
+        type: "POST",
+        data: model,
+        contentType: "application/x-www-form-urlencoded",
         success: function (response) {
             
             if (response.success && response.data.length > 0) {
                 reloadProductCard(response.data);
-                renderPagination(response.totalPages, response.currentPage);
+                renderPagination(response.totalItems, response.currentPage);
             } else {
                 showNoProductsMessage();
                 renderPagination(0, 0);
@@ -58,7 +62,7 @@ function reloadProductCard(products) {
                         <h5 class="card-title text-center">${p.name}</h5>
                         <p class="text-center text-muted">${p.categoryName}</p>
                         <p class="text-center fw-bold">${p.price} ₺</p>
-                        <a href="/Product/Details?productId=${p.id}" class="btn btn-outline-info form-control">Details</a>
+                        <a href="/Product/Details?productid=${p.productId}" class="btn btn-outline-info form-control">Details</a>
                     </div>
                 </div>
             </div>`;
@@ -66,6 +70,8 @@ function reloadProductCard(products) {
     html += '</div>';
 
     container.html(html);
+    console.log(products);
+
 }
  
 function showNoProductsMessage() {
@@ -120,7 +126,7 @@ function resetFilters() {
 
 function loadCategories() {
     $.ajax({
-        url: "/product/getallcategories",
+        url: "/api/products/categories",
         type: "GET",
         success: function (response) {
             if (response.success && response.data.length > 0) {

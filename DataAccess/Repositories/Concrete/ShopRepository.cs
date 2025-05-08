@@ -1,6 +1,5 @@
 ﻿using Core.Constants;
 using Core.Pagination;
-using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
 using Models.DTOs;
@@ -39,19 +38,6 @@ public class ShopRepository(ApplicationDbContext context) : BaseRepository<Shop>
 
         return new PaginatedList<ShopListDto>(items, totalItems, page, pageSize);
     }
-
-    private static Expression<Func<Shop, bool>> GetStatusFilter(ShopStatus status)
-    {
-        return status switch
-        {
-            ShopStatus.Pending => shop => !shop.IsDeleted && !shop.IsActive && shop.UpdatedAt == null,
-            ShopStatus.Active => shop => !shop.IsDeleted && shop.IsActive,
-            ShopStatus.Inactive => shop => !shop.IsDeleted && !shop.IsActive && shop.UpdatedAt != null,
-            ShopStatus.Deleted => shop => shop.IsDeleted,
-            _ => shop => false
-        };
-    }
-
     public async Task<ShopDetailsDto> GetShopDetailsDtosAsync(Guid shopId)
     {
         var result = await (from shop in _dataContext.Shops
@@ -77,19 +63,16 @@ public class ShopRepository(ApplicationDbContext context) : BaseRepository<Shop>
 
         return result!;
     }
-
-    public async Task<int> CountPendingShopsAsync(ShopStatus status)
+    public async Task<decimal> CountPendingShopsAsync(ShopStatus status)
     {
         return await _dataContext.Shops.Where(GetStatusFilter(ShopStatus.Pending))
-            .CountAsync();
+            .LongCountAsync();
     }
-
-    public async Task<int> CountActiveShopsAsync(ShopStatus status)
+    public async Task<decimal> CountActiveShopsAsync(ShopStatus status)
     {
         return await _dataContext.Shops.Where(GetStatusFilter(ShopStatus.Active))
-                   .CountAsync();
+                   .LongCountAsync();
     }
-
     public async Task<Guid?> GetActiveShopIdByUserIdAsync(Guid userId)
     {
         var shop = await _dataContext.Shops
@@ -98,5 +81,15 @@ public class ShopRepository(ApplicationDbContext context) : BaseRepository<Shop>
 
         return shop?.Id;
     }
-
+    private static Expression<Func<Shop, bool>> GetStatusFilter(ShopStatus status)
+    {
+        return status switch
+        {
+            ShopStatus.Pending => shop => !shop.IsDeleted && !shop.IsActive && shop.UpdatedAt == null,
+            ShopStatus.Active => shop => !shop.IsDeleted && shop.IsActive,
+            ShopStatus.Inactive => shop => !shop.IsDeleted && !shop.IsActive && shop.UpdatedAt != null,
+            ShopStatus.Deleted => shop => shop.IsDeleted,
+            _ => shop => false
+        };
+    }
 }

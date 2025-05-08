@@ -19,6 +19,7 @@ public class ProductService : BaseService, IProductService
     private readonly IShopService _shopService;
     private readonly IProductRepository _productRepo;
     private readonly ICategoryRepository _categoryRepo;
+    private readonly UserManager<AppUser> _userManager;
 
     public ProductService(
       IMapper mapper,
@@ -28,13 +29,15 @@ public class ProductService : BaseService, IProductService
       ICurrentUserService currentUserService,
       IProductRepository productRepo,
       ICategoryRepository categoryRepo,
-        IShopService shopService) : base(mapper, config, currentUserService)
+      IShopService shopService) : base(mapper, config, currentUserService)
     {
+        _userManager = userManager;
         _productRepo = productRepo;
         _shopService = shopService;
         _categoryRepo = categoryRepo;
     }
 
+    #region Seller
     public async Task<IResult> CreateProductAsync(CreateProductViewModel model, Guid userId)
     {
         var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
@@ -55,84 +58,6 @@ public class ProductService : BaseService, IProductService
              ? new ErrorResult(message: Messages.CreateError)
              : new SuccessResult(message: Messages.CreateSuccess);
     }
-
-    public async Task<IDataResult<PaginatedList<ProductListDto>>> GetProductsAsync(ProductStatus status, Guid userId, string? searchTerm, int page, int pageSize)
-    {
-        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
-
-        if (!shopId.Success)
-            return new ErrorDataResult<PaginatedList<ProductListDto>>(Messages.ShopNotFound);
-
-        var result = await _productRepo.GetProductDtosAsync(status, shopId.Data, searchTerm, page, pageSize);
-
-        return new SuccessDataResult<PaginatedList<ProductListDto>>(result);
-    }
-
-    public async Task<IDataResult<ProductDetailsDto>> GetProductDetailsAsync(Guid userId, Guid productId)
-    {
-        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
-        if (!shopId.Success)
-            return new ErrorDataResult<ProductDetailsDto>(Messages.ShopNotFound);
-
-        var result = await _productRepo.GetProductDetailsDtosAsync(shopId.Data, productId);
-
-        if (result == null)
-        {
-            return new ErrorDataResult<ProductDetailsDto>(message: Messages.ProductNotFound);
-        }
-
-        return new SuccessDataResult<ProductDetailsDto>(data: result);
-    }
-
-    public async Task<IResult> DeactivateProductAsync(Guid productId, Guid userId)
-    {
-        if (!await IsAvailable(productId))
-        { return new ErrorResult(Messages.ProductAlreadyInactive); }
-
-        var product = await _productRepo.GetByIdAsync(productId);
-        if (product is null) return new ErrorResult(Messages.ProductNotFound);
-
-        product.Stock = 0;
-        product.IsActive = false;
-        var result = await _productRepo.UpdateAsync(product);
-
-        return result > 0
-            ? new SuccessResult(Messages.DeactivateProductSuccess)
-             : new ErrorResult(Messages.DeactivateProductError);
-    }
-
-    public async Task<IResult> ReactivateProductAsync(Guid productId, Guid userId, int stock)
-    {
-        if (await IsAvailable(productId))
-        { return new ErrorResult(Messages.ProductAlreadyActive); }
-
-        var product = await _productRepo.GetByIdAsync(productId);
-        if (product is null) return new ErrorResult(Messages.ProductNotFound);
-
-        product.Stock = stock;
-        product.IsActive = true;
-        var result = await _productRepo.UpdateAsync(product);
-
-        return result > 0
-            ? new SuccessResult(Messages.ReactivateProductSuccess)
-             : new ErrorResult(Messages.ReactivateProductError);
-    }
-    private async Task<bool> IsAvailable(Guid productId)
-    {
-        var product = await _productRepo.GetByIdAsync(productId);
-
-        if (product == null)
-            return false;
-
-        if (!product.IsActive)
-            return false;
-
-        if (product.Stock <= 0)
-            return false;
-
-        return true;
-    }
-
     public async Task<IResult> UpdateProductAsync(UpdateProductViewModel model, Guid userId)
     {
         var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
@@ -160,7 +85,89 @@ public class ProductService : BaseService, IProductService
             ? new SuccessResult(Messages.UpdateSuccess)
             : new ErrorResult(Messages.UpdateError);
     }
+    public async Task<IResult> DeleteProductAsync(Guid productId, Guid userId)
+    {
+        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
+        if (!shopId.Success)
+            return new ErrorResult(Messages.ShopNotFound);
 
+        if (await IsProductAvailable(productId))
+            return new ErrorResult(Messages.DeleteProductError);
+
+
+        var result = await _productRepo.SoftDeleteAsync(productId);
+        return result > 0
+            ? new SuccessResult(Messages.DeleteSuccess)
+             : new ErrorResult(Messages.DeleteError);
+
+    }
+    public async Task<IResult> DeactivateProductAsync(Guid productId, Guid userId)
+    {
+        if (!await IsProductAvailable(productId))
+        { return new ErrorResult(Messages.ProductAlreadyInactive); }
+
+        var product = await _productRepo.GetByIdAsync(productId);
+        if (product is null) return new ErrorResult(Messages.ProductNotFound);
+
+        product.Stock = 0;
+        product.IsActive = false;
+        var result = await _productRepo.UpdateAsync(product);
+
+        return result > 0
+            ? new SuccessResult(Messages.DeactivateProductSuccess)
+             : new ErrorResult(Messages.DeactivateProductError);
+    }
+    public async Task<IResult> ReactivateProductAsync(Guid productId, Guid userId, int stock)
+    {
+        if (await IsProductAvailable(productId))
+        { return new ErrorResult(Messages.ProductAlreadyActive); }
+
+        var product = await _productRepo.GetByIdAsync(productId);
+        if (product is null) return new ErrorResult(Messages.ProductNotFound);
+
+        product.Stock = stock;
+        product.IsActive = true;
+        var result = await _productRepo.UpdateAsync(product);
+
+        return result > 0
+            ? new SuccessResult(Messages.ReactivateProductSuccess)
+             : new ErrorResult(Messages.ReactivateProductError);
+    }
+    public async Task<IDataResult<PaginatedList<ProductListForSellerDto>>> GetProductsAsync(ProductStatus status, Guid userId, string? searchTerm, int page, int pageSize)
+    {
+        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
+
+        if (!shopId.Success)
+            return new ErrorDataResult<PaginatedList<ProductListForSellerDto>>(Messages.ShopNotFound);
+
+        var result = await _productRepo.GetProductDtosAsync(status, shopId.Data, searchTerm, page, pageSize);
+
+        return new SuccessDataResult<PaginatedList<ProductListForSellerDto>>(result);
+    }
+    public async Task<IDataResult<ProductDetailsForSellerDto>> GetProductDetailsForSellerAsync(Guid userId, Guid productId)
+    {
+        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
+        if (!shopId.Success)
+            return new ErrorDataResult<ProductDetailsForSellerDto>(Messages.ShopNotFound);
+
+        var result = await _productRepo.GetProductDetailsDtosForSellerAsync(shopId.Data, productId);
+
+        if (result == null)
+        {
+            return new ErrorDataResult<ProductDetailsForSellerDto>(message: Messages.ProductNotFound);
+        }
+
+        return new SuccessDataResult<ProductDetailsForSellerDto>(data: result);
+    }
+    #endregion
+
+    #region Customer
+    public async Task<IDataResult<PaginatedList<ProductListForCustomerDto>>> GetFilteredProductsAsync(ProductFilterViewModel model)
+    {
+        var result = await _productRepo.GetFilteredProductDtosAsync(model);
+        return new SuccessDataResult<PaginatedList<ProductListForCustomerDto>>(result);
+    }
+    #endregion
     public async Task<IDataResult<Product>> GetProductByIdAsync(Guid productId)
     {
         var product = await _productRepo.GetByIdAsync(productId);
@@ -170,21 +177,35 @@ public class ProductService : BaseService, IProductService
 
         return new SuccessDataResult<Product>(product);
     }
-
-    public async Task<IResult> DeleteProductAsync(Guid productId, Guid userId)
+    private async Task<bool> IsProductAvailable(Guid productId)
     {
-        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
-        if (!shopId.Success)
-            return new ErrorResult(Messages.ShopNotFound);
+        var product = await _productRepo.GetByIdAsync(productId);
 
-        if (await IsAvailable(productId))
-            return new ErrorResult(Messages.DeleteProductError);
+        if (product == null)
+            return false;
 
+        if (!product.IsActive)
+            return false;
 
-        var result = await _productRepo.SoftDeleteAsync(productId);
-        return result > 0
-            ? new SuccessResult(Messages.DeleteSuccess)
-             : new ErrorResult(Messages.DeleteError);
+        if (product.Stock <= 0)
+            return false;
 
+        return true;
+    }
+
+    public async Task<IDataResult<ProductDetailsForCustomerDto>> GetProductDetailsForCustomerAsync(Guid userId, Guid productId)
+    {
+        var customer = await _userManager.FindByIdAsync(userId.ToString());
+        if (customer == null)
+            return new ErrorDataResult<ProductDetailsForCustomerDto>(Messages.UserNotFound);
+
+        if (!await IsProductAvailable(productId))
+            return new ErrorDataResult<ProductDetailsForCustomerDto>(Messages.ProductNotFound);
+
+        var result=await _productRepo.GetProductDetailsDtosForCustomerAsync(productId);
+        if (result is null)
+            return new ErrorDataResult<ProductDetailsForCustomerDto>(Messages.ProductNotFound);
+
+        return new SuccessDataResult<ProductDetailsForCustomerDto>(result);
     }
 }

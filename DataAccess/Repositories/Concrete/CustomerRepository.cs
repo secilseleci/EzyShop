@@ -9,11 +9,11 @@ namespace DataAccess.Repositories.Concrete;
 
 public class CustomerRepository(ApplicationDbContext context) : BaseRepository<Customer>(context), ICustomerRepository
 {
-    public async Task<int> CountAsync()
+    public async Task<decimal> CountAsync()
     {
         return await _dataContext.Customers
             .Where(c => !c.IsDeleted)
-            .CountAsync();
+            .LongCountAsync();
     }
 
     public async Task<PaginatedList<CustomerListViewModel>> GetPaginatedCustomerDtosAsync(

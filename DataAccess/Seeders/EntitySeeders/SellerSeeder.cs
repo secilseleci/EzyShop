@@ -39,7 +39,7 @@ public static class SellerSeeder
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
                 ModifiedBy ="Seeder",
-                IsActive = false
+                IsActive = true
             },
 
             // Deleted Seller - Ayşe Kaya

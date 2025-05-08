@@ -7,6 +7,7 @@ public class Order : BaseEntity
     [ForeignKey("Customer"), Required]
     public Guid CustomerId { get; set; }
 
+    public string? OrderNumber { get; set; }  
 
     [Required]
     public decimal TotalAmount { get; set; }
@@ -15,7 +16,7 @@ public class Order : BaseEntity
     public PaymentMethod PaymentMethod { get; set; }
 
     [Required]
-    public OrderStatus Status { get; set; } = OrderStatus.Pending;
+    public OrderStatus Status { get; set; } 
 
     public string? ShippingTrackingNumber { get; set; }
 
@@ -31,6 +32,7 @@ public enum PaymentMethod
 }
 public enum OrderStatus
 {
+    InCart = 0,
     Pending = 1,
     Processing = 2,
     Shipped = 3,

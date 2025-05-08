@@ -12,7 +12,7 @@ public static class ShopSeeder
         var shopConfigs = new List<(string Email, string ShopName, string Status)>
         {
             ("secil.seleci@gmail.com", "Secil's Shop", "Active"),
-            ("alidemir@gmail.com", "Ali's Shop", "Inactive"),
+            ("alidemir@gmail.com", "Ali's Shop", "Active"),
             ("aysekaya@gmail.com", "Ayşe's Shop", "Deleted"),
             ("alper@gmail.com", "Alper's Shop", "Pending")
         };

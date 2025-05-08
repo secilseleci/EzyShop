@@ -354,12 +354,12 @@ public class ShopService : BaseService, IShopService
     #endregion
 
     #region Count
-    public async Task<int> CountPendingShopsAsync()
+    public async Task<decimal> CountPendingShopsAsync()
     {
         return await _shopRepo.CountPendingShopsAsync(ShopStatus.Pending);
     }
 
-    public async Task<int> CountActiveShopsAsync()
+    public async Task<decimal> CountActiveShopsAsync()
     {
         return await _shopRepo.CountActiveShopsAsync(ShopStatus.Active);
     }

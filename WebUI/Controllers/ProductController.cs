@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Business.Services.Abstract;
+using Core.Constants;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
@@ -7,19 +9,34 @@ namespace WebUI.Controllers;
 
 public class ProductController: BaseController
 {
-public ProductController(
- UserManager<AppUser> userManager,
- RoleManager<AppRole> roleManager,
- SignInManager<AppUser> signInManager,
- IWebHostEnvironment webHostEnvironment,
- IMapper mapper)
-: base(userManager, roleManager, signInManager, webHostEnvironment, mapper)
-{
-}
+    private readonly IProductService _productService;
+     public ProductController(
+     UserManager<AppUser> userManager,
+     RoleManager<AppRole> roleManager,
+     SignInManager<AppUser> signInManager,
+     IWebHostEnvironment webHostEnvironment,
+     IMapper mapper,
+     IProductService productService)
+    : base(userManager, roleManager, signInManager, webHostEnvironment, mapper)
+    {
+        _productService = productService;
+    }
 
  
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
         return View();
+    }
+   
+    [HttpGet]
+    public async Task<IActionResult> Details(Guid productId)
+    {
+        if(!CurrentUserId.HasValue)
+            return RedirectToAction("Login", "Auth", new {error=Messages.LoginUnauthorized});
+        var result = await _productService.GetProductDetailsForCustomerAsync(  CurrentUserId.Value,productId);
+        if (!result.Success || result.Data == null)
+            return RedirectToAction("Login", "Auth", new { error = result.Message });
+
+        return View(result.Data);
     }
 }

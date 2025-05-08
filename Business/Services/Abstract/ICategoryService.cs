@@ -7,6 +7,6 @@ public interface ICategoryService
 {
     Task<IResult> CreateCategoryAsync(CategoryViewModel model);
     Task<IResult> DeleteCategoryAsync(Guid categoryId);
-    Task<IDataResult<IEnumerable<CategoryViewModel>>> GetAllCategories();
+    Task<IDataResult<IEnumerable<CategoryViewModel>>> GetAllCategoriesAsync();
     Task<IDataResult<CategoryViewModel>> GetCategoryByIdAsync(Guid categoryId);
 }

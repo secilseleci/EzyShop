@@ -10,5 +10,5 @@ public interface ICustomerService
     Task<IResult> CreateCustomerAsync(Guid userId, RegisterCustomerViewModel model);
     Task<IResult> DeleteCustomerAsync(Guid customerId);
     Task<IDataResult<PaginatedList<CustomerListViewModel>>> GetPaginatedCustomerListAsync(string? searchTerm, int page, int pageSize);
-    Task<int> CountAsync();
+    Task<decimal> CountAsync();
 }

@@ -111,6 +111,7 @@ public class ProductRepository(ApplicationDbContext context) : BaseRepository<Pr
                             where p.Id == productId
                             select new ProductDetailsForCustomerDto
                             {
+                                ProductId = p.Id,
                                 CategoryName = c.Name,
                                 ProductName = p.Name,
                                 ShopName = s.Name,

@@ -14,8 +14,8 @@ public interface IShopService
     Task<IResult> ReactivateShopAsync(Guid shopId, Guid sellerId);
     Task<IResult> DeleteShopAsync(Guid shopId, Guid sellerId);
 
-    Task<int> CountPendingShopsAsync();
-    Task<int> CountActiveShopsAsync();
+    Task<decimal> CountPendingShopsAsync();
+    Task<decimal> CountActiveShopsAsync();
 
     Task<IDataResult<Guid>> GetActiveShopIdByUserIdAsync(Guid userId);
 }

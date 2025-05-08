@@ -47,7 +47,7 @@ public class ProductController : BaseController
     [HttpGet]
     public async Task<IActionResult> Details(Guid id, string status)
     {
-        var result = await _productService.GetProductDetailsAsync(CurrentUserId!.Value, id);
+        var result = await _productService.GetProductDetailsForSellerAsync(CurrentUserId!.Value, id);
 
         if (!result.Success)
             return NotFound();

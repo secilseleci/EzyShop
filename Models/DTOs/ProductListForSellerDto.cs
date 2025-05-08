@@ -1,6 +1,6 @@
 ﻿namespace Models.DTOs;
 
-public class ProductListDto
+public class ProductListForSellerDto
 {
     public Guid CategoryId { get; set; }
     public Guid ProductId { get; set; }

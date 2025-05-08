@@ -48,9 +48,9 @@ public class CategoryService : BaseService, ICategoryService
             : new ErrorResult(Messages.DeleteError);
     }
 
-    public async Task<IDataResult<IEnumerable<CategoryViewModel>>> GetAllCategories()
+    public async Task<IDataResult<IEnumerable<CategoryViewModel>>> GetAllCategoriesAsync()
     {
-        var categories = await _categoryRepo.GetAllCategoriesAsync(predicate => true);
+        var categories = await _categoryRepo.GetAllAsync();
 
         if (!categories.Any())
             return new ErrorDataResult<IEnumerable<CategoryViewModel>>(Messages.EmptyEntityList);

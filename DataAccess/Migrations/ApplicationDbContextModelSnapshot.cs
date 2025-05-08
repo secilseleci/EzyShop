@@ -251,6 +251,9 @@ namespace DataAccess.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("OrderNumber")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("PaymentMethod")
                         .HasColumnType("int");
 

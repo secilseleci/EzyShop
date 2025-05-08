@@ -2,7 +2,7 @@
 
 public class AdminDashboardViewModel
 {
-    public int TotalCustomers { get; set; }
-    public int PendingShops { get; set; }
-    public int ActiveShops { get; set; }
+    public decimal TotalCustomers { get; set; }
+    public decimal PendingShops { get; set; }
+    public decimal ActiveShops { get; set; }
 }

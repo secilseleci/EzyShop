@@ -31,7 +31,7 @@ public class CustomerService : BaseService, ICustomerService
         _customerRepo = customerRepo;
     }
 
-    public async Task<int> CountAsync()
+    public async Task<decimal> CountAsync()
     {
         return await _customerRepo.CountAsync();
     }
