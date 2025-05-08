@@ -33,7 +33,7 @@ public class OrderItemRepository(ApplicationDbContext context) : BaseRepository<
                 ProductName = oi.ProductName,
                 ProductPrice = oi.ProductPrice,
                 Count = oi.Count,
-                TotalPrice = oi.TotalPrice,
+                //TotalPrice = oi.TotalPrice,
                 Color = oi.Color,
                 ImageUrl = oi.ImageUrl,
                 ShopName = s.Name

@@ -1,10 +1,13 @@
 ﻿using Core.Utilities.Results;
 using Models.Entities.Concrete;
+using Models.ViewModels.Cart;
 
 namespace Business.Services.Abstract;
 
 public interface IOrderService
 { 
-    Task<Order?> GetInCartOrderAsync(Guid customerId);
-    Task<IDataResult<Order>> GetOrCreateCartAndAddProductAsync(Guid productId, Guid customerId);
+    Task<IDataResult<Order?>> GetInCartOrderAsync();
+    Task<IDataResult<Order>> AddToCartAsync(Guid productId);
+    Task<IDataResult<CartPageViewModel>> GetCartPageAsync();
+
 }

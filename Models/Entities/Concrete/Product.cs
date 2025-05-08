@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.Entities.Concrete;
 
@@ -9,10 +8,9 @@ public class Product : BaseEntity
     {
         IsActive = true;
     }
-    [ForeignKey("Category"), Required]
+    
     public Guid CategoryId { get; set; }
 
-    [ForeignKey("Shop"), Required]
     public Guid ShopId { get; set; }
 
     [Required]

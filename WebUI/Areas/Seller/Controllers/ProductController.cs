@@ -47,7 +47,7 @@ public class ProductController : BaseController
     [HttpGet]
     public async Task<IActionResult> Details(Guid id, string status)
     {
-        var result = await _productService.GetProductDetailsForSellerAsync(CurrentUserId!.Value, id);
+        var result = await _productService.GetProductDetailsForSellerAsync( id);
 
         if (!result.Success)
             return NotFound();
@@ -72,7 +72,7 @@ public class ProductController : BaseController
 
         HandleImageUpload(model, file);
 
-        var result = await _productService.CreateProductAsync(model, CurrentUserId!.Value);
+        var result = await _productService.CreateProductAsync(model);
 
         if (!result.Success)
         {
@@ -108,7 +108,7 @@ public class ProductController : BaseController
 
         HandleImageUpload(model, file);
 
-        var result = await _productService.UpdateProductAsync(model, CurrentUserId!.Value);
+        var result = await _productService.UpdateProductAsync(model);
 
         if (!result.Success)
         {

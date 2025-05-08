@@ -25,19 +25,19 @@ public class CartAPIController : BaseController
         _orderItemService = orderItemService;
     }
 
-    [HttpPost("addtocart")]
-    public async Task<IActionResult> AddToCart([FromForm] Guid productId)
-    {
-        if (!CurrentUserId.HasValue)
-            return RedirectToAction("Login", "Auth", new
-            {
-                error = Messages.LoginUnauthorized
-            });
+    //[HttpPost("addtocart")]
+    //public async Task<IActionResult> AddToCart([FromForm] Guid productId)
+    //{
+    //    if (!CurrentUserId.HasValue)
+    //        return RedirectToAction("Login", "Auth", new
+    //        {
+    //            error = Messages.LoginUnauthorized
+    //        });
 
-        var result = await _orderService.GetOrCreateCartAndAddProductAsync(productId, CurrentUserId.Value);
-        if (!result.Success)
-             return BadRequest(new { success = false, message = result.Message });
+    //    var result = await _orderService.GetOrCreateCartAndAddProductAsync(productId, CurrentUserId.Value);
+    //    if (!result.Success)
+    //         return BadRequest(new { success = false, message = result.Message });
 
-        return Ok(new { success = true, message = result.Message });
-    }
+    //    return Ok(new { success = true, message = result.Message });
+    //}
 }

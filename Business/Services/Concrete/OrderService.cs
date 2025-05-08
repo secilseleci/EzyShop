@@ -6,8 +6,11 @@ using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Models.DTOs;
 using Models.Entities.Concrete;
 using Models.Identity;
+using Models.ViewModels.Cart;
+using static Models.Entities.Concrete.OrderItem;
 
 namespace Business.Services.Concrete;
 
@@ -34,9 +37,23 @@ public class OrderService : BaseService, IOrderService
         _orderItemRepo = orderItemRepo;
         _productRepo = productRepo;
     }
-
-    public async Task<IDataResult<Order>> GetOrCreateCartAndAddProductAsync(Guid productId, Guid customerId)
+    public async Task<IDataResult<Order?>> GetInCartOrderAsync()
     {
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorDataResult<Order?>(Messages.LoginUnauthorized);
+
+        var order = await _orderRepo.GetOrderByCustomerIdAsync(CurrentUserService.UserId.Value);
+
+        return new SuccessDataResult<Order?>(order);
+
+    }
+    public async Task<IDataResult<Order>> AddToCartAsync(Guid productId)
+    {
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorDataResult<Order>(Messages.LoginUnauthorized);
+
+        var customerId = CurrentUserService.UserId.Value;
+
         if (!await CheckCustomerExistsAsync(customerId))
             return new ErrorDataResult<Order>(Messages.CustomerNotFound);
 
@@ -56,16 +73,11 @@ public class OrderService : BaseService, IOrderService
 
         return new SuccessDataResult<Order>(order.Data, message: itemResult.Message);
     }
-
     private async Task<bool> CheckCustomerExistsAsync(Guid customerId)
-    {
-        var existingCustomer = await _customerRepo.ExistsAsync(c => c.Id == customerId);
-        if (!existingCustomer)
-            return false;
-        return true;
-    }
+      => await _customerRepo.ExistsAsync(c => c.Id == customerId);
     private async Task<IDataResult<Order>> GetOrCreateCartAsync(Guid customerId)
     {
+
         var existingOrder = await _orderRepo.GetOrderByCustomerIdAsync(customerId);
         if (existingOrder != null)
             return new SuccessDataResult<Order>(existingOrder);
@@ -103,8 +115,9 @@ public class OrderService : BaseService, IOrderService
                 ProductPrice = product.Price,
                 Color = product.Color,
                 ImageUrl = product.ImageUrl,
-                Status=0
+                Status = OrderItemStatus.InCart,
             };
+
             var createResult = await _orderItemRepo.CreateAsync(neworderItem);
             if (createResult <= 0)
                 return new ErrorResult(message: Messages.CreateError);
@@ -113,11 +126,11 @@ public class OrderService : BaseService, IOrderService
         return new SuccessResult(message: Messages.ProductAddedSuccess);
     }
 
-    public async Task<Order?> GetInCartOrderAsync(Guid customerId)
+    public async Task<IDataResult<CartPageViewModel>> GetCartPageAsync()
     {
-        var order=await _orderRepo.GetOrderByCustomerIdAsync(customerId);
-        if (order != null && order.Status == OrderStatus.InCart)
-            return order;
-        return null;
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorDataResult<CartPageViewModel>(Messages.LoginUnauthorized);
     }
+
+  
 }

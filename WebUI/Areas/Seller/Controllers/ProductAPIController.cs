@@ -42,7 +42,7 @@ public class ProductAPIController : BaseController
         if (!Enum.TryParse<ProductStatus>(status, true, out var productStatus))
             return BadRequest(new { success = false, message = "Invalid status parameter" });
 
-        var result = await _productService.GetProductsAsync(productStatus, CurrentUserId!.Value, search, page, pageSize);
+        var result = await _productService.GetProductsAsync(productStatus,search, page, pageSize);
 
         if (!result.Success)
         {
@@ -64,7 +64,7 @@ public class ProductAPIController : BaseController
     [HttpPost("deactivate")]
     public async Task<IActionResult> Deactivate([FromForm] Guid productId)
     {
-        var result = await _productService.DeactivateProductAsync(productId, CurrentUserId!.Value);
+        var result = await _productService.DeactivateProductAsync(productId);
         if (!result.Success)
         {
             return BadRequest(new { success = false, message = result.Message });
@@ -77,7 +77,7 @@ public class ProductAPIController : BaseController
     [HttpPost("reactivate")]
     public async Task<IActionResult> Reactivate([FromForm] Guid productId, [FromForm] int stock)
     {
-        var result = await _productService.ReactivateProductAsync(productId, CurrentUserId!.Value, stock);
+        var result = await _productService.ReactivateProductAsync(productId, stock);
         if (!result.Success)
         {
             return BadRequest(new { success = false, message = result.Message });
@@ -90,7 +90,7 @@ public class ProductAPIController : BaseController
     [HttpPost("delete")]
     public async Task<IActionResult> Delete([FromForm] Guid productId)
     {
-        var result = await _productService.DeleteProductAsync(productId, CurrentUserId!.Value);
+        var result = await _productService.DeleteProductAsync(productId);
         if (!result.Success)
         {
             return BadRequest(new { success = false, message = result.Message });

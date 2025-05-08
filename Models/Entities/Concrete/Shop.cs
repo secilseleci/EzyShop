@@ -1,11 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.Entities.Concrete;
 
 public class Shop : BaseEntity
 {
-    [ForeignKey("Seller"), Required]
     public Guid SellerId { get; set; }
 
 

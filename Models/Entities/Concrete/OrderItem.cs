@@ -10,11 +10,9 @@ public class OrderItem : BaseEntity
         Status =OrderItemStatus.InCart;
     }
 
-    [ForeignKey("Order"), Required]
     public Guid OrderId { get; set; }
 
 
-    [ForeignKey("Product"), Required]
     public Guid ProductId { get; set; }
 
      

@@ -23,7 +23,7 @@ public class ProductController: BaseController
     }
 
  
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
         return View();
     }
@@ -33,7 +33,9 @@ public class ProductController: BaseController
     {
         if(!CurrentUserId.HasValue)
             return RedirectToAction("Login", "Auth", new {error=Messages.LoginUnauthorized});
-        var result = await _productService.GetProductDetailsForCustomerAsync(  CurrentUserId.Value,productId);
+
+        var result = await _productService.GetProductDetailsForCustomerAsync(productId);
+        
         if (!result.Success || result.Data == null)
             return RedirectToAction("Login", "Auth", new { error = result.Message });
 

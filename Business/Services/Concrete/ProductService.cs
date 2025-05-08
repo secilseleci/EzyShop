@@ -38,9 +38,12 @@ public class ProductService : BaseService, IProductService
     }
 
     #region Seller
-    public async Task<IResult> CreateProductAsync(CreateProductViewModel model, Guid userId)
+    public async Task<IResult> CreateProductAsync(CreateProductViewModel model)
     {
-        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorResult(Messages.LoginUnauthorized);
+
+        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(CurrentUserService.UserId.Value);
         if (!shopId.Success)
             return new ErrorResult(Messages.ShopNotFound);
 
@@ -58,9 +61,12 @@ public class ProductService : BaseService, IProductService
              ? new ErrorResult(message: Messages.CreateError)
              : new SuccessResult(message: Messages.CreateSuccess);
     }
-    public async Task<IResult> UpdateProductAsync(UpdateProductViewModel model, Guid userId)
+    public async Task<IResult> UpdateProductAsync(UpdateProductViewModel model)
     {
-        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorResult(Messages.LoginUnauthorized);
+
+        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(CurrentUserService.UserId.Value);
         if (!shopId.Success)
             return new ErrorResult(Messages.ShopNotFound);
 
@@ -85,9 +91,12 @@ public class ProductService : BaseService, IProductService
             ? new SuccessResult(Messages.UpdateSuccess)
             : new ErrorResult(Messages.UpdateError);
     }
-    public async Task<IResult> DeleteProductAsync(Guid productId, Guid userId)
+    public async Task<IResult> DeleteProductAsync(Guid productId)
     {
-        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorResult(Messages.LoginUnauthorized);
+
+        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(CurrentUserService.UserId.Value);
         if (!shopId.Success)
             return new ErrorResult(Messages.ShopNotFound);
 
@@ -101,41 +110,69 @@ public class ProductService : BaseService, IProductService
              : new ErrorResult(Messages.DeleteError);
 
     }
-    public async Task<IResult> DeactivateProductAsync(Guid productId, Guid userId)
+    public async Task<IResult> DeactivateProductAsync(Guid productId)
     {
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorResult(Messages.LoginUnauthorized);
+
+        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(CurrentUserService.UserId.Value);
+        if (!shopId.Success)
+            return new ErrorResult(Messages.ShopNotFound);
+
         if (!await IsProductAvailable(productId))
-        { return new ErrorResult(Messages.ProductAlreadyInactive); }
+            return new ErrorResult(Messages.ProductAlreadyInactive);
 
         var product = await _productRepo.GetByIdAsync(productId);
-        if (product is null) return new ErrorResult(Messages.ProductNotFound);
+        if (product is null)
+            return new ErrorResult(Messages.ProductNotFound);
+
+        if (product.ShopId != shopId.Data)
+            return new ErrorResult(Messages.UnauthorizedAccess);
 
         product.Stock = 0;
         product.IsActive = false;
+
         var result = await _productRepo.UpdateAsync(product);
 
         return result > 0
             ? new SuccessResult(Messages.DeactivateProductSuccess)
-             : new ErrorResult(Messages.DeactivateProductError);
+            : new ErrorResult(Messages.DeactivateProductError);
     }
-    public async Task<IResult> ReactivateProductAsync(Guid productId, Guid userId, int stock)
+    public async Task<IResult> ReactivateProductAsync(Guid productId, int stock)
     {
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorResult(Messages.LoginUnauthorized);
+
+        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(CurrentUserService.UserId.Value);
+        if (!shopId.Success)
+            return new ErrorResult(Messages.ShopNotFound);
+
         if (await IsProductAvailable(productId))
-        { return new ErrorResult(Messages.ProductAlreadyActive); }
+            return new ErrorResult(Messages.ProductAlreadyActive);
 
         var product = await _productRepo.GetByIdAsync(productId);
-        if (product is null) return new ErrorResult(Messages.ProductNotFound);
+        if (product is null)
+            return new ErrorResult(Messages.ProductNotFound);
+
+        if (product.ShopId != shopId.Data)
+            return new ErrorResult(Messages.UnauthorizedAccess);
 
         product.Stock = stock;
         product.IsActive = true;
+
         var result = await _productRepo.UpdateAsync(product);
 
         return result > 0
             ? new SuccessResult(Messages.ReactivateProductSuccess)
-             : new ErrorResult(Messages.ReactivateProductError);
+            : new ErrorResult(Messages.ReactivateProductError);
     }
-    public async Task<IDataResult<PaginatedList<ProductListForSellerDto>>> GetProductsAsync(ProductStatus status, Guid userId, string? searchTerm, int page, int pageSize)
+
+    public async Task<IDataResult<PaginatedList<ProductListForSellerDto>>> GetProductsAsync(ProductStatus status, string? searchTerm, int page, int pageSize)
     {
-        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorDataResult<PaginatedList<ProductListForSellerDto>>(Messages.LoginUnauthorized);
+
+        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(CurrentUserService.UserId.Value);
 
         if (!shopId.Success)
             return new ErrorDataResult<PaginatedList<ProductListForSellerDto>>(Messages.ShopNotFound);
@@ -144,9 +181,13 @@ public class ProductService : BaseService, IProductService
 
         return new SuccessDataResult<PaginatedList<ProductListForSellerDto>>(result);
     }
-    public async Task<IDataResult<ProductDetailsForSellerDto>> GetProductDetailsForSellerAsync(Guid userId, Guid productId)
+    public async Task<IDataResult<ProductDetailsForSellerDto>> GetProductDetailsForSellerAsync(Guid productId)
     {
-        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(userId);
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorDataResult<ProductDetailsForSellerDto>(Messages.LoginUnauthorized);
+
+        var shopId = await _shopService.GetActiveShopIdByUserIdAsync(CurrentUserService.UserId.Value);
+
         if (!shopId.Success)
             return new ErrorDataResult<ProductDetailsForSellerDto>(Messages.ShopNotFound);
 
@@ -193,16 +234,15 @@ public class ProductService : BaseService, IProductService
         return true;
     }
 
-    public async Task<IDataResult<ProductDetailsForCustomerDto>> GetProductDetailsForCustomerAsync(Guid userId, Guid productId)
+    public async Task<IDataResult<ProductDetailsForCustomerDto>> GetProductDetailsForCustomerAsync(Guid productId)
     {
-        var customer = await _userManager.FindByIdAsync(userId.ToString());
-        if (customer == null)
-            return new ErrorDataResult<ProductDetailsForCustomerDto>(Messages.UserNotFound);
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorDataResult<ProductDetailsForCustomerDto>(Messages.LoginUnauthorized);
 
         if (!await IsProductAvailable(productId))
             return new ErrorDataResult<ProductDetailsForCustomerDto>(Messages.ProductNotFound);
 
-        var result=await _productRepo.GetProductDetailsDtosForCustomerAsync(productId);
+        var result = await _productRepo.GetProductDetailsDtosForCustomerAsync(productId);
         if (result is null)
             return new ErrorDataResult<ProductDetailsForCustomerDto>(Messages.ProductNotFound);
 
