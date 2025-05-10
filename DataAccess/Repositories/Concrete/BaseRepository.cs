@@ -51,26 +51,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T:class, IBaseEntity, 
         }
         return await _dataContext.SaveChangesAsync();
      }
-    
-    
-    public async Task<int> HardDeleteAsync(Guid id)
-    {
-        var entity = await _dbSet.FindAsync(id);
-        if (entity == null)
-            return -1;
-
-        _dataContext.Entry(entity).State = EntityState.Deleted;
-        
-        _dbSet.Remove(entity);
-        return await _dataContext.SaveChangesAsync();
-    }
-    public async Task<int> HardDeleteRangeAsync(IEnumerable<T> entities)
-    {
-        _dbSet.RemoveRange(entities);
-        return await _dataContext.SaveChangesAsync();
-
-    }
-
+     
     
     public async Task<int> UpdateAsync(T entity)
     {

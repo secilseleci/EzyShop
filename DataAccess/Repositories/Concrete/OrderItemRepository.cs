@@ -13,8 +13,8 @@ public class OrderItemRepository(ApplicationDbContext context) : BaseRepository<
         {
             OrderId = orderId,
             ProductId = productId
-        }
-        ;
+        };
+   
         await _dataContext.AddAsync(orderItem);
         return orderItem.Id;
     }
@@ -25,7 +25,7 @@ public class OrderItemRepository(ApplicationDbContext context) : BaseRepository<
             from oi in _dataContext.OrderItems
             join p in _dataContext.Products on oi.ProductId equals p.Id
             join s in _dataContext.Shops on p.ShopId equals s.Id
-            where oi.OrderId == orderId
+            where oi.OrderId == orderId && oi.IsDeleted==false
             select new OrderItemDto
             {
                 Id = oi.Id,
@@ -33,7 +33,6 @@ public class OrderItemRepository(ApplicationDbContext context) : BaseRepository<
                 ProductName = oi.ProductName,
                 ProductPrice = oi.ProductPrice,
                 Count = oi.Count,
-                //TotalPrice = oi.TotalPrice,
                 Color = oi.Color,
                 ImageUrl = oi.ImageUrl,
                 ShopName = s.Name
@@ -46,5 +45,12 @@ public class OrderItemRepository(ApplicationDbContext context) : BaseRepository<
     {
         return await _dataContext.OrderItems
             .SingleOrDefaultAsync(oi => oi.OrderId == orderId && oi.ProductId == productId);
+    }
+
+    public async Task<List<OrderItem>> GetByOrderIdAsync(Guid orderId)
+    {
+        return await _dataContext.OrderItems
+            .Where(oi => oi.OrderId == orderId)
+            .ToListAsync();
     }
 }

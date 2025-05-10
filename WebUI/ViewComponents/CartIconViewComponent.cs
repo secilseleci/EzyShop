@@ -20,11 +20,11 @@ public class CartIconViewComponent:ViewComponent
         int count = 0;
         if (_currentUser.UserId.HasValue && _currentUser.Role == "Customer")
         {
-            var order = await _orderService.GetInCartOrderAsync(_currentUser.UserId.Value);
-            if (order != null)
-                count = order.OrderItems.Sum(x => x.Count);
+            var orderResult = await _orderService.GetInCartOrderAsync();
+            if (orderResult.Success && orderResult.Data != null)
+                count = orderResult.Data.OrderItems.Where(oi=>oi.IsDeleted==false)
+                    .Sum(x => x.Count);
         }
-
         return View(count);
     }
 }

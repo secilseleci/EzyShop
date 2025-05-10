@@ -6,7 +6,7 @@ using Core.Utilities.Results;
 using DataAccess.Repositories.Abstract;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
-using Models.DTOs;
+using Models.DTOs.OrderItem;
 using Models.Entities.Concrete;
 using Models.Identity;
 using Models.ViewModels.Cart;
@@ -73,8 +73,38 @@ public class OrderService : BaseService, IOrderService
 
         return new SuccessDataResult<Order>(order.Data, message: itemResult.Message);
     }
+    public async Task<IDataResult<CartPageViewModel>> GetCartPageAsync()
+    {
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorDataResult<CartPageViewModel>(Messages.LoginUnauthorized);
+
+        var customerId = CurrentUserService.UserId.Value;
+
+        if (!await _customerRepo.ExistsAsync(c => c.Id == customerId))
+            return new ErrorDataResult<CartPageViewModel>(Messages.CustomerNotFound);
+
+        var order = await _orderRepo.GetOrderByCustomerIdAsync(customerId);
+        if (order == null || !order.OrderItems.Any())
+        {
+            return new SuccessDataResult<CartPageViewModel>(new CartPageViewModel { OrderItems = new List<OrderItemDto>() });
+        }
+
+        var items = await _orderItemRepo.GetOrderItemsAsync(order.Id);
+
+        var total = items.Sum(x => x.Count * x.ProductPrice);
+
+        var vm = new CartPageViewModel
+        {
+            TotalAmount = total,
+            OrderItems = items.ToList()
+        };
+
+        return new SuccessDataResult<CartPageViewModel>(vm);
+    }
+
+
     private async Task<bool> CheckCustomerExistsAsync(Guid customerId)
-      => await _customerRepo.ExistsAsync(c => c.Id == customerId);
+  => await _customerRepo.ExistsAsync(c => c.Id == customerId);
     private async Task<IDataResult<Order>> GetOrCreateCartAsync(Guid customerId)
     {
 
@@ -125,12 +155,4 @@ public class OrderService : BaseService, IOrderService
 
         return new SuccessResult(message: Messages.ProductAddedSuccess);
     }
-
-    public async Task<IDataResult<CartPageViewModel>> GetCartPageAsync()
-    {
-        if (!CurrentUserService.UserId.HasValue)
-            return new ErrorDataResult<CartPageViewModel>(Messages.LoginUnauthorized);
-    }
-
-  
 }

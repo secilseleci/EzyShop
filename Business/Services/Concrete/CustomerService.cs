@@ -16,7 +16,6 @@ namespace Business.Services.Concrete;
 
 public class CustomerService : BaseService, ICustomerService
 {
-
     private readonly ICustomerRepository _customerRepo;
     public CustomerService(
       IMapper mapper,
@@ -27,7 +26,6 @@ public class CustomerService : BaseService, ICustomerService
       ICustomerRepository customerRepo)
    : base(mapper, config, currentUserService)
     {
-
         _customerRepo = customerRepo;
     }
 
@@ -35,7 +33,6 @@ public class CustomerService : BaseService, ICustomerService
     {
         return await _customerRepo.CountAsync();
     }
-     
     public async Task<IResult> CreateCustomerAsync(Guid userId, RegisterCustomerViewModel model)
     {
         var existingCustomer = await _customerRepo.GetByIdAsync(userId);
@@ -63,7 +60,6 @@ public class CustomerService : BaseService, ICustomerService
         return deleteResult > 0
             ? new SuccessResult(Messages.DeleteSuccess)
         : new ErrorResult(Messages.DeleteError);
-
     }
     public async Task<IDataResult<PaginatedList<CustomerListViewModel>>> GetPaginatedCustomerListAsync(string? searchTerm, int page, int pageSize)
     {
@@ -74,5 +70,4 @@ public class CustomerService : BaseService, ICustomerService
 
         return new SuccessDataResult<PaginatedList<CustomerListViewModel>>(paginated);
     }
-
 }

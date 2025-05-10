@@ -21,10 +21,7 @@ public interface IBaseRepository<T> where T : class, IBaseEntity, IAuditable
 
     Task<int> SoftDeleteAsync(Guid Id);
     Task<int> SoftDeleteRangeAsync(IEnumerable<T> entities);
-
-    Task<int> HardDeleteAsync(Guid id);
-    Task<int> HardDeleteRangeAsync(IEnumerable<T> entities);
-
+  
     Task<int> UpdateAsync(T entity);
     Task<int> UpdateRangeAsync(IEnumerable<T> entities);
 }

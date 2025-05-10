@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Business.Services.Abstract;
-using Core.Constants;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Identity;
@@ -30,10 +29,7 @@ public class ProductController: BaseController
    
     [HttpGet]
     public async Task<IActionResult> Details(Guid productId)
-    {
-        if(!CurrentUserId.HasValue)
-            return RedirectToAction("Login", "Auth", new {error=Messages.LoginUnauthorized});
-
+    { 
         var result = await _productService.GetProductDetailsForCustomerAsync(productId);
         
         if (!result.Success || result.Data == null)

@@ -1,6 +1,4 @@
-﻿console.log("product-details.js yüklendi");
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
  
     $("#addToCartBtn").on("click", function (e) {
         e.preventDefault();
@@ -20,7 +18,7 @@ function addToCart(productId) {
                 toastr.error(response.message);
                 return;
             }
-
+            $("#cart-icon").load("/Cart/CartIcon");
             toastr.success(response.message);
 
         },

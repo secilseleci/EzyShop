@@ -74,7 +74,9 @@
 
                             @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
                             {
-                                @await Component.InvokeAsync("CartIcon")
+                                <div id="cart-icon">
+                                    @await Component.InvokeAsync("CartIcon")
+                                </div>
                             }
                         }
                     </ul>
