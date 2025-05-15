@@ -111,7 +111,10 @@
 
 
 
-
+        #region OrderItem
+        public const string LessCountItemError = "Quantity cannot be less than 1.";
+        public const string ExceedCountItemError = "Quantity cannot exceed 100.";
+        #endregion
 
 
         #region Order

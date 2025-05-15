@@ -42,5 +42,25 @@ public class OrderItemService : BaseService, IOrderItemService
             ? new SuccessResult(Messages.DeleteSuccess)
         : new ErrorResult(Messages.DeleteError);
     }
+    public async Task<IResult> UpdateOrderItemCountAsync(Guid orderItemId,int deltaCount)
+    {
+        var item = await _orderItemRepo.GetByIdAsync(orderItemId);
+        if (item == null)
+            return new ErrorResult(Messages.OrderItemNotFound);
 
+        var newCount = item.Count + deltaCount;
+
+        if (newCount is < 1 or > 100)
+            return new ErrorResult(newCount < 1
+                ? Messages.LessCountItemError
+                : Messages.ExceedCountItemError);
+
+        item.Count = newCount;
+
+        int updateResult = await _orderItemRepo.UpdateAsync(item);
+        if (updateResult <= 0)
+            return new ErrorResult(Messages.UpdateError);
+
+        return new SuccessResult(Messages.UpdateSuccess);
+    }
 }

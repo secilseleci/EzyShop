@@ -3,6 +3,7 @@ using Business.Services.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Models.DTOs.OrderItem;
 using Models.Identity;
 
 namespace WebUI.Controllers;
@@ -49,5 +50,14 @@ public class CartAPIController : BaseController
         return Ok(new { success = true, message = result.Message });
     }
 
-  
+    [HttpPost("updatecount")]
+    public async Task<IActionResult> UpdateCount([FromBody] UpdateOrderItemCountDto dto)
+    {
+        var result = await _orderItemService.UpdateOrderItemCountAsync(dto.OrderItemId, dto.Delta);
+        if (!result.Success)
+            return BadRequest(new { success = false, message = result.Message });
+
+        return Ok(new { success = true, message = result.Message });
+    }
+
 }
