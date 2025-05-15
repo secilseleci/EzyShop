@@ -34,11 +34,10 @@ public class CartController : BaseController
     {
         var result = await _orderService.GetCartPageAsync();
 
-        if (!result.Success)
-            return View("Error", result.Message);
-
-        if (!result.Data.OrderItems.Any())
+        if (!result.Success || result.Data == null || result.Data.OrderItems == null || !result.Data.OrderItems.Any())
+        {
             return View("Empty");
+        }
 
         return View(result.Data);
     }
@@ -61,15 +60,15 @@ public class CartController : BaseController
             TempData["Error"] = deleteResult.Message;
             return RedirectToAction("Index");
         }
-        return View("Empty");  
+        return View("Empty");   
     }
 
-    [HttpGet]
-    public async Task<IActionResult> Confirm()
-    {
-        if (!CurrentUserId.HasValue)
-            return RedirectToAction("Login", "Auth", new { error = Messages.LoginUnauthorized });
+    //[HttpGet]
+    //public async Task<IActionResult> Confirm()
+    //{
+    //    if (!CurrentUserId.HasValue)
+    //        return RedirectToAction("Login", "Auth", new { error = Messages.LoginUnauthorized });
 
-        return View();
-    }
+    //    return View();
+    //}
 }

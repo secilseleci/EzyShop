@@ -27,6 +27,18 @@ public class CartAPIController : BaseController
         _orderItemService = orderItemService;
     }
 
+
+    [HttpGet("getcart")]
+    public async Task<IActionResult>GetCart()
+    {
+        var result = await _orderService.GetCartPageAsync();
+        if (!result.Success)
+            return BadRequest(new { success = false, message = result.Message });
+
+        return Ok(new { success = true, message = result.Message, data=result.Data });
+    }
+
+
     [HttpPost("addtocart")]
     public async Task<IActionResult> AddToCart([FromForm] Guid productId)
     {

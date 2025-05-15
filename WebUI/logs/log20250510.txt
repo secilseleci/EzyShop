@@ -5459,3 +5459,750 @@ OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
 2025-05-10 17:19:54.333 +03:00 [INF] Executed action WebUI.Controllers.ProductAPIController.FilterProducts (WebUI) in 43.0663ms
 2025-05-10 17:19:54.334 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductAPIController.FilterProducts (WebUI)'
 2025-05-10 17:19:54.335 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/api/products/filter - 200 null application/json; charset=utf-8 53.8316ms
+2025-05-10 23:51:14.419 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-10 23:51:14.887 +03:00 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-10 23:51:14.889 +03:00 [WRN] No store type was specified for the decimal property 'ProductPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-10 23:51:14.890 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-10 23:51:15.375 +03:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:15.403 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:15.445 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Sellers] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:15.460 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Shops] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:15.541 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[@__email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__email_0
+2025-05-10 23:51:15.605 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__user_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:15.609 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__email_0
+2025-05-10 23:51:15.611 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__user_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:15.641 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:15.651 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__sellerMail1_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__sellerMail1_0
+2025-05-10 23:51:15.657 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__sellerMail2_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__sellerMail2_0
+2025-05-10 23:51:15.663 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user1_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[IsActive], [s].[IsDeleted], [s].[LastName], [s].[ModifiedBy], [s].[Phone], [s].[UpdatedAt]
+FROM [Sellers] AS [s]
+WHERE [s].[Id] = @__user1_Id_0
+2025-05-10 23:51:15.685 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user2_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[IsActive], [s].[IsDeleted], [s].[LastName], [s].[ModifiedBy], [s].[Phone], [s].[UpdatedAt]
+FROM [Sellers] AS [s]
+WHERE [s].[Id] = @__user2_Id_0
+2025-05-10 23:51:15.696 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__seller1_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[Name], [s].[SellerId], [s].[TaxNumber], [s].[UpdatedAt]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller1_Id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-05-10 23:51:15.717 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__seller2_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[Name], [s].[SellerId], [s].[TaxNumber], [s].[UpdatedAt]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller2_Id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-05-10 23:51:15.726 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] = N'Electronics'
+2025-05-10 23:51:15.745 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] = N'Books'
+2025-05-10 23:51:15.752 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:16.210 +03:00 [INF] Now listening on: https://localhost:7104
+2025-05-10 23:51:16.211 +03:00 [INF] Now listening on: http://localhost:5194
+2025-05-10 23:51:16.252 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-10 23:51:16.253 +03:00 [INF] Hosting environment: Development
+2025-05-10 23:51:16.254 +03:00 [INF] Content root path: C:\Users\ASUS\source\repos\EZYSHOP\WebUI
+2025-05-10 23:51:16.787 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-05-10 23:51:16.942 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-10 23:51:16.945 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-10 23:51:16.958 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-05-10 23:51:18.971 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-10 23:51:20.077 +03:00 [INF] Executed ViewResult - view Index executed in 3043.4995ms.
+2025-05-10 23:51:20.084 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 3123.4707ms
+2025-05-10 23:51:20.086 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-10 23:51:20.098 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 3316.6315ms
+2025-05-10 23:51:20.149 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-10 23:51:20.149 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-05-10 23:51:20.162 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 13.3358ms
+2025-05-10 23:51:20.197 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 48.8123ms
+2025-05-10 23:51:20.278 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-05-10 23:51:20.283 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-10 23:51:20.284 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-10 23:51:20.285 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-05-10 23:51:20.295 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-10 23:51:20.301 +03:00 [INF] Executed ViewResult - view Index executed in 6.1953ms.
+2025-05-10 23:51:20.303 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 17.5102ms
+2025-05-10 23:51:20.304 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-10 23:51:20.305 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 26.6449ms
+2025-05-10 23:51:31.815 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Auth/Login - null null
+2025-05-10 23:51:31.827 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-10 23:51:31.828 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-05-10 23:51:31.840 +03:00 [INF] Route matched with {action = "Login", controller = "Auth", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String, System.String) on controller WebUI.Controllers.AuthController (WebUI).
+2025-05-10 23:51:32.227 +03:00 [INF] Executing ViewResult, running view Login.
+2025-05-10 23:51:32.470 +03:00 [INF] Executed ViewResult - view Login executed in 604.9373ms.
+2025-05-10 23:51:32.471 +03:00 [INF] Executed action WebUI.Controllers.AuthController.Login (WebUI) in 630.3679ms
+2025-05-10 23:51:32.472 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-05-10 23:51:32.475 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Auth/Login - 200 null text/html; charset=utf-8 660.5359ms
+2025-05-10 23:51:32.516 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-05-10 23:51:32.516 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-10 23:51:32.527 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 11.5509ms
+2025-05-10 23:51:32.544 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Auth/Login - null null
+2025-05-10 23:51:32.547 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.3822ms
+2025-05-10 23:51:32.551 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-10 23:51:32.552 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-05-10 23:51:32.553 +03:00 [INF] Route matched with {action = "Login", controller = "Auth", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String, System.String) on controller WebUI.Controllers.AuthController (WebUI).
+2025-05-10 23:51:32.603 +03:00 [INF] Executing ViewResult, running view Login.
+2025-05-10 23:51:32.611 +03:00 [INF] Executed ViewResult - view Login executed in 7.5229ms.
+2025-05-10 23:51:32.613 +03:00 [INF] Executed action WebUI.Controllers.AuthController.Login (WebUI) in 57.9894ms
+2025-05-10 23:51:32.614 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-05-10 23:51:32.615 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Auth/Login - 200 null text/html; charset=utf-8 71.4971ms
+2025-05-10 23:51:44.690 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/Auth/Login - application/x-www-form-urlencoded 259
+2025-05-10 23:51:44.695 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-10 23:51:44.696 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-05-10 23:51:44.703 +03:00 [INF] Route matched with {action = "Login", controller = "Auth", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Models.ViewModels.Auth.LoginViewModel) on controller WebUI.Controllers.AuthController (WebUI).
+2025-05-10 23:51:44.739 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-05-10 23:51:44.849 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-05-10 23:51:44.873 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-05-10 23:51:44.883 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-05-10 23:51:44.901 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-05-10 23:51:44.909 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-05-10 23:51:44.912 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-05-10 23:51:44.916 +03:00 [INF] Executing RedirectResult, redirecting to /.
+2025-05-10 23:51:44.918 +03:00 [INF] Executed action WebUI.Controllers.AuthController.Login (WebUI) in 213.5362ms
+2025-05-10 23:51:44.919 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-05-10 23:51:44.922 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/Auth/Login - 302 0 null 231.7448ms
+2025-05-10 23:51:44.925 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-05-10 23:51:44.934 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-10 23:51:44.935 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-05-10 23:51:44.961 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-05-10 23:51:44.964 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-05-10 23:51:44.966 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-10 23:51:45.036 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:45.319 +03:00 [INF] Executed ViewResult - view Index executed in 353.3374ms.
+2025-05-10 23:51:45.322 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 385.3873ms
+2025-05-10 23:51:45.323 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-10 23:51:45.324 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 399.4451ms
+2025-05-10 23:51:45.358 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-05-10 23:51:45.358 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-10 23:51:45.364 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 5.3184ms
+2025-05-10 23:51:45.371 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 14.0648ms
+2025-05-10 23:51:45.390 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-05-10 23:51:45.396 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-10 23:51:45.398 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-05-10 23:51:45.404 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-05-10 23:51:45.409 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-05-10 23:51:45.411 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-10 23:51:45.417 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:45.423 +03:00 [INF] Executed ViewResult - view Index executed in 11.686ms.
+2025-05-10 23:51:45.424 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 23.9898ms
+2025-05-10 23:51:45.425 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-10 23:51:45.426 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 36.6052ms
+2025-05-10 23:51:47.741 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Cart/Index - null null
+2025-05-10 23:51:47.754 +03:00 [INF] Executing endpoint 'WebUI.Controllers.CartController.Index (WebUI)'
+2025-05-10 23:51:47.758 +03:00 [INF] Route matched with {action = "Index", controller = "Cart", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.CartController (WebUI).
+2025-05-10 23:51:47.771 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__customerId_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:47.778 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:47.854 +03:00 [INF] Executing ViewResult, running view Empty.
+2025-05-10 23:51:47.860 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-05-10 23:51:47.863 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:47.867 +03:00 [INF] Executed ViewResult - view Empty executed in 87.094ms.
+2025-05-10 23:51:47.868 +03:00 [INF] Executed action WebUI.Controllers.CartController.Index (WebUI) in 108.5763ms
+2025-05-10 23:51:47.868 +03:00 [INF] Executed endpoint 'WebUI.Controllers.CartController.Index (WebUI)'
+2025-05-10 23:51:47.869 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Cart/Index - 200 null text/html; charset=utf-8 128.1414ms
+2025-05-10 23:51:47.906 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-05-10 23:51:47.907 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-10 23:51:47.913 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 6.1ms
+2025-05-10 23:51:47.920 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 14.3614ms
+2025-05-10 23:51:47.934 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Cart/Index - null null
+2025-05-10 23:51:47.939 +03:00 [INF] Executing endpoint 'WebUI.Controllers.CartController.Index (WebUI)'
+2025-05-10 23:51:47.940 +03:00 [INF] Route matched with {action = "Index", controller = "Cart", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.CartController (WebUI).
+2025-05-10 23:51:47.945 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__customerId_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:47.949 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:47.951 +03:00 [INF] Executing ViewResult, running view Empty.
+2025-05-10 23:51:47.956 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-05-10 23:51:47.960 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:47.962 +03:00 [INF] Executed ViewResult - view Empty executed in 11.4674ms.
+2025-05-10 23:51:47.963 +03:00 [INF] Executed action WebUI.Controllers.CartController.Index (WebUI) in 21.8566ms
+2025-05-10 23:51:47.964 +03:00 [INF] Executed endpoint 'WebUI.Controllers.CartController.Index (WebUI)'
+2025-05-10 23:51:47.965 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Cart/Index - 200 null text/html; charset=utf-8 31.45ms
+2025-05-10 23:51:49.184 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Product/Index - null null
+2025-05-10 23:51:49.189 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-05-10 23:51:49.192 +03:00 [INF] Route matched with {action = "Index", controller = "Product", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.ProductController (WebUI).
+2025-05-10 23:51:49.292 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-10 23:51:49.301 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-05-10 23:51:49.306 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:49.311 +03:00 [INF] Executed ViewResult - view Index executed in 116.3622ms.
+2025-05-10 23:51:49.312 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Index (WebUI) in 118.9229ms
+2025-05-10 23:51:49.313 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-05-10 23:51:49.314 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Product/Index - 200 null text/html; charset=utf-8 130.1482ms
+2025-05-10 23:51:49.350 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-05-10 23:51:49.351 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-10 23:51:49.355 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 4.1331ms
+2025-05-10 23:51:49.361 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 11.4252ms
+2025-05-10 23:51:49.377 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Product/Index - null null
+2025-05-10 23:51:49.377 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/api/products/categories - null null
+2025-05-10 23:51:49.377 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/api/products/filter - application/x-www-form-urlencoded 61
+2025-05-10 23:51:49.381 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-05-10 23:51:49.383 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductAPIController.GetAllCategories (WebUI)'
+2025-05-10 23:51:49.384 +03:00 [INF] Route matched with {action = "Index", controller = "Product", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Controllers.ProductController (WebUI).
+2025-05-10 23:51:49.385 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductAPIController.FilterProducts (WebUI)'
+2025-05-10 23:51:49.388 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-10 23:51:49.391 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-05-10 23:51:49.392 +03:00 [INF] Route matched with {action = "GetAllCategories", controller = "ProductAPI", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCategories() on controller WebUI.Controllers.ProductAPIController (WebUI).
+2025-05-10 23:51:49.393 +03:00 [INF] Route matched with {action = "FilterProducts", controller = "ProductAPI", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] FilterProducts(Models.ViewModels.Product.ProductFilterViewModel) on controller WebUI.Controllers.ProductAPIController (WebUI).
+2025-05-10 23:51:49.397 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:49.400 +03:00 [INF] Executed ViewResult - view Index executed in 12.4397ms.
+2025-05-10 23:51:49.401 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Index (WebUI) in 15.6261ms
+2025-05-10 23:51:49.402 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-05-10 23:51:49.403 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Product/Index - 200 null text/html; charset=utf-8 27.1007ms
+2025-05-10 23:51:49.417 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-05-10 23:51:49.448 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-10 23:51:49.466 +03:00 [INF] Executed action WebUI.Controllers.ProductAPIController.GetAllCategories (WebUI) in 71.3927ms
+2025-05-10 23:51:49.467 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductAPIController.GetAllCategories (WebUI)'
+2025-05-10 23:51:49.468 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/api/products/categories - 200 null application/json; charset=utf-8 91.8629ms
+2025-05-10 23:51:49.472 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+INNER JOIN [Shops] AS [s] ON [p].[ShopId] = [s].[Id]
+WHERE [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsActive] = CAST(1 AS bit) AND [p].[Stock] > 0 AND [s].[IsActive] = CAST(1 AS bit)
+2025-05-10 23:51:49.483 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-05-10 23:51:49.484 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-05-10 23:51:49.492 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id] AS [ProductId], [s].[Name] AS [ShopName], [c].[Name] AS [CategoryName], [p].[Name] AS [ProductName], [p].[ImageUrl], [p].[Price], [p].[Color], [p].[Stock]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+INNER JOIN [Shops] AS [s] ON [p].[ShopId] = [s].[Id]
+WHERE [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsActive] = CAST(1 AS bit) AND [p].[Stock] > 0 AND [s].[IsActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-05-10 23:51:49.497 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType6`5[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.DTOs.ProductListForCustomerDto, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-10 23:51:49.508 +03:00 [INF] Executed action WebUI.Controllers.ProductAPIController.FilterProducts (WebUI) in 111.3133ms
+2025-05-10 23:51:49.509 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductAPIController.FilterProducts (WebUI)'
+2025-05-10 23:51:49.510 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/api/products/filter - 200 null application/json; charset=utf-8 132.526ms
+2025-05-10 23:51:51.441 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Product/Details?productid=400d24a6-70e0-4df1-aaaf-0d34963a56ba - null null
+2025-05-10 23:51:51.450 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Details (WebUI)'
+2025-05-10 23:51:51.453 +03:00 [INF] Route matched with {action = "Details", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller WebUI.Controllers.ProductController (WebUI).
+2025-05-10 23:51:51.467 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Color], [p].[CreatedAt], [p].[CreatedBy], [p].[DeletedAt], [p].[DeletedBy], [p].[ImageUrl], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [p].[UpdatedAt]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[IsDeleted] = CAST(0 AS bit)
+2025-05-10 23:51:51.494 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__productId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id] AS [ProductId], [c].[Name] AS [CategoryName], [p].[Name] AS [ProductName], [s].[Name] AS [ShopName], [p].[ImageUrl], [p].[Price], [p].[Color], [p].[Stock]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+INNER JOIN [Shops] AS [s] ON [p].[ShopId] = [s].[Id]
+WHERE [p].[Id] = @__productId_0
+2025-05-10 23:51:51.611 +03:00 [INF] Executing ViewResult, running view Details.
+2025-05-10 23:51:51.618 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-05-10 23:51:51.623 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:51.628 +03:00 [INF] Executed ViewResult - view Details executed in 129.8436ms.
+2025-05-10 23:51:51.629 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Details (WebUI) in 174.1431ms
+2025-05-10 23:51:51.630 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Details (WebUI)'
+2025-05-10 23:51:51.631 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Product/Details?productid=400d24a6-70e0-4df1-aaaf-0d34963a56ba - 200 null text/html; charset=utf-8 189.2234ms
+2025-05-10 23:51:51.668 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-05-10 23:51:51.668 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/product-details.js - null null
+2025-05-10 23:51:51.669 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-10 23:51:51.677 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 7.4126ms
+2025-05-10 23:51:51.679 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 11.3956ms
+2025-05-10 23:51:51.686 +03:00 [INF] The file /js/product-details.js was not modified
+2025-05-10 23:51:51.689 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/product-details.js - 304 null text/javascript 21.1247ms
+2025-05-10 23:51:51.698 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Product/Details?productid=400d24a6-70e0-4df1-aaaf-0d34963a56ba - null null
+2025-05-10 23:51:51.700 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Details (WebUI)'
+2025-05-10 23:51:51.701 +03:00 [INF] Route matched with {action = "Details", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller WebUI.Controllers.ProductController (WebUI).
+2025-05-10 23:51:51.705 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Color], [p].[CreatedAt], [p].[CreatedBy], [p].[DeletedAt], [p].[DeletedBy], [p].[ImageUrl], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [p].[UpdatedAt]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[IsDeleted] = CAST(0 AS bit)
+2025-05-10 23:51:51.710 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__productId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id] AS [ProductId], [c].[Name] AS [CategoryName], [p].[Name] AS [ProductName], [s].[Name] AS [ShopName], [p].[ImageUrl], [p].[Price], [p].[Color], [p].[Stock]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+INNER JOIN [Shops] AS [s] ON [p].[ShopId] = [s].[Id]
+WHERE [p].[Id] = @__productId_0
+2025-05-10 23:51:51.712 +03:00 [INF] Executing ViewResult, running view Details.
+2025-05-10 23:51:51.716 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-05-10 23:51:51.721 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:51.724 +03:00 [INF] Executed ViewResult - view Details executed in 12.1864ms.
+2025-05-10 23:51:51.725 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Details (WebUI) in 22.4088ms
+2025-05-10 23:51:51.726 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Details (WebUI)'
+2025-05-10 23:51:51.727 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Product/Details?productid=400d24a6-70e0-4df1-aaaf-0d34963a56ba - 200 null text/html; charset=utf-8 29.186ms
+2025-05-10 23:51:52.822 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/api/cart/addtocart - application/x-www-form-urlencoded; charset=UTF-8 46
+2025-05-10 23:51:52.826 +03:00 [INF] Executing endpoint 'WebUI.Controllers.CartAPIController.AddToCart (WebUI)'
+2025-05-10 23:51:52.830 +03:00 [INF] Route matched with {action = "AddToCart", controller = "CartAPI", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddToCart(System.Guid) on controller WebUI.Controllers.CartAPIController (WebUI).
+2025-05-10 23:51:52.839 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__customerId_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:52.855 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:52.904 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__orderId_0='?' (DbType = Guid), @__productId_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [o].[Id], [o].[Color], [o].[Count], [o].[CreatedAt], [o].[CreatedBy], [o].[DeletedAt], [o].[DeletedBy], [o].[ImageUrl], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderId], [o].[ProductId], [o].[ProductName], [o].[ProductPrice], [o].[Status], [o].[UpdatedAt]
+FROM [OrderItems] AS [o]
+WHERE [o].[OrderId] = @__orderId_0 AND [o].[ProductId] = @__productId_1
+2025-05-10 23:51:52.907 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Color], [p].[CreatedAt], [p].[CreatedBy], [p].[DeletedAt], [p].[DeletedBy], [p].[ImageUrl], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [p].[UpdatedAt]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[IsDeleted] = CAST(0 AS bit)
+2025-05-10 23:51:53.032 +03:00 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2025-05-10 23:51:53.044 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Guid), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p14='?' (DbType = DateTime2), @p15='?' (DbType = Guid), @p16='?' (Size = 4000), @p17='?' (DbType = Int32), @p18='?' (DbType = DateTime2), @p19='?' (Size = 4000), @p20='?' (DbType = DateTime2), @p21='?' (Size = 4000), @p22='?' (Size = 4000), @p23='?' (DbType = Boolean), @p24='?' (DbType = Boolean), @p25='?' (Size = 4000), @p26='?' (DbType = Guid), @p27='?' (DbType = Guid), @p28='?' (Size = 4000), @p29='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p30='?' (DbType = Int32), @p31='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Orders] ([Id], [CreatedAt], [CreatedBy], [CustomerId], [DeletedAt], [DeletedBy], [IsActive], [IsDeleted], [ModifiedBy], [OrderNumber], [PaymentMethod], [ShippingTrackingNumber], [Status], [TotalAmount], [UpdatedAt])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+INSERT INTO [OrderItems] ([Id], [Color], [Count], [CreatedAt], [CreatedBy], [DeletedAt], [DeletedBy], [ImageUrl], [IsActive], [IsDeleted], [ModifiedBy], [OrderId], [ProductId], [ProductName], [ProductPrice], [Status], [UpdatedAt])
+VALUES (@p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31);
+2025-05-10 23:51:53.063 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-10 23:51:53.066 +03:00 [INF] Executed action WebUI.Controllers.CartAPIController.AddToCart (WebUI) in 234.2922ms
+2025-05-10 23:51:53.067 +03:00 [INF] Executed endpoint 'WebUI.Controllers.CartAPIController.AddToCart (WebUI)'
+2025-05-10 23:51:53.067 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/api/cart/addtocart - 200 null application/json; charset=utf-8 245.3857ms
+2025-05-10 23:51:53.070 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Cart/CartIcon - null null
+2025-05-10 23:51:53.074 +03:00 [INF] Executing endpoint 'WebUI.Controllers.CartController.CartIcon (WebUI)'
+2025-05-10 23:51:53.076 +03:00 [INF] Route matched with {action = "CartIcon", controller = "Cart", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CartIcon() on controller WebUI.Controllers.CartController (WebUI).
+2025-05-10 23:51:53.080 +03:00 [INF] Executing ViewComponentResult, running CartIcon.
+2025-05-10 23:51:53.084 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:53.092 +03:00 [INF] Executed action WebUI.Controllers.CartController.CartIcon (WebUI) in 15.3889ms
+2025-05-10 23:51:53.093 +03:00 [INF] Executed endpoint 'WebUI.Controllers.CartController.CartIcon (WebUI)'
+2025-05-10 23:51:53.094 +03:00 [WRN] Unable to configure Browser Link script injection on the response. 
+2025-05-10 23:51:53.095 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Cart/CartIcon - 200 null text/html; charset=utf-8 24.9423ms
+2025-05-10 23:51:54.851 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Cart/Index - null null
+2025-05-10 23:51:54.856 +03:00 [INF] Executing endpoint 'WebUI.Controllers.CartController.Index (WebUI)'
+2025-05-10 23:51:54.858 +03:00 [INF] Route matched with {action = "Index", controller = "Cart", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.CartController (WebUI).
+2025-05-10 23:51:54.861 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__customerId_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:54.865 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:54.878 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__orderId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[ProductId], [o].[ProductName], [o].[ProductPrice], [o].[Count], [o].[Color], [o].[ImageUrl], [s].[Name] AS [ShopName]
+FROM [OrderItems] AS [o]
+INNER JOIN [Products] AS [p] ON [o].[ProductId] = [p].[Id]
+INNER JOIN [Shops] AS [s] ON [p].[ShopId] = [s].[Id]
+WHERE [o].[OrderId] = @__orderId_0 AND [o].[IsDeleted] = CAST(0 AS bit)
+2025-05-10 23:51:54.995 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-10 23:51:55.003 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-05-10 23:51:55.007 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:55.010 +03:00 [INF] Executed ViewResult - view Index executed in 128.2075ms.
+2025-05-10 23:51:55.011 +03:00 [INF] Executed action WebUI.Controllers.CartController.Index (WebUI) in 152.0134ms
+2025-05-10 23:51:55.012 +03:00 [INF] Executed endpoint 'WebUI.Controllers.CartController.Index (WebUI)'
+2025-05-10 23:51:55.013 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Cart/Index - 200 null text/html; charset=utf-8 161.9076ms
+2025-05-10 23:51:55.064 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/cart.js - null null
+2025-05-10 23:51:55.064 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-10 23:51:55.065 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-05-10 23:51:55.067 +03:00 [INF] The file /js/cart.js was not modified
+2025-05-10 23:51:55.069 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 4.967ms
+2025-05-10 23:51:55.072 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/cart.js - 304 null text/javascript 8.1026ms
+2025-05-10 23:51:55.086 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 20.5367ms
+2025-05-10 23:51:55.092 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Cart/Index - null null
+2025-05-10 23:51:55.096 +03:00 [INF] Executing endpoint 'WebUI.Controllers.CartController.Index (WebUI)'
+2025-05-10 23:51:55.097 +03:00 [INF] Route matched with {action = "Index", controller = "Cart", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.CartController (WebUI).
+2025-05-10 23:51:55.102 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__customerId_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:51:55.106 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:55.109 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__orderId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[ProductId], [o].[ProductName], [o].[ProductPrice], [o].[Count], [o].[Color], [o].[ImageUrl], [s].[Name] AS [ShopName]
+FROM [OrderItems] AS [o]
+INNER JOIN [Products] AS [p] ON [o].[ProductId] = [p].[Id]
+INNER JOIN [Shops] AS [s] ON [p].[ShopId] = [s].[Id]
+WHERE [o].[OrderId] = @__orderId_0 AND [o].[IsDeleted] = CAST(0 AS bit)
+2025-05-10 23:51:55.111 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-10 23:51:55.115 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-05-10 23:51:55.119 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:51:55.122 +03:00 [INF] Executed ViewResult - view Index executed in 11.6463ms.
+2025-05-10 23:51:55.123 +03:00 [INF] Executed action WebUI.Controllers.CartController.Index (WebUI) in 24.1033ms
+2025-05-10 23:51:55.124 +03:00 [INF] Executed endpoint 'WebUI.Controllers.CartController.Index (WebUI)'
+2025-05-10 23:51:55.125 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Cart/Index - 200 null text/html; charset=utf-8 33.0964ms
+2025-05-10 23:52:11.645 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2025-05-10 23:52:11.668 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2025-05-10 23:52:11.669 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 24.1001ms
+2025-05-10 23:59:53.106 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Cart/Index - null null
+2025-05-10 23:59:53.113 +03:00 [INF] Executing endpoint 'WebUI.Controllers.CartController.Index (WebUI)'
+2025-05-10 23:59:53.118 +03:00 [INF] Route matched with {action = "Index", controller = "Cart", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.CartController (WebUI).
+2025-05-10 23:59:53.136 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__customerId_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:59:53.140 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:59:53.145 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__orderId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[ProductId], [o].[ProductName], [o].[ProductPrice], [o].[Count], [o].[Color], [o].[ImageUrl], [s].[Name] AS [ShopName]
+FROM [OrderItems] AS [o]
+INNER JOIN [Products] AS [p] ON [o].[ProductId] = [p].[Id]
+INNER JOIN [Shops] AS [s] ON [p].[ShopId] = [s].[Id]
+WHERE [o].[OrderId] = @__orderId_0 AND [o].[IsDeleted] = CAST(0 AS bit)
+2025-05-10 23:59:53.363 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-10 23:59:53.372 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-05-10 23:59:53.376 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:59:53.381 +03:00 [INF] Executed ViewResult - view Index executed in 234.0481ms.
+2025-05-10 23:59:53.381 +03:00 [INF] Executed action WebUI.Controllers.CartController.Index (WebUI) in 262.7537ms
+2025-05-10 23:59:53.382 +03:00 [INF] Executed endpoint 'WebUI.Controllers.CartController.Index (WebUI)'
+2025-05-10 23:59:53.383 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Cart/Index - 200 null text/html; charset=utf-8 277.6745ms
+2025-05-10 23:59:53.425 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/lux.css - null null
+2025-05-10 23:59:53.427 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/css/site.css?v=0kHAE8R6K-g635HTEOVsbmmqf1V1wbCNpM5Uaoo-a-g - null null
+2025-05-10 23:59:53.434 +03:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\css\site.css'
+2025-05-10 23:59:53.443 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/css/site.css?v=0kHAE8R6K-g635HTEOVsbmmqf1V1wbCNpM5Uaoo-a-g - 200 2307 text/css 15.8611ms
+2025-05-10 23:59:53.480 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/lux.css'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\lib\bootstrap\dist\css\lux.css'
+2025-05-10 23:59:53.481 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - null null
+2025-05-10 23:59:53.487 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/lux.css - 200 283524 text/css 63.1236ms
+2025-05-10 23:59:53.481 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/product/4.jpg - null null
+2025-05-10 23:59:53.498 +03:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\lib\jquery\dist\jquery.min.js'
+2025-05-10 23:59:53.502 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - 200 89503 text/javascript 21.3756ms
+2025-05-10 23:59:53.504 +03:00 [INF] Sending file. Request path: '/images/product/4.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\product\4.jpg'
+2025-05-10 23:59:53.505 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/product/4.jpg - 200 25989 image/jpeg 25.3909ms
+2025-05-10 23:59:53.511 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/site.js?v=2rTouwlsBHGdJByD2oEmxyCQPD312YASQu2te4DNA_U - null null
+2025-05-10 23:59:53.511 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+2025-05-10 23:59:53.515 +03:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\js\site.js'
+2025-05-10 23:59:53.518 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/site.js?v=2rTouwlsBHGdJByD2oEmxyCQPD312YASQu2te4DNA_U - 200 855 text/javascript 6.899ms
+2025-05-10 23:59:53.519 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2025-05-10 23:59:53.521 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 200 78474 text/javascript 10.0934ms
+2025-05-10 23:59:53.604 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/logo/logo.jpeg - null null
+2025-05-10 23:59:53.604 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/cart.js - null null
+2025-05-10 23:59:53.603 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-10 23:59:53.607 +03:00 [INF] Sending file. Request path: '/images/logo/logo.jpeg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\logo\logo.jpeg'
+2025-05-10 23:59:53.609 +03:00 [INF] Sending file. Request path: '/js/cart.js'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\js\cart.js'
+2025-05-10 23:59:53.610 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 6.5833ms
+2025-05-10 23:59:53.611 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/logo/logo.jpeg - 200 8746 image/jpeg 7.1906ms
+2025-05-10 23:59:53.611 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/cart.js - 200 3 text/javascript 7.9486ms
+2025-05-10 23:59:53.618 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2025-05-10 23:59:53.618 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-05-10 23:59:53.628 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2025-05-10 23:59:53.631 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 13.0888ms
+2025-05-10 23:59:53.632 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 14.9748ms
+2025-05-10 23:59:53.685 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Cart/Index - null null
+2025-05-10 23:59:53.689 +03:00 [INF] Executing endpoint 'WebUI.Controllers.CartController.Index (WebUI)'
+2025-05-10 23:59:53.689 +03:00 [INF] Route matched with {action = "Index", controller = "Cart", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.CartController (WebUI).
+2025-05-10 23:59:53.692 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__customerId_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-10 23:59:53.696 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:59:53.699 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__orderId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[ProductId], [o].[ProductName], [o].[ProductPrice], [o].[Count], [o].[Color], [o].[ImageUrl], [s].[Name] AS [ShopName]
+FROM [OrderItems] AS [o]
+INNER JOIN [Products] AS [p] ON [o].[ProductId] = [p].[Id]
+INNER JOIN [Shops] AS [s] ON [p].[ShopId] = [s].[Id]
+WHERE [o].[OrderId] = @__orderId_0 AND [o].[IsDeleted] = CAST(0 AS bit)
+2025-05-10 23:59:53.700 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-10 23:59:53.703 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-05-10 23:59:53.706 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__customerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[CreatedBy], [t].[CustomerId], [t].[DeletedAt], [t].[DeletedBy], [t].[IsActive], [t].[IsDeleted], [t].[ModifiedBy], [t].[OrderNumber], [t].[PaymentMethod], [t].[ShippingTrackingNumber], [t].[Status], [t].[TotalAmount], [t].[UpdatedAt], [o0].[Id], [o0].[Color], [o0].[Count], [o0].[CreatedAt], [o0].[CreatedBy], [o0].[DeletedAt], [o0].[DeletedBy], [o0].[ImageUrl], [o0].[IsActive], [o0].[IsDeleted], [o0].[ModifiedBy], [o0].[OrderId], [o0].[ProductId], [o0].[ProductName], [o0].[ProductPrice], [o0].[Status], [o0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CreatedBy], [o].[CustomerId], [o].[DeletedAt], [o].[DeletedBy], [o].[IsActive], [o].[IsDeleted], [o].[ModifiedBy], [o].[OrderNumber], [o].[PaymentMethod], [o].[ShippingTrackingNumber], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[CustomerId] = @__customerId_0 AND [o].[Status] = 0
+) AS [t]
+LEFT JOIN [OrderItems] AS [o0] ON [t].[Id] = [o0].[OrderId]
+ORDER BY [t].[Id]
+2025-05-10 23:59:53.708 +03:00 [INF] Executed ViewResult - view Index executed in 7.7321ms.
+2025-05-10 23:59:53.709 +03:00 [INF] Executed action WebUI.Controllers.CartController.Index (WebUI) in 18.8348ms
+2025-05-10 23:59:53.710 +03:00 [INF] Executed endpoint 'WebUI.Controllers.CartController.Index (WebUI)'
+2025-05-10 23:59:53.711 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Cart/Index - 200 null text/html; charset=utf-8 25.7222ms
+2025-05-10 23:59:53.749 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/favicon.ico - null null
+2025-05-10 23:59:53.758 +03:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\favicon.ico'
+2025-05-10 23:59:53.759 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/favicon.ico - 200 871 image/x-icon 9.7355ms
