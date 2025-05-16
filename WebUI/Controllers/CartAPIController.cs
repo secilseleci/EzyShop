@@ -1,63 +1,54 @@
-﻿using AutoMapper;
-using Business.Services.Abstract;
+﻿using Business.Services.Abstract;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.DTOs.OrderItem;
-using Models.Identity;
 
 namespace WebUI.Controllers;
 [Route("api/cart")]
 [ApiController]
 [Authorize(Roles = "Customer")]
 
-public class CartAPIController : BaseController
+public class CartAPIController : BaseApiController
 {
     private readonly IOrderService _orderService;
     private readonly IOrderItemService _orderItemService;
     public CartAPIController(
      IOrderService orderService,
-     IOrderItemService orderItemService,
-     UserManager<AppUser> userManager,
-     RoleManager<AppRole> roleManager,
-     SignInManager<AppUser> signInManager,
-     IWebHostEnvironment webHostEnvironment,
-     IMapper mapper) : base(userManager, roleManager, signInManager, webHostEnvironment, mapper)
+     IOrderItemService orderItemService)
     {
         _orderService = orderService;
         _orderItemService = orderItemService;
     }
 
-
-    [HttpGet("getcart")]
-    public async Task<IActionResult>GetCart()
-    {
-        var result = await _orderService.GetCartPageAsync();
-        if (!result.Success)
-            return BadRequest(new { success = false, message = result.Message });
-
-        return Ok(new { success = true, message = result.Message, data=result.Data });
-    }
-
-
     [HttpPost("addtocart")]
     public async Task<IActionResult> AddToCart([FromForm] Guid productId)
     {
         var result = await _orderService.AddToCartAsync(productId);
-        if (!result.Success)
-            return BadRequest(new { success = false, message = result.Message });
-
-        return Ok(new { success = true, message = result.Message });
+        return ApiResult(result);
     }
 
+    [HttpGet("getcart")]
+    public async Task<IActionResult> GetCart()
+    {
+        var result = await _orderService.GetCartPageAsync();
+        return ApiResult(result);
+    }
+     
     [HttpPost("updatecount")]
     public async Task<IActionResult> UpdateCount([FromBody] UpdateOrderItemCountDto dto)
     {
         var result = await _orderItemService.UpdateOrderItemCountAsync(dto.OrderItemId, dto.Delta);
+        return ApiResult(result);
+    }
+    [HttpPost("removeitem")]
+    public async Task<IActionResult> RemoveItem([FromBody] Guid orderItemId)
+    {
+        var result = await _orderItemService.DeleteOrderItemAsync(orderItemId);
         if (!result.Success)
             return BadRequest(new { success = false, message = result.Message });
 
+        bool isEmpty = await _orderService.IsCartEmptyAsync();
+
         return Ok(new { success = true, message = result.Message });
     }
-
 }

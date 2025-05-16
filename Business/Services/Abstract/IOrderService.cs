@@ -9,5 +9,6 @@ public interface IOrderService
     Task<IDataResult<Order?>> GetInCartOrderAsync();
     Task<IDataResult<Order>> AddToCartAsync(Guid productId);
     Task<IDataResult<CartPageViewModel>> GetCartPageAsync();
+    Task<bool> IsCartEmptyAsync();
 
 }

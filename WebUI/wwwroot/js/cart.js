@@ -89,7 +89,7 @@ function updateItemCount(orderItemId, delta) {
 }
 
 function removeItem(orderItemId, element) {
-    fetch('/api/cart/remove', {
+    fetch('/api/cart/removeitem', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -105,7 +105,10 @@ function removeItem(orderItemId, element) {
 
             element.remove();
             recalculateSummary();
-        });
+            if (res.isCartEmpty) {
+                window.location.href = '/Cart/Index';  
+            }
+});
 }
 
 function recalculateSummary() {

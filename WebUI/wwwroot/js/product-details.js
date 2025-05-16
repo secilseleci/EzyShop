@@ -1,30 +1,28 @@
-﻿$(document).ready(function () {
- 
-    $("#addToCartBtn").on("click", function (e) {
+﻿document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById("addToCartBtn");
+    if (!btn) {
+        return;
+    }
+
+    btn.addEventListener("click", async (e) => {
         e.preventDefault();
 
-        const productId = $(this).data("product-id"); 
-        addToCart(productId); 
+        const productId = btn.dataset.productId;
+        await addToCart(productId);
     });
 });
-function addToCart(productId) {
 
-    $.ajax({
-        url: "/api/cart/addtocart",
-        type: "POST",
-        data: { productId },
-        success: function (response) {
-            if (!response.success) {
-                toastr.error(response.message);
-                return;
-            }
-            $("#cart-icon").load("/Cart/CartIcon");
-            toastr.success(response.message);
+async function addToCart(productId) {
+    const formData = new FormData();
+    formData.append("productId", productId);
 
-        },
-        error: function () {
-            toastr.error("An unexpected error occurred.");
-        }
+    const result = await fetchSafe("/api/cart/addtocart", {
+        method: "POST",
+        body: formData
     });
-}
 
+    if (!result) return;
+
+    $("#cart-icon").load("/Cart/CartIcon");
+    toastr.success(result.message);
+}

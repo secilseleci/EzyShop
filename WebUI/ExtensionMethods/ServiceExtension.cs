@@ -32,8 +32,8 @@ public static class ServiceExtension
 
         services.ConfigureApplicationCookie(options =>
         {
-            options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-            options.SlidingExpiration = false;
+            options.ExpireTimeSpan = TimeSpan.FromHours(2);
+            options.SlidingExpiration = true;
             options.LoginPath = "/Auth/Login";
             options.LogoutPath = "/Auth/Logout";
 
@@ -44,7 +44,17 @@ public static class ServiceExtension
 
             options.Cookie.MaxAge = null;
             options.Cookie.Expiration = null;
+            options.Events.OnRedirectToLogin = context =>
+            {
+                if (context.Request.Path.StartsWithSegments("/api"))
+                {
+                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    return Task.CompletedTask;
+                }
 
+                context.Response.Redirect(context.RedirectUri);
+                return Task.CompletedTask;
+            };
         });
         return services;
     }

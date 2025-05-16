@@ -37,4 +37,6 @@ public class ProductController: BaseController
 
         return View(result.Data);
     }
+
+  
 }

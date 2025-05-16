@@ -42,7 +42,7 @@ public class OrderItemService : BaseService, IOrderItemService
             ? new SuccessResult(Messages.DeleteSuccess)
         : new ErrorResult(Messages.DeleteError);
     }
-    public async Task<IResult> UpdateOrderItemCountAsync(Guid orderItemId,int deltaCount)
+    public async Task<IResult> UpdateOrderItemCountAsync(Guid orderItemId, int deltaCount)
     {
         var item = await _orderItemRepo.GetByIdAsync(orderItemId);
         if (item == null)
@@ -62,5 +62,18 @@ public class OrderItemService : BaseService, IOrderItemService
             return new ErrorResult(Messages.UpdateError);
 
         return new SuccessResult(Messages.UpdateSuccess);
+    }
+
+    public async Task<IResult> DeleteOrderItemAsync(Guid orderItemId)
+    {
+        var item = await _orderItemRepo.GetByIdAsync(orderItemId);
+        if (item == null)
+        {
+            return new ErrorResult(Messages.OrderItemNotFound);
+        }
+        var deleteResult = await _orderItemRepo.SoftDeleteAsync(item.Id);
+        return deleteResult > 0
+          ? new SuccessResult(Messages.DeleteSuccess)
+      : new ErrorResult(Messages.DeleteError);
     }
 }

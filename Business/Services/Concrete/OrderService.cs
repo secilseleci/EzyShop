@@ -37,16 +37,6 @@ public class OrderService : BaseService, IOrderService
         _orderItemRepo = orderItemRepo;
         _productRepo = productRepo;
     }
-    public async Task<IDataResult<Order?>> GetInCartOrderAsync()
-    {
-        if (!CurrentUserService.UserId.HasValue)
-            return new ErrorDataResult<Order?>(Messages.LoginUnauthorized);
-
-        var order = await _orderRepo.GetOrderByCustomerIdAsync(CurrentUserService.UserId.Value);
-
-        return new SuccessDataResult<Order?>(order);
-
-    }
     public async Task<IDataResult<Order>> AddToCartAsync(Guid productId)
     {
         if (!CurrentUserService.UserId.HasValue)
@@ -72,6 +62,17 @@ public class OrderService : BaseService, IOrderService
         await transaction.CommitAsync();
 
         return new SuccessDataResult<Order>(order.Data, message: itemResult.Message);
+    }
+
+    public async Task<IDataResult<Order?>> GetInCartOrderAsync()
+    {
+        if (!CurrentUserService.UserId.HasValue)
+            return new ErrorDataResult<Order?>(Messages.LoginUnauthorized);
+
+        var order = await _orderRepo.GetOrderByCustomerIdAsync(CurrentUserService.UserId.Value);
+
+        return new SuccessDataResult<Order?>(order);
+
     }
     public async Task<IDataResult<CartPageViewModel>> GetCartPageAsync()
     {
@@ -100,6 +101,22 @@ public class OrderService : BaseService, IOrderService
         };
 
         return new SuccessDataResult<CartPageViewModel>(vm);
+    }
+    public async Task<bool> IsCartEmptyAsync()
+    {
+        if (!CurrentUserService.UserId.HasValue)
+            return true;  
+
+        var customerId = CurrentUserService.UserId.Value;
+
+        var order = await _orderRepo.GetOrderByCustomerIdAsync(customerId);
+        if (order == null)
+            return true;
+
+        var items = await _orderItemRepo.GetOrderItemsAsync(order.Id);
+        bool hasItems = items.Any();  
+
+        return !hasItems;  
     }
 
 
