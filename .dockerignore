@@ -1,0 +1,12 @@
+.git
+.gitignore
+ezyshop-web.tar
+*.log
+*.md
+*.user
+*.vs
+.vscode/
+bin/
+obj/
+logs/
+.env

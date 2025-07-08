@@ -1,0 +1,144 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Models.Identity
+@inject UserManager<AppUser> UserManager
+
+@{
+    var currentUser = await UserManager.GetUserAsync(User);
+    var userName = currentUser?.UserName ?? "Admin";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - @ViewData["Title"]</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/lux.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+</head>
+<body>
+    <!-- Topbar -->
+    <nav class="navbar navbar-light bg-white justify-content-between px-4 border-bottom shadow-sm">
+        <span class="navbar-brand mb-0 h5">EZYSHOP</span>
+
+        <div class="dropdown">
+            <a class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i> Welcome @userName
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="ChangePassword">
+                        <i class="bi bi-key"></i> Change Password
+                    </a>
+                </li>
+                <li>
+                    <form asp-area="" asp-controller="Auth" asp-action="Logout" method="post">
+                        <button type="submit" class="dropdown-item">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav class="bg-dark text-white p-3 vh-100" style="width: 250px;">
+            <div class="text-center mb-4">
+                <i class="bi bi-person-circle fs-1"></i>
+                <div>@userName</div>
+            </div>
+
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link text-white d-flex align-items-center gap-2" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                        <i class="bi bi-house-door-fill"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white d-flex align-items-center gap-2"
+                       data-bs-toggle="collapse"
+                       href="#shopSubmenu"
+                       role="button"
+                       aria-expanded="false"
+                       aria-controls="shopSubmenu">
+                        <i class="bi bi-person-check-fill"></i> Shops
+                        <i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <div class="collapse ps-4" id="shopSubmenu">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link text-white"
+                                   asp-area="Admin"
+                                   asp-controller="Shop"
+                                   asp-action="Pending">
+                                    <i class="bi bi-clock-history"></i> Pending
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white"
+                                   asp-area="Admin"
+                                   asp-controller="Shop"
+                                   asp-action="Active">
+                                    <i class="bi bi-check2-circle"></i> Active
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white"
+                                   asp-area="Admin"
+                                   asp-controller="Shop"
+                                   asp-action="Inactive">
+                                    <i class="bi bi-slash-circle"></i> Inactive
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white"
+                                   asp-area="Admin"
+                                   asp-controller="Shop"
+                                   asp-action="Deleted">
+                                    <i class="bi bi-trash3"></i> Deleted
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white d-flex align-items-center gap-2" asp-area="Admin" asp-controller="Customer" asp-action="Index">
+                        <i class="bi bi-people-fill"></i> Customers
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white d-flex align-items-center gap-2" asp-area="Admin" asp-controller="Category" asp-action="Index">
+                        <i class="bi bi-grid-fill"></i> Categories
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div id="globalLoader" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.7);z-index:9999;text-align:center;padding-top:20%;">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="p-4 w-100">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <partial name="_Notification" />
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

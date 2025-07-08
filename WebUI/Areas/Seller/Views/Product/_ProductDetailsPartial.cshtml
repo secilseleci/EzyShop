@@ -1,0 +1,76 @@
+﻿@model ProductDetailsForSellerDto
+
+
+<div class="card shadow border-0 rounded">
+    <div class="card-header">
+        <div class="row p-3">
+            <div class="col-6">
+                <h2 class="text-info">Product Details</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-body px-4 pt-3">
+        <div class="row mb-2">
+            <div class="col-4 fw-semibold text-secondary">Product Name</div>
+            <div class="col-8">@Model.ProductName</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-4 fw-semibold text-secondary">Category</div>
+            <div class="col-8">@Model.CategoryName</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-4 fw-semibold text-secondary">Price</div>
+            <div class="col-8">@Model.Price</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-4 fw-semibold text-secondary">Color</div>
+            <div class="col-8">@Model.Color</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-4 fw-semibold text-secondary">Stock</div>
+            <div class="col-8">@Model.Stock</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-4 fw-semibold text-secondary">Image</div>
+            <div class="col-8">
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="@Model.ImageUrl" alt="Product Image" class="img-thumbnail" style="max-height:150px;" />
+                }
+                else
+                {
+                    <span>No Image</span>
+                }
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer border-top-0 d-flex justify-content-end">
+        @if (ViewBag.Status == "Available")
+        {
+            <button class="btn btn-warning me-2" onclick="editProduct('@Model.ProductId')">
+                <i class="bi bi-check-circle me-1"></i> Edit
+            </button>
+            <button class="btn btn-danger" onclick="deactivateProduct('@Model.ProductId')">
+                <i class="bi bi-trash me-1"></i> Deactivate
+            </button>
+        }
+        else if (ViewBag.Status == "SoldOut")
+        {
+            <button class="btn btn-success" onclick="reactivateProduct('@Model.ProductId')">
+                <i class="bi bi-trash me-1"></i> Reactivate
+            </button>
+            <button class="btn btn-danger me-2" onclick="deleteProduct('@Model.ProductId')">
+                <i class="bi bi-check-circle me-1"></i> Delete
+            </button>
+        }
+    </div>
+
+</div>

@@ -1,0 +1,605 @@
+2025-06-22 16:12:52.716 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-22 16:12:53.550 +03:00 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-22 16:12:53.552 +03:00 [WRN] No store type was specified for the decimal property 'ProductPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-22 16:12:53.553 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-22 16:12:55.304 +03:00 [INF] Executed DbCommand (105ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-22 16:12:55.342 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-22 16:12:55.384 +03:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Sellers] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-22 16:12:55.464 +03:00 [INF] Executed DbCommand (53ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Shops] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-22 16:12:55.670 +03:00 [INF] Executed DbCommand (54ms) [Parameters=[@__email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__email_0
+2025-06-22 16:12:55.755 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__user_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-22 16:12:55.766 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__email_0
+2025-06-22 16:12:55.770 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__user_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-22 16:12:55.821 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-22 16:12:55.831 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__sellerMail1_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__sellerMail1_0
+2025-06-22 16:12:55.841 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__sellerMail2_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__sellerMail2_0
+2025-06-22 16:12:55.850 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user1_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[IsActive], [s].[IsDeleted], [s].[LastName], [s].[ModifiedBy], [s].[Phone], [s].[UpdatedAt]
+FROM [Sellers] AS [s]
+WHERE [s].[Id] = @__user1_Id_0
+2025-06-22 16:12:55.880 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user2_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[IsActive], [s].[IsDeleted], [s].[LastName], [s].[ModifiedBy], [s].[Phone], [s].[UpdatedAt]
+FROM [Sellers] AS [s]
+WHERE [s].[Id] = @__user2_Id_0
+2025-06-22 16:12:55.894 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__seller1_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[Name], [s].[SellerId], [s].[TaxNumber], [s].[UpdatedAt]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller1_Id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:12:55.926 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__seller2_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[Name], [s].[SellerId], [s].[TaxNumber], [s].[UpdatedAt]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller2_Id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:12:55.940 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] = N'Electronics'
+2025-06-22 16:12:55.963 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] = N'Books'
+2025-06-22 16:12:55.972 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-22 16:12:58.528 +03:00 [INF] Now listening on: https://localhost:7104
+2025-06-22 16:12:58.529 +03:00 [INF] Now listening on: http://localhost:5194
+2025-06-22 16:12:58.608 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-22 16:12:58.610 +03:00 [INF] Hosting environment: Development
+2025-06-22 16:12:58.611 +03:00 [INF] Content root path: C:\Users\ASUS\source\repos\EZYSHOP\WebUI
+2025-06-22 16:13:01.450 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-06-22 16:13:01.761 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-06-22 16:13:01.823 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-06-22 16:13:05.261 +03:00 [INF] Executing ViewResult, running view Index.
+2025-06-22 16:13:07.405 +03:00 [INF] Executed ViewResult - view Index executed in 5400.5678ms.
+2025-06-22 16:13:07.410 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 5584.5954ms
+2025-06-22 16:13:07.412 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-06-22 16:13:07.421 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 5985.8391ms
+2025-06-22 16:13:07.435 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-22 16:13:07.546 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 111.5429ms
+2025-06-22 16:13:07.599 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-22 16:13:07.607 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 8.7446ms
+2025-06-22 16:13:07.784 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2025-06-22 16:13:07.849 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2025-06-22 16:13:07.850 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 66.0343ms
+2025-06-22 16:52:36.825 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Auth/Login - null null
+2025-06-22 16:52:36.847 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-06-22 16:52:36.861 +03:00 [INF] Route matched with {action = "Login", controller = "Auth", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String, System.String) on controller WebUI.Controllers.AuthController (WebUI).
+2025-06-22 16:52:37.369 +03:00 [INF] Executing ViewResult, running view Login.
+2025-06-22 16:52:37.721 +03:00 [INF] Executed ViewResult - view Login executed in 823.349ms.
+2025-06-22 16:52:37.722 +03:00 [INF] Executed action WebUI.Controllers.AuthController.Login (WebUI) in 859.8527ms
+2025-06-22 16:52:37.723 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-06-22 16:52:37.726 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Auth/Login - 200 null text/html; charset=utf-8 901.2201ms
+2025-06-22 16:52:37.737 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-22 16:52:37.737 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2025-06-22 16:52:37.737 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-22 16:52:37.737 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js - null null
+2025-06-22 16:52:37.749 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 12.2235ms
+2025-06-22 16:52:37.754 +03:00 [INF] The file /lib/jquery-validation/dist/jquery.validate.min.js was not modified
+2025-06-22 16:52:37.754 +03:00 [INF] The file /lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js was not modified
+2025-06-22 16:52:37.767 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/jquery-validation/dist/jquery.validate.min.js - 304 null text/javascript 31.1575ms
+2025-06-22 16:52:37.767 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 30.469ms
+2025-06-22 16:52:37.769 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js - 304 null text/javascript 32.2816ms
+2025-06-22 16:52:48.186 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/Auth/Login - application/x-www-form-urlencoded 242
+2025-06-22 16:52:48.198 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-06-22 16:52:48.205 +03:00 [INF] Route matched with {action = "Login", controller = "Auth", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Models.ViewModels.Auth.LoginViewModel) on controller WebUI.Controllers.AuthController (WebUI).
+2025-06-22 16:52:48.380 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-06-22 16:52:48.575 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-06-22 16:52:48.597 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-06-22 16:52:48.611 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-06-22 16:52:48.627 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-06-22 16:52:48.634 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-06-22 16:52:48.636 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-06-22 16:52:48.646 +03:00 [INF] Executing RedirectResult, redirecting to /Admin/Dashboard.
+2025-06-22 16:52:48.647 +03:00 [INF] Executed action WebUI.Controllers.AuthController.Login (WebUI) in 440.7713ms
+2025-06-22 16:52:48.648 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-06-22 16:52:48.650 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/Auth/Login - 302 0 null 464.6172ms
+2025-06-22 16:52:48.652 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Dashboard - null null
+2025-06-22 16:52:48.665 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.DashboardController.Index (WebUI)'
+2025-06-22 16:52:48.669 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Dashboard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Areas.Admin.Controllers.DashboardController (WebUI).
+2025-06-22 16:52:48.764 +03:00 [INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT_BIG(*)
+FROM [Customers] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:52:48.779 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT_BIG(*)
+FROM [Shops] AS [s]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(0 AS bit) AND [s].[UpdatedAt] IS NULL
+2025-06-22 16:52:48.786 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT_BIG(*)
+FROM [Shops] AS [s]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(1 AS bit)
+2025-06-22 16:52:48.936 +03:00 [INF] Executing ViewResult, running view Index.
+2025-06-22 16:52:49.095 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-06-22 16:52:49.202 +03:00 [INF] Executed ViewResult - view Index executed in 414.5714ms.
+2025-06-22 16:52:49.203 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.DashboardController.Index (WebUI) in 533.7085ms
+2025-06-22 16:52:49.204 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.DashboardController.Index (WebUI)'
+2025-06-22 16:52:49.206 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Dashboard - 200 null text/html; charset=utf-8 554.0009ms
+2025-06-22 16:52:49.210 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-22 16:52:49.210 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-22 16:52:49.218 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 8.4514ms
+2025-06-22 16:52:49.226 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 15.8658ms
+2025-06-22 16:52:54.002 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer - null null
+2025-06-22 16:52:54.009 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.Index (WebUI)'
+2025-06-22 16:52:54.011 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Customer"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:52:54.095 +03:00 [INF] Executing ViewResult, running view Index.
+2025-06-22 16:52:54.101 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-06-22 16:52:54.175 +03:00 [INF] Executed ViewResult - view Index executed in 162.107ms.
+2025-06-22 16:52:54.176 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.Index (WebUI) in 163.8806ms
+2025-06-22 16:52:54.177 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.Index (WebUI)'
+2025-06-22 16:52:54.178 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer - 200 null text/html; charset=utf-8 175.7633ms
+2025-06-22 16:52:54.182 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/customer.js - null null
+2025-06-22 16:52:54.182 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-22 16:52:54.187 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 5.0213ms
+2025-06-22 16:52:54.188 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-22 16:52:54.201 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 12.7872ms
+2025-06-22 16:52:54.226 +03:00 [INF] Sending file. Request path: '/js/customer.js'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\js\customer.js'
+2025-06-22 16:52:54.227 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/customer.js - 200 1468 text/javascript 45.5753ms
+2025-06-22 16:52:54.285 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=1&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374189 - null null
+2025-06-22 16:52:54.300 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:52:54.305 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:52:54.334 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:52:54.342 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-22 16:52:54.343 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-22 16:52:54.352 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-22 16:52:54.359 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:52:54.378 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 71.7297ms
+2025-06-22 16:52:54.379 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:52:54.380 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=1&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374189 - 200 null application/json; charset=utf-8 95.2462ms
+2025-06-22 16:54:53.901 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=2&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=s&search%5Bregex%5D=false&_=1750600374190 - null null
+2025-06-22 16:54:53.907 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:54:53.908 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:54:53.928 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+2025-06-22 16:54:53.930 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-22 16:54:53.931 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-22 16:54:53.939 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-06-22 16:54:53.940 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:54:53.941 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 31.9214ms
+2025-06-22 16:54:53.944 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:54:53.947 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=2&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=s&search%5Bregex%5D=false&_=1750600374190 - 200 null application/json; charset=utf-8 46.9563ms
+2025-06-22 16:55:00.258 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=3&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=n&search%5Bregex%5D=false&_=1750600374191 - null null
+2025-06-22 16:55:00.261 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:55:00.262 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:55:00.267 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+2025-06-22 16:55:00.270 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-06-22 16:55:00.271 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:55:00.272 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 8.5973ms
+2025-06-22 16:55:00.272 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:55:00.273 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=3&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=n&search%5Bregex%5D=false&_=1750600374191 - 200 null application/json; charset=utf-8 15.7958ms
+2025-06-22 16:55:02.431 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=4&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=nu&search%5Bregex%5D=false&_=1750600374192 - null null
+2025-06-22 16:55:02.435 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:55:02.436 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:55:02.440 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+2025-06-22 16:55:02.443 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-06-22 16:55:02.444 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:55:02.445 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 7.9245ms
+2025-06-22 16:55:02.445 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:55:02.446 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=4&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=nu&search%5Bregex%5D=false&_=1750600374192 - 200 null application/json; charset=utf-8 14.816ms
+2025-06-22 16:55:03.069 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=5&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=nur&search%5Bregex%5D=false&_=1750600374193 - null null
+2025-06-22 16:55:03.072 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:55:03.073 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:55:03.077 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+2025-06-22 16:55:03.080 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-06-22 16:55:03.081 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:55:03.082 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 7.8642ms
+2025-06-22 16:55:03.083 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:55:03.083 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=5&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=nur&search%5Bregex%5D=false&_=1750600374193 - 200 null application/json; charset=utf-8 14.7391ms
+2025-06-22 16:55:06.418 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=6&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=nu&search%5Bregex%5D=false&_=1750600374194 - null null
+2025-06-22 16:55:06.420 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:55:06.421 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:55:06.425 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+2025-06-22 16:55:06.428 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-06-22 16:55:06.429 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:55:06.430 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 7.9565ms
+2025-06-22 16:55:06.431 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:55:06.432 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=6&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=nu&search%5Bregex%5D=false&_=1750600374194 - 200 null application/json; charset=utf-8 13.8595ms
+2025-06-22 16:55:07.418 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=7&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=n&search%5Bregex%5D=false&_=1750600374195 - null null
+2025-06-22 16:55:07.421 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:55:07.422 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:55:07.426 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+2025-06-22 16:55:07.429 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-06-22 16:55:07.430 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:55:07.431 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 7.609ms
+2025-06-22 16:55:07.432 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:55:07.432 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=7&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=n&search%5Bregex%5D=false&_=1750600374195 - 200 null application/json; charset=utf-8 13.8898ms
+2025-06-22 16:55:09.469 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=8&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374196 - null null
+2025-06-22 16:55:09.472 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:55:09.473 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:55:09.478 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:55:09.484 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-22 16:55:09.486 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:55:09.486 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 12.4865ms
+2025-06-22 16:55:09.487 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:55:09.488 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=8&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374196 - 200 null application/json; charset=utf-8 19.0934ms
+2025-06-22 16:56:37.613 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=9&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374197 - null null
+2025-06-22 16:56:37.620 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:56:37.620 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:56:37.625 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:56:37.629 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-22 16:56:37.630 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:56:37.631 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 9.504ms
+2025-06-22 16:56:37.632 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:56:37.637 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=9&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374197 - 200 null application/json; charset=utf-8 22.7161ms
+2025-06-22 16:56:38.860 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=10&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374198 - null null
+2025-06-22 16:56:38.863 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:56:38.863 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:56:38.867 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:56:38.869 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-22 16:56:38.870 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:56:38.871 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 7.4286ms
+2025-06-22 16:56:38.872 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:56:38.873 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=10&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374198 - 200 null application/json; charset=utf-8 13.1564ms
+2025-06-22 16:56:39.684 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=11&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374199 - null null
+2025-06-22 16:56:39.687 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:56:39.688 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:56:39.691 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:56:39.695 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-22 16:56:39.696 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:56:39.696 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 7.9037ms
+2025-06-22 16:56:39.697 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:56:39.698 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=11&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374199 - 200 null application/json; charset=utf-8 14.0365ms
+2025-06-22 16:56:40.920 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=12&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374200 - null null
+2025-06-22 16:56:40.922 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:56:40.923 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:56:40.926 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:56:40.929 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-22 16:56:40.930 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:56:40.930 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 6.8265ms
+2025-06-22 16:56:40.931 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:56:40.932 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=12&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374200 - 200 null application/json; charset=utf-8 12.1716ms
+2025-06-22 16:56:41.802 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=13&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374201 - null null
+2025-06-22 16:56:41.804 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:56:41.804 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:56:41.807 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:56:41.810 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-22 16:56:41.811 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:56:41.812 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 6.5019ms
+2025-06-22 16:56:41.812 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:56:41.813 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=13&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374201 - 200 null application/json; charset=utf-8 11.5748ms
+2025-06-22 16:57:39.851 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=14&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=3&search%5Bregex%5D=false&_=1750600374202 - null null
+2025-06-22 16:57:39.886 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:39.887 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:57:39.894 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+2025-06-22 16:57:39.899 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-06-22 16:57:39.901 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:57:39.903 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 15.6792ms
+2025-06-22 16:57:39.908 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:39.910 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=14&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=3&search%5Bregex%5D=false&_=1750600374202 - 200 null application/json; charset=utf-8 59.558ms
+2025-06-22 16:57:40.502 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=15&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=33&search%5Bregex%5D=false&_=1750600374203 - null null
+2025-06-22 16:57:40.504 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:40.505 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:57:40.508 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+2025-06-22 16:57:40.511 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-06-22 16:57:40.512 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:57:40.512 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 7.0035ms
+2025-06-22 16:57:40.513 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:40.513 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=15&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=33&search%5Bregex%5D=false&_=1750600374203 - 200 null application/json; charset=utf-8 11.9642ms
+2025-06-22 16:57:42.470 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=16&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=3&search%5Bregex%5D=false&_=1750600374204 - null null
+2025-06-22 16:57:42.472 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:42.473 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:57:42.477 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+2025-06-22 16:57:42.479 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-06-22 16:57:42.480 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:57:42.481 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 7.2726ms
+2025-06-22 16:57:42.482 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:42.483 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=16&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=3&search%5Bregex%5D=false&_=1750600374204 - 200 null application/json; charset=utf-8 12.923ms
+2025-06-22 16:57:43.107 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=17&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374205 - null null
+2025-06-22 16:57:43.110 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:43.111 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:57:43.115 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:57:43.120 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-22 16:57:43.121 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:57:43.122 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 10.568ms
+2025-06-22 16:57:43.123 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:43.124 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=17&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374205 - 200 null application/json; charset=utf-8 16.5125ms
+2025-06-22 16:57:43.735 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=18&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=0&search%5Bregex%5D=false&_=1750600374206 - null null
+2025-06-22 16:57:43.739 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:43.740 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:57:43.743 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+2025-06-22 16:57:43.747 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__searchTerm_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit) AND ([c].[FirstName] + N' ' + [c].[LastName] LIKE @__searchTerm_0_rewritten ESCAPE N'\' OR [c].[Address] LIKE @__searchTerm_0_rewritten ESCAPE N'\')
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-06-22 16:57:43.750 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:57:43.751 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 10.1998ms
+2025-06-22 16:57:43.752 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:43.753 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=18&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=0&search%5Bregex%5D=false&_=1750600374206 - 200 null application/json; charset=utf-8 17.9917ms
+2025-06-22 16:57:46.369 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=19&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374207 - null null
+2025-06-22 16:57:46.372 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:46.372 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:57:46.376 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:57:46.382 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-22 16:57:46.384 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:57:46.385 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 11.3555ms
+2025-06-22 16:57:46.385 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:46.386 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=19&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374207 - 200 null application/json; charset=utf-8 17.3059ms
+2025-06-22 16:57:59.137 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=20&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=25&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374208 - null null
+2025-06-22 16:57:59.140 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:59.140 +03:00 [INF] Route matched with {area = "Admin", action = "GetPaginatedCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPaginatedCustomers() on controller WebUI.Areas.Admin.Controllers.CustomerController (WebUI).
+2025-06-22 16:57:59.144 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-06-22 16:57:59.146 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[FirstName] + N' ' + [c].[LastName] AS [FullName], [a].[Email], [c].[Address], [c].[Phone]
+FROM [Customers] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[Id] = [a].[Id]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-22 16:57:59.148 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Customer.CustomerListViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-22 16:57:59.149 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI) in 7.0735ms
+2025-06-22 16:57:59.149 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.CustomerController.GetPaginatedCustomers (WebUI)'
+2025-06-22 16:57:59.150 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Customer/GetPaginatedCustomers?draw=20&columns%5B0%5D%5Bdata%5D=fullName&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=address&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=phone&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=1&order%5B0%5D%5Bdir%5D=desc&start=0&length=25&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1750600374208 - 200 null application/json; charset=utf-8 13.8028ms

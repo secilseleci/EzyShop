@@ -1,0 +1,409 @@
+2025-05-07 17:34:27.583 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-07 17:34:28.070 +03:00 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 17:34:28.072 +03:00 [WRN] No store type was specified for the decimal property 'ProductPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 17:34:28.073 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 17:34:28.709 +03:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:34:28.733 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:34:28.769 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Sellers] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:34:28.784 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Shops] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:34:28.872 +03:00 [INF] Executed DbCommand (18ms) [Parameters=[@__email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__email_0
+2025-05-07 17:34:28.946 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__user_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:34:28.962 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__email_0
+2025-05-07 17:34:28.966 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__user_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:34:29.013 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:34:29.023 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__sellerMail1_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__sellerMail1_0
+2025-05-07 17:34:29.029 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__sellerMail2_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__sellerMail2_0
+2025-05-07 17:34:29.035 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user1_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[IsActive], [s].[IsDeleted], [s].[LastName], [s].[ModifiedBy], [s].[Phone], [s].[UpdatedAt]
+FROM [Sellers] AS [s]
+WHERE [s].[Id] = @__user1_Id_0
+2025-05-07 17:34:29.057 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user2_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[IsActive], [s].[IsDeleted], [s].[LastName], [s].[ModifiedBy], [s].[Phone], [s].[UpdatedAt]
+FROM [Sellers] AS [s]
+WHERE [s].[Id] = @__user2_Id_0
+2025-05-07 17:34:29.068 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__seller1_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[Name], [s].[SellerId], [s].[TaxNumber], [s].[UpdatedAt]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller1_Id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-05-07 17:34:29.089 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__seller2_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[Name], [s].[SellerId], [s].[TaxNumber], [s].[UpdatedAt]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller2_Id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-05-07 17:34:29.098 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] = N'Electronics'
+2025-05-07 17:34:29.117 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] = N'Books'
+2025-05-07 17:34:29.125 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:34:30.448 +03:00 [INF] Now listening on: https://localhost:7104
+2025-05-07 17:34:30.449 +03:00 [INF] Now listening on: http://localhost:5194
+2025-05-07 17:34:30.497 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-07 17:34:30.499 +03:00 [INF] Hosting environment: Development
+2025-05-07 17:34:30.500 +03:00 [INF] Content root path: C:\Users\ASUS\source\repos\EZYSHOP\WebUI
+2025-05-07 17:34:31.229 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-05-07 17:34:31.478 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-07 17:34:31.488 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-07 17:34:31.529 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-05-07 17:34:34.892 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-07 17:34:36.282 +03:00 [INF] Executed ViewResult - view Index executed in 4625.2678ms.
+2025-05-07 17:34:36.290 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 4756.4755ms
+2025-05-07 17:34:36.292 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-07 17:34:36.306 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 5091.2279ms
+2025-05-07 17:34:36.351 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/site.js?v=2rTouwlsBHGdJByD2oEmxyCQPD312YASQu2te4DNA_U - null null
+2025-05-07 17:34:36.351 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-07 17:34:36.351 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-05-07 17:34:36.371 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 20.1712ms
+2025-05-07 17:34:36.374 +03:00 [INF] The file /js/site.js was not modified
+2025-05-07 17:34:36.379 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/site.js?v=2rTouwlsBHGdJByD2oEmxyCQPD312YASQu2te4DNA_U - 304 null text/javascript 28.1645ms
+2025-05-07 17:34:36.441 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 90.3519ms
+2025-05-07 17:34:36.529 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-05-07 17:34:36.532 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-07 17:34:36.533 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-07 17:34:36.534 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-05-07 17:34:36.548 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-07 17:34:36.554 +03:00 [INF] Executed ViewResult - view Index executed in 5.6405ms.
+2025-05-07 17:34:36.555 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 20.8166ms
+2025-05-07 17:34:36.556 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-07 17:34:36.557 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 28.0324ms
+2025-05-07 17:34:38.333 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Product - null null
+2025-05-07 17:34:38.347 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-07 17:34:38.348 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-05-07 17:34:38.353 +03:00 [INF] Route matched with {action = "Index", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.ProductController (WebUI).
+2025-05-07 17:34:38.640 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-07 17:34:38.654 +03:00 [INF] Executed ViewResult - view Index executed in 286.3421ms.
+2025-05-07 17:34:38.656 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Index (WebUI) in 301.8811ms
+2025-05-07 17:34:38.657 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-05-07 17:34:38.659 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Product - 200 null text/html; charset=utf-8 326.1689ms
+2025-05-07 17:34:38.686 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-05-07 17:34:38.686 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/filter.js - null null
+2025-05-07 17:34:38.686 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-07 17:34:38.692 +03:00 [INF] The file /js/filter.js was not modified
+2025-05-07 17:34:38.700 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/filter.js - 304 null text/javascript 14.7451ms
+2025-05-07 17:34:38.700 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 15.1551ms
+2025-05-07 17:34:38.707 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.2015ms
+2025-05-07 17:34:38.754 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Product - null null
+2025-05-07 17:34:38.756 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/api/products/categories - null null
+2025-05-07 17:34:38.757 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-07 17:34:38.757 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/api/products/filter - application/x-www-form-urlencoded 61
+2025-05-07 17:34:38.760 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-05-07 17:34:38.760 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-07 17:34:38.762 +03:00 [INF] Route matched with {action = "Index", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.ProductController (WebUI).
+2025-05-07 17:34:38.762 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductAPIController.GetAllCategories (WebUI)'
+2025-05-07 17:34:38.763 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-07 17:34:38.764 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductAPIController.FilterProducts (WebUI)'
+2025-05-07 17:34:38.770 +03:00 [INF] Route matched with {action = "GetAllCategories", controller = "ProductAPI", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCategories() on controller WebUI.Controllers.ProductAPIController (WebUI).
+2025-05-07 17:34:38.782 +03:00 [INF] Route matched with {action = "FilterProducts", controller = "ProductAPI", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] FilterProducts(Models.ViewModels.Product.ProductFilterViewModel) on controller WebUI.Controllers.ProductAPIController (WebUI).
+2025-05-07 17:34:38.812 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-07 17:34:38.815 +03:00 [INF] Executed ViewResult - view Index executed in 3.4183ms.
+2025-05-07 17:34:38.817 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Index (WebUI) in 53.8818ms
+2025-05-07 17:34:38.818 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-05-07 17:34:38.819 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Product - 200 null text/html; charset=utf-8 65.5603ms
+2025-05-07 17:34:38.836 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-05-07 17:34:38.874 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType6`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-07 17:34:38.894 +03:00 [INF] Executed action WebUI.Controllers.ProductAPIController.GetAllCategories (WebUI) in 122.421ms
+2025-05-07 17:34:38.896 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductAPIController.GetAllCategories (WebUI)'
+2025-05-07 17:34:38.899 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/api/products/categories - 200 null application/json; charset=utf-8 142.4625ms
+2025-05-07 17:34:39.001 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+INNER JOIN [Shops] AS [s] ON [p].[ShopId] = [s].[Id]
+WHERE [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsActive] = CAST(1 AS bit) AND [p].[Stock] > 0 AND [s].[IsActive] = CAST(1 AS bit)
+2025-05-07 17:34:39.012 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-05-07 17:34:39.013 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-05-07 17:34:39.023 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id] AS [ProductId], [s].[Name] AS [ShopName], [c].[Name] AS [CategoryName], [p].[Name] AS [ProductName], [p].[ImageUrl], [p].[Price], [p].[Color], [p].[Stock]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+INNER JOIN [Shops] AS [s] ON [p].[ShopId] = [s].[Id]
+WHERE [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsActive] = CAST(1 AS bit) AND [p].[Stock] > 0 AND [s].[IsActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-05-07 17:36:26.463 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-07 17:36:26.868 +03:00 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 17:36:26.870 +03:00 [WRN] No store type was specified for the decimal property 'ProductPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 17:36:26.871 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-07 17:36:27.331 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:36:27.353 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:36:27.381 +03:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Sellers] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:36:27.393 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Shops] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:36:27.455 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@__email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__email_0
+2025-05-07 17:36:27.507 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__user_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:36:27.513 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__email_0
+2025-05-07 17:36:27.515 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__user_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:36:27.543 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:36:27.551 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__sellerMail1_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__sellerMail1_0
+2025-05-07 17:36:27.557 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__sellerMail2_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__sellerMail2_0
+2025-05-07 17:36:27.563 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user1_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[IsActive], [s].[IsDeleted], [s].[LastName], [s].[ModifiedBy], [s].[Phone], [s].[UpdatedAt]
+FROM [Sellers] AS [s]
+WHERE [s].[Id] = @__user1_Id_0
+2025-05-07 17:36:27.582 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user2_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[IsActive], [s].[IsDeleted], [s].[LastName], [s].[ModifiedBy], [s].[Phone], [s].[UpdatedAt]
+FROM [Sellers] AS [s]
+WHERE [s].[Id] = @__user2_Id_0
+2025-05-07 17:36:27.593 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__seller1_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[Name], [s].[SellerId], [s].[TaxNumber], [s].[UpdatedAt]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller1_Id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-05-07 17:36:27.614 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__seller2_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[Name], [s].[SellerId], [s].[TaxNumber], [s].[UpdatedAt]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller2_Id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-05-07 17:36:27.622 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] = N'Electronics'
+2025-05-07 17:36:27.639 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] = N'Books'
+2025-05-07 17:36:27.644 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-05-07 17:36:28.022 +03:00 [INF] Now listening on: https://localhost:7104
+2025-05-07 17:36:28.023 +03:00 [INF] Now listening on: http://localhost:5194
+2025-05-07 17:36:28.056 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-07 17:36:28.057 +03:00 [INF] Hosting environment: Development
+2025-05-07 17:36:28.058 +03:00 [INF] Content root path: C:\Users\ASUS\source\repos\EZYSHOP\WebUI
+2025-05-07 17:36:28.590 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-05-07 17:36:28.751 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-07 17:36:28.755 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-07 17:36:28.767 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-05-07 17:36:30.780 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-07 17:36:32.035 +03:00 [INF] Executed ViewResult - view Index executed in 3182.1181ms.
+2025-05-07 17:36:32.043 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 3271.6971ms
+2025-05-07 17:36:32.046 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-07 17:36:32.058 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 3476.7185ms
+2025-05-07 17:36:32.109 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-05-07 17:36:32.109 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-07 17:36:32.128 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 16.5838ms
+2025-05-07 17:36:32.159 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 50.5461ms
+2025-05-07 17:36:32.224 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-05-07 17:36:32.229 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-07 17:36:32.230 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-07 17:36:32.231 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-05-07 17:36:32.243 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-07 17:36:32.252 +03:00 [INF] Executed ViewResult - view Index executed in 9.4895ms.
+2025-05-07 17:36:32.253 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 21.2761ms
+2025-05-07 17:36:32.254 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-05-07 17:36:32.255 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 32.1134ms
+2025-05-07 17:36:36.972 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Product - null null
+2025-05-07 17:36:36.987 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-07 17:36:36.988 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-05-07 17:36:36.995 +03:00 [INF] Route matched with {action = "Index", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.ProductController (WebUI).
+2025-05-07 17:36:37.313 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-07 17:36:37.326 +03:00 [INF] Executed ViewResult - view Index executed in 314.2913ms.
+2025-05-07 17:36:37.328 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Index (WebUI) in 332.0032ms
+2025-05-07 17:36:37.329 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-05-07 17:36:37.332 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Product - 200 null text/html; charset=utf-8 360.1979ms
+2025-05-07 17:36:37.361 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-05-07 17:36:37.361 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-07 17:36:37.372 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 11.9001ms
+2025-05-07 17:36:37.394 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 33.205ms
+2025-05-07 17:36:37.399 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/api/products/categories - null null
+2025-05-07 17:36:37.400 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/api/products/filter - application/x-www-form-urlencoded 61
+2025-05-07 17:36:37.399 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Product - null null
+2025-05-07 17:36:37.403 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-07 17:36:37.404 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-07 17:36:37.404 +03:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2025-05-07 17:36:37.405 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductAPIController.GetAllCategories (WebUI)'
+2025-05-07 17:36:37.405 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-05-07 17:36:37.406 +03:00 [INF] Executing endpoint 'WebUI.Controllers.ProductAPIController.FilterProducts (WebUI)'
+2025-05-07 17:36:37.407 +03:00 [INF] Route matched with {action = "Index", controller = "Product", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.ProductController (WebUI).
+2025-05-07 17:36:37.413 +03:00 [INF] Route matched with {action = "GetAllCategories", controller = "ProductAPI", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCategories() on controller WebUI.Controllers.ProductAPIController (WebUI).
+2025-05-07 17:36:37.425 +03:00 [INF] Route matched with {action = "FilterProducts", controller = "ProductAPI", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] FilterProducts(Models.ViewModels.Product.ProductFilterViewModel) on controller WebUI.Controllers.ProductAPIController (WebUI).
+2025-05-07 17:36:37.459 +03:00 [INF] Executing ViewResult, running view Index.
+2025-05-07 17:36:37.464 +03:00 [INF] Executed ViewResult - view Index executed in 5.2779ms.
+2025-05-07 17:36:37.466 +03:00 [INF] Executed action WebUI.Controllers.ProductController.Index (WebUI) in 56.5591ms
+2025-05-07 17:36:37.466 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductController.Index (WebUI)'
+2025-05-07 17:36:37.467 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Product - 200 null text/html; charset=utf-8 68.9044ms
+2025-05-07 17:36:37.480 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-05-07 17:36:37.521 +03:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType6`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.ViewModels.Category.CategoryViewModel, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-07 17:36:37.540 +03:00 [INF] Executed action WebUI.Controllers.ProductAPIController.GetAllCategories (WebUI) in 123.9682ms
+2025-05-07 17:36:37.541 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductAPIController.GetAllCategories (WebUI)'
+2025-05-07 17:36:37.544 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/api/products/categories - 200 null application/json; charset=utf-8 145.7278ms
+2025-05-07 17:36:37.604 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+INNER JOIN [Shops] AS [s] ON [p].[ShopId] = [s].[Id]
+WHERE [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsActive] = CAST(1 AS bit) AND [p].[Stock] > 0 AND [s].[IsActive] = CAST(1 AS bit)
+2025-05-07 17:36:37.617 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-05-07 17:36:37.619 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-05-07 17:36:37.632 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id] AS [ProductId], [s].[Name] AS [ShopName], [c].[Name] AS [CategoryName], [p].[Name] AS [ProductName], [p].[ImageUrl], [p].[Price], [p].[Color], [p].[Stock]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+INNER JOIN [Shops] AS [s] ON [p].[ShopId] = [s].[Id]
+WHERE [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsActive] = CAST(1 AS bit) AND [p].[Stock] > 0 AND [s].[IsActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-05-07 17:36:58.822 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2025-05-07 17:36:58.834 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`5[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.DTOs.ProductListForCustomerDto, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-07 17:36:58.845 +03:00 [INF] Executed action WebUI.Controllers.ProductAPIController.FilterProducts (WebUI) in 21418.5462ms
+2025-05-07 17:36:58.846 +03:00 [INF] Executed endpoint 'WebUI.Controllers.ProductAPIController.FilterProducts (WebUI)'
+2025-05-07 17:36:58.848 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/api/products/filter - 200 null application/json; charset=utf-8 21447.7346ms
+2025-05-07 17:36:58.872 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/product/5.jpg - null null
+2025-05-07 17:36:58.873 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/product/e1.jpg - null null
+2025-05-07 17:36:58.873 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/product/e4.jpg - null null
+2025-05-07 17:36:58.873 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/product/2.jpg - null null
+2025-05-07 17:36:58.883 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/product/e3.jpg - null null
+2025-05-07 17:36:58.873 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/product/4.jpg - null null
+2025-05-07 17:36:58.883 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/product/e5.jpg - null null
+2025-05-07 17:36:58.941 +03:00 [INF] Sending file. Request path: '/images/product/e1.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\product\e1.jpg'
+2025-05-07 17:36:58.941 +03:00 [INF] Sending file. Request path: '/images/product/e4.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\product\e4.jpg'
+2025-05-07 17:36:58.883 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/product/1.jpg - null null
+2025-05-07 17:36:58.890 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/product/e2.jpg - null null
+2025-05-07 17:36:58.899 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/product/3.jpg - null null
+2025-05-07 17:36:58.941 +03:00 [INF] Sending file. Request path: '/images/product/5.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\product\5.jpg'
+2025-05-07 17:36:58.944 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/product/e1.jpg - 200 10324 image/jpeg 71.225ms
+2025-05-07 17:36:58.945 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/product/e4.jpg - 200 25467 image/jpeg 72.2575ms
+2025-05-07 17:36:58.959 +03:00 [INF] Sending file. Request path: '/images/product/e5.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\product\e5.jpg'
+2025-05-07 17:36:58.958 +03:00 [INF] Sending file. Request path: '/images/product/4.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\product\4.jpg'
+2025-05-07 17:36:58.970 +03:00 [INF] Sending file. Request path: '/images/product/e2.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\product\e2.jpg'
+2025-05-07 17:36:58.956 +03:00 [INF] Sending file. Request path: '/images/product/e3.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\product\e3.jpg'
+2025-05-07 17:36:58.956 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/product/5.jpg - 200 27555 image/jpeg 83.7603ms
+2025-05-07 17:36:58.967 +03:00 [INF] Sending file. Request path: '/images/product/1.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\product\1.jpg'
+2025-05-07 17:36:58.941 +03:00 [INF] Sending file. Request path: '/images/product/2.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\product\2.jpg'
+2025-05-07 17:36:58.942 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2025-05-07 17:36:58.970 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/product/e5.jpg - 200 22840 image/jpeg 86.5797ms
+2025-05-07 17:36:58.971 +03:00 [INF] Sending file. Request path: '/images/product/3.jpg'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\images\product\3.jpg'
+2025-05-07 17:36:58.971 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/product/4.jpg - 200 25989 image/jpeg 98.2363ms
+2025-05-07 17:36:58.972 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/product/e2.jpg - 200 13905 image/jpeg 82.1095ms
+2025-05-07 17:36:58.973 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/product/e3.jpg - 200 22340 image/jpeg 90.3215ms
+2025-05-07 17:36:58.977 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/product/1.jpg - 200 25065 image/jpeg 93.6092ms
+2025-05-07 17:36:58.978 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/product/2.jpg - 200 35564 image/jpeg 105.4949ms
+2025-05-07 17:36:58.980 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 158.7847ms
+2025-05-07 17:36:58.986 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/product/3.jpg - 200 28525 image/jpeg 88.5242ms

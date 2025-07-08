@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="container renderCard">
+    <div class="card shadow border-0 rounded">
+        <div class="card-header">
+            <div class="row p-3">
+                <div class="col-6">
+                    <h2 class="text-info">Product List</h2>
+                </div>
+                <div class="col-6 text-end">
+                    <a asp-area="Seller" asp-controller="Product" asp-action="Create" class="btn btn-outline-info shadow rounded">
+                        <i class="bi bi-plus-circle"></i> Create New Product
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="tblProduct" class="table table-bordered table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Details</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="productDetailModal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" id="productDetailModalContent">
+                </div>
+            </div>
+        </div>
+
+        <div id="productReactivateModal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content p-3">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Reactivate Product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <p>Please enter the new stock amount for this product:</p>
+                        </div>
+                        <label for="stockInput" class="form-label">Stock Amount</label>
+                        <input type="number" class="form-control" id="stockInput" name="stock" placeholder="Enter stock amount" min="1" />
+
+                        <input type="hidden" id="reactivateProductId" />
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" onclick="submitReactivate()">Reactivate Now</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+     
+    </div>
+</div>
+
+    @section Scripts {
+        <script>
+            const productStatus = '@ViewBag.Status';
+        </script>
+        <script src="~/js/product.js"></script>
+        <partial name="_DataTable" />
+    }

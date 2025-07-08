@@ -1,0 +1,114 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.btn-custom-width {
+    width: 180px;
+}
+
+.img-scale {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.renderBody {
+    min-height: 60vh;
+    background-color: #f3f1f1;
+    padding-bottom: 100px; 
+ 
+}
+
+.renderCard{
+    padding-top: 50px;
+}
+/* Change the color of indicators to text-success */
+#carouselExampleIndicators .carousel-indicators button {
+    background-color: transparent !important;
+    border: 2px solid #28a745 !important;
+}
+
+/* Change the color of previous and next buttons to text-success */
+#carouselExampleIndicators .carousel-control-prev span,
+#carouselExampleIndicators .carousel-control-next span {
+    background-color: yellowgreen !important;
+    color: #28a745 !important;
+}
+
+#carouselExampleIndicators .carousel-control-prev,
+#carouselExampleIndicators .carousel-control-next {
+    background-color: transparent !important;
+    width: 80px;
+}
+
+footer {
+    background-color: #182a34; 
+}
+
+footer ul li {
+    list-style-type: none;
+    color: #cac9c9;
+}
+
+    footer ul li a {
+        color: #808080;
+    }
+
+#footerHeader {
+    color: #808080;
+    border-bottom: double;
+    border-bottom-color: #808080;
+    padding-bottom: 10px;
+}
+
+#footerBottom{
+    color: #aaa4a4;
+    border-bottom:hidden;
+    border-bottom-color: #808080;
+    padding-bottom:0;
+    padding-left:130px;
+}
+.card-img-top {
+    width: 100% !important;
+    height: 250px !important;
+    object-fit: cover !important;
+}
+
+.card {
+/*    min-height: 450px !important;
+*/    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+.text-price {
+    color: #28a745; /* Yeþil tonu */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.badge {
+    background-color: #dc3545; /* Daha soft bir kýrmýzý */
+    padding: 5px 12px;
+    font-size: 14px;
+    border-radius: 12px;
+}

@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Customer List";
+}
+
+<div class="container renderCard">
+    <div class="card shadow border-0 rounded">
+        <div class="card-header">
+            <div class="row p-3">
+                <div class="col-6">
+                    <h2 class="text-info">Customer List</h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="tblCustomers" class="table table-bordered table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+ 
+    <script src="~/js/customer.js"></script>
+    <partial name="_DataTable" />
+
+    }
+ 

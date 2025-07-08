@@ -1,0 +1,91 @@
+﻿<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12">
+            <div class="card card-shadow border-0 rounded-4 mx-auto" style="border-radius: 15px;">
+                <div class="card-body p-0">
+                    <div class="row g-0">
+                        <!-- Left Column: Products -->
+                        <div class="col-lg-8">
+                            <div class="p-5">
+                                <div class="d-flex justify-content-between align-items-center mb-5">
+                                    <h1 class="fw-bold mb-0">Shopping Cart</h1>
+                                    <h6 class="mb-0 text-muted" id="summary-count">0 item(s)</h6>
+                                </div>
+                                <hr class="my-4">
+
+                                <!-- Ürünler buraya eklenecek -->
+                                <div id="cart-content"></div>
+
+                                <div class="pt-5">
+                                    <form id="clearCartForm" method="post" action="/Cart/Clear">
+                                        <button id="clearCartButton" class="btn btn-outline-danger">
+                                            <i class="bi bi-x-circle"></i> Clear Cart
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Summary -->
+                        <div class="col-lg-4 bg-body-tertiary">
+                            <div class="p-5">
+                                <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                                <hr class="my-4">
+
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h5 class="text-uppercase">Items</h5>
+                                    <h5 id="summary-items-count">0</h5>
+                                </div>
+
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h5 class="text-uppercase">Total Price</h5>
+                                    <h5 id="summary-total-price">₺0,00</h5>
+                                </div>
+
+                                <div class="d-grid gap-2 mt-3">
+                                    <a href="/Cart/Confirm" class="btn btn-success shadow">
+                                        <i class="bi bi-search"></i> Proceed to Checkout
+                                    </a>
+                                    <a href="/Product/Index" class="btn btn-outline-secondary">
+                                        <i class="fas fa-long-arrow-alt-left me-2"></i> Back Home
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!-- row g-0 -->
+                </div> <!-- card-body -->
+            </div> <!-- card -->
+        </div> <!-- col-12 -->
+    </div> <!-- row -->
+</div> <!-- container -->
+
+<template id="cart-item-template">
+    <div class="cart-item row mb-4 d-flex justify-content-between align-items-center">
+        <div class="col-md-2">
+            <img src="" class="img-fluid rounded-3 cart-img" />
+        </div>
+        <div class="col-md-3">
+            <h6 class="text-muted cart-name"></h6>
+            <h6 class="cart-color"></h6>
+        </div>
+        <div class="col-md-3 d-flex align-items-center">
+            <button class="btn btn-outline-secondary btn-decrease" type="button">-</button>
+            <input type="text" class="form-control form-control-sm cart-count mx-1 text-center" readonly />
+            <button class="btn btn-outline-secondary btn-increase" type="button">+</button>
+        </div>
+        <div class="col-md-3">
+            <h6 class="cart-price mb-0"></h6>
+        </div>
+        <div class="col-md-1 text-end">
+            <button type="button" class="btn btn-link text-danger p-0 cart-remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+</template>
+
+
+@section Scripts {
+    <script src="~/js/cart.js"></script>
+}

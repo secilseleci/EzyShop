@@ -1,0 +1,30 @@
+﻿@model AdminDashboardViewModel
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="bg-light rounded p-4 d-flex align-items-center justify-content-between">
+            <div class="ms-3">
+                <p class="mb-2">Total Customers</p>
+                <h6 class="mb-0">@Model.TotalCustomers</h6>
+            </div>
+            <i class="bi bi-people fs-1 text-primary"></i>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="bg-light rounded p-4 d-flex align-items-center justify-content-between">
+            <div class="ms-3">
+                <p class="mb-2">Pending Seller Requests</p>
+                <h6 class="mb-0">@Model.PendingShops</h6>
+            </div>
+            <i class="bi bi-hourglass-split fs-1 text-warning"></i>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="bg-light rounded p-4 d-flex align-items-center justify-content-between">
+            <div class="ms-3">
+                <p class="mb-2">Active Sellers</p>
+                <h6 class="mb-0">@Model.ActiveShops</h6>
+            </div>
+            <i class="bi bi-check-circle fs-1 text-success"></i>
+        </div>
+    </div>
+</div>

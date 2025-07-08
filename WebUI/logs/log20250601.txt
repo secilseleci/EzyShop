@@ -1,0 +1,570 @@
+2025-06-01 23:43:13.386 +03:00 [INF] User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-01 23:43:13.849 +03:00 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:43:13.851 +03:00 [WRN] No store type was specified for the decimal property 'ProductPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:43:13.852 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:43:14.605 +03:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-01 23:43:14.632 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-01 23:43:14.659 +03:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Sellers] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-01 23:43:14.680 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Shops] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-01 23:43:14.755 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[@__email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__email_0
+2025-06-01 23:43:14.821 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__user_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-01 23:43:14.827 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__email_0
+2025-06-01 23:43:14.830 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Customers] AS [c]
+        WHERE [c].[Id] = @__user_Id_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-01 23:43:14.862 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-01 23:43:14.871 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__sellerMail1_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__sellerMail1_0
+2025-06-01 23:43:14.880 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__sellerMail2_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Email] = @__sellerMail2_0
+2025-06-01 23:43:14.887 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user1_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[IsActive], [s].[IsDeleted], [s].[LastName], [s].[ModifiedBy], [s].[Phone], [s].[UpdatedAt]
+FROM [Sellers] AS [s]
+WHERE [s].[Id] = @__user1_Id_0
+2025-06-01 23:43:14.909 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user2_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[IsActive], [s].[IsDeleted], [s].[LastName], [s].[ModifiedBy], [s].[Phone], [s].[UpdatedAt]
+FROM [Sellers] AS [s]
+WHERE [s].[Id] = @__user2_Id_0
+2025-06-01 23:43:14.920 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__seller1_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[Name], [s].[SellerId], [s].[TaxNumber], [s].[UpdatedAt]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller1_Id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-06-01 23:43:14.944 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__seller2_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[Name], [s].[SellerId], [s].[TaxNumber], [s].[UpdatedAt]
+FROM [Shops] AS [s]
+WHERE [s].[SellerId] = @__seller2_Id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-06-01 23:43:14.953 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] = N'Electronics'
+2025-06-01 23:43:14.973 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[ImageUrl], [c].[IsActive], [c].[IsDeleted], [c].[ModifiedBy], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Name] = N'Books'
+2025-06-01 23:43:14.980 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-01 23:43:16.350 +03:00 [INF] Now listening on: https://localhost:7104
+2025-06-01 23:43:16.351 +03:00 [INF] Now listening on: http://localhost:5194
+2025-06-01 23:43:16.410 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-01 23:43:16.411 +03:00 [INF] Hosting environment: Development
+2025-06-01 23:43:16.411 +03:00 [INF] Content root path: C:\Users\ASUS\source\repos\EZYSHOP\WebUI
+2025-06-01 23:43:18.504 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-06-01 23:43:18.690 +03:00 [INF] Executing endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-06-01 23:43:18.704 +03:00 [INF] Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Controllers.HomeController (WebUI).
+2025-06-01 23:43:21.579 +03:00 [INF] Executing ViewResult, running view Index.
+2025-06-01 23:43:23.227 +03:00 [INF] Executed ViewResult - view Index executed in 4376.8764ms.
+2025-06-01 23:43:23.235 +03:00 [INF] Executed action WebUI.Controllers.HomeController.Index (WebUI) in 4528.7142ms
+2025-06-01 23:43:23.238 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/lux.css - null null
+2025-06-01 23:43:23.238 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/home/banner_img_02.jpg - null null
+2025-06-01 23:43:23.238 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/home/banner_img_01.jpg - null null
+2025-06-01 23:43:23.238 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/css/site.css?v=0kHAE8R6K-g635HTEOVsbmmqf1V1wbCNpM5Uaoo-a-g - null null
+2025-06-01 23:43:23.238 +03:00 [INF] Executed endpoint 'WebUI.Controllers.HomeController.Index (WebUI)'
+2025-06-01 23:43:23.250 +03:00 [INF] The file /lib/bootstrap/dist/css/lux.css was not modified
+2025-06-01 23:43:23.250 +03:00 [INF] The file /css/site.css was not modified
+2025-06-01 23:43:23.250 +03:00 [INF] The file /images/home/banner_img_01.jpg was not modified
+2025-06-01 23:43:23.250 +03:00 [INF] The file /images/home/banner_img_02.jpg was not modified
+2025-06-01 23:43:23.264 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/home/banner_img_02.jpg - 304 null image/jpeg 14.7154ms
+2025-06-01 23:43:23.272 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - null null
+2025-06-01 23:43:23.273 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+2025-06-01 23:43:23.264 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/home/banner_img_01.jpg - 304 null image/jpeg 14.7362ms
+2025-06-01 23:43:23.264 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/css/site.css?v=0kHAE8R6K-g635HTEOVsbmmqf1V1wbCNpM5Uaoo-a-g - 304 null text/css 15.0044ms
+2025-06-01 23:43:23.273 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/home/banner_img_03.jpg - null null
+2025-06-01 23:43:23.264 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/lux.css - 304 null text/css 15.6284ms
+2025-06-01 23:43:23.284 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 4787.4877ms
+2025-06-01 23:43:23.272 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-01 23:43:23.281 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/site.js?v=dMSDZoCqdHknAQPvcJDRzjMg9myq8TRQzS7mVGqDfIE - null null
+2025-06-01 23:43:23.286 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/images/logo/logo.jpeg - null null
+2025-06-01 23:43:23.287 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-01 23:43:23.288 +03:00 [INF] The file /lib/jquery/dist/jquery.min.js was not modified
+2025-06-01 23:43:23.289 +03:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2025-06-01 23:43:23.301 +03:00 [INF] The file /images/logo/logo.jpeg was not modified
+2025-06-01 23:43:23.293 +03:00 [INF] The file /images/home/banner_img_03.jpg was not modified
+2025-06-01 23:43:23.300 +03:00 [INF] The file /js/site.js was not modified
+2025-06-01 23:43:23.303 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - 304 null text/javascript 30.9637ms
+2025-06-01 23:43:23.304 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 31.6363ms
+2025-06-01 23:43:23.304 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 304 null text/javascript 31.5682ms
+2025-06-01 23:43:23.306 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/logo/logo.jpeg - 304 null image/jpeg 20.1969ms
+2025-06-01 23:43:23.306 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/images/home/banner_img_03.jpg - 304 null image/jpeg 33.4174ms
+2025-06-01 23:43:23.307 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/site.js?v=dMSDZoCqdHknAQPvcJDRzjMg9myq8TRQzS7mVGqDfIE - 304 null text/javascript 25.832ms
+2025-06-01 23:43:23.372 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 84.6901ms
+2025-06-01 23:43:23.642 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/favicon.ico - null null
+2025-06-01 23:43:23.645 +03:00 [INF] The file /favicon.ico was not modified
+2025-06-01 23:43:23.646 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/favicon.ico - 304 null image/x-icon 4.2527ms
+2025-06-01 23:43:23.686 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2025-06-01 23:43:23.734 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2025-06-01 23:43:23.735 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 49.1897ms
+2025-06-01 23:43:29.504 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Auth/Login - null null
+2025-06-01 23:43:29.517 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-06-01 23:43:29.527 +03:00 [INF] Route matched with {action = "Login", controller = "Auth", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String, System.String) on controller WebUI.Controllers.AuthController (WebUI).
+2025-06-01 23:43:30.056 +03:00 [INF] Executing ViewResult, running view Login.
+2025-06-01 23:43:30.450 +03:00 [INF] Executed ViewResult - view Login executed in 883.8125ms.
+2025-06-01 23:43:30.451 +03:00 [INF] Executed action WebUI.Controllers.AuthController.Login (WebUI) in 922.7559ms
+2025-06-01 23:43:30.452 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-06-01 23:43:30.454 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Auth/Login - 200 null text/html; charset=utf-8 950.2768ms
+2025-06-01 23:43:30.459 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2025-06-01 23:43:30.459 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js - null null
+2025-06-01 23:43:30.462 +03:00 [INF] The file /lib/jquery-validation/dist/jquery.validate.min.js was not modified
+2025-06-01 23:43:30.465 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-01 23:43:30.465 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-01 23:43:30.467 +03:00 [INF] The file /lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js was not modified
+2025-06-01 23:43:30.467 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/jquery-validation/dist/jquery.validate.min.js - 304 null text/javascript 8.3032ms
+2025-06-01 23:43:30.478 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 13.8163ms
+2025-06-01 23:43:30.478 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js - 304 null text/javascript 19.8202ms
+2025-06-01 23:43:30.487 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.0501ms
+2025-06-01 23:44:48.088 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/Auth/Login - application/x-www-form-urlencoded 242
+2025-06-01 23:44:48.102 +03:00 [INF] Executing endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-06-01 23:44:48.110 +03:00 [INF] Route matched with {action = "Login", controller = "Auth", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Models.ViewModels.Auth.LoginViewModel) on controller WebUI.Controllers.AuthController (WebUI).
+2025-06-01 23:44:48.211 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-06-01 23:44:48.345 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-06-01 23:44:48.371 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-06-01 23:44:48.381 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-06-01 23:44:48.398 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-06-01 23:44:48.407 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-06-01 23:44:48.410 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-06-01 23:44:48.418 +03:00 [INF] Executing RedirectResult, redirecting to /Admin/Dashboard.
+2025-06-01 23:44:48.419 +03:00 [INF] Executed action WebUI.Controllers.AuthController.Login (WebUI) in 308.5144ms
+2025-06-01 23:44:48.420 +03:00 [INF] Executed endpoint 'WebUI.Controllers.AuthController.Login (WebUI)'
+2025-06-01 23:44:48.422 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/Auth/Login - 302 0 null 333.9766ms
+2025-06-01 23:44:48.423 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Dashboard - null null
+2025-06-01 23:44:48.441 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.DashboardController.Index (WebUI)'
+2025-06-01 23:44:48.444 +03:00 [INF] Route matched with {area = "Admin", action = "Index", controller = "Dashboard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller WebUI.Areas.Admin.Controllers.DashboardController (WebUI).
+2025-06-01 23:44:48.522 +03:00 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT_BIG(*)
+FROM [Customers] AS [c]
+WHERE [c].[IsDeleted] = CAST(0 AS bit)
+2025-06-01 23:44:48.537 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT_BIG(*)
+FROM [Shops] AS [s]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(0 AS bit) AND [s].[UpdatedAt] IS NULL
+2025-06-01 23:44:48.544 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT_BIG(*)
+FROM [Shops] AS [s]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(1 AS bit)
+2025-06-01 23:44:48.699 +03:00 [INF] Executing ViewResult, running view Index.
+2025-06-01 23:44:48.929 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-06-01 23:44:49.027 +03:00 [INF] Executed ViewResult - view Index executed in 481.0148ms.
+2025-06-01 23:44:49.033 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.DashboardController.Index (WebUI) in 588.0816ms
+2025-06-01 23:44:49.035 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.DashboardController.Index (WebUI)'
+2025-06-01 23:44:49.036 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Dashboard - 200 null text/html; charset=utf-8 613.1737ms
+2025-06-01 23:44:49.038 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-01 23:44:49.038 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-01 23:44:49.047 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 9.4281ms
+2025-06-01 23:44:49.060 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.1945ms
+2025-06-01 23:44:56.766 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Shop/Pending - null null
+2025-06-01 23:44:56.773 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopController.Pending (WebUI)'
+2025-06-01 23:44:56.775 +03:00 [INF] Route matched with {area = "Admin", action = "Pending", controller = "Shop"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Pending() on controller WebUI.Areas.Admin.Controllers.ShopController (WebUI).
+2025-06-01 23:44:56.986 +03:00 [INF] Executing ViewResult, running view ShopList.
+2025-06-01 23:44:57.015 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-06-01 23:44:57.103 +03:00 [INF] Executed ViewResult - view ShopList executed in 221.6558ms.
+2025-06-01 23:44:57.104 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopController.Pending (WebUI) in 326.9419ms
+2025-06-01 23:44:57.105 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopController.Pending (WebUI)'
+2025-06-01 23:44:57.106 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Shop/Pending - 200 null text/html; charset=utf-8 339.3839ms
+2025-06-01 23:44:57.110 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-01 23:44:57.110 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/js/shop.js - null null
+2025-06-01 23:44:57.114 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 4.0625ms
+2025-06-01 23:44:57.116 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-01 23:44:57.129 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 13.2491ms
+2025-06-01 23:44:57.164 +03:00 [INF] Sending file. Request path: '/js/shop.js'. Physical path: 'C:\Users\ASUS\source\repos\EZYSHOP\WebUI\wwwroot\js\shop.js'
+2025-06-01 23:44:57.165 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/js/shop.js - 200 5876 text/javascript 54.7278ms
+2025-06-01 23:44:57.220 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/admin/api/shops?status=Pending&draw=1&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=sellerName&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1748810697117 - null null
+2025-06-01 23:44:57.236 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI)'
+2025-06-01 23:44:57.246 +03:00 [INF] Route matched with {area = "Admin", action = "GetShops", controller = "ShopAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetShops(System.String, Int32, Int32) on controller WebUI.Areas.Admin.Controllers.ShopAPIController (WebUI).
+2025-06-01 23:44:57.279 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(0 AS bit) AND [s].[UpdatedAt] IS NULL
+2025-06-01 23:44:57.289 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-01 23:44:57.291 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-01 23:44:57.301 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s0].[Id] AS [SellerId], [s].[Id], [s].[Name], [s0].[FirstName] + N' ' + [s0].[LastName] AS [SellerName]
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(0 AS bit) AND [s].[UpdatedAt] IS NULL
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-01 23:44:57.317 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.DTOs.ShopListDto, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-01 23:44:57.348 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI) in 100.8391ms
+2025-06-01 23:44:57.349 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI)'
+2025-06-01 23:44:57.350 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/admin/api/shops?status=Pending&draw=1&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=sellerName&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1748810697117 - 200 null application/json; charset=utf-8 130.3845ms
+2025-06-01 23:45:03.078 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/admin/api/shops/approve - application/x-www-form-urlencoded; charset=UTF-8 89
+2025-06-01 23:45:03.082 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.ApproveShop (WebUI)'
+2025-06-01 23:45:03.087 +03:00 [INF] Route matched with {area = "Admin", action = "ApproveShop", controller = "ShopAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ApproveShop(System.Guid, System.Guid) on controller WebUI.Areas.Admin.Controllers.ShopAPIController (WebUI).
+2025-06-01 23:45:03.101 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[Name], [s].[SellerId], [s].[TaxNumber], [s].[UpdatedAt]
+FROM [Shops] AS [s]
+WHERE [s].[Id] = @__id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-06-01 23:45:03.107 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[IsActive], [s].[IsDeleted], [s].[LastName], [s].[ModifiedBy], [s].[Phone], [s].[UpdatedAt]
+FROM [Sellers] AS [s]
+WHERE [s].[Id] = @__id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-06-01 23:45:03.110 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-06-01 23:45:03.187 +03:00 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2025-06-01 23:45:03.204 +03:00 [INF] Executed DbCommand (13ms) [Parameters=[@p3='?' (DbType = Guid), @p0='?' (DbType = Boolean), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p16='?' (DbType = Guid), @p4='?' (Size = 500), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000), @p7='?' (DbType = DateTime2), @p8='?' (Size = 4000), @p9='?' (DbType = Boolean), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (Size = 100), @p13='?' (DbType = Guid), @p14='?' (Size = 4000), @p15='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Sellers] SET [IsActive] = @p0, [ModifiedBy] = @p1, [UpdatedAt] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+UPDATE [Shops] SET [Address] = @p4, [CreatedAt] = @p5, [CreatedBy] = @p6, [DeletedAt] = @p7, [DeletedBy] = @p8, [IsActive] = @p9, [IsDeleted] = @p10, [ModifiedBy] = @p11, [Name] = @p12, [SellerId] = @p13, [TaxNumber] = @p14, [UpdatedAt] = @p15
+OUTPUT 1
+WHERE [Id] = @p16;
+2025-06-01 23:45:03.222 +03:00 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2025-06-01 23:45:03.227 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Sellers] SET [CreatedAt] = @p0, [CreatedBy] = @p1, [DeletedAt] = @p2, [DeletedBy] = @p3, [FirstName] = @p4, [IsActive] = @p5, [IsDeleted] = @p6, [LastName] = @p7, [ModifiedBy] = @p8, [Phone] = @p9, [UpdatedAt] = @p10
+OUTPUT 1
+WHERE [Id] = @p11;
+2025-06-01 23:45:03.266 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-06-01 23:45:03.271 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-06-01 23:45:03.302 +03:00 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2025-06-01 23:45:03.319 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@p16='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [IsDeleted] = @p4, [LastLoginDate] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
+OUTPUT 1
+WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
+2025-06-01 23:45:05.238 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-01 23:45:05.242 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopAPIController.ApproveShop (WebUI) in 2153.1051ms
+2025-06-01 23:45:05.242 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.ApproveShop (WebUI)'
+2025-06-01 23:45:05.243 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/admin/api/shops/approve - 200 null application/json; charset=utf-8 2165.5762ms
+2025-06-01 23:45:05.249 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/admin/api/shops?status=Pending&draw=2&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=sellerName&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1748810697118 - null null
+2025-06-01 23:45:05.252 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI)'
+2025-06-01 23:45:05.253 +03:00 [INF] Route matched with {area = "Admin", action = "GetShops", controller = "ShopAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetShops(System.String, Int32, Int32) on controller WebUI.Areas.Admin.Controllers.ShopAPIController (WebUI).
+2025-06-01 23:45:05.259 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(0 AS bit) AND [s].[UpdatedAt] IS NULL
+2025-06-01 23:45:05.262 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s0].[Id] AS [SellerId], [s].[Id], [s].[Name], [s0].[FirstName] + N' ' + [s0].[LastName] AS [SellerName]
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(0 AS bit) AND [s].[UpdatedAt] IS NULL
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-01 23:45:05.263 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.DTOs.ShopListDto, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-01 23:45:05.264 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI) in 10.8955ms
+2025-06-01 23:45:05.265 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI)'
+2025-06-01 23:45:05.266 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/admin/api/shops?status=Pending&draw=2&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=sellerName&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1748810697118 - 200 null application/json; charset=utf-8 16.767ms
+2025-06-01 23:45:15.286 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Shop/Deleted - null null
+2025-06-01 23:45:15.292 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopController.Deleted (WebUI)'
+2025-06-01 23:45:15.294 +03:00 [INF] Route matched with {area = "Admin", action = "Deleted", controller = "Shop"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Deleted() on controller WebUI.Areas.Admin.Controllers.ShopController (WebUI).
+2025-06-01 23:45:15.298 +03:00 [INF] Executing ViewResult, running view ShopList.
+2025-06-01 23:45:15.300 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-06-01 23:45:15.304 +03:00 [INF] Executed ViewResult - view ShopList executed in 6.3557ms.
+2025-06-01 23:45:15.305 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopController.Deleted (WebUI) in 9.7107ms
+2025-06-01 23:45:15.306 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopController.Deleted (WebUI)'
+2025-06-01 23:45:15.307 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Shop/Deleted - 200 null text/html; charset=utf-8 20.6153ms
+2025-06-01 23:45:15.311 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-01 23:45:15.311 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-01 23:45:15.314 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 2.5736ms
+2025-06-01 23:45:15.327 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 16.4814ms
+2025-06-01 23:45:15.364 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/admin/api/shops?status=Deleted&draw=1&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=sellerName&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1748810715318 - null null
+2025-06-01 23:45:15.367 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI)'
+2025-06-01 23:45:15.368 +03:00 [INF] Route matched with {area = "Admin", action = "GetShops", controller = "ShopAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetShops(System.String, Int32, Int32) on controller WebUI.Areas.Admin.Controllers.ShopAPIController (WebUI).
+2025-06-01 23:45:15.378 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+WHERE [s].[IsDeleted] = CAST(1 AS bit)
+2025-06-01 23:45:15.381 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-01 23:45:15.382 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-01 23:45:15.388 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s0].[Id] AS [SellerId], [s].[Id], [s].[Name], [s0].[FirstName] + N' ' + [s0].[LastName] AS [SellerName]
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+WHERE [s].[IsDeleted] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-01 23:45:15.389 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.DTOs.ShopListDto, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-01 23:45:15.391 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI) in 20.6074ms
+2025-06-01 23:45:15.392 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI)'
+2025-06-01 23:45:15.393 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/admin/api/shops?status=Deleted&draw=1&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=sellerName&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1748810715318 - 200 null application/json; charset=utf-8 29.4063ms
+2025-06-01 23:45:17.110 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Shop/Details/e413edc4-5757-4a4f-ada7-e7f652a2ea24?status=Deleted - null null
+2025-06-01 23:45:17.113 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopController.Details (WebUI)'
+2025-06-01 23:45:17.117 +03:00 [INF] Route matched with {area = "Admin", action = "Details", controller = "Shop"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid, System.String) on controller WebUI.Areas.Admin.Controllers.ShopController (WebUI).
+2025-06-01 23:45:17.135 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__shopId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s0].[Id] AS [SellerId], [s].[Id], [s].[Name], [s0].[FirstName] + N' ' + [s0].[LastName] AS [SellerName], [s0].[Phone], [s].[TaxNumber], [s].[Address], [s].[CreatedAt], [s].[IsActive], [a].[Email]
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+INNER JOIN [AspNetUsers] AS [a] ON [s0].[Id] = [a].[Id]
+WHERE [s].[Id] = @__shopId_0
+2025-06-01 23:45:17.244 +03:00 [INF] Executing PartialViewResult, running view _ShopDetailsPartial.
+2025-06-01 23:45:17.260 +03:00 [INF] Executed PartialViewResult - view _ShopDetailsPartial executed in 117.736ms.
+2025-06-01 23:45:17.261 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopController.Details (WebUI) in 143.6796ms
+2025-06-01 23:45:17.262 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopController.Details (WebUI)'
+2025-06-01 23:45:17.262 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Shop/Details/e413edc4-5757-4a4f-ada7-e7f652a2ea24?status=Deleted - 200 null text/html; charset=utf-8 152.5704ms
+2025-06-01 23:45:21.473 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Shop/Inactive - null null
+2025-06-01 23:45:21.480 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopController.Inactive (WebUI)'
+2025-06-01 23:45:21.483 +03:00 [INF] Route matched with {area = "Admin", action = "Inactive", controller = "Shop"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Inactive() on controller WebUI.Areas.Admin.Controllers.ShopController (WebUI).
+2025-06-01 23:45:21.486 +03:00 [INF] Executing ViewResult, running view ShopList.
+2025-06-01 23:45:21.489 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-06-01 23:45:21.493 +03:00 [INF] Executed ViewResult - view ShopList executed in 6.7062ms.
+2025-06-01 23:45:21.493 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopController.Inactive (WebUI) in 9.462ms
+2025-06-01 23:45:21.494 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopController.Inactive (WebUI)'
+2025-06-01 23:45:21.495 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Shop/Inactive - 200 null text/html; charset=utf-8 22.7273ms
+2025-06-01 23:45:21.500 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-01 23:45:21.500 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-01 23:45:21.503 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 3.1945ms
+2025-06-01 23:45:21.513 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 13.0259ms
+2025-06-01 23:45:21.556 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/admin/api/shops?status=Inactive&draw=1&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=sellerName&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1748810721506 - null null
+2025-06-01 23:45:21.559 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI)'
+2025-06-01 23:45:21.560 +03:00 [INF] Route matched with {area = "Admin", action = "GetShops", controller = "ShopAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetShops(System.String, Int32, Int32) on controller WebUI.Areas.Admin.Controllers.ShopAPIController (WebUI).
+2025-06-01 23:45:21.569 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(0 AS bit) AND [s].[UpdatedAt] IS NOT NULL
+2025-06-01 23:45:21.573 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-01 23:45:21.574 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-01 23:45:21.581 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s0].[Id] AS [SellerId], [s].[Id], [s].[Name], [s0].[FirstName] + N' ' + [s0].[LastName] AS [SellerName]
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(0 AS bit) AND [s].[UpdatedAt] IS NOT NULL
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-01 23:45:21.583 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.DTOs.ShopListDto, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-01 23:45:21.584 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI) in 23.2729ms
+2025-06-01 23:45:21.586 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI)'
+2025-06-01 23:45:21.587 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/admin/api/shops?status=Inactive&draw=1&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=sellerName&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1748810721506 - 200 null application/json; charset=utf-8 31.7964ms
+2025-06-01 23:45:24.476 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/Admin/Shop/Active - null null
+2025-06-01 23:45:24.482 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopController.Active (WebUI)'
+2025-06-01 23:45:24.485 +03:00 [INF] Route matched with {area = "Admin", action = "Active", controller = "Shop"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Active() on controller WebUI.Areas.Admin.Controllers.ShopController (WebUI).
+2025-06-01 23:45:24.488 +03:00 [INF] Executing ViewResult, running view ShopList.
+2025-06-01 23:45:24.492 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-06-01 23:45:24.494 +03:00 [INF] Executed ViewResult - view ShopList executed in 6.3701ms.
+2025-06-01 23:45:24.495 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopController.Active (WebUI) in 9.265ms
+2025-06-01 23:45:24.496 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopController.Active (WebUI)'
+2025-06-01 23:45:24.496 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/Admin/Shop/Active - 200 null text/html; charset=utf-8 20.3242ms
+2025-06-01 23:45:24.502 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-01 23:45:24.502 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-01 23:45:24.507 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 13746 application/javascript; charset=utf-8 5.5859ms
+2025-06-01 23:45:24.513 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 11.397ms
+2025-06-01 23:45:24.553 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/admin/api/shops?status=Active&draw=1&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=sellerName&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1748810724508 - null null
+2025-06-01 23:45:24.557 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI)'
+2025-06-01 23:45:24.558 +03:00 [INF] Route matched with {area = "Admin", action = "GetShops", controller = "ShopAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetShops(System.String, Int32, Int32) on controller WebUI.Areas.Admin.Controllers.ShopAPIController (WebUI).
+2025-06-01 23:45:24.569 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(1 AS bit)
+2025-06-01 23:45:24.573 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-01 23:45:24.574 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-01 23:45:24.580 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s0].[Id] AS [SellerId], [s].[Id], [s].[Name], [s0].[FirstName] + N' ' + [s0].[LastName] AS [SellerName]
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-01 23:45:24.583 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.DTOs.ShopListDto, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-01 23:45:24.584 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI) in 24.1447ms
+2025-06-01 23:45:24.586 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI)'
+2025-06-01 23:45:24.587 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/admin/api/shops?status=Active&draw=1&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=sellerName&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1748810724508 - 200 null application/json; charset=utf-8 33.8178ms
+2025-06-01 23:45:27.287 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7104/admin/api/shops/deactivate - application/x-www-form-urlencoded; charset=UTF-8 89
+2025-06-01 23:45:27.290 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.DeactivateShop (WebUI)'
+2025-06-01 23:45:27.294 +03:00 [INF] Route matched with {area = "Admin", action = "DeactivateShop", controller = "ShopAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeactivateShop(System.Guid, System.Guid) on controller WebUI.Areas.Admin.Controllers.ShopAPIController (WebUI).
+2025-06-01 23:45:27.301 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[Name], [s].[SellerId], [s].[TaxNumber], [s].[UpdatedAt]
+FROM [Shops] AS [s]
+WHERE [s].[Id] = @__id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-06-01 23:45:27.304 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[CreatedAt], [s].[CreatedBy], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[IsActive], [s].[IsDeleted], [s].[LastName], [s].[ModifiedBy], [s].[Phone], [s].[UpdatedAt]
+FROM [Sellers] AS [s]
+WHERE [s].[Id] = @__id_0 AND [s].[IsDeleted] = CAST(0 AS bit)
+2025-06-01 23:45:27.308 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[IsDeleted], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2025-06-01 23:45:27.318 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__shop_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[Color], [p].[CreatedAt], [p].[CreatedBy], [p].[DeletedAt], [p].[DeletedBy], [p].[ImageUrl], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[Name], [p].[Price], [p].[ShopId], [p].[Stock], [p].[UpdatedAt]
+FROM [Products] AS [p]
+WHERE [p].[ShopId] = @__shop_Id_0 AND [p].[IsDeleted] = CAST(0 AS bit) AND [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+2025-06-01 23:45:27.374 +03:00 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2025-06-01 23:45:27.405 +03:00 [INF] Executed DbCommand (28ms) [Parameters=[@p15='?' (DbType = Guid), @p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Boolean), @p8='?' (DbType = Boolean), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p12='?' (DbType = Guid), @p13='?' (DbType = Int32), @p14='?' (DbType = DateTime2), @p31='?' (DbType = Guid), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (DbType = DateTime2), @p19='?' (Size = 4000), @p20='?' (DbType = DateTime2), @p21='?' (Size = 4000), @p22='?' (Size = 4000), @p23='?' (DbType = Boolean), @p24='?' (DbType = Boolean), @p25='?' (Size = 4000), @p26='?' (Size = 4000), @p27='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p28='?' (DbType = Guid), @p29='?' (DbType = Int32), @p30='?' (DbType = DateTime2), @p47='?' (DbType = Guid), @p32='?' (DbType = Guid), @p33='?' (Size = 4000), @p34='?' (DbType = DateTime2), @p35='?' (Size = 4000), @p36='?' (DbType = DateTime2), @p37='?' (Size = 4000), @p38='?' (Size = 4000), @p39='?' (DbType = Boolean), @p40='?' (DbType = Boolean), @p41='?' (Size = 4000), @p42='?' (Size = 4000), @p43='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p44='?' (DbType = Guid), @p45='?' (DbType = Int32), @p46='?' (DbType = DateTime2), @p63='?' (DbType = Guid), @p48='?' (DbType = Guid), @p49='?' (Size = 4000), @p50='?' (DbType = DateTime2), @p51='?' (Size = 4000), @p52='?' (DbType = DateTime2), @p53='?' (Size = 4000), @p54='?' (Size = 4000), @p55='?' (DbType = Boolean), @p56='?' (DbType = Boolean), @p57='?' (Size = 4000), @p58='?' (Size = 4000), @p59='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p60='?' (DbType = Guid), @p61='?' (DbType = Int32), @p62='?' (DbType = DateTime2), @p79='?' (DbType = Guid), @p64='?' (DbType = Guid), @p65='?' (Size = 4000), @p66='?' (DbType = DateTime2), @p67='?' (Size = 4000), @p68='?' (DbType = DateTime2), @p69='?' (Size = 4000), @p70='?' (Size = 4000), @p71='?' (DbType = Boolean), @p72='?' (DbType = Boolean), @p73='?' (Size = 4000), @p74='?' (Size = 4000), @p75='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p76='?' (DbType = Guid), @p77='?' (DbType = Int32), @p78='?' (DbType = DateTime2), @p83='?' (DbType = Guid), @p80='?' (DbType = Boolean), @p81='?' (Size = 4000), @p82='?' (DbType = DateTime2), @p87='?' (DbType = Guid), @p84='?' (DbType = Boolean), @p85='?' (Size = 4000), @p86='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Products] SET [CategoryId] = @p0, [Color] = @p1, [CreatedAt] = @p2, [CreatedBy] = @p3, [DeletedAt] = @p4, [DeletedBy] = @p5, [ImageUrl] = @p6, [IsActive] = @p7, [IsDeleted] = @p8, [ModifiedBy] = @p9, [Name] = @p10, [Price] = @p11, [ShopId] = @p12, [Stock] = @p13, [UpdatedAt] = @p14
+OUTPUT 1
+WHERE [Id] = @p15;
+UPDATE [Products] SET [CategoryId] = @p16, [Color] = @p17, [CreatedAt] = @p18, [CreatedBy] = @p19, [DeletedAt] = @p20, [DeletedBy] = @p21, [ImageUrl] = @p22, [IsActive] = @p23, [IsDeleted] = @p24, [ModifiedBy] = @p25, [Name] = @p26, [Price] = @p27, [ShopId] = @p28, [Stock] = @p29, [UpdatedAt] = @p30
+OUTPUT 1
+WHERE [Id] = @p31;
+UPDATE [Products] SET [CategoryId] = @p32, [Color] = @p33, [CreatedAt] = @p34, [CreatedBy] = @p35, [DeletedAt] = @p36, [DeletedBy] = @p37, [ImageUrl] = @p38, [IsActive] = @p39, [IsDeleted] = @p40, [ModifiedBy] = @p41, [Name] = @p42, [Price] = @p43, [ShopId] = @p44, [Stock] = @p45, [UpdatedAt] = @p46
+OUTPUT 1
+WHERE [Id] = @p47;
+UPDATE [Products] SET [CategoryId] = @p48, [Color] = @p49, [CreatedAt] = @p50, [CreatedBy] = @p51, [DeletedAt] = @p52, [DeletedBy] = @p53, [ImageUrl] = @p54, [IsActive] = @p55, [IsDeleted] = @p56, [ModifiedBy] = @p57, [Name] = @p58, [Price] = @p59, [ShopId] = @p60, [Stock] = @p61, [UpdatedAt] = @p62
+OUTPUT 1
+WHERE [Id] = @p63;
+UPDATE [Products] SET [CategoryId] = @p64, [Color] = @p65, [CreatedAt] = @p66, [CreatedBy] = @p67, [DeletedAt] = @p68, [DeletedBy] = @p69, [ImageUrl] = @p70, [IsActive] = @p71, [IsDeleted] = @p72, [ModifiedBy] = @p73, [Name] = @p74, [Price] = @p75, [ShopId] = @p76, [Stock] = @p77, [UpdatedAt] = @p78
+OUTPUT 1
+WHERE [Id] = @p79;
+UPDATE [Sellers] SET [IsActive] = @p80, [ModifiedBy] = @p81, [UpdatedAt] = @p82
+OUTPUT 1
+WHERE [Id] = @p83;
+UPDATE [Shops] SET [IsActive] = @p84, [ModifiedBy] = @p85, [UpdatedAt] = @p86
+OUTPUT 1
+WHERE [Id] = @p87;
+2025-06-01 23:45:27.410 +03:00 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2025-06-01 23:45:27.413 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p12='?' (DbType = Guid), @p0='?' (Size = 500), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (Size = 4000), @p8='?' (Size = 100), @p9='?' (DbType = Guid), @p10='?' (Size = 4000), @p11='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Shops] SET [Address] = @p0, [CreatedAt] = @p1, [CreatedBy] = @p2, [DeletedAt] = @p3, [DeletedBy] = @p4, [IsActive] = @p5, [IsDeleted] = @p6, [ModifiedBy] = @p7, [Name] = @p8, [SellerId] = @p9, [TaxNumber] = @p10, [UpdatedAt] = @p11
+OUTPUT 1
+WHERE [Id] = @p12;
+2025-06-01 23:45:27.415 +03:00 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2025-06-01 23:45:27.417 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Sellers] SET [CreatedAt] = @p0, [CreatedBy] = @p1, [DeletedAt] = @p2, [DeletedBy] = @p3, [FirstName] = @p4, [IsActive] = @p5, [IsDeleted] = @p6, [LastName] = @p7, [ModifiedBy] = @p8, [Phone] = @p9, [UpdatedAt] = @p10
+OUTPUT 1
+WHERE [Id] = @p11;
+2025-06-01 23:45:29.447 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-01 23:45:29.452 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopAPIController.DeactivateShop (WebUI) in 2156.828ms
+2025-06-01 23:45:29.454 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.DeactivateShop (WebUI)'
+2025-06-01 23:45:29.455 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7104/admin/api/shops/deactivate - 200 null application/json; charset=utf-8 2168.3698ms
+2025-06-01 23:45:29.461 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7104/admin/api/shops?status=Active&draw=2&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=sellerName&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1748810724509 - null null
+2025-06-01 23:45:29.463 +03:00 [INF] Executing endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI)'
+2025-06-01 23:45:29.464 +03:00 [INF] Route matched with {area = "Admin", action = "GetShops", controller = "ShopAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetShops(System.String, Int32, Int32) on controller WebUI.Areas.Admin.Controllers.ShopAPIController (WebUI).
+2025-06-01 23:45:29.470 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(1 AS bit)
+2025-06-01 23:45:29.475 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s0].[Id] AS [SellerId], [s].[Id], [s].[Name], [s0].[FirstName] + N' ' + [s0].[LastName] AS [SellerName]
+FROM [Shops] AS [s]
+INNER JOIN [Sellers] AS [s0] ON [s].[SellerId] = [s0].[Id]
+WHERE [s].[IsDeleted] = CAST(0 AS bit) AND [s].[IsActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-06-01 23:45:29.477 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.DTOs.ShopListDto, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-01 23:45:29.478 +03:00 [INF] Executed action WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI) in 12.4496ms
+2025-06-01 23:45:29.478 +03:00 [INF] Executed endpoint 'WebUI.Areas.Admin.Controllers.ShopAPIController.GetShops (WebUI)'
+2025-06-01 23:45:29.479 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7104/admin/api/shops?status=Active&draw=2&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=sellerName&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=id&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=id&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1748810724509 - 200 null application/json; charset=utf-8 18.2871ms
+2025-06-01 23:46:25.166 +03:00 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:46:25.189 +03:00 [WRN] No store type was specified for the decimal property 'ProductPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:46:25.189 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:46:29.518 +03:00 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:46:29.540 +03:00 [WRN] No store type was specified for the decimal property 'ProductPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:46:29.540 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:46:30.220 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-01 23:46:30.270 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Db_EzyShop] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;
+2025-06-01 23:46:30.328 +03:00 [INF] Executed DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+DROP DATABASE [Db_EzyShop];
+2025-06-01 23:46:48.718 +03:00 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:46:48.740 +03:00 [WRN] No store type was specified for the decimal property 'ProductPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:46:48.740 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:47:13.142 +03:00 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:47:13.163 +03:00 [WRN] No store type was specified for the decimal property 'ProductPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:47:13.163 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:47:13.273 +03:00 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:47:13.273 +03:00 [WRN] No store type was specified for the decimal property 'ProductPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-01 23:47:13.273 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.

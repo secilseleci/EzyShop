@@ -1,0 +1,28 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Bir hata oluştu!</h1>
+
+@if (Model.Message is not null)
+{
+    <div class="alert alert-danger">
+        <strong>Hata:</strong> @Model.Message
+    </div>
+}
+
+@if (Model.Path is not null)
+{
+    <p><strong>Hatanın olduğu yol:</strong> @Model.Path</p>
+}
+
+@if (Model.StackTrace is not null)
+{
+    <pre style="background:#f5f5f5; padding:1em;">@Model.StackTrace</pre>
+}
+
+@if (Model.ShowRequestId)
+{
+    <p><strong>Request ID:</strong> @Model.RequestId</p>
+}
